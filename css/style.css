@@ -146,22 +146,18 @@ display: none;
 
 }
 
-nav .spol{
 
- display: flex;
-
-
-}
 
 @media only screen and (max-width: 949px) {
   
 
   nav .pr{
 
-  display: flex;
- 
+  display: none;
+  
 
   }
+
 
   nav #logo{
 
@@ -214,6 +210,17 @@ height: 90px;
 
 
 /*Sidebar*/
+
+
+.sidebar .ds{
+
+  
+  margin-top: 30px;
+  color: white;
+  
+
+
+}
 
 
 .sidebar {
