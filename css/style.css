@@ -1,0 +1,524 @@
+*{
+
+margin: 0;
+padding: 0;
+font-family: Arial, Helvetica, sans-serif;
+
+}
+/*Navbar*/
+nav{
+
+  display: flex;
+  background-color: #384b68;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  padding: 17px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 1px solid black;
+  font-size: 15px;
+  z-index: 1000;
+  
+
+  }
+
+
+  nav #logo{
+
+
+  font-size: 27px;
+ text-align: left;
+  }
+  nav img{
+
+
+      max-height: 80px;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+
+
+  }
+     
+  nav ul{
+  
+  display: flex;
+  flex-direction: row;
+  padding: 10px 55px;
+  list-style: none;
+ 
+ 
+  }
+  
+  nav ul li{
+  
+  margin: 0 10px
+  
+  }
+  
+  nav a{
+  
+    
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 17px;
+  }
+
+  nav a:hover{
+  
+  opacity: 0.8;
+  transition: 0.3s all ease-in-out;
+  
+  }    
+
+.pr{
+
+  display: flex;
+  gap: 25px;
+
+
+}
+
+.sign_in{
+
+border: 2px solid white;
+padding: 10px 17px;
+border-radius: 6px;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+font-size: 17px;
+}
+
+.sign_in:hover{
+
+background-color: rgb(255, 255, 255);
+border: 2px solid white;
+color: black;   
+
+
+}
+
+.get_started{
+  border: 2px solid white;
+  background-color: white;
+  color: black;
+  font-weight: 700;
+  padding: 10px 17px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-size: 17px;
+}
+
+.get_started:hover{
+
+  border: 2px solid rgba(0, 0, 0, 0.705);
+  background-color: rgb(98, 250, 98);
+  color: black;
+  transition: 0.5s all ease-in-out;
+  
+}
+
+#hladat{
+font-size: 20px;
+
+}
+
+
+
+#hladat:hover{
+
+cursor: pointer;
+
+}
+
+
+.hamburger{
+
+position: absolute;
+right: 120px;
+font-size: 25px;
+display: none;
+
+}
+
+nav .spol{
+
+ display: flex;
+
+
+}
+
+@media only screen and (max-width: 949px) {
+  
+
+  nav .pr{
+
+  display: flex;
+ 
+
+  }
+
+  nav #logo{
+
+
+    font-size: 27px;
+    position: absolute;
+    left: 20px; 
+    }
+  nav{
+
+padding: 30px 50px;
+height: 90px;
+  }
+  nav ul {
+    display: none;
+   
+   }
+
+   nav #log{
+
+   display: none;
+
+   }
+   nav img{
+
+      position: absolute;  
+      left: 20px;            
+      top: 50%;           
+      transform: translateY(-50%); 
+      max-width: 100px;   
+
+   }
+
+   .hamburger{
+
+  display: flex;
+  cursor: pointer;
+
+   }
+   .hamburger:hover{
+
+  opacity: 0.7;
+  transition: 0.5s ease-in-out;
+
+   }
+
+ 
+
+ }
+
+
+/*Sidebar*/
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    background-color: #384b68;
+    width: 65%;
+    padding: 20px 25px;
+    border: 1.5px solid white;
+    flex-direction: column;
+    box-sizing: border-box;
+    transform: translateX(-100%); 
+    opacity: 0; 
+    height: 100vh;
+  
+  }
+  
+  
+  .sidebar.visible {
+    transform: translateX(0); 
+    opacity: 1; 
+    transition: transform 0.7s ease, opacity 0.7s ease;
+  }
+  
+ 
+  .sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0;
+    margin-top: 55px;
+  }
+  
+  .sidebar ul a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .sidebar img {
+    max-height: 100px;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    place-self: center;
+  }
+
+  .sidebar #logo{
+
+
+   color: white;
+   text-decoration: none;
+   text-align: center;
+   position: absolute;
+   left: 40%;
+   font-size: 25px; 
+
+  }
+
+ .sidebar a:hover{
+
+opacity: 0.7;
+transition: 0.5s ease;
+
+ }
+
+.sidebar .sr{
+
+
+  
+
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  
+  
+
+
+}
+
+
+/*Footer*/
+
+footer{
+
+display: flex;
+flex-direction: column;
+background-color: #384b68;
+color: white;
+padding: 10px 15px;
+position: relative;
+margin-top: 500px;
+
+}
+
+.social_media_links{
+
+display: flex;
+gap: 15px;
+align-items: flex-end;
+justify-content: flex-end;
+flex-direction: row;
+justify-content: flex-end;
+position: relative;
+right: 15px
+
+}
+
+.bottom_footer{
+
+display: flex;
+width: 100%;
+justify-content: space-between;
+
+}
+
+
+.social{
+
+width: 40px;
+height: 40px;
+border-radius: 50%;
+
+
+}
+
+#facebook{
+
+color: white;
+background-color: blue;
+cursor: pointer;
+font-size: 20px;
+border: 2px solid white;
+
+}
+
+#instagram{
+
+    color: white;
+    background-color: rgb(255, 0, 221);
+    cursor: pointer;
+    border: 2px solid white;
+    font-size: 20px;
+    
+    }
+#linkedin{
+
+ color: white;
+ background-color: rgb(0, 247, 255);
+ cursor: pointer;
+ border: 2px solid white;
+ font-size: 20px;
+        
+}
+#youtube{
+
+color: white;
+background-color: red;
+cursor: pointer;
+border: 2px solid white;
+font-size: 20px;
+            
+}
+
+#facebook:hover,#youtube:hover,#instagram:hover,#linkedin:hover{
+
+opacity: 0.7;
+transition: 0.5s ease-in-out;
+
+    
+}
+
+
+.footer_rights{
+
+font-size: 16px;
+display: flex;
+justify-content: flex-start;
+align-items: flex-end;
+
+}
+
+
+@media only screen and (max-width: 700px) {
+    footer .social_media_links {
+      
+    display: block;
+    
+ 
+ 
+     }
+
+     .footer_rights {
+        justify-content: flex-start; 
+        width: 100%; 
+        text-align: left; 
+        
+    }
+
+
+    .bottom_footer{
+
+        gap: 60px;
+        
+        }
+        
+   }
+   @media only screen and (max-width: 238px) {   
+
+    .bottom_footer{
+
+        gap: 0px;
+        
+        }
+
+       
+
+   }
+
+
+
+
+
+   /*Slideshow*/
+.slideshow{
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  margin-top: 150px;
+}
+
+.slideshow img{
+
+ width: 100%;
+ height: 450px;
+ object-fit: cover;
+
+}
+
+
+
+.prepnutie {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+
+}
+
+.prepnutie_fotiek{
+
+display: flex;
+justify-content: center;
+flex-direction: row;
+align-items: center;
+gap: 10px;
+position: relative;
+margin-bottom: 100px;
+bottom: 30px
+
+}
+
+.active, .prepnutie:hover {
+  background-color: greenyellow;
+}
+
+.tmavy_rezim .active, .prepnutie:hover {
+  background-color: green;
+}
+
+
+
+
+.fotky h1{
+
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: rgb(142, 204, 48);
+
+
+}
+
+.tmavy_rezim .fotky h1{
+
+color: rgba(15, 200, 15, 0.738);
+
+
+}
+
+
+@media only screen and (max-width: 730px) {
+
+.slideshow{
+
+max-width: 100%;
+
+}
+
+}
