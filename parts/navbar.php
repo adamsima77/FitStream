@@ -1,10 +1,13 @@
 <div class = "sidebar" id = "sidebar">
-        <a href = "index.html" id = "logo">FitStream</a>
+  
+        <a href = "index.php" id = "logo">FitStream</a>
+        <i class = "fa fa-close" id = "zatvorit_sidebar" onclick = "zatvorit_sidebar()"></i>
         <div class = "con">
+       
 <div class = "ds">
 <i class="fa fa-search" id = "hladat"></i>
-<i class="fa fa-user" style = "font-size: 20px;" id = "log"></i>
-<i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i>
+<a href = "login.php"><i class="fa fa-user" style = "font-size: 20px;" id = "log"></i></a>
+<a href = ""><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
 </div>
           
         <ul>
@@ -14,7 +17,7 @@
             <a href=""><li>Športové Príslušenstvo</li></a>
             <a href=""><li>Blog</li></a>
             <a href=""><li>Kontakt</li></a>
-            <a href = ""><li>Prihlásiť</li></a>
+            <a href = "login.php"><li>Prihlásiť</li></a>
         </ul>
        
 
@@ -23,7 +26,7 @@
     </div>
 <nav class = "menu">
 
-<a href = "index.html" id = "logo">FitStream</a>
+<a href = "index.php" id = "logo">FitStream</a>
 
 <ul>
 <a href=""><li>Športová výživa</li></a>
@@ -35,8 +38,8 @@
 
 <div class = "pr">
 <i class="fa fa-search" id = "hladat"></i>
-<i class="fa fa-user" style = "font-size: 20px;" id = "log"></i>
-<i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i>
+<a href = "login.php"><i class="fa fa-user" style = "font-size: 20px;" id = "log"></i></a>
+<a href = ""><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
 </div>
 <div class="hamburger" id="hamburger">
 

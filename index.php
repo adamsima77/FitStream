@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <title>FitStream</title>
-</head>
-
+<?php include 'parts/header.php';?>
 <?php include 'parts/navbar.php';?>
 
-
+<body>
 
 
 <div class="slideshow">     
@@ -35,12 +25,245 @@
               </div>
             
             </div>
+
+
+ 
+<!-- !!!!!!PRODUKTY!!!!!   -->           
     <h1 class = "produkty">Produkty</h1>
 
 
+    <div class = "skup" id = "skupi">
+<div class = "box">
+<div class = "obrazok">
+     <!--Obrázok-->
+    <a href = ""><img src="img/protein.jpg" alt=""></a>
+</div>
+<div class = "nadpis">
+     <!--Nadpis-->
+    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
 
-    <h1 class = "blog">Blog</h1>
+    <p class = "cena">1,20€</p>
+</div>
 
+</div>
+
+<div class = "box">
+<div class = "obrazok">
+     <!--Obrázok-->
+    <a href = ""><img src="img/protein.jpg" alt=""></a>
+</div>
+<div class = "nadpis">
+     <!--Nadpis-->
+    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
+
+    <p class = "cena">1,20€</p>
+</div>
+
+</div>
+<div class = "box">
+<div class = "obrazok">
+     <!--Obrázok-->
+    <a href = ""><img src="img/protein.jpg" alt=""></a>
+</div>
+<div class = "nadpis">
+     <!--Nadpis-->
+    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
+
+    <p class = "cena">1,20€</p>
+</div>
+
+</div>
+<div class = "box">
+<div class = "obrazok">
+     <!--Obrázok-->
+    <a href = ""><img src="img/protein.jpg" alt=""></a>
+</div>
+<div class = "nadpis">
+     <!--Nadpis-->
+    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
+
+    <p class = "cena">1,20€</p>
+</div>
+
+</div>
+<div class = "box">
+<div class = "obrazok">
+     <!--Obrázok-->
+    <a href = ""><img src="img/protein.jpg" alt=""></a>
+</div>
+<div class = "nadpis">
+     <!--Nadpis-->
+    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
+
+    <p class = "cena">1,20€</p>
+</div>
+
+</div>
+<div class = "box">
+<div class = "obrazok">
+     <!--Obrázok-->
+    <a href = ""><img src="img/protein.jpg" alt=""></a>
+</div>
+<div class = "nadpis">
+     <!--Nadpis-->
+    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
+
+    <p class = "cena">1,20€</p>
+</div>
+
+</div><div class = "box">
+<div class = "obrazok">
+     <!--Obrázok-->
+    <a href = ""><img src="img/protein.jpg" alt=""></a>
+</div>
+<div class = "nadpis">
+     <!--Nadpis-->
+    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
+
+    <p class = "cena">1,20€</p>
+</div>
+
+</div><div class = "box">
+<div class = "obrazok">
+     <!--Obrázok-->
+    <a href = ""><img src="img/protein.jpg" alt=""></a>
+</div>
+<div class = "nadpis">
+     <!--Nadpis-->
+    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
+
+    <p class = "cena">1,20€</p>
+</div>
+
+</div><div class = "box">
+<div class = "obrazok">
+     <!--Obrázok-->
+    <a href = ""><img src="img/protein.jpg" alt=""></a>
+</div>
+<div class = "nadpis">
+     <!--Nadpis-->
+    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
+
+    <p class = "cena">1,20€</p>
+</div>
+
+</div><div class = "box">
+<div class = "obrazok">
+     <!--Obrázok-->
+    <a href = ""><img src="img/protein.jpg" alt=""></a>
+</div>
+<div class = "nadpis">
+     <!--Nadpis-->
+    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
+
+    <p class = "cena">1,20€</p>
+</div>
+
+</div>
+
+</div>
+
+
+
+</div>
+    
+
+
+
+<!-- !!!!!!BLOG!!!!!   -->
+
+
+
+<h1 class = "blog">Blog</h1>
+
+<div class = "skupina" id = "skupina_recepty">
+<div class = "box_pre_clanky">
+<div class = "obrazok_v_clankoch">
+     <!--Obrázok-->
+    <a href = ""><img src="img/proteiny.jpg" alt=""></a>
+</div>
+<div class = "nadpis_clanky">
+     <!--Nadpis-->
+    <a href = ""><h2>Nadpis</h2></a>
+</div>
+
+<div class = "popis_clanky">
+ <!--Popis k článkom-->
+<p>asdasdsadasdasdasdsadasdasdasds
+  adasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasd
+  asdasdsadasdasdasdsadasdasdasds
+  adasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasd
+ 
+</p>
+
+</div>
+
+</div>
+<div class = "box_pre_clanky">
+<div class = "obrazok_v_clankoch">
+     <!--Obrázok-->
+    <a href = ""><img src="img/proteiny.jpg" alt=""></a>
+</div>
+<div class = "nadpis_clanky">
+     <!--Nadpis-->
+    <a href = ""><h2>Nadpis</h2></a>
+</div>
+
+<div class = "popis_clanky">
+ <!--Popis k článkom-->
+<p>asdasdsadasdasdasdsadasdasdasds
+  adasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasd
+  asdasdsadasdasdasdsadasdasdasds
+  adasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasd
+ 
+</p>
+
+</div>
+
+</div>
+<div class = "box_pre_clanky">
+<div class = "obrazok_v_clankoch">
+     <!--Obrázok-->
+    <a href = ""><img src="img/proteiny.jpg" alt=""></a>
+</div>
+<div class = "nadpis_clanky">
+     <!--Nadpis-->
+    <a href = ""><h2>Nadpis</h2></a>
+</div>
+
+<div class = "popis_clanky">
+ <!--Popis k článkom-->
+<p>asdasdsadasdasdasdsadasdasdasds
+  adasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasd
+  asdasdsadasdasdasdsadasdasdasds
+  adasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasd
+ 
+</p>
+
+</div>
+
+</div>
+<div class = "box_pre_clanky">
+<div class = "obrazok_v_clankoch">
+     <!--Obrázok-->
+    <a href = ""><img src="img/proteiny.jpg" alt=""></a>
+</div>
+<div class = "nadpis_clanky">
+     <!--Nadpis-->
+    <a href = ""><h2>Nadpis</h2></a>
+</div>
+
+<div class = "popis_clanky">
+ <!--Popis k článkom-->
+<p>asdasdsadasdasdasdsadasdasdasds
+  adasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasd
+  asdasdsadasdasdasdsadasdasdasds
+  adasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasdasdasdsadasd
+ 
+</p>
+
+</div></div>
+</div>
 
 
 
@@ -48,5 +271,3 @@
 <script src="javascript/app.js" type="text/javascript"></script>
 <?php include 'parts/footer.php';?>
     
-</body>
-</html>

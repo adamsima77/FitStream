@@ -17,9 +17,59 @@ sidebar.classList.remove("visible")
 
 
 
+//Ukazanie hesla v prihlaseni
 
+function ukaz_heslo() {
+  var x = document.getElementById("heslo");
+  var z = document.getElementById("zop_hes");
+  var y = document.getElementById("hes");
+ 
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
 
+  if (y.type === "password") {
+    y.type = "text";
+  } else {
+    y.type = "password";
+  }  
+  
+  if (z.type === "password") {
+    z.type = "text";
+  } else {
+    z.type = "password";
+  }
 
+}
+
+function ukaz_hes() {
+
+  var z = document.getElementById("zop_hes");
+  var y = document.getElementById("hes");
+ 
+
+  if (y.type === "password") {
+    y.type = "text";
+  } else {
+    y.type = "password";
+  }  
+  
+  if (z.type === "password") {
+    z.type = "text";
+  } else {
+    z.type = "password";
+  }
+
+}
+
+function zatvorit_sidebar(){
+  
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.remove("visible")
+
+}
 
 let indexSnímky = 1;  
 zobrazSnímky(indexSnímky); // Zobrazí obrázok na základe indexu
