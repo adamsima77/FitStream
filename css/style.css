@@ -306,6 +306,14 @@ transition: 0.5s ease;
 
 }
 
+.logo_a_zatvorenie{
+
+justify-content: center;
+align-items: center;
+display: flex;
+
+
+}
 
 #zatvorit_sidebar{
 
@@ -314,9 +322,8 @@ transition: 0.5s ease;
  color: white;
  justify-content: flex-end;
  align-items: flex-end;
- position: absolute;
- left: 20px;
- top: 20px;
+ position: relative;
+ margin-left: auto;
  cursor: pointer;
 
 }
@@ -684,6 +691,17 @@ max-width: 85%;
 
 /*Hlavná stránka*/
 
+
+.za_1{
+
+display: flex;
+min-width: 85%;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+
+}
+
 /*Sekcia produkty*/
 .produkty{
 
@@ -932,7 +950,7 @@ flex-wrap: wrap;
 
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1120px) {
 
 .blog{
 
@@ -1083,5 +1101,267 @@ margin-top: 2px;
 max-width: 85%;
 
 }
+
+}
+
+
+/*Vyziva*/
+
+.vyziva{
+
+margin-top: 150px;
+
+
+
+
+}
+
+.p_vyziva {
+  display: flex;
+  text-align: justify;
+  margin-top: 45px;
+}
+
+.z{
+
+display: flex;
+justify-content: center;
+align-items: center;
+max-width: 95%;
+
+}
+
+
+.box_vyziva {
+  display: flex;
+  flex-direction: column; 
+  max-width: 180px;
+  min-height: 350px;
+  border-radius: 10px;
+  border: 0.5px solid black;
+  background-color: rgb(245, 245, 245);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px 20px;
+
+
+}
+
+.box_vyziva h2{
+
+color: black;
+
+}
+
+
+.obrazok_vyziva img {
+  width: 100%; 
+  min-height: 300px; 
+  max-height: 350px; 
+  display: flex;
+  margin: 0 auto;
+  object-fit: cover;
+  margin-top: 25px;
+  border-radius: 7px;
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.obrazok_vyziva img:hover{
+
+
+transform: scale(1.1);
+transition: 0.3 all ease-in-out;
+filter: brightness(1.1);
+
+}
+
+.box_vyziva .cena_vyziva{
+
+
+ margin-top: 30px;
+ color: rgb(144, 18, 18);
+ font-size: 19px;
+
+
+}
+
+.nadpis_vyziva {
+  
+  margin: 15px 0 0px 0; 
+  text-align: left; 
+  font-size: 16px;
+  color: black;
+}
+
+.nadpis_vyziva a{
+
+text-decoration: none;
+color: black;
+
+}
+.nadpis_vyziva a:hover{
+
+text-decoration: underline;
+opacity: 0.7;
+transition: 0.3s all ease-in-out;
+
+}
+
+.popis_vyziva{
+
+padding: 15px; 
+width: 100%; 
+height: auto;
+word-wrap: break-word;   
+box-sizing: border-box; 
+color: black;
+line-height: 1.5;
+font-size: 15px;
+text-align: justify;
+
+}
+
+
+
+.vyziva_skupina{
+
+
+display: flex;
+gap: 30px;
+width: 100%;
+margin-top: 50px;
+flex-wrap: wrap;
+
+}
+
+
+@media screen and (max-width: 408px) {
+
+.filtre{
+
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+
+}
+
+
+.p_vyziva{
+
+place-self: center;
+
+}
+
+.box_vyziva{
+
+min-width: 250px;
+
+
+}
+
+.vyziva{
+
+text-align: center;
+
+
+}
+
+}
+
+
+@media screen and (max-width: 976px) {
+
+.zaobalenie{
+
+align-items: center;
+justify-content:center;
+
+
+}
+
+
+
+}
+
+@media screen and (max-width: 873px) {
+
+
+.vyziva_skupina{
+
+
+justify-content: center;
+align-items: center;
+margin-top: 50px;
+
+}
+
+.box_vyziva{
+
+margin-top: 10px;
+margin-bottom: 10px;
+min-width: 100px;
+height: auto;
+
+}
+
+
+
+
+}
+
+.filtre{
+
+
+ display: flex;
+ margin-top: 50px;
+ gap: 25px;
+}
+
+.fil{
+
+
+
+min-height: 55px;
+border-radius: 4px;
+border: 1px solid blue;
+color: blue;
+background-color: white;
+font-size: 16px;
+cursor: pointer;
+justify-content: center;
+align-items: center;
+display: flex;
+text-decoration: none;
+width: 250px;
+
+}
+
+.fil:hover{
+
+background-color: blue;
+color: white;
+transition: 0.7s ease-in-out;
+
+
+}
+
+
+.zaobalenie{
+
+display: flex;
+flex-direction: column;
+max-width: 100%;
+place-self: center;
+justify-content: center;
+}
+
+.zao_2{
+
+
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+  place-self: center;
+  justify-content: center;
 
 }

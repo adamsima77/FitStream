@@ -27,6 +27,8 @@
             </div>
 
 
+
+<div class = "za_1">
  
 <!-- !!!!!!PRODUKTY!!!!!   -->           
     <h1 class = "produkty">Produkty</h1>
@@ -164,7 +166,7 @@
 </div>
 
 
-
+<div>
 </div>
     
 
@@ -266,8 +268,8 @@
 </div>
 
 
+</div>
 
 
-<script src="javascript/app.js" type="text/javascript"></script>
 <?php include 'parts/footer.php';?>
     
