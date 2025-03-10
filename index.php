@@ -31,7 +31,7 @@
 <div class = "za_1">
  
 <!-- !!!!!!PRODUKTY!!!!!   -->           
-    <h1 class = "produkty">Produkty</h1>
+   <h1> <a href =  "vyziva.php" class = "produkty">Produkty</a></h1>
 
 
     <div class = "skup" id = "skupi">
@@ -176,7 +176,7 @@
 
 
 
-<h1 class = "blog">Blog</h1>
+<h1><a href =  "blog.php" class = "blog">Blog</a></h1>
 
 <div class = "skupina" id = "skupina_recepty">
 <div class = "box_pre_clanky">

@@ -9,7 +9,7 @@
         <label>Heslo:</label>
         <input type="password" id="heslo" placeholder="Zadajte heslo">
         <label>
-        <input type = "checkbox" id = "check_log" onclick="ukaz_heslo()" class = "check_login">Zobraz heslo
+        <input type = "checkbox" id = "check_log" onclick="ukaz_heslo()" class = "check_login">Zobraziť heslo
     </label>
        
          <a href = "Register.php">Nie ste zaregistrovany ? Registrujte sa</a>

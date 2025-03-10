@@ -21,8 +21,7 @@ sidebar.classList.remove("visible")
 
 function ukaz_heslo() {
   var x = document.getElementById("heslo");
-  var z = document.getElementById("zop_hes");
-  var y = document.getElementById("hes");
+
  
   if (x.type === "password") {
     x.type = "text";
@@ -30,17 +29,7 @@ function ukaz_heslo() {
     x.type = "password";
   }
 
-  if (y.type === "password") {
-    y.type = "text";
-  } else {
-    y.type = "password";
-  }  
-  
-  if (z.type === "password") {
-    z.type = "text";
-  } else {
-    z.type = "password";
-  }
+
 
 }
 
@@ -115,4 +104,9 @@ function zobrazSnímky(n) {
   // Pridanie triedy active k aktuálnej bodke
   bodky[indexSnímky-1].className += " active";  
 }
+
+
+
+
+
 

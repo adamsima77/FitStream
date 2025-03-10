@@ -3,7 +3,7 @@
 
 <form action="" class = "forma_registracia"  name = "">
         <div class = "registracia">
-        <h1>Prihlásenie</h1>
+        <h1>Registrácia</h1>
         <label for = "meno">Meno:</label>
         <input type="text" id = "meno" placeholder="Zadajte meno...">
         <label for = "priezvisko">Priezvisko:</label>
@@ -15,7 +15,7 @@
         <label for = "zop_hes">Zopakujte Heslo:</label>
         <input type="password" id="zop_hes" placeholder="Zadajte znova heslo...">
         <label>
-        <input type = "checkbox" id = "check_log" onclick="ukaz_hes()" class = "check_registracia">Zobraz heslo
+        <input type = "checkbox" id = "check_log" onclick="ukaz_hes()" class = "check_registracia">Zobraziť heslo
     </label>
        
          <a href = "login.php">Ste zaregistrovaný ? Prihláste sa</a>

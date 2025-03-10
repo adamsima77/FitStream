@@ -2,9 +2,26 @@
 
 margin: 0;
 padding: 0;
-font-family: Arial, Helvetica, sans-serif;
+
 
 }
+
+/*Fonty*/
+h1,h2,h3,h4,h5,h6,a{
+
+font-family:'Montserrat';
+
+
+}
+
+p{
+
+
+  font-family: 'Roboto';
+
+}
+
+
 /*Navbar*/
 nav{
 
@@ -224,6 +241,38 @@ height: 45px;
 }
 
 
+.search-container {
+  display: none; 
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#search-bar {
+  display: none;
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+.search-container {
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar_zarovnanie{
+
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+flex-direction: column;
+
+}
+
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -311,6 +360,7 @@ transition: 0.5s ease;
 justify-content: center;
 align-items: center;
 display: flex;
+
 
 
 }
@@ -454,25 +504,34 @@ align-items: flex-end;
 
 
 @media only screen and (max-width: 700px) {
-    footer .social_media_links {
+    footer{
       
-    display: block;
+    
     
  
  
      }
 
      .footer_rights {
-        justify-content: flex-start; 
+        justify-content: center; 
         width: 100%; 
-        text-align: left; 
+        text-align: center; 
         
     }
 
 
+    .social_media_links{
+
+
+      flex-wrap: wrap;
+    }
     .bottom_footer{
 
-        gap: 60px;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
         
         }
         
@@ -696,18 +755,22 @@ max-width: 85%;
 
 display: flex;
 min-width: 85%;
+max-width: 100%;
 justify-content: center;
 align-items: center;
 flex-direction: column;
+place-self: center;
 
 }
 
 /*Sekcia produkty*/
+
 .produkty{
 
-  margin-left: 50px;
+
   display: flex;
- 
+  text-decoration: none;
+  color: black;
 
 }
 
@@ -717,11 +780,11 @@ flex-direction: column;
   width: 200px;
   min-height: 350px;
   border-radius: 10px;
-  border: 0.5px solid black;
+  border: 1px solid black;
   background-color: rgb(245, 245, 245);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 10px 20px;
-
+  
 
 }
 
@@ -806,7 +869,6 @@ text-align: justify;
 
 display: flex;
 justify-content: center;
-margin-left: 50px;
 align-items: center;
 gap: 40px;
 margin-top: 50px;
@@ -817,6 +879,11 @@ flex-wrap: wrap;
 
 @media screen and (max-width: 870px) {
 
+  .za_1{
+
+place-self: center;
+
+  }
 
 .skup{
 
@@ -851,12 +918,19 @@ text-align: center;
 
 
 /*Sekcia blog*/
+
+  
+
+
 .blog{
 
 
- margin-left: 50px;
+ 
  margin-top: 170px;
  display: flex;
+ text-decoration: none;
+ color: black;
+ text-decoration: none;
 
 }
 
@@ -942,7 +1016,6 @@ text-align: justify;
 
 display: flex;
 justify-content: center;
-margin-left: 50px;
 align-items: center;
 gap: 40px;
 margin-top: 50px;
@@ -1363,5 +1436,234 @@ justify-content: center;
   max-width: 85%;
   place-self: center;
   justify-content: center;
+
+}
+
+
+
+
+
+
+/*Oblečenie*/
+
+
+
+
+
+/*Blog*/
+
+
+.za_b{
+
+  display: flex;
+  min-width: 90%;
+  max-width: 100%;
+  padding: 10px 20px;
+  flex-direction: column;
+  place-self: center;
+
+
+
+
+
+}
+
+
+.zaobalenie_blog{
+
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+
+
+
+}
+
+.blog_b {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column; 
+  width: 300px;
+  min-height: 350px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: rgb(245, 245, 245);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px 20px;
+  
+
+}
+
+.blog_b h2{
+
+color: black;
+
+}
+
+
+.blog_obrazok img {
+  width: 100%;  
+  max-height: 170px; 
+  display: flex;
+  margin: 0 auto;
+  object-fit: cover;
+  margin-top: 25px;
+  border-radius: 7px;
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.blog_obrazok img:hover{
+
+
+transform: scale(1.1);
+transition: 0.3 all ease-in-out;
+filter: brightness(1.1);
+
+}
+
+
+
+.blog_nadpis {
+  
+  margin: 15px 0 0px 0; 
+  text-align: left; 
+  font-size: 16px;
+  color: black;
+}
+
+.blog_nadpis a{
+
+text-decoration: none;
+color: black;
+
+}
+.blog_nadpis a:hover{
+
+text-decoration: underline;
+opacity: 0.7;
+transition: 0.3s all ease-in-out;
+
+}
+
+.blog_popis{
+margin-top: 10px;
+width: 100%; 
+height: auto;
+word-wrap: break-word;   
+box-sizing: border-box; 
+color: black;
+line-height: 1.5;
+font-size: 15px;
+text-align: justify;
+
+}
+
+.blog_skupina{
+
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+
+}
+
+.nasledujuce_clanky_blog{
+
+margin-top: 100px;
+margin-bottom: 25px;
+
+
+}
+
+
+
+
+@media screen and (max-width: 870px) {
+
+ 
+
+
+
+.box{
+
+margin-top: 10px;
+margin-bottom: 10px;
+max-width: 100%;
+height: auto;
+
+}
+
+
+
+
+}
+
+
+.hlavny_clanok{
+
+width: 100%;
+margin-top: 150px;
+display: flex;
+flex-direction: column;
+place-self: center;
+
+}
+
+.blog_hlavny_clanok p{
+
+  
+  width: 100%; 
+  height: auto;
+  word-wrap: break-word;   
+  box-sizing: border-box; 
+  color: black;
+  line-height: 1.5;
+  font-size: 15px;
+  margin-top: 25px;
+  text-align: justify;
+  
+  }
+  
+
+.blog_hlavny_clanok{
+
+  place-self: center;
+  display: flex;
+  flex-direction: column; 
+  width: 80%;
+  min-height: 450px;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px 20px;
+
+}
+
+
+.blog_hlavny_clanok h1{
+
+
+  margin-top: 10px;
+}
+
+.blog_hlavny_clanok img {
+  width: 771px;  
+  max-height: 433px; 
+  display: flex;
+  margin: 0 auto;
+  object-fit: cover;
+  margin-top: 25px;
+  border-radius: 7px;
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.blog_hlavny_clanok img:hover{
+
+
+transform: scale(1.1);
+transition: 0.3 all ease-in-out;
+filter: brightness(1.1);
 
 }
