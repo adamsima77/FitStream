@@ -61,20 +61,19 @@ function zatvorit_sidebar(){
 }
 
 let indexSnímky = 1;  
-zobrazSnímky(indexSnímky); // Zobrazí obrázok na základe indexu
+zobrazSnímky(indexSnímky); 
 
-// Automatická zmena obrázkov
+
 setInterval(function() {
   plusSnímky(1); 
-}, 5000); //5 sekúnd
+}, 5000); 
 
 
-// Zmena obrázku na ďaľśí
 function plusSnímky(n) {
   zobrazSnímky(indexSnímky += n);  
 }
 
-// Zobrazenie aktuálneho obrázku
+
 function aktuálnySnímok(n) {
   zobrazSnímky(indexSnímky = n); 
 }
@@ -84,24 +83,23 @@ function zobrazSnímky(n) {
   let snímky = document.getElementsByClassName("fotky");  
   let bodky = document.getElementsByClassName("prepnutie");  
 
-  // Kontrola či index nie je väčší dĺžka slideshow ak áno nastávi ho na obrázok 1
+  
   if (n > snímky.length) {indexSnímky = 1} 
-  if (n < 1) {indexSnímky = snímky.length}  // Nastaví obrázok na posledný obrázok
+  if (n < 1) {indexSnímky = snímky.length}  
 
-  // Display none pre všetky obrázky
   for (i = 0; i < snímky.length; i++) {
     snímky[i].style.display = "none";  
   }
 
-  // Odstránenie triedy active zo všetkých bodiek
+
   for (i = 0; i < bodky.length; i++) {
     bodky[i].className = bodky[i].className.replace(" active", "");
   }
 
-  // Zobrazenie aktuálneho obrázku
+  
   snímky[indexSnímky-1].style.display = "block";  
 
-  // Pridanie triedy active k aktuálnej bodke
+
   bodky[indexSnímky-1].className += " active";  
 }
 

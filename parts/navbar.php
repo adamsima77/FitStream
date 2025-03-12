@@ -13,17 +13,14 @@
 <a href = ""><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
 </div>
 
-           <form action="" method = "" class = "search-container" id="search-container">
-            <input type="text" id="search-bar" placeholder="Hľadať...">
-        </div>
-        </form>
+           
         <ul>
            
         <a href="vyziva.php"><li>Výživa</li></a>
             <a href="oblecenie.php"><li>Oblečenie</li></a>
             <a href="prislusenstvo.php"><li>Príslušenstvo</li></a>
             <a href="blog.php"><li>Blog</li></a>
-            <a href=""><li>Kontakt</li></a>
+            <a href="kontakt.php"><li>Kontakt</li></a>
         </ul>
        
 
@@ -39,7 +36,7 @@
             <a href="oblecenie.php"><li>Oblečenie</li></a>
             <a href="prislusenstvo.php"><li>Príslušenstvo</li></a>
             <a href="blog.php"><li>Blog</li></a>
-            <a href=""><li>Kontakt</li></a>
+            <a href="kontakt.php"><li>Kontakt</li></a>
 </ul>
 
 <div class = "pr">
