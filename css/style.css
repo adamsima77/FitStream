@@ -26,7 +26,7 @@ p{
 nav{
 
   display: flex;
-  background-color: #384b68;
+  background-color: #2F3C7E;
   align-items: center;
   justify-content: space-around;
   color: white;
@@ -247,7 +247,7 @@ height: 45px;
     position: fixed;
     top: 0;
     z-index: 2000;
-    background-color: #384b68;
+    background-color: #2F3C7E;
     width: 55%;
     padding: 20px 25px;
     border: 1.5px solid white;
@@ -377,7 +377,7 @@ footer{
 
 display: flex;
 flex-direction: column;
-background-color: #384b68;
+background-color: #2F3C7E;
 color: white;
 padding: 10px 15px;
 position: relative;
@@ -1416,7 +1416,268 @@ justify-content: center;
 
 /*Oblečenie*/
 
+.vyziva_oblecenie{
 
+  margin-top: 150px;
+  margin-bottom: 30px;
+  
+  
+  
+  
+  }
+
+
+  
+  .p_vyziva_oblecenie {
+    display: flex;
+    text-align: justify;
+    margin-top: 45px;
+  }
+  
+  .z_oblecenie{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 95%;
+  
+  }
+  
+  
+  .box_vyziva_oblecenie {
+    display: flex;
+    flex-direction: column; 
+    max-width: 180px;
+    min-height: 350px;
+    border-radius: 10px;
+    border: 0.5px solid black;
+    background-color: rgb(245, 245, 245);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 10px 20px;
+  
+  
+  }
+  
+  .box_vyziva_oblecenie h2{
+  
+  color: black;
+  
+  }
+  
+  
+  .obrazok_vyziva_oblecenie img {
+    width: 100%; 
+    min-height: 300px; 
+    max-height: 350px; 
+    display: flex;
+    margin: 0 auto;
+    object-fit: cover;
+    margin-top: 25px;
+    border-radius: 7px;
+    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+  }
+  
+  .obrazok_vyziva_oblecenie img:hover{
+  
+  
+  transform: scale(1.1);
+  transition: 0.3 all ease-in-out;
+  filter: brightness(1.1);
+  
+  }
+  
+  .box_vyziva_oblecenie .cena_vyziva_oblecenie{
+  
+  
+   margin-top: 30px;
+   color: rgb(144, 18, 18);
+   font-size: 19px;
+  
+  
+  }
+  
+  .nadpis_vyziva_oblecenie {
+    
+    margin: 15px 0 0px 0; 
+    text-align: left; 
+    font-size: 16px;
+    color: black;
+  }
+  
+  .nadpis_vyziva_oblecenie a{
+  
+  text-decoration: none;
+  color: black;
+  
+  }
+  .nadpis_vyziva_oblecenie a:hover{
+  
+  text-decoration: underline;
+  opacity: 0.7;
+  transition: 0.3s all ease-in-out;
+  
+  }
+  
+  .popis_vyziva_oblecenie{
+  
+  padding: 15px; 
+  width: 100%; 
+  height: auto;
+  word-wrap: break-word;   
+  box-sizing: border-box; 
+  color: black;
+  line-height: 1.5;
+  font-size: 15px;
+  text-align: justify;
+  
+  }
+  
+  
+  
+  .vyziva_skupina_oblecenie{
+  
+  
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  margin-top: 50px;
+  flex-wrap: wrap;
+  
+  }
+  
+  
+  @media screen and (max-width: 408px) {
+  
+  .filtre_oblecenie{
+  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  
+  }
+  
+  
+  .p_vyziva_oblecenie{
+  
+  place-self: center;
+  
+  }
+  
+  .box_vyziva_oblecenie{
+  
+  min-width: 250px;
+  
+  
+  }
+  
+  .vyziva_oblecenie{
+  
+  text-align: center;
+  
+  
+  }
+  
+  }
+  
+  
+  @media screen and (max-width: 976px) {
+  
+  .zaobalenie_oblecenie{
+  
+  align-items: center;
+  justify-content:center;
+  
+  
+  }
+  
+  
+  
+  }
+  
+  @media screen and (max-width: 873px) {
+  
+  
+  .vyziva_skupina_oblecenie{
+  
+  
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  
+  }
+  
+  .box_vyziva_oblecenie{
+  
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 100px;
+  height: auto;
+  
+  }
+  
+  
+  
+  
+  }
+  
+  .filtre_oblecenie{
+  
+  
+   display: flex;
+   margin-top: 50px;
+   gap: 25px;
+  }
+  
+  .fil_oblecenie{
+  
+  
+  
+  min-height: 55px;
+  border-radius: 4px;
+  border: 1px solid blue;
+  color: blue;
+  background-color: white;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+  width: 250px;
+  
+  }
+  
+  .fil_oblecenie:hover{
+  
+  background-color: blue;
+  color: white;
+  transition: 0.7s ease-in-out;
+  
+  
+  }
+  
+  
+  .zaobalenie_oblecenie{
+  
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  place-self: center;
+  justify-content: center;
+  }
+  
+  .zao_2_oblecenie{
+  
+  
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    place-self: center;
+    justify-content: center;
+  
+  }
+  
 
 
 
@@ -1637,3 +1898,343 @@ transition: 0.3 all ease-in-out;
 filter: brightness(1.1);
 
 }
+
+
+/*Akordeón*/
+
+.akordeon {
+  background-color: rgba(182, 182, 182, 0.767);
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 50%;
+  text-align: left;
+  border: none;
+  outline: none;
+  display: flex;
+  border: 0.5px solid black;
+  word-wrap: break-word;
+  
+}
+
+
+.active, .akordeon:hover {
+  background-color: greenyellow;
+  transition: 0.3s all ease-in-out;
+}
+
+
+.popis_akordeon {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  word-wrap: break-word;
+  width: 46%;
+  text-align: justify;
+
+}
+
+
+
+.acc{
+
+margin-top: 100px;
+margin-bottom: 50px;
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+
+}
+
+.acc h2{
+
+text-align: center;
+margin-bottom: 12px;
+color: black;
+
+}
+
+
+
+@media screen and (max-width: 735px) {
+
+
+.akordeon{
+
+width: 100%;
+
+
+}
+
+.popis_akordeon{
+
+width: 100%;
+
+}
+
+
+}
+
+/*Príslušenstvo*/
+
+.vyziva_prislusenstvo{
+
+  margin-top: 150px;
+  
+  
+  
+  
+  }
+  
+  .p_vyziva_prislusenstvo {
+    display: flex;
+    text-align: justify;
+    margin-top: 45px;
+  }
+  
+  .z_prislusenstvo{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 95%;
+  
+  }
+  
+  
+  .box_vyziva_prislusenstvo {
+    display: flex;
+    flex-direction: column; 
+    max-width: 180px;
+    min-height: 350px;
+    border-radius: 10px;
+    border: 0.5px solid black;
+    background-color: rgb(245, 245, 245);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 10px 20px;
+  
+  
+  }
+  
+  .box_vyziva_prislusenstvo h2{
+  
+  color: black;
+  
+  }
+  
+  
+  .obrazok_vyziva_prislusenstvo img {
+    width: 100%; 
+    min-height: 300px; 
+    max-height: 350px; 
+    display: flex;
+    margin: 0 auto;
+    object-fit: cover;
+    margin-top: 25px;
+    border-radius: 7px;
+    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+  }
+  
+  .obrazok_vyziva_prislusenstvo img:hover{
+  
+  
+  transform: scale(1.1);
+  transition: 0.3 all ease-in-out;
+  filter: brightness(1.1);
+  
+  }
+  
+  .box_vyziva_prislusenstvo .cena_vyziva_prislusenstvo{
+  
+  
+   margin-top: 30px;
+   color: rgb(144, 18, 18);
+   font-size: 19px;
+  
+  
+  }
+  
+  .nadpis_vyziva_prislusenstvo {
+    
+    margin: 15px 0 0px 0; 
+    text-align: left; 
+    font-size: 16px;
+    color: black;
+  }
+  
+  .nadpis_vyziva_prislusenstvo a{
+  
+  text-decoration: none;
+  color: black;
+  
+  }
+  .nadpis_vyziva_prislusenstvo a:hover{
+  
+  text-decoration: underline;
+  opacity: 0.7;
+  transition: 0.3s all ease-in-out;
+  
+  }
+  
+  .popis_vyziva_prislusenstvo{
+  
+  padding: 15px; 
+  width: 100%; 
+  height: auto;
+  word-wrap: break-word;   
+  box-sizing: border-box; 
+  color: black;
+  line-height: 1.5;
+  font-size: 15px;
+  text-align: justify;
+  
+  }
+  
+  
+  
+  .vyziva_skupina_prislusenstvo{
+  
+  
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  margin-top: 50px;
+  flex-wrap: wrap;
+  
+  }
+  
+  
+  @media screen and (max-width: 408px) {
+  
+  .filtre_prislusenstvo{
+  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  
+  }
+  
+  
+  .p_vyziva_prislusenstvo{
+  
+  place-self: center;
+  
+  }
+  
+  .box_vyziva_prislusenstvo{
+  
+  min-width: 250px;
+  
+  
+  }
+  
+  .vyziva_prislusenstvo{
+  
+  text-align: center;
+  
+  
+  }
+  
+  }
+  
+  
+  @media screen and (max-width: 976px) {
+  
+  .zaobalenie_prislusenstvo{
+  
+  align-items: center;
+  justify-content:center;
+  
+  
+  }
+  
+  
+  
+  }
+  
+  @media screen and (max-width: 873px) {
+  
+  
+  .vyziva_skupina_prislusenstvo{
+  
+  
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  
+  }
+  
+  .box_vyziva_prislusenstvo{
+  
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 100px;
+  height: auto;
+  
+  }
+  
+  
+  
+  
+  }
+  
+  .filtre_prislusenstvo{
+  
+  
+   display: flex;
+   margin-top: 50px;
+   gap: 25px;
+  }
+  
+  .fil_prislusenstvo{
+  
+  
+  
+  min-height: 55px;
+  border-radius: 4px;
+  border: 1px solid blue;
+  color: blue;
+  background-color: white;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+  width: 250px;
+  
+  }
+  
+  .fil_prislusenstvo:hover{
+  
+  background-color: blue;
+  color: white;
+  transition: 0.7s ease-in-out;
+  
+  
+  }
+  
+  
+  .zaobalenie_prislusenstvo{
+  
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  place-self: center;
+  justify-content: center;
+  }
+  
+  .zao_2_prislusenstvo{
+  
+  
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    place-self: center;
+    justify-content: center;
+  
+  }
+  
+  

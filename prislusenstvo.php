@@ -3,11 +3,11 @@
 
 
 
-<div class = "zaobalenie">
-<div class = "zao_2">
-<h1 class = "vyziva">Športové príslušenstvo</h1>
-<div class = "z">
-<p class = "p_vyziva">Táto časť nášho obchodu so 
+<div class = "zaobalenie_prislusenstvo">
+<div class = "zao_2_prislusenstvo">
+<h1 class = "vyziva_prislusenstvo">Športové príslušenstvo</h1>
+<div class = "z_prislusentsvo">
+<p class = "p_vyziva_prislusenstvo">Táto časť nášho obchodu so 
     športovými potrebami ponúka širokú škálu vysokokvalitného a funkčného príslušenstva pre
      športovcov všetkých úrovní. Nájdete tu širokú ponuku športových tašiek, obuvi, ochranných pomôcok, 
      tréningových doplnkov a 
@@ -15,24 +15,24 @@
 </div>
 
 
-<div class = "filtre">
+<div class = "filtre_prislusenstvo">
 
-<a href = "" class = "fil">Najnovšie</a>
-<a href = "" class = "fil">Najlacnejšie</a>
-<a href = "" class = "fil">Najdrahšie</a>
+<a href = "" class = "fil_prislusenstvo">Najnovšie</a>
+<a href = "" class = "fil_prislusenstvo">Najlacnejšie</a>
+<a href = "" class = "fil_prislusenstvo">Najdrahšie</a>
 </div>
 
-<div class = "vyziva_skupina" id = "vyziva_skupina">
-<div class = "box_vyziva">
-<div class = "obrazok_vyziva">
+<div class = "vyziva_skupina_prislusenstvo" id = "vyziva_skupina_prislusenstvo">
+<div class = "box_vyziva_prislusenstvo">
+<div class = "obrazok_vyziva_prislusenstvo">
  <!--Obrázok-->
 <a href = ""><img src="img/protein.jpg" alt=""></a>
 </div>
-<div class = "nadpis_vyziva">
+<div class = "nadpis_vyziva_prislusenstvo">
  <!--Nadpis-->
 <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
 
-<p class = "cena_vyziva">1,20€</p>
+<p class = "cena_vyziva_prislusenstvo">1,20€</p>
 </div>
 
 </div>
