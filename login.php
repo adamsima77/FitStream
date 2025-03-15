@@ -4,9 +4,9 @@
 <form action="" class = "forma_prihlasenie"  name = "">
         <div class = "prihlasenie">
         <h1>Prihlásenie</h1>
-        <label>E-mail:</label>
+        <label class = "l_em">E-mail:</label>
         <input type="email" id = "email" placeholder="Zadajte email v tvare email@email.com">
-        <label>Heslo:</label>
+        <label class = "l_hes">Heslo:</label>
         <input type="password" id="heslo" placeholder="Zadajte heslo">
         <label>
         <input type = "checkbox" id = "check_log" onclick="ukaz_heslo()" class = "check_login">Zobraziť heslo
