@@ -533,7 +533,7 @@ align-items: flex-end;
 .slideshow img{
 
  width: 100%;
- height: 650px;
+ height: 90%;
  object-fit: cover;
  
 }
@@ -1416,7 +1416,7 @@ justify-content: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 95%;
+  max-width: 100%;
   
   }
   
@@ -1594,7 +1594,7 @@ justify-content: center;
   }
   
   
-  
+
   
   }
   
@@ -2244,7 +2244,7 @@ margin-top: 150px;
   padding: 18px;
   background-color: #f4f4f4; 
   display: none;
-  width: 97%;
+  min-width: 97%;
   text-align: justify;
   border-radius: 8px;
   color: #333; 
@@ -2266,10 +2266,24 @@ margin-top: 150px;
 
 @media screen and (max-width: 735px) {
   .akordeon {
-    max-width: 90%;
+    min-width: 95%;
   }
 
   .popis_akordeon {
-    width: 100%;
+    place-self: center;
+    min-width: 95%;
+  }
+
+  .kontakt_nadpis{
+
+  text-align: center;
+
+
+  }
+
+  .acc h2{
+
+  text-align: center;
+
   }
 }

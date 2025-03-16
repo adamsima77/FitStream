@@ -74,11 +74,11 @@ for (i = 0; i < akordeon.length; i++) {
     this.classList.toggle("active");
 
     var popis_akordeon = this.nextElementSibling;
-    if (popis_akordeon.style.display === "block") {
+    if (popis_akordeon.style.display === "flex") {
 
       popis_akordeon.style.display = "none";
     } else {
-      popis_akordeon.style.display = "block";
+      popis_akordeon.style.display = "flex";
     }
   });
 }

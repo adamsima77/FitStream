@@ -5,14 +5,14 @@
         <div class = "prihlasenie">
         <h1>Prihlásenie</h1>
         <label class = "l_em">E-mail:</label>
-        <input type="email" id = "email" placeholder="Zadajte email v tvare email@email.com">
+        <input type="email" id = "email" placeholder="Zadajte email">
         <label class = "l_hes">Heslo:</label>
         <input type="password" id="heslo" placeholder="Zadajte heslo">
         <label>
         <input type = "checkbox" id = "check_log" onclick="ukaz_heslo()" class = "check_login">Zobraziť heslo
     </label>
        
-         <a href = "Register.php">Nie ste zaregistrovany ? Registrujte sa</a>
+         <a href = "Register.php">Nie ste zaregistrovaný ? Zaregistrujte sa</a>
         <input type="submit" value="Prihlásiť" class = "prihlasenie_sub">
     </div>
 
