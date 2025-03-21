@@ -1,6 +1,6 @@
 <?php include "parts/header.php";?>
 <?php include "parts/navbar.php";?>
-
+<?php require 'parts/sidebar.php';?>
 
 <div class = "zarovnanie_kontakt">
 <div class = "za_kontakt">

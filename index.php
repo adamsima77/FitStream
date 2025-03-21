@@ -1,5 +1,6 @@
 <?php include 'parts/header.php';?>
 <?php include 'parts/navbar.php';?>
+<?php require 'parts/sidebar.php';?>
 
 <body>
 
@@ -269,6 +270,9 @@
 
 
 </div>
+
+
+
 
 
 <?php include 'parts/footer.php';?>
