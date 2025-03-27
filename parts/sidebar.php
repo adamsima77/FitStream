@@ -3,14 +3,14 @@
     
 <div class = "logo_a_zatvorenie">
 
-<a href = "index.php" id = "logo"><img src="img/logo_1.webp" alt="logo"></a>
+<a href = "index.php" id = "logo"><h1>FitStream</h1></a>
         <i class = "fa fa-close" id = "zatvorit_sidebar" onclick = "zatvorit_sidebar()"></i>
         </div>  
         <div class = "con">
  
 <div class = "ds">
 <a href = "login.php"><i class="fa fa-user" style = "font-size: 20px;" id = "log"></i></a>
-<a href = ""><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
+<a href = "kosik.php"><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
 </div>
 
            

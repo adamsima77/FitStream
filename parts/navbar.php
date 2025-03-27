@@ -1,6 +1,6 @@
 <nav class = "menu">
 
-<a href = "index.php" id = "logo"><img src="img/logo_1.webp" alt="logo"></a>
+<a href="index.php" class = "logo"><h1 class>FitStream</h1></a>
 
 <ul>
             <a href="vyziva.php"><li>Výživa</li></a>
@@ -13,7 +13,7 @@
 <div class = "pr">
 
 <a href = "login.php"><i class="fa fa-user" style = "font-size: 20px;" id = "log"></i></a>
-<a href = ""><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
+<a href = "kosik.php"><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
 </div>
 <div class="hamburger" id="hamburger">
 
