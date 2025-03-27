@@ -16,9 +16,9 @@
 
 <div class = "filtre">
 
-<a href = "" class = "fil">Najnovšie</a>
-<a href = "" class = "fil">Najlacnejšie</a>
-<a href = "" class = "fil">Najdrahšie</a>
+<button class = "fil">Najnovšie</button>
+<button class = "fil">Najlacnejšie</button>
+<button class = "fil">Najdrahšie</button>
 </div>
 
 <div class = "vyziva_skupina" id = "vyziva_skupina">

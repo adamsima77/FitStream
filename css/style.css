@@ -1254,36 +1254,60 @@ height: auto;
  display: flex;
  margin-top: 50px;
  gap: 25px;
+ flex-wrap: wrap;
 }
 
 .fil{
 
 
-
-min-height: 55px;
-border-radius: 4px;
-border: 1px solid blue;
-color: blue;
-background-color: white;
-font-size: 16px;
-cursor: pointer;
-justify-content: center;
-align-items: center;
-display: flex;
-text-decoration: none;
-width: 250px;
+  min-width: 20%;
+  max-width: 25%;
+  height: 45px;
+  color: white;
+  background-color: #2f52ff;
+  border-radius: 7px;
+  padding: 10px 20px; 
+  font-size: 16px; 
+  font-weight: 600; 
+  border: 1px solid black; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
 }
 
 .fil:hover{
 
-background-color: blue;
-color: white;
-transition: 0.7s ease-in-out;
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+
 
 
 }
 
+.fil_oblecenie:focus{
+
+  outline: none;
+
+}
+@media screen and (max-width: 600px){
+
+ .filtre{
+ 
+ display: flex;
+  flex-direction: column;
+  min-width: 95%;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .fil{
+
+
+   min-width: 100%;
+    
+  }}
+  
 
 .zaobalenie{
 
@@ -1518,36 +1542,63 @@ justify-content: center;
    display: flex;
    margin-top: 50px;
    gap: 25px;
+   flex-wrap: wrap;
   }
   
   .fil_oblecenie{
   
   
   
-  min-height: 55px;
-  border-radius: 4px;
-  border: 1px solid blue;
-  color: blue;
-  background-color: white;
-  font-size: 16px;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  text-decoration: none;
-  width: 250px;
+    min-width: 20%;
+    max-width: 25%;
+    height: 45px;
+    color: white;
+    background-color: #2f52ff;
+    border-radius: 7px;
+    padding: 10px 20px; 
+    font-size: 16px; 
+    font-weight: 600; 
+    border: 1px solid black; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   
   }
   
   .fil_oblecenie:hover{
   
-  background-color: blue;
-  color: white;
-  transition: 0.7s ease-in-out;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
   
   
   }
+
+  .fil_oblecenie:focus{
+
+     outline: none;
+
+  }
+  @media screen and (max-width: 600px){
+
+    .filtre_oblecenie{
+    
+    display: flex;
+     flex-direction: column;
+     min-width: 95%;
+     justify-content: center;
+     align-items: center;
+     }
   
+     .fil_oblecenie{
+  
+  
+      min-width: 100%;
+       
+     }
+     
+  
+  
+  }
   
   .zaobalenie_oblecenie{
   
@@ -1651,7 +1702,7 @@ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
 gap: 15px;
 display: flex;
-
+flex-wrap: wrap;
 
 }
 
@@ -1673,7 +1724,7 @@ display: flex;
   padding: 10px 20px; 
   font-size: 16px; 
   font-weight: 600; 
-  border: none; 
+  border: 1px solid black; 
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -1873,14 +1924,6 @@ display: flex;
   
   @media screen and (max-width: 408px) {
   
-  .filtre_prislusenstvo{
-  
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-  
-  }
   
   
   .p_vyziva_prislusenstvo{
@@ -1952,37 +1995,39 @@ display: flex;
    display: flex;
    margin-top: 50px;
    gap: 25px;
+   flex-direction: row;
+   flex-wrap: wrap;
   }
   
   .fil_prislusenstvo{
   
-  
-  
-  min-height: 55px;
-  border-radius: 4px;
-  border: 1px solid blue;
-  color: blue;
-  background-color: white;
-  font-size: 16px;
+  min-width: 20%;
+  max-width: 25%;
+  height: 45px;
+  color: white;
+  background-color: #2f52ff;
+  border-radius: 7px;
+  padding: 10px 20px; 
+  font-size: 16px; 
+  font-weight: 600; 
+  border: 1px solid black; 
   cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  text-decoration: none;
-  width: 250px;
+  transition: all 0.3s ease;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
   
   }
   
   .fil_prislusenstvo:hover{
   
-  background-color: blue;
-  color: white;
-  transition: 0.7s ease-in-out;
-  
+
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
   
   }
-  
-  
+  .fil_prislusenstvo:focus{
+  outline: none; 
+  }
   .zaobalenie_prislusenstvo{
   
   display: flex;
@@ -2003,6 +2048,29 @@ display: flex;
   
   }
   
+
+@media screen and (max-width: 600px){
+
+  .filtre_prislusenstvo{
+  
+  display: flex;
+   flex-direction: column;
+   min-width: 95%;
+   justify-content: center;
+   align-items: center;
+   }
+
+   .fil_prislusenstvo{
+
+
+    min-width: 100%;
+     
+   }
+   
+
+
+}
+
 /*Kontakt*/
 
 .kontakt_nadpis{

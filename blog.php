@@ -9,19 +9,21 @@
 <h1 class = "Nadpis_blog">Najnovšie informácie o výžive a zdravom životnom štýle.</h1>
 
 <div class = "kategorie_blog">
+
 <button>Cvičenie</button>
 <button>Zdravá strava</button>
 <button>Recepty</button>
 <button>Fitness Rady</button>
+
 
 </div>
 <div class = "box_blog">
 <img src="img/proteiny.jpg" alt="">
 
 <div class = "nadpis_a_popis">
-<h1><a href=""></a>daasdasdsadasdsads</h1>
+<h1><a href=""></a>daasdasdsadasdsadsasdasdsadasdsadas</h1>
 <p>popissadsadasdasdasdadasdsadasdadasdasdasdasdasdasdsadasdsasdsadsdsadsaadsadsddasdsadsa
-    asdsadsaddsadsadasdsdasasdasasdasdsadsadsdsads</p>
+    asdsadsaddsadsadasdsdasasdasasdasdsadsadsdsadsasdasdasdsadasdsa</p>
 
 </div>
 
