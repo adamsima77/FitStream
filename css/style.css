@@ -684,104 +684,85 @@ place-self: center;
 
 .box {
   display: flex;
-  flex-direction: column; 
-  width: 200px;
-  min-height: 350px;
-  border-radius: 10px;
-  border: 1px solid black;
-  background-color: rgb(245, 245, 245);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  padding: 10px 20px;
-  
-
+  flex-direction: column;
+  width: 250px; 
+  min-height: 400px; 
+  border-radius: 15px; 
+  border: 1px solid #e1e1e1; 
+  background-color: #fff; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
+  transition: transform 0.3s ease;
 }
 
-.box h2{
 
-color: black;
-
+.box h2 {
+  color: #333; 
+  font-size: 24px; 
+  margin-bottom: 15px; 
 }
-
 
 .obrazok img {
-  width: 100%; 
-  min-height: 300px; 
-  max-height: 350px; 
-  display: flex;
+  width: 100%;
+  min-height: 300px;
+  max-height: 350px;
+  display: block;
   margin: 0 auto;
   object-fit: cover;
-  margin-top: 25px;
-  border-radius: 7px;
-  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+  margin-top: 20px;
+  border-radius: 10px;
+  transition: transform 0.4s ease, filter 0.3s ease-in-out;
 }
 
-.obrazok img:hover{
-
-
-transform: scale(1.1);
-transition: 0.3 all ease-in-out;
-filter: brightness(1.1);
-
+.obrazok img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
 }
 
-.box .cena{
-
-
- margin-top: 30px;
- color: rgb(144, 18, 18);
- font-size: 19px;
-
-
+.box .cena {
+  margin-top: 20px;
+  color: #e74c3c; 
+  font-size: 22px; 
+  font-weight: bold;
 }
 
 .nadpis {
+  margin-top: 15px;
+  text-align: left;
+  font-size: 17px; 
+  color: #333;
+}
+
+.nadpis a {
+  text-decoration: none;
   
-  margin: 15px 0 0px 0; 
-  text-align: left; 
-  font-size: 16px;
-  color: black;
 }
 
-.nadpis a{
+.nadpis a:hover {
 
-text-decoration: none;
-color: black;
-
-}
-.nadpis a:hover{
-
-text-decoration: underline;
-opacity: 0.7;
-transition: 0.3s all ease-in-out;
-
+  opacity: 0.8;
+  transition: 0.3s all ease-in-out;
 }
 
-.popis{
-
-padding: 15px; 
-width: 100%; 
-height: auto;
-word-wrap: break-word;   
-box-sizing: border-box; 
-color: black;
-line-height: 1.5;
-font-size: 15px;
-text-align: justify;
-
+.popis {
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  color: #555; /* Softer text color for readability */
+  line-height: 1.6;
+  font-size: 16px; /* Slightly larger font size */
+  text-align: justify;
 }
 
-
-
-.skup{
-
-
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 40px;
-margin-top: 50px;
-flex-wrap: wrap;
-
+.skup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
 }
 
 
@@ -827,108 +808,93 @@ text-align: center;
 
 /*Sekcia blog*/
 
-  
-
-
-.blog{
-
-
- 
- margin-top: 170px;
- display: flex;
- text-decoration: none;
- color: black;
- text-decoration: none;
-
-}
-
-
-.box_pre_clanky {
+.blog {
+  margin-top: 170px;
   display: flex;
-  flex-direction: column; 
-  background-color: rgba(244, 243, 243, 0.767);
-  width: 320px;
-  min-height: 350px;
-  border-radius: 10px;
-  border: 2px solid black;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-}
-
-.box_pre_clanky h2{
-
-color: black;
-
-}
-
-
-.obrazok_v_clankoch img {
-  width: 75%; 
-  height: auto; 
-  display: flex;
-  margin: 0 auto;
-  margin-top: 25px;
-  border-radius: 7px;
-  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
-}
-
-.obrazok_v_clankoch img:hover{
-
-
-transform: scale(1.1);
-transition: 0.3 all ease-in-out;
-filter: brightness(1.1);
-
-}
-
-.nadpis_clanky {
-  
-  margin: 15px 0 0px 0; 
-  text-align: center; 
-  font-size: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; 
+  text-decoration: none;
   color: black;
 }
 
-.nadpis_clanky a{
-
-text-decoration: none;
-color: black;
-
+.box_pre_clanky {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(244, 243, 243, 0.95); 
+  width: 320px;
+  min-height: 400px;
+  border-radius: 12px;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  overflow: hidden; 
+  transition: transform 0.3s ease;
+ 
+  
 }
-.nadpis_clanky a:hover{
 
-text-decoration: underline;
-opacity: 0.7;
-transition: 0.3s all ease-in-out;
 
+.box_pre_clanky h2 {
+  color: #333; 
+  font-size: 22px; 
+  text-align: center;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.obrazok_v_clankoch img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 20px;
+  border-radius: 5px;
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+  
+}
+
+.obrazok_v_clankoch img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.15); 
+}
+
+.nadpis_clanky {
+  margin: 15px 0;
+  text-align: center;
+  font-size: 18px;
+  color: #333; 
+  font-weight: bold;
+}
+
+.nadpis_clanky a {
+  text-decoration: none;
+ 
+}
+
+.nadpis_clanky a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+  transition: 0.3s all ease-in-out;
 }
 
 .popis_clanky {
-
-padding: 15px; 
-width: 100%; 
-height: auto;
-word-wrap: break-word;   
-box-sizing: border-box; 
-color: black;
-line-height: 1.5;
-font-size: 15px;
-text-align: justify;
-
+  padding: 15px;
+  width: 100%;
+  height: auto;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  color: #555; 
+  line-height: 1.6;
+  font-size: 16px;
+  text-align: justify;
 }
 
-
-
-.skupina{
-
-
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 40px;
-margin-top: 50px;
-flex-wrap: wrap;
-
+.skupina {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 50px;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 1120px) {
@@ -1108,80 +1074,75 @@ align-items: center;
 max-width: 95%;
 
 }
-
-
 .box_vyziva {
   display: flex;
-  flex-direction: column; 
-  max-width: 180px;
-  min-height: 350px;
-  border-radius: 10px;
-  border: 0.5px solid black;
-  background-color: rgb(245, 245, 245);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  padding: 10px 20px;
-
-
+  flex-direction: column;
+  max-width: 220px;
+  min-height: 380px; 
+  border-radius: 12px; 
+  border: 1px solid #e1e1e1; 
+  background-color: #fff; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px; 
+  transition: transform 0.3s ease;
 }
 
-.box_vyziva h2{
 
-color: black;
 
+.box_vyziva h2 {
+  color: #333; 
+  font-size: 24px; 
+  margin-bottom: 15px;
+  font-weight: bold;
 }
-
 
 .obrazok_vyziva img {
-  width: 100%; 
-  min-height: 300px; 
-  max-height: 350px; 
-  display: flex;
+  width: 100%;
+  height: auto;
+  display: block;
   margin: 0 auto;
-  object-fit: cover;
-  margin-top: 25px;
-  border-radius: 7px;
-  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+  margin-top: 20px;
+  border-radius: 10px;
+  transition: transform 0.4s ease, filter 0.3s ease-in-out;
 }
 
-.obrazok_vyziva img:hover{
-
-
-transform: scale(1.1);
-transition: 0.3 all ease-in-out;
-filter: brightness(1.1);
-
+.obrazok_vyziva img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2); 
 }
 
-.box_vyziva .cena_vyziva{
-
-
- margin-top: 30px;
- color: rgb(144, 18, 18);
- font-size: 19px;
-
-
+.box_vyziva .cena_vyziva {
+  margin-top: 20px;
+  color: #e74c3c; 
+  font-size: 22px; 
+  font-weight: bold;
 }
 
 .nadpis_vyziva {
+  margin-top: 15px;
+  text-align: left;
+  font-size: 18px;
+  color: #333;
+}
+
+.nadpis_vyziva a {
+  text-decoration: none;
+ 
+}
+
+.nadpis_vyziva a:hover {
   
-  margin: 15px 0 0px 0; 
-  text-align: left; 
-  font-size: 16px;
-  color: black;
+  opacity: 0.8;
+  transition: 0.3s all ease-in-out;
 }
 
-.nadpis_vyziva a{
-
-text-decoration: none;
-color: black;
-
-}
-.nadpis_vyziva a:hover{
-
-text-decoration: underline;
-opacity: 0.7;
-transition: 0.3s all ease-in-out;
-
+.skupina_vyziva {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
 }
 
 .popis_vyziva{
@@ -1381,76 +1342,71 @@ justify-content: center;
   
   .box_vyziva_oblecenie {
     display: flex;
-    flex-direction: column; 
-    max-width: 180px;
-    min-height: 350px;
-    border-radius: 10px;
-    border: 0.5px solid black;
-    background-color: rgb(245, 245, 245);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 10px 20px;
-  
-  
+    flex-direction: column;
+    max-width: 220px;
+    min-height: 380px; 
+    border-radius: 12px; 
+    border: 1px solid #e1e1e1; 
+    background-color: #fff; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    transition: transform 0.3s ease; 
   }
   
-  .box_vyziva_oblecenie h2{
   
-  color: black;
-  
+  .box_vyziva_oblecenie h2 {
+    color: #333;
+    font-size: 24px; 
+    margin-bottom: 15px;
+    font-weight: bold;
   }
-  
   
   .obrazok_vyziva_oblecenie img {
-    width: 100%; 
-    min-height: 300px; 
-    max-height: 350px; 
-    display: flex;
-    margin: 0 auto;
-    object-fit: cover;
-    margin-top: 25px;
-    border-radius: 7px;
-    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: transform 0.4s ease, filter 0.3s ease-in-out;
   }
   
-  .obrazok_vyziva_oblecenie img:hover{
-  
-  
-  transform: scale(1.1);
-  transition: 0.3 all ease-in-out;
-  filter: brightness(1.1);
-  
+  .obrazok_vyziva_oblecenie img:hover {
+    transform: scale(1.1); 
+    filter: brightness(1.2); 
   }
   
-  .box_vyziva_oblecenie .cena_vyziva_oblecenie{
-  
-  
-   margin-top: 30px;
-   color: rgb(144, 18, 18);
-   font-size: 19px;
-  
-  
+  .box_vyziva_oblecenie .cena_vyziva_oblecenie {
+    margin-top: 20px;
+    color: #e74c3c;
+    font-size: 22px; 
+    font-weight: bold;
   }
   
   .nadpis_vyziva_oblecenie {
-    
-    margin: 15px 0 0px 0; 
-    text-align: left; 
-    font-size: 16px;
-    color: black;
+    margin-top: 15px;
+    text-align: left;
+    font-size: 18px;
+    color: #333;
   }
   
-  .nadpis_vyziva_oblecenie a{
-  
-  text-decoration: none;
-  color: black;
-  
+  .nadpis_vyziva_oblecenie a {
+    text-decoration: none;
+   
   }
-  .nadpis_vyziva_oblecenie a:hover{
   
-  text-decoration: underline;
-  opacity: 0.7;
-  transition: 0.3s all ease-in-out;
+  .nadpis_vyziva_oblecenie a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+    transition: 0.3s all ease-in-out;
+  }
   
+  .skupina_vyziva_oblecenie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
   }
   
   .popis_vyziva_oblecenie{
@@ -1724,7 +1680,7 @@ display: flex;
 }
 
 .kategorie_blog button:hover {
-  background: linear-gradient(135deg, #1c3d99, #2f52ff); 
+ 
   transform: translateY(-2px); 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
 }
@@ -1815,52 +1771,52 @@ display: flex;
   
   .box_vyziva_prislusenstvo {
     display: flex;
-    flex-direction: column; 
-    max-width: 180px;
-    min-height: 350px;
-    border-radius: 10px;
-    border: 0.5px solid black;
-    background-color: rgb(245, 245, 245);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 10px 20px;
+    flex-direction: column;
+    max-width: 220px;
+    min-height: 380px; 
+    border-radius: 12px; 
+    border: 1px solid #e1e1e1; 
+    background-color: #fff; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    transition: transform 0.3s ease; 
   
   
   }
   
   .box_vyziva_prislusenstvo h2{
   
-  color: black;
+    color: #333;
+    font-size: 24px; 
+    margin-bottom: 15px;
+    font-weight: bold;
   
   }
   
   
   .obrazok_vyziva_prislusenstvo img {
-    width: 100%; 
-    min-height: 300px; 
-    max-height: 350px; 
-    display: flex;
-    margin: 0 auto;
-    object-fit: cover;
-    margin-top: 25px;
-    border-radius: 7px;
-    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: transform 0.4s ease, filter 0.3s ease-in-out;
   }
   
   .obrazok_vyziva_prislusenstvo img:hover{
   
   
-  transform: scale(1.1);
-  transition: 0.3 all ease-in-out;
-  filter: brightness(1.1);
-  
+    transform: scale(1.1); 
+    filter: brightness(1.2); 
   }
   
   .box_vyziva_prislusenstvo .cena_vyziva_prislusenstvo{
   
   
-   margin-top: 30px;
-   color: rgb(144, 18, 18);
-   font-size: 19px;
+    margin-top: 20px;
+    color: #e74c3c;
+    font-size: 22px; 
+    font-weight: bold;
   
   
   }

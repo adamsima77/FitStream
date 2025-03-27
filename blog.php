@@ -9,10 +9,10 @@
 <h1 class = "Nadpis_blog">Najnovšie informácie o výžive a zdravom životnom štýle.</h1>
 
 <div class = "kategorie_blog">
-<button>Strava</button>
+<button>Cvičenie</button>
 <button>Zdravá strava</button>
 <button>Recepty</button>
-<button>Rady</button>
+<button>Fitness Rady</button>
 
 </div>
 <div class = "box_blog">
