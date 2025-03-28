@@ -49,7 +49,6 @@
 </div>
 
 </div>
-
 <div class = "box">
 <div class = "obrazok">
      <!--Obrázok-->
@@ -89,85 +88,7 @@
 </div>
 
 </div>
-<div class = "box">
-<div class = "obrazok">
-     <!--Obrázok-->
-    <a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis">
-     <!--Nadpis-->
-    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
 
-    <p class = "cena">1,20€</p>
-</div>
-
-</div>
-<div class = "box">
-<div class = "obrazok">
-     <!--Obrázok-->
-    <a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis">
-     <!--Nadpis-->
-    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-    <p class = "cena">1,20€</p>
-</div>
-
-</div><div class = "box">
-<div class = "obrazok">
-     <!--Obrázok-->
-    <a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis">
-     <!--Nadpis-->
-    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-    <p class = "cena">1,20€</p>
-</div>
-
-</div><div class = "box">
-<div class = "obrazok">
-     <!--Obrázok-->
-    <a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis">
-     <!--Nadpis-->
-    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-    <p class = "cena">1,20€</p>
-</div>
-
-</div><div class = "box">
-<div class = "obrazok">
-     <!--Obrázok-->
-    <a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis">
-     <!--Nadpis-->
-    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-    <p class = "cena">1,20€</p>
-</div>
-
-</div><div class = "box">
-<div class = "obrazok">
-     <!--Obrázok-->
-    <a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis">
-     <!--Nadpis-->
-    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-    <p class = "cena">1,20€</p>
-</div>
-
-</div>
-
-</div>
-
-
-<div>
 </div>
     
 

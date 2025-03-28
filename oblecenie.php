@@ -14,9 +14,9 @@
 
 <div class = "filtre_oblecenie">
 
-<button class = "fil_oblecenie">Najnovšie</button>
-<button class = "fil_oblecenie">Najlacnejšie</button>
-<button class = "fil_oblecenie">Najdrahšie</button>
+<a href = "">Najnovšie</a>
+<a href = "">Najlacnejšie</a>
+<a href = "">Najdrahšie</a>
 </div>
 
 <div class = "vyziva_skupina_oblecenie" id = "vyziva_skupina_oblecenie">

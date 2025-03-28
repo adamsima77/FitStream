@@ -10,11 +10,10 @@
 
 <div class = "kategorie_blog">
 
-<button>Cvičenie</button>
-<button>Zdravá strava</button>
-<button>Recepty</button>
-<button>Fitness Rady</button>
-
+<a href = "">Cvičenie</a>
+<a href = "">Zdravá strava</a>
+<a href = "">Recepty</a>
+<a href = "">Fitness Rady</a>
 
 </div>
 <div class = "box_blog">
