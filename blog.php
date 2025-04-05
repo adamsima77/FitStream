@@ -17,10 +17,11 @@
 
 </div>
 <div class = "box_blog">
+<a href="">
 <img src="img/proteiny.jpg" alt="">
-
+</a>
 <div class = "nadpis_a_popis">
-<h1><a href=""></a>daasdasdsadasdsadsasdasdsadasdsadas</h1>
+<h1><a href="">daasdasdsadasdsadsasdasdsadasdsadas</a></h1>
 <p>popissadsadasdasdasdadasdsadasdadasdasdasdasdasdasdsadasdsasdsadsdsadsaadsadsddasdsadsa
     asdsadsaddsadsadasdsdasasdasasdasdsadsadsdsadsasdasdasdsadasdsa</p>
 
@@ -32,10 +33,12 @@
 
 
 <div class = "box_blog">
-<img src="img/proteiny.jpg" alt="">
 
+<a href = "">
+<img src="img/proteiny.jpg" alt="">
+</a>
 <div class = "nadpis_a_popis">
-<h1><a href=""></a>daasdasdsadasdsads</h1>
+<h1><a href="">daasdasdsadasdsads</a></h1>
 <p>popissadsadasdasdasdadasdsadasdadasdasdasdasdasdasdsadasdsasdsadsdsadsaadsadsddasdsadsa
     asdsadsaddsadsadasdsdasasdasasdasdsadsadsdsads</p>
 

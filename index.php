@@ -7,15 +7,15 @@
 <div class = "carousel-container">
 <div class="slideshow">     
             <div class="fotky">
-              <a href="/jedalnicky.html"><img src="img/test.jpg"></a>
+              <a href=""><img src="img/proteiny.jpg"></a>
              
             </div>
             <div class="fotky">
-                <a href="/Recepty.html"><img src="img/test.jpg"></a>
+                <a href=""><img src="img/test.jpg"></a>
                 
             </div>
             <div class="fotky">
-                <a href="/nastavenie_stravy.html"><img src="img/test.jpg"></a>
+                <a href=""><img src="img/test.jpg"></a>
               
             </div>
 

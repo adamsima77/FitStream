@@ -1,6 +1,9 @@
 <?php include "parts/header.php";?>
 <?php include "parts/navbar.php";?>
 <?php require 'parts/sidebar.php';?>
+<?php include_once "classes/akordeon_class.php"; ?>
+<?php use akordeon\Akordeon?>
+
 
 <div class = "zarovnanie_kontakt">
 <div class = "za_kontakt">
@@ -38,7 +41,12 @@ Nedeľa: Zatvorené
 
 </p>
 
+<?php 
 
+$akordeon = new Akordeon();
+$vypis_a = $akordeon->vypis_akordeon()
+
+?>
 
 <?php include "parts/akordeon.php"?>
 

@@ -27,6 +27,8 @@ font-family:'Montserrat';
 
 }
 
+
+
 p{
 
 
@@ -315,106 +317,98 @@ transition: 0.7s ease-in-out;
  
  }
  
+@media screen and (max-width: 750px){
+
+.sidebar{
+
+min-width: 75%;
+
+
+}
+
+
+}
+
+
 
 /*Footer*/
-
-footer{
-
-display: flex;
-flex-direction: column;
-background-color: #2F3C7E;
-color: white;
-padding: 10px 15px;
-position: relative;
-margin-top: 100px;
-
+footer {
+  display: flex;
+  flex-direction: column;
+  background-color: #2F3C7E;
+  color: white;
+  padding: 17px 15px;
+  position: relative;
+  margin-top: 100px;
 }
 
-.social_media_links{
-
-display: flex;
-gap: 15px;
-align-items: flex-end;
-justify-content: flex-end;
-flex-direction: row;
-justify-content: flex-end;
-position: relative;
-right: 15px
-
+.social_media_links {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
 }
 
-.bottom_footer{
-
-display: flex;
-width: 100%;
-justify-content: space-between;
-
+.bottom_footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
-.social{
-
-width: 40px;
-height: 40px;
-border-radius: 50%;
-
-
+.social {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  color: white;
 }
 
-#facebook{
-
-color: white;
-background-color: blue;
-cursor: pointer;
-font-size: 20px;
-border: 2px solid white;
-
+#facebook {
+  background-color: blue;
+  cursor: pointer;
+  font-size: 20px;
+  border: 2px solid white;
 }
 
-#instagram{
-
-    color: white;
-    background-color: rgb(255, 0, 221);
-    cursor: pointer;
-    border: 2px solid white;
-    font-size: 20px;
-    
-    }
-#linkedin{
-
- color: white;
- background-color: rgb(0, 247, 255);
- cursor: pointer;
- border: 2px solid white;
- font-size: 20px;
-        
-}
-#youtube{
-
-color: white;
-background-color: red;
-cursor: pointer;
-border: 2px solid white;
-font-size: 20px;
-            
+#instagram {
+  background-color: rgb(255, 0, 221);
+  cursor: pointer;
+  font-size: 20px;
+  border: 2px solid white;
 }
 
-#facebook:hover,#youtube:hover,#instagram:hover,#linkedin:hover{
-
-opacity: 0.7;
-transition: 0.5s ease-in-out;
-
-    
+#linkedin {
+  background-color: rgb(0, 247, 255);
+  cursor: pointer;
+  font-size: 20px;
+  border: 2px solid white;
 }
 
+#youtube {
+  background-color: red;
+  cursor: pointer;
+  font-size: 20px;
+  border: 2px solid white;
+}
 
-.footer_rights{
+#facebook:hover,
+#instagram:hover,
+#linkedin:hover,
+#youtube:hover {
+  opacity: 0.7;
+  transform: scale(1.1); 
+}
 
-font-size: 16px;
-display: flex;
-justify-content: flex-start;
-align-items: flex-end;
-
+.footer_rights {
+  font-size: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
 
@@ -473,6 +467,7 @@ align-items: flex-end;
   position: relative;
   margin: auto;
   margin-top: 150px;
+  max-height: 550px;
 }
 
 .slideshow img{
@@ -480,6 +475,7 @@ align-items: flex-end;
  width: 100%;
  max-height: 550px;
  object-fit: cover;
+ 
  
 }
 
@@ -675,10 +671,11 @@ place-self: center;
 
 .produkty{
 
-
+  margin-top: 50px;
   display: flex;
   text-decoration: none;
   color: black;
+  
 
 }
 
@@ -750,9 +747,9 @@ place-self: center;
   height: auto;
   word-wrap: break-word;
   box-sizing: border-box;
-  color: #555; /* Softer text color for readability */
+  color: #555; 
   line-height: 1.6;
-  font-size: 16px; /* Slightly larger font size */
+  font-size: 16px; 
   text-align: justify;
 }
 
@@ -809,7 +806,7 @@ text-align: center;
 /*Sekcia blog*/
 
 .blog {
-  margin-top: 170px;
+  margin-top: 90px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -847,7 +844,6 @@ text-align: center;
   height: auto;
   display: block;
   margin-top: 20px;
-  border-radius: 5px;
   transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
   
 }
@@ -1659,9 +1655,20 @@ display: flex;
 .box_blog img{
 
   
-    max-width: 40%;
-    max-height: 40%;
-    border-radius: 7px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 20px;
+  border-radius: 10px;
+  transition: transform 0.4s ease, filter 0.3s ease-in-out;
+  
+
+
+}
+
+.box_blog img:hover{
+
+  transform: scale(1.02); 
   
 
 
@@ -1677,7 +1684,23 @@ gap: 25px;
 width: 50%;
 word-wrap: break-word;
 text-align: justify;
+padding: 10px 15px;
 
+}
+
+.nadpis_a_popis a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 800; 
+  letter-spacing: 0.5px; 
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.nadpis_a_popis a:hover {
+  color: #2f52ff; 
+  text-decoration: underline;
+  text-decoration-color: #2f52ff; 
+  transform: scale(1.05); 
 }
 
 .pod{

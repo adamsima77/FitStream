@@ -84,10 +84,6 @@ for (i = 0; i < akordeon.length; i++) {
 }
 
 
-
-
-
-
 let indexSnímky = 1;  
 zobrazSnímky(indexSnímky); 
 

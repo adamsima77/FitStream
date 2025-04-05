@@ -12,6 +12,7 @@
 </div>
 
 
+
 <div class = "filtre_oblecenie">
 
 <a href = "">Najnovšie</a>

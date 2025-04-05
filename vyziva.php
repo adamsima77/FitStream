@@ -21,6 +21,8 @@
 <a href = "">Najdrahšie</a>
 </div>
 
+
+
 <div class = "vyziva_skupina" id = "vyziva_skupina">
 <div class = "box_vyziva">
 <div class = "obrazok_vyziva">
