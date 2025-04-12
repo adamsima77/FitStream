@@ -14,11 +14,11 @@ $vypis = $vypis_na_hlavnej->vypis_na_hlavnej();
 <div class = "box">
 <div class = "obrazok">
 
-<a href = ""><img src="<?php echo $a['img_url'];?>" alt="<?php $b = (!($a['img_alt'] == null)) ? $a['img_alt'] : ""; echo $b;?>"></a>
+<a href = "produkt.php?id=<?php echo $a['idprodukty']?>"><img src="<?php echo $a['img_url'];?>" alt="<?php $b = (!($a['img_alt'] == null)) ? $a['img_alt'] : ""; echo $b;?>"></a>
 </div>
 <div class = "nadpis">
      
-<a href = ""><h2><?php echo $a['nazov'];?></h2></a>
+<a href = "produkt.php?id=<?php echo $a['idprodukty']?>"><h2><?php echo $a['nazov'];?></h2></a>
 <p class = "box_popis"><?php echo substr($a['popis'],0,175)?>...</p>
 
 <p class = "cena"><?php echo $a['cena'];?>€</p>

@@ -14,7 +14,7 @@ class vypis_hlavna extends Database {
 
    public function vypis_na_hlavnej(){
       try {
-         $sql = "SELECT nazov,popis,img_url,cena,img_alt FROM produkty ORDER BY datum_upravy DESC LIMIT 4";
+         $sql = "SELECT idprodukty,nazov,popis,img_url,cena,img_alt FROM produkty ORDER BY datum_upravy DESC LIMIT 4";
          $st = $this->conn->prepare($sql);
          $st->execute();
          $rs = $st->fetchAll();  
