@@ -1,9 +1,9 @@
 <?php
-namespace akordeon;
+namespace vypis_prislusenstvo;
 use database\Database;
 require_once "classes/database_con.php";
 
-class Akordeon extends Database {
+class vypis_prislusenstvo extends Database {
 
    protected $conn;
 
@@ -12,9 +12,9 @@ class Akordeon extends Database {
       $this->conn = $this->get_connection();
    }
 
-   public function vypis_akordeon(){
+   public function vypis_prislusenstvo(){
       try {
-         $sql = "SELECT otazka, odpoved FROM akordeon";
+         $sql = "SELECT nazov,popis,img_url,cena,img_alt FROM produkty WHERE kategorie_idkategorie = 2 ORDER BY datum_upravy";
          $st = $this->conn->prepare($sql);
          $st->execute();
          $rs = $st->fetchAll();  

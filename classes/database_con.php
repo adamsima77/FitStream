@@ -1,5 +1,4 @@
 <?php
-
 namespace database;
 use PDO;
 require_once "config/db.php";

@@ -1,9 +1,9 @@
 <?php
-namespace akordeon;
+namespace navbar;
 use database\Database;
 require_once "classes/database_con.php";
 
-class Akordeon extends Database {
+class navbar extends Database {
 
    protected $conn;
 
@@ -12,9 +12,9 @@ class Akordeon extends Database {
       $this->conn = $this->get_connection();
    }
 
-   public function vypis_akordeon(){
+   public function navbar_links(){
       try {
-         $sql = "SELECT otazka, odpoved FROM akordeon";
+         $sql = "SELECT nazov, url FROM navbar";
          $st = $this->conn->prepare($sql);
          $st->execute();
          $rs = $st->fetchAll();  

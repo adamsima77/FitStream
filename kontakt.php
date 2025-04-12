@@ -35,19 +35,13 @@ Otváracie hodiny:
 Pondelok – Piatok: 9:00 – 18:00
 Sobota: 10:00 – 14:00
 Nedeľa: Zatvorené
-
-
-
-
 </p>
-
 <?php 
 
 $akordeon = new Akordeon();
 $vypis_a = $akordeon->vypis_akordeon()
 
 ?>
-
 <?php include "parts/akordeon.php"?>
 
 </div>

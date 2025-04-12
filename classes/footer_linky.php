@@ -1,9 +1,9 @@
 <?php
-namespace akordeon;
+namespace footer_linky;
 use database\Database;
 require_once "classes/database_con.php";
 
-class Akordeon extends Database {
+class footer_linky extends Database {
 
    protected $conn;
 
@@ -12,9 +12,9 @@ class Akordeon extends Database {
       $this->conn = $this->get_connection();
    }
 
-   public function vypis_akordeon(){
+   public function footer_vypis(){
       try {
-         $sql = "SELECT otazka, odpoved FROM akordeon";
+         $sql = "SELECT ikona,farba_bg,farba_ikony,url FROM footer_ikony";
          $st = $this->conn->prepare($sql);
          $st->execute();
          $rs = $st->fetchAll();  

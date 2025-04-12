@@ -1,9 +1,9 @@
 <?php
-namespace akordeon;
+namespace slideshow;
 use database\Database;
 require_once "classes/database_con.php";
 
-class Akordeon extends Database {
+class slideshow extends Database {
 
    protected $conn;
 
@@ -12,9 +12,9 @@ class Akordeon extends Database {
       $this->conn = $this->get_connection();
    }
 
-   public function vypis_akordeon(){
+   public function slideshow_vypis(){
       try {
-         $sql = "SELECT otazka, odpoved FROM akordeon";
+         $sql = "SELECT img_url FROM slideshow";
          $st = $this->conn->prepare($sql);
          $st->execute();
          $rs = $st->fetchAll();  

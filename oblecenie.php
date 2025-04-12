@@ -20,26 +20,7 @@
 <a href = "">Najdrahšie</a>
 </div>
 
-<div class = "vyziva_skupina_oblecenie" id = "vyziva_skupina_oblecenie">
-<div class = "box_vyziva_oblecenie">
-<div class = "obrazok_vyziva_oblecenie">
- <!--Obrázok-->
-<a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis_vyziva_oblecenie">
- <!--Nadpis-->
-<a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-<p class = "cena_vyziva_oblecenie">1,20€</p>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-
+<?php include_once "parts/box_oblecenie.php"?>
 
 
 

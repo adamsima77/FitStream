@@ -1,3 +1,12 @@
+<?php include_once "classes/navbar_links.php"; ?>
+<?php use navbar\navbar?>
+
+<?php 
+
+$nav = new navbar();
+$vypis_linkov = $nav->navbar_links();
+
+?>
 <div class = "sidebar" id = "sidebar">
   <div class = "sidebar_zarovnanie">
     
@@ -15,12 +24,9 @@
 
            
         <ul>
-           
-        <a href="vyziva.php"><li>Výživa</li></a>
-            <a href="oblecenie.php"><li>Oblečenie</li></a>
-            <a href="prislusenstvo.php"><li>Príslušenstvo</li></a>
-            <a href="blog.php"><li>Blog</li></a>
-            <a href="kontakt.php"><li>Kontakt</li></a>
+        <?php foreach($vypis_linkov as $a):?>
+            <a href="<?php echo $a['url'] ;?>"><li><?php echo $a['nazov'];?></li></a>
+           <?php endforeach?>
         </ul>
        
 

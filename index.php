@@ -4,92 +4,9 @@
 
 <body>
 
-<div class = "carousel-container">
-<div class="slideshow">     
-            <div class="fotky">
-              <a href=""><img src="img/proteiny.jpg"></a>
-             
-            </div>
-            <div class="fotky">
-                <a href=""><img src="img/test.jpg"></a>
-                
-            </div>
-            <div class="fotky">
-                <a href=""><img src="img/test.jpg"></a>
-              
-            </div>
+<?php include_once "parts/slideshow.php"?>
 
-            <div class = "prepnutie_fotiek">
-                <span class="prepnutie" onclick="aktuálnySnímok(1)"></span> 
-                <span class="prepnutie" onclick="aktuálnySnímok(2)"></span> 
-                <span class="prepnutie" onclick="aktuálnySnímok(3)"></span> 
-              </div>
-            
-            </div>
-</div>
-
-
-<div class = "za_1">
- 
-<!-- !!!!!!PRODUKTY!!!!!   -->           
-   <h1> <a href =  "vyziva.php" class = "produkty">Produkty</a></h1>
-
-
-    <div class = "skup" id = "skupi">
-<div class = "box">
-<div class = "obrazok">
-     <!--Obrázok-->
-    <a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis">
-     <!--Nadpis-->
-    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-    <p class = "cena">1,20€</p>
-</div>
-
-</div>
-<div class = "box">
-<div class = "obrazok">
-     <!--Obrázok-->
-    <a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis">
-     <!--Nadpis-->
-    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-    <p class = "cena">1,20€</p>
-</div>
-
-</div>
-<div class = "box">
-<div class = "obrazok">
-     <!--Obrázok-->
-    <a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis">
-     <!--Nadpis-->
-    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-    <p class = "cena">1,20€</p>
-</div>
-
-</div>
-<div class = "box">
-<div class = "obrazok">
-     <!--Obrázok-->
-    <a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis">
-     <!--Nadpis-->
-    <a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-    <p class = "cena">1,20€</p>
-</div>
-
-</div>
-
-</div>
+<?php include_once "parts/box_hlavna.php"?>
     
 
 

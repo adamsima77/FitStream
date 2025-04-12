@@ -22,25 +22,7 @@
 <a href = "">Najdrahšie</a>
 </div>
 
-<div class = "vyziva_skupina_prislusenstvo" id = "vyziva_skupina_prislusenstvo">
-<div class = "box_vyziva_prislusenstvo">
-<div class = "obrazok_vyziva_prislusenstvo">
- <!--Obrázok-->
-<a href = ""><img src="img/protein.jpg" alt=""></a>
-</div>
-<div class = "nadpis_vyziva_prislusenstvo">
- <!--Nadpis-->
-<a href = ""><h2>MOXY power+ Energy Drink 330 ml</h2></a>
-
-<p class = "cena_vyziva_prislusenstvo">1,20€</p>
-</div>
-
-</div>
-
-</div>
-</div>
-</div>
-
+<?php include_once "parts/box_prislusenstvo.php";?>
 
 
 

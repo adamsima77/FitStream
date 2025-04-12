@@ -1,12 +1,26 @@
+<?php include_once "classes/footer_linky.php"; ?>
+<?php use footer_linky\footer_linky?>
+
+<?php 
+$footer = new footer_linky();
+$footer_vypis = $footer->footer_vypis();
+
+?>
 <footer>
     <div class = "bottom_footer">
 
 <div class = "footer_rights"><p class = ""> &copy; <span id="year"></span>FitStream. <?php echo(date("Y")); ?> All rights reserved.</p></div>
 <div class = "social_media_links">
-    <button class = "social" id = "facebook"><i class="fa fa-facebook-f"></i></button>
-    <button class = "social" id = "instagram"><i class="fa fa-instagram"></i></button>
-    <button class = "social" id = "linkedin"><i class="fa fa-linkedin"></i></button>
-    <button class = "social" id = "youtube"><i class="fa fa-youtube-play"></i></button>
+
+<?php foreach($footer_vypis as $a): ?>
+  <a href="<?php echo $a['url']; ?>">
+    <button class="social"
+      style="background-color: <?php echo $a['farba_bg']; ?>;
+             color: <?php echo $a['farba_ikony']; ?>;">
+      <i class="<?php echo $a['ikona']; ?>" style="font-size: 20px;"></i>
+    </button>
+  </a>
+<?php endforeach; ?>
 </div>
 </div>
 
