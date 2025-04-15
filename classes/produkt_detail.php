@@ -13,7 +13,7 @@ class ProduktDetail extends Database {
 
     public function getProduktById($id) {
         try {
-            $sql = "SELECT nazov, popis, img_url, cena, img_alt FROM produkty WHERE idprodukty = :id";
+            $sql = "SELECT nazov, popis, img_hlavna, cena, img_alt, hlavny_popis FROM produkty WHERE idprodukty = :id";
             $st = $this->conn->prepare($sql);
             $st->bindParam(':id', $id, \PDO::PARAM_INT);
             $st->execute();

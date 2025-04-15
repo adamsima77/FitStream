@@ -1,26 +1,41 @@
-<?php include "parts/header.php";?>
+<?php include "parts/header.php"; ?>
 <?php include "parts/navbar.php"; ?>
-<?php require 'parts/sidebar.php';?>
+<?php require 'parts/sidebar.php'; ?>
 <?php include_once "classes/produkt_detail.php"; ?>
-<?php use produkt\ProduktDetail?>
-
-<?php 
-$p = new ProduktDetail();
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $produkt = $p->getProduktById($_GET['id']);
-} else {
-    die("Neplatné ID produktu.");
-}
-
-?>
 <body>
-    <h1><?php echo $produkt['nazov']; ?></h1>
-    <img src="<?php echo $produkt['img_url']; ?>" alt="<?php echo $produkt['img_alt']; ?>">
-    <p><?php echo $produkt['popis']; ?></p>
-    <p><strong>Cena: </strong><?php echo $produkt['cena']; ?> €</p>
-</body>
+<?php 
+    use produkt\ProduktDetail;
+    $p = new ProduktDetail();
 
+    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        $produkt = $p->getProduktById($_GET['id']);
+    } else {
+        die("Zlé ID.");
+    }
+    ?>
+<div class="produkt_zaobalenie">
+  <div class="produkt_z">
+  
+<div class = "produkt_nazov_cena_popis">
+    <img src="<?php echo htmlspecialchars($produkt['img_hlavna']); ?>" 
+         class="produkt_img" 
+         alt="<?php echo htmlspecialchars($produkt['img_alt']); ?>">
+        <div class = "produkt_col">
+       
+         <h1 class="produkt_nazov"><?php echo htmlspecialchars($produkt['nazov']); ?></h1>
+         <p class = "hlavny_popis"><?php echo $produkt['hlavny_popis'];?></p>
+         <p class="produkt_cena"><?php echo htmlspecialchars($produkt['cena']); ?> €</p>
+         <a href="" class = "produkt_do_kosika"><i class="fa fa-shopping-cart"></i> Do košíka</a>
+         
+</div>
 
+</div>
+   
+<h2>Popis:</h2>
+    <hr class = "produkt_hr">
+    <p class="produkt_popis"><?php echo nl2br(htmlspecialchars($produkt['popis'])); ?></p>
+    
+  </div>
+</div>
 
-
-<?php include "parts/footer.php";?>
+<?php include "parts/footer.php"; ?>

@@ -5,9 +5,9 @@
         <div class = "prihlasenie">
         <h1>Prihlásenie</h1>
         <label class = "l_em">E-mail:</label>
-        <input type="email" id = "email" placeholder="Zadajte email">
+        <input type="email" id = "email" name = "email" placeholder="Zadajte email">
         <label class = "l_hes">Heslo:</label>
-        <input type="password" id="heslo" placeholder="Zadajte heslo">
+        <input type="password" id="heslo_1" name = "heslo_1" placeholder="Zadajte heslo">
         <label>
         <input type = "checkbox" id = "check_log" onclick="ukaz_heslo()" class = "check_login">Zobraziť heslo
     </label>

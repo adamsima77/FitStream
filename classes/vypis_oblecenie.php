@@ -14,7 +14,10 @@ class vypis_oblecenie extends Database {
 
    public function vypis_oblecenie(){
       try {
-         $sql = "SELECT idprodukty,nazov,popis,img_url,cena,img_alt FROM produkty WHERE kategorie_idkategorie = 3 ORDER BY datum_upravy";
+         $sql = "SELECT p.idprodukty, p.nazov AS produkt_nazov, 
+         k.nazov AS kategoria_nazov, p.popis, p.img_hlavna, p.cena, p.img_alt, hlavny_popis FROM produkty p
+         INNER JOIN kategorie_has_produkty khp ON p.idprodukty = khp.produkty_idprodukty INNER JOIN kategorie k
+          ON khp.kategorie_idkategorie = k.idkategorie WHERE k.idkategorie = 1 ORDER BY p.datum_upravy DESC";
          $st = $this->conn->prepare($sql);
          $st->execute();
          $rs = $st->fetchAll();  

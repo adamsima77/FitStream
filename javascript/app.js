@@ -20,7 +20,7 @@ sidebar.classList.remove("visible")
 //Ukazanie hesla v prihlaseni
 
 function ukaz_heslo() {
-  var x = document.getElementById("heslo");
+  var x = document.getElementById("heslo_1");
 
  
   if (x.type === "password") {
@@ -35,8 +35,8 @@ function ukaz_heslo() {
 
 function ukaz_hes() {
 
-  var z = document.getElementById("zop_hes");
-  var y = document.getElementById("hes");
+  var z = document.getElementById("zopakovanie_hesla");
+  var y = document.getElementById("heslo");
  
 
   if (y.type === "password") {

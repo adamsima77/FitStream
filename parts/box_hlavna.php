@@ -14,14 +14,14 @@ $vypis = $vypis_na_hlavnej->vypis_na_hlavnej();
 <div class = "box">
 <div class = "obrazok">
 
-<a href = "produkt.php?id=<?php echo $a['idprodukty']?>"><img src="<?php echo $a['img_url'];?>" alt="<?php $b = (!($a['img_alt'] == null)) ? $a['img_alt'] : ""; echo $b;?>"></a>
+<a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><img src="<?php echo htmlspecialchars($a['img_hlavna']); ?>" alt="<?php echo htmlspecialchars($a['img_alt'] ?? ''); ?>"></a>
 </div>
 <div class = "nadpis">
      
-<a href = "produkt.php?id=<?php echo $a['idprodukty']?>"><h2><?php echo $a['nazov'];?></h2></a>
-<p class = "box_popis"><?php echo substr($a['popis'],0,175)?>...</p>
+<a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><h2><?php echo htmlspecialchars($a['nazov']);?></h2></a>
+<p class = "box_popis"><?php echo htmlspecialchars(substr($a['hlavny_popis'],0,175))?>...</p>
 
-<p class = "cena"><?php echo $a['cena'];?>€</p>
+<p class = "cena"><?php echo htmlspecialchars($a['cena']);?>€</p>
 </div>
 
 </div>
