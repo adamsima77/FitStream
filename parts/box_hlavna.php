@@ -1,8 +1,8 @@
-<?php include_once "classes/vypis_produktov_na_hlavnej.php"; ?>
-<?php use vypis_hlavna\vypis_hlavna?>
+<?php include_once "classes/produkt.php"; ?>
+<?php use produkt\Produkt?>
 <?php 
-$vypis_na_hlavnej = new vypis_hlavna();
-$vypis = $vypis_na_hlavnej->vypis_na_hlavnej();
+$vypis_na_hlavnej = new Produkt();
+$vypis = $vypis_na_hlavnej->vypisHlavna();
 
 ?>
 <div class = "za_1">         

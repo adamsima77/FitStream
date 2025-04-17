@@ -1,8 +1,8 @@
-<?php include_once "classes/vypis_vyziva.php"; ?>
-<?php use vypis_vyziva\vypis_vyziva?>
+<?php include_once "classes/produkt.php"; ?>
+<?php use produkt\Produkt?>
 
 <?php
-$vypis = new vypis_vyziva();
+$vypis = new Produkt();
 $vypis_vyziva = $vypis->vypis_vyziva();
 ?>
 
@@ -16,7 +16,7 @@ $vypis_vyziva = $vypis->vypis_vyziva();
             </div>
             <div class="nadpis_vyziva">
                 
-            <a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><h2><?php echo htmlspecialchars($a['produkt_nazov']); ?></h2>
+            <a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><h2><?php echo htmlspecialchars($a['nazov']); ?></h2>
                 </a>
                 <p><?php echo htmlspecialchars(substr($a['hlavny_popis'], 0, 175)); ?></p>
                 <p class="cena_vyziva"><?php echo htmlspecialchars($a['cena']); ?>€</p>

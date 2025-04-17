@@ -1,7 +1,6 @@
-<?php use uzivatel\Uzivatel?>
 <?php require 'parts/header.php';?>
 <?php include_once "classes/uzivatel.php"; ?>
-
+<?php use uzivatel\Uzivatel?>
 <body>
 
 <form action="" method = "POST" class = "forma_registracia"  name = "">
@@ -43,6 +42,7 @@
 
     if (empty($meno) || empty($priezvisko) || empty($email) || empty($heslo) || empty($zopakovanie_hesla) || empty($datum)) {
         echo "Nevyplnené textové polia";
+    
     } else {
       
        try{

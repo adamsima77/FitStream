@@ -1,7 +1,7 @@
 <?php
 namespace database;
 use PDO;
-require_once "config/db.php";
+require_once dirname(__FILE__) . "/../config/db.php";
 
 class Database {
 
@@ -30,5 +30,8 @@ class Database {
       return $this->connection;
    }
 }
+
+
+
 
 ?>

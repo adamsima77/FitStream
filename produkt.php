@@ -1,14 +1,14 @@
 <?php include "parts/header.php"; ?>
 <?php include "parts/navbar.php"; ?>
 <?php require 'parts/sidebar.php'; ?>
-<?php include_once "classes/produkt_detail.php"; ?>
+<?php include_once "classes/produkt.php"; ?>
 <body>
 <?php 
-    use produkt\ProduktDetail;
-    $p = new ProduktDetail();
+    use produkt\Produkt;
+    $p = new Produkt();
 
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-        $produkt = $p->getProduktById($_GET['id']);
+        $produkt = $p->produktDetail($_GET['id']);
     } else {
         die("Zlé ID.");
     }

@@ -1,9 +1,9 @@
-<?php include_once "classes/vypis_prislusenstvo.php"; ?>
-<?php use vypis_prislusenstvo\vypis_prislusenstvo?>
+<?php include_once "classes/produkt.php"; ?>
+<?php use produkt\Produkt?>
 
 <?php 
-$vypis = new vypis_prislusenstvo();
-$vypis_prislusenstvo = $vypis->vypis_prislusenstvo();
+$vypis = new Produkt();
+$vypis_prislusenstvo = $vypis->vypisPrislusentvo();
 ?>
 <div class="vyziva_skupina_prislusenstvo" id="vyziva_skupina_prislusenstvo">
 <?php foreach($vypis_prislusenstvo as $a): ?>

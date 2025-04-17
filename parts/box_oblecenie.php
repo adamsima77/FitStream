@@ -1,9 +1,9 @@
-<?php include_once "classes/vypis_oblecenie.php"; ?>
-<?php use vypis_oblecenie\vypis_oblecenie?>
+<?php include_once "classes/produkt.php"; ?>
+<?php use produkt\Produkt?>
 
 <?php
-$vypis = new vypis_oblecenie();
-$vypis_oblecenie = $vypis->vypis_oblecenie();
+$vypis = new Produkt();
+$vypis_oblecenie = $vypis->vypisOblecenie();
 ?>
 
 <div class="vyziva_skupina_oblecenie" id="vyziva_skupina_oblecenie">

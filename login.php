@@ -1,7 +1,9 @@
 <?php require 'parts/header.php';?>
+<?php include_once "classes/uzivatel.php"; ?>
+<?php use uzivatel\Uzivatel?>
 <body>
 
-<form action="" class = "forma_prihlasenie"  name = "">
+<form action="" method = "POST" class = "forma_prihlasenie"  name = "">
         <div class = "prihlasenie">
         <h1>Prihlásenie</h1>
         <label class = "l_em">E-mail:</label>
@@ -17,6 +19,27 @@
     </div>
 
     </form>
+
+    <?php
+
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = $_POST['email'];
+        $heslo = $_POST['heslo_1'];
+    
+        if (empty($email) || empty($heslo)) {
+            echo "Prázdne polia";
+        } else {
+            try {
+                $uzivatel = new Uzivatel();
+                $uzivatel->uzivatel_Prihlasenie($email, $heslo);
+            } catch (Exception $e) {
+                die("Nastala chyba: " . $e->getMessage());
+            }
+        }
+    }
+    
+    ?>
 
 <script src="javascript/app.js" type="text/javascript"></script>
 </body>

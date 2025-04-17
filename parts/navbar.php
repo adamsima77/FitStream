@@ -16,6 +16,7 @@ $vypis_linkov = $nav->navbar_links();
          <?php foreach($vypis_linkov as $a):?>
             <a href="<?php echo $a['url'] ;?>"><li><?php echo htmlspecialchars($a['nazov']);?></li></a>
            <?php endforeach?>
+          
 </ul>
 
 <div class = "pr">
