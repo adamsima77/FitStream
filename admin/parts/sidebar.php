@@ -15,9 +15,11 @@
 </div>
 
            
-        <ul>
-        <a href="dashboard.php"><li>Dashboard</li></a>
-        </ul>
+<ul>
+<a href="edit_vyziva.php"><li>Editovanie produktov</li></a>
+<a href="edit_akordeon.php"><li>Editovanie akordeónu</li></a>
+<a href="../config/logout.php"><li>Odhlásenie</li></a>
+</ul>
        
 
         </div>

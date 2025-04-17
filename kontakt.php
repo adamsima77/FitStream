@@ -34,7 +34,7 @@
 <?php 
 
 $akordeon = new Akordeon();
-$vypis_a = $akordeon->vypis_akordeon()
+$vypis_a = $akordeon->vypis_Akordeon()
 
 ?>
 <?php include "parts/akordeon.php"?>

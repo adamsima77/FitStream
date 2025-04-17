@@ -393,3 +393,58 @@ tr:nth-child(even) {
 }
 
 
+
+
+
+
+
+.vytvorenie_otazky_a_odpovede {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  place-self: center;
+  margin-top: 150px;
+
+}
+
+.vytvorenie_otazky_a_odpovede_forma {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+}
+
+.vytvorenie_otazky_a_odpovede_forma label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.vytvorenie_otazky_a_odpovede_forma input,
+.vytvorenie_otazky_a_odpovede_forma textarea {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.vytvorenie_otazky_a_odpovede_forma textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.vytvorenie_otazky_a_odpovede_forma input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.vytvorenie_otazky_a_odpovede_forma input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+

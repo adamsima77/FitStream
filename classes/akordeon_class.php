@@ -1,7 +1,7 @@
 <?php
 namespace akordeon;
 use database\Database;
-require_once "classes/database_con.php";
+require_once dirname(__FILE__) . "/database_con.php";
 
 class Akordeon extends Database {
 
@@ -12,9 +12,9 @@ class Akordeon extends Database {
       $this->conn = $this->get_connection();
    }
 
-   public function vypis_akordeon(){
+   public function vypis_Akordeon(){
       try {
-         $sql = "SELECT otazka, odpoved FROM akordeon";
+         $sql = "SELECT * FROM akordeon";
          $st = $this->conn->prepare($sql);
          $st->execute();
          $rs = $st->fetchAll();  
@@ -27,5 +27,134 @@ class Akordeon extends Database {
          $this->conn = null; 
       }
    }
+
+
+   public function vytvorenieRiadku($otazka,$odpoved){
+
+
+      try {
+
+         $sql = "INSERT INTO akordeon(
+            otazka,odpoved,datum_vytvorenia,datum_upravy
+         ) VALUES (?, ?, ?, ?)";
+  
+       
+         $st = $this->conn->prepare($sql);
+  
+         $st->bindParam(1, $otazka);
+         $st->bindParam(2, $odpoved);
+     
+  
+         $datum_vytvorenia = date("Y-m-d H:i:s");
+         $datum_upravy = " ";
+  
+         $st->bindParam(3, $datum_vytvorenia);
+         $st->bindParam(4, $datum_upravy);
+        
+  
+         $st->execute();
+
+         header("Location: edit_akordeon.php");
+  
+     } catch (Exception $e) {
+         die("Nastala chyba: " . $e->getMessage());
+     } finally {
+         $this->conn = null;
+     }
+
+
+
+   }
+
+
+   public function editaciaRiadku($id,$otazka,$odpoved){
+
+      if($this->conn == null){
+
+
+         $this->connect();
+         $this->conn = $this->get_connection();
+
+      }
+
+      try{
+
+         $sql = "UPDATE akordeon SET otazka = ?, odpoved = ?, datum_upravy = ? WHERE idakordeon = ? ";
+         $datum_editu = date('Y-m-d H:i:s');
+         $st = $this->conn->prepare($sql);
+         $st->bindParam(1,$otazka);
+         $st->bindParam(2,$odpoved);
+         $st->bindParam(3,$datum_editu);
+         $st->bindParam(4,$id);
+         
+
+         $st->execute();
+         header("Location: edit_akordeon.php");
+
+      }
+      
+      catch(Exception $e){
+
+         die("Nastala chyba: " . $e->getMessage());
+      }
+      
+      finally{
+
+         $this->conn = null;
+      }
+
+   }
+
+   public function vypis_jedneho_Zaznamu($id){
+
+      try {
+         $sql = "SELECT otazka,odpoved FROM akordeon WHERE idakordeon = ?";
+         $st = $this->conn->prepare($sql);
+         $st->bindParam(1, $id);
+         $st->execute();
+         return $st->fetch();
+     } catch (Exception $e) {
+         die("Chyba pri načítaní produktu");
+     } finally {
+         $this->conn = null;
+     }
+
+   }
+
+
+    public function vymazanie_Riadku($id){
+
+      if($this->conn == null){
+
+
+         $this->connect();
+         $this->conn = $this->get_connection();
+
+      }
+
+      try{
+
+         $sql = "DELETE FROM akordeon WHERE idakordeon = ?";
+        
+         $st = $this->conn->prepare($sql);
+         $st->bindParam(1,$id);
+         $st->execute();
+         header("Location: edit_akordeon.php");
+
+      }
+      
+      catch(Exception $e){
+
+         die("Nastala chyba: " . $e->getMessage());
+      }
+      
+      finally{
+
+         $this->conn = null;
+      }
+
+      
+    }
+
 }
 ?>
