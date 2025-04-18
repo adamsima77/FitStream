@@ -1,9 +1,9 @@
 <?php include_once "classes/footer_linky.php"; ?>
-<?php use footer_linky\footer_linky?>
+<?php use footer\Footer?>
 
 <?php 
-$footer = new footer_linky();
-$footer_vypis = $footer->footer_vypis();
+$footer = new Footer();
+$footer_vypis = $footer->footer_Vypis();
 
 ?>
 <footer>

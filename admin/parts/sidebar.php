@@ -18,6 +18,7 @@
 <ul>
 <a href="edit_vyziva.php"><li>Editovanie produktov</li></a>
 <a href="edit_akordeon.php"><li>Editovanie akordeónu</li></a>
+<a href="edit_footer.php"><li>Editovanie footeru</li></a>
 <a href="../config/logout.php"><li>Odhlásenie</li></a>
 </ul>
        

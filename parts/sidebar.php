@@ -1,10 +1,10 @@
 <?php include_once "classes/navbar_links.php"; ?>
-<?php use navbar\navbar?>
+<?php use navbar\Navbar?>
 
 <?php 
 
-$nav = new navbar();
-$vypis_linkov = $nav->navbar_links();
+$nav = new Navbar();
+$vypis_linkov = $nav->navbar_Links();
 
 ?>
 <div class = "sidebar" id = "sidebar">
