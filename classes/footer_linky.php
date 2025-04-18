@@ -48,10 +48,13 @@ class Footer extends Database {
         
   
          $st->execute();
-
+         session_start();
+         $_SESSION['stav'] = "uspech";
          header("Location: edit_footer.php");
   
      } catch (Exception $e) {
+      session_start();
+      $_SESSION['stav'] = "neuspech";
          die("Nastala chyba: " . $e->getMessage());
      } finally {
          $this->conn = null;
@@ -99,14 +102,16 @@ class Footer extends Database {
          $st->bindParam(3,$farba_ikony);
          $st->bindParam(4,$url);
          $st->bindParam(5,$id);
-
          $st->execute();
+         session_start();
+         $_SESSION['stav'] = "uspech";
          header("Location: edit_footer.php");
 
       }
       
       catch(Exception $e){
-
+         session_start();
+         $_SESSION['stav'] = "neuspech";
          die("Nastala chyba: " . $e->getMessage());
       }
       
@@ -128,12 +133,14 @@ class Footer extends Database {
          $st->bindParam(1,$id);
 
          $st->execute();
-
+         session_start();
+         $_SESSION['stav'] = "uspech";
          header("Location: edit_footer.php");
 
       }catch(Exception $e){
 
-
+         session_start();
+         $_SESSION['stav'] = "neuspech";
          die("Nastala chyba: " . $e -> getMessage());
 
       }finally{
@@ -146,5 +153,38 @@ class Footer extends Database {
 
 
    }
+
+
+   public function zobrazenieStavu(){
+
+      if($this->conn == null){
+
+
+         $this->connect();
+         $this->conn = $this->get_connection();
+
+      }
+
+      if(isset($_SESSION['stav']) && $_SESSION['stav'] == "uspech"){
+
+
+         echo '<div class = "uspech">Akcia bola úspešna.</div>';
+       
+       
+       } else if(isset($_SESSION['stav']) && $_SESSION['stav'] == "neuspech"){
+       
+       
+         echo '<div class = "neuspech">Akcia bola neúspešná.</div>';
+       
+       }
+       
+       unset($_SESSION['stav']); 
+
+
+
+   }
+
+  
+   
 }
 ?>

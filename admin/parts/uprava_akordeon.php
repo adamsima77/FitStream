@@ -1,5 +1,8 @@
 <div class = "vyziva_obal">
   <div class = "obal">
+
+  <?php $akordeon->zobrazenieStavu()?>
+
 <a href = "vytvorenie_otazky_a_odpovede.php" class = "vytvorenie">Vytvoriť novú otázku a odpoveď</a>
 <table>
   <tr>

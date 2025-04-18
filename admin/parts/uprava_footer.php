@@ -1,6 +1,10 @@
 <div class = "vyziva_obal">
 <div class = "obal">
-<a href = "vytvorenie_footer.php" class = "vytvorenie">Vytvoriť novú otázku a odpoveď</a>
+
+<?php $footer->zobrazenieStavu()?>
+
+
+<a href = "vytvorenie_footer.php" class = "vytvorenie">Vytvoriť novú ikonu</a>
 <table>
   <tr>
     <th>ID</th>

@@ -48,10 +48,13 @@ class Navbar extends Database {
         
   
          $st->execute();
-
+         session_start();
+         $_SESSION['stav'] = "uspech";
          header("Location: edit_navbar.php");
   
      } catch (Exception $e) {
+         session_start();
+         $_SESSION['stav'] = "neuspech";
          die("Nastala chyba: " . $e->getMessage());
      } finally {
          $this->conn = null;
@@ -94,12 +97,15 @@ class Navbar extends Database {
          $st->bindParam(3,$id);
 
          $st->execute();
+         session_start();
+         $_SESSION['stav'] = "uspech";
          header("Location: edit_navbar.php");
 
       }
       
       catch(Exception $e){
-
+         session_start();
+         $_SESSION['stav'] = "neuspech";
          die("Nastala chyba: " . $e->getMessage());
       }
       
@@ -118,12 +124,14 @@ class Navbar extends Database {
          $st->bindParam(1,$id);
 
          $st->execute();
-
+         session_start();
+         $_SESSION['stav'] = "uspech";
          header("Location: edit_navbar.php");
 
       }catch(Exception $e){
 
-
+         session_start();
+         $_SESSION['stav'] = "neuspech";
          die("Nastala chyba: " . $e -> getMessage());
 
       }finally{
@@ -132,6 +140,35 @@ class Navbar extends Database {
          $this->conn = null;
 
       }
+
+
+
+   }
+
+   public function zobrazenieStavu(){
+
+      if($this->conn == null){
+
+
+         $this->connect();
+         $this->conn = $this->get_connection();
+
+      }
+
+      if(isset($_SESSION['stav']) && $_SESSION['stav'] == "uspech"){
+
+
+         echo '<div class = "uspech">Akcia bola úspešna.</div>';
+       
+       
+       } else if(isset($_SESSION['stav']) && $_SESSION['stav'] == "neuspech"){
+       
+       
+         echo '<div class = "neuspech">Akcia bola neúspešná.</div>';
+       
+       }
+       
+       unset($_SESSION['stav']); 
 
 
 

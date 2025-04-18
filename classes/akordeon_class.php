@@ -53,10 +53,13 @@ class Akordeon extends Database {
         
   
          $st->execute();
-
+         session_start();
+         $_SESSION['stav'] = "uspech";
          header("Location: edit_akordeon.php");
   
      } catch (Exception $e) {
+      session_start();
+      $_SESSION['stav'] = "neuspech";
          die("Nastala chyba: " . $e->getMessage());
      } finally {
          $this->conn = null;
@@ -89,12 +92,16 @@ class Akordeon extends Database {
          
 
          $st->execute();
+
+         session_start();
+         $_SESSION['stav'] = "uspech";
          header("Location: edit_akordeon.php");
 
       }
       
       catch(Exception $e){
-
+         session_start();
+         $_SESSION['stav'] = "neuspech";
          die("Nastala chyba: " . $e->getMessage());
       }
       
@@ -135,16 +142,18 @@ class Akordeon extends Database {
       try{
 
          $sql = "DELETE FROM akordeon WHERE idakordeon = ?";
-        
          $st = $this->conn->prepare($sql);
          $st->bindParam(1,$id);
          $st->execute();
+         session_start();
+         $_SESSION['stav'] = "uspech";
          header("Location: edit_akordeon.php");
 
       }
       
       catch(Exception $e){
-
+         session_start();
+         $_SESSION['stav'] = "neuspech";
          die("Nastala chyba: " . $e->getMessage());
       }
       
@@ -155,6 +164,38 @@ class Akordeon extends Database {
 
       
     }
+
+    public function zobrazenieStavu(){
+
+      if($this->conn == null){
+
+
+         $this->connect();
+         $this->conn = $this->get_connection();
+
+      }
+
+      if(isset($_SESSION['stav']) && $_SESSION['stav'] == "uspech"){
+
+
+         echo '<div class = "uspech">Akcia bola úspešna.</div>';
+       
+       
+       } else if(isset($_SESSION['stav']) && $_SESSION['stav'] == "neuspech"){
+       
+       
+         echo '<div class = "neuspech">Akcia bola neúspešná.</div>';
+       
+       }
+       
+       unset($_SESSION['stav']); 
+
+
+
+   }
+
+
+
 
 }
 ?>

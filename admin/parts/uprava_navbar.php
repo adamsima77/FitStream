@@ -1,6 +1,9 @@
 <div class = "vyziva_obal">
 <div class = "obal">
-<a href = "vytvorenie_navbar.php" class = "vytvorenie">Vytvoriť novú otázku a odpoveď</a>
+
+<?php $navbar->zobrazenieStavu();?>
+
+<a href = "vytvorenie_navbar.php" class = "vytvorenie">Vytvoriť nový link</a>
 <table>
   <tr>
     <th>ID</th>
