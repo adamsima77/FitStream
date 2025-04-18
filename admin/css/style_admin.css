@@ -315,6 +315,7 @@ min-width: 75%;
 
 }
 
+
 .vyziva_obal{
 
   margin-top: 250px;
@@ -322,26 +323,167 @@ min-width: 75%;
 
 }
 
-table {
-  margin-top: 50px;
-  border-collapse: collapse;
-  width: 100%;
+.obal{
+
   display: flex;
   flex-direction: column;
+  max-width: 85%;
+  place-self: center;
+
+
+}
+
+table {
+  margin-top: 50px;
+  width: 100%;
+  max-width: 1000px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+
+}
+
+th {
+  background-color: #2F3C7E;
+  color: #ffffff;
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  text-align: center;
   justify-content: center;
   align-items: center;
 }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+td {
+  padding: 14px 16px;
+  border-top: 1px solid #e0e0e0;
+  color: #333;
+  text-align: center;
+  
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+tr:nth-child(even) td {
+  background-color: #f4f6fa;
 }
 
+tr:hover td {
+  background-color: #e6e9f5;
+}
+
+td .edit{
+
+  background-color: #04ff00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  width: fit-content;
+ 
+
+}
+
+
+.vytvorenie{
+
+  background-color: #007fff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  width: fit-content;
+ 
+
+
+}
+.vytvorenie:hover {
+  background-color: #2F3C7E;
+  transform: translateY(-2px);
+}
+
+.vytvorenie:active {
+  transform: translateY(0);
+  background-color: #2F3C7E;
+}
+
+
+.edit:hover {
+  background-color: #02780a;
+  transform: translateY(-2px);
+}
+
+.edit:active {
+  transform: translateY(0);
+  background-color: #02780a;
+}
+
+
+.delete:hover {
+  background-color: #941616;
+  transform: translateY(-2px);
+}
+
+.delete:active {
+  transform: translateY(0);
+  background-color: #941616;
+}
+
+
+td .delete{
+
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  
+  text-decoration: none;
+  display: inline-block;
+  width: fit-content;
+  margin-top: 20px;
+
+
+}
+
+
+
+
+@media (max-width: 868px) {
+  table {
+    width: 100%;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  td, th {
+    padding: 10px;
+  }
+}
 
 
 .vytvorenie_produktu {

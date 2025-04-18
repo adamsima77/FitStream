@@ -1,5 +1,6 @@
 <div class = "vyziva_obal">
-<a href = "vytvorenie_navbar.php">Vytvoriť novú otázku a odpoveď</a>
+<div class = "obal">
+<a href = "vytvorenie_navbar.php" class = "vytvorenie">Vytvoriť novú otázku a odpoveď</a>
 <table>
   <tr>
     <th>ID</th>
@@ -14,9 +15,10 @@
     <td><?php echo $id ?></td>
     <td><?php echo $polozka_navbar['nazov'];?></td>
     <td><?php echo $polozka_navbar['url'];?></td>
-    <td><a href="editovanie_navbaru.php?id=<?php echo $id;?>">Editovať</a> <a href = "vymazanie_navbar.php?id=<?php echo $id;?>">Vymazať</a></td>
+    <td><a href="editovanie_navbaru.php?id=<?php echo $id;?>" class = "edit">Editovať</a> <a href = "vymazanie_navbar.php?id=<?php echo $id;?>" class = "delete">Vymazať</a></td>
 </tr>
 <?php endforeach;?>
 
 </table>
+</div>
 </div>

@@ -1,5 +1,6 @@
 <div class = "vyziva_obal">
-<a href = "vytvorenie_produktu.php">Vytvoriť nový produkt</a>
+  <div class = "obal">
+<a href = "vytvorenie_produktu.php" class = "vytvorenie">Vytvoriť nový produkt</a>
 <table>
   <tr>
     <th>ID</th>
@@ -24,9 +25,10 @@
     <td><?php echo $produkt['cena'];?></td>
     <td><?php echo $produkt['datum_vytvorenia'];?></td>
     <td><?php echo $produkt['datum_upravy'];?></td>
-    <td><a href = "">Editovať</a> <a href = "">Vymazať</a></td>
+    <td><a href = "" class = "edit">Editovať</a> <a href = "" class = "delete">Vymazať</a></td>
 </tr>
 <?php endforeach;?>
 
 </table>
+  </div>
 </div>
