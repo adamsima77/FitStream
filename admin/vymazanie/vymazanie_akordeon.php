@@ -1,7 +1,6 @@
 <?php
-include(dirname(__FILE__) . "/../classes/uzivatel.php");
-include(dirname(__FILE__) . "/../classes/akordeon_class.php");
-
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/akordeon_class.php';
 use uzivatel\Uzivatel;
 use akordeon\Akordeon;
 $overenie_admina = new Uzivatel();

@@ -1,3 +1,10 @@
+<?php
+require_once 'classes/uzivatel.php';
+use uzivatel\Uzivatel;
+$uzivatel = new Uzivatel();
+?>
+
+
 <!DOCTYPE html>
 <html lang="sk">
 <head>

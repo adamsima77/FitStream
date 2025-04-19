@@ -1,6 +1,6 @@
 <?php
-include(dirname(__FILE__) . "/../classes/uzivatel.php");
-include(dirname(__FILE__) . "/../classes/footer_linky.php");
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/footer_linky.php';
 
 use uzivatel\Uzivatel;
 use footer\Footer;

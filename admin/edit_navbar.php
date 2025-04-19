@@ -1,13 +1,7 @@
 <?php
-include(dirname(__FILE__) . "/../classes/uzivatel.php");
-include(dirname(__FILE__) . "/../classes/navbar_links.php");
-use uzivatel\Uzivatel;
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/navbar_links.php';
+
 use navbar\Navbar;
-$overenie_admina = new Uzivatel();
-$overenie_admina->overenie_Admina();
-
-
-
 $navbar = new Navbar();
 $vypis_navbar = $navbar->navbar_Links();
 ?>

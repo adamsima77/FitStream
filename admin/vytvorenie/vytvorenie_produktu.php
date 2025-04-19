@@ -1,18 +1,13 @@
 <?php
-include(dirname(__FILE__) . "/../classes/uzivatel.php");
-include(dirname(__FILE__) . "/../classes/produkt.php");
-use uzivatel\Uzivatel;
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php';
 use produkt\Produkt;
-$overenie_admina = new Uzivatel();
-$overenie_admina->overenie_Admina();
-
 $vypis_Produktov = new Produkt();
 
 ?>
 
-<?php include "parts/header.php"; ?>
-<?php include "parts/navbar.php"; ?>
-<?php include "parts/sidebar.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/navbar.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/sidebar.php'; ?>
 
 
 <div class = "vytvorenie_produktu">
@@ -97,4 +92,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 ?>
 
 
-<?php include "parts/footer.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/footer.php'; ?>

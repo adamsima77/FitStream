@@ -1,12 +1,6 @@
 <?php
-include(dirname(__FILE__) . "/../classes/uzivatel.php");
-include(dirname(__FILE__) . "/../classes/produkt.php");
-use uzivatel\Uzivatel;
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php';
 use produkt\Produkt;
-$overenie_admina = new Uzivatel();
-$overenie_admina->overenie_Admina();
-
-
 
 $vypis_Produktov = new Produkt();
 $vypis_vyzivy = $vypis_Produktov->vypis_vyziva();

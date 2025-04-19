@@ -1,8 +1,7 @@
 <?php require 'parts/header.php';?>
-<?php include_once "classes/uzivatel.php"; ?>
-<?php use uzivatel\Uzivatel?>
 <body>
 
+<?php $uzivatel->zobrazenieStavu()?>
 <form action="" method = "POST" class = "forma_prihlasenie"  name = "">
         <div class = "prihlasenie">
         <h1>Prihlásenie</h1>
@@ -31,7 +30,7 @@
             echo "Prázdne polia";
         } else {
             try {
-                $uzivatel = new Uzivatel();
+                
                 $uzivatel->uzivatel_Prihlasenie($email, $heslo);
             } catch (Exception $e) {
                 die("Nastala chyba: " . $e->getMessage());

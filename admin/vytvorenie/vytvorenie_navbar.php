@@ -1,18 +1,14 @@
 <?php
-include(dirname(__FILE__) . "/../classes/uzivatel.php");
-include(dirname(__FILE__) . "/../classes/navbar_links.php");
-use uzivatel\Uzivatel;
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/navbar_links.php';
 use navbar\Navbar;
-$overenie_admina = new Uzivatel();
-$overenie_admina->overenie_Admina();
 
 $navbar = new Navbar();
 
 ?>
 
-<?php include "parts/header.php"; ?>
-<?php include "parts/navbar.php"; ?>
-<?php include "parts/sidebar.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/navbar.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/sidebar.php'; ?>
 
 
 <div class = "vytvorenie_otazky_a_odpovede">
@@ -55,4 +51,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 ?>
 
 
-<?php include "parts/footer.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/footer.php'; ?>

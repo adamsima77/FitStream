@@ -1,7 +1,7 @@
 <?php
 namespace akordeon;
 use database\Database;
-require_once dirname(__FILE__) . "/database_con.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
 
 class Akordeon extends Database {
 
@@ -55,7 +55,7 @@ class Akordeon extends Database {
          $st->execute();
          session_start();
          $_SESSION['stav'] = "uspech";
-         header("Location: edit_akordeon.php");
+         header("Location: /FitStream/admin/edit_akordeon.php");
   
      } catch (Exception $e) {
       session_start();
@@ -95,7 +95,7 @@ class Akordeon extends Database {
 
          session_start();
          $_SESSION['stav'] = "uspech";
-         header("Location: edit_akordeon.php");
+         header("Location: /FitStream/admin/edit_akordeon.php");
 
       }
       
@@ -147,8 +147,8 @@ class Akordeon extends Database {
          $st->execute();
          session_start();
          $_SESSION['stav'] = "uspech";
-         header("Location: edit_akordeon.php");
-
+         header("Location: /FitStream/admin/edit_akordeon.php");
+         die();
       }
       
       catch(Exception $e){
@@ -167,13 +167,7 @@ class Akordeon extends Database {
 
     public function zobrazenieStavu(){
 
-      if($this->conn == null){
 
-
-         $this->connect();
-         $this->conn = $this->get_connection();
-
-      }
 
       if(isset($_SESSION['stav']) && $_SESSION['stav'] == "uspech"){
 

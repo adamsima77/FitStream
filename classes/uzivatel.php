@@ -2,19 +2,28 @@
 namespace uzivatel;
 use database\Database;
 use Exception;
-require_once dirname(__FILE__) . "/database_con.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
 
 class Uzivatel extends Database {
     protected $conn;
     protected $rola;
 
     public function __construct() {
+        session_start();
         $this->connect();
         $this->conn = $this->get_connection();
         $this->rola = 1; 
     }
 
     public function registracia_Uzivatela($meno, $priezvisko, $email, $heslo, $opakovanie_hesla, $datum){
+
+        if($this->conn == null){
+
+
+            $this->connect();
+            $this->conn = $this->get_connection();
+   
+         }
         try {
            
             if ($heslo !== $opakovanie_hesla) {
@@ -53,9 +62,14 @@ class Uzivatel extends Database {
             $statement->bindParam(5, $datum_sql); 
             $statement->bindParam(6, $this->rola); 
             $statement->execute();
+            $_SESSION['stav'] = "uspech";
+            header("Location: login.php");
+            die();
 
         } catch (Exception $e) {
-            echo "Chyba pri registrácii: " . $e->getMessage();
+            $_SESSION['stav'] = "neuspech";
+            header("Location: register.php");
+            die("Chyba pri registrácii: " . $e->getMessage());
         } finally {
             $this->conn = null; 
         }
@@ -63,6 +77,15 @@ class Uzivatel extends Database {
 
    
     public function uzivatel_Prihlasenie($email, $heslo) {
+
+        if($this->conn == null){
+
+
+            $this->connect();
+            $this->conn = $this->get_connection();
+   
+         }
+   
         try {
             $sql = "SELECT * FROM uzivatelia WHERE email = ? LIMIT 1;";
             $statement = $this->conn->prepare($sql);
@@ -79,7 +102,7 @@ class Uzivatel extends Database {
                 throw new Exception("Zle zadané heslo.");
             }
 
-            session_start();
+          
             $_SESSION['user_id'] = $user['iduzivatelia'];
             $_SESSION['user_meno'] = $user['meno'];
             $_SESSION['user_priezvisko'] = $user['priezvisko'];
@@ -105,7 +128,7 @@ class Uzivatel extends Database {
 
     public function odhlasenie_Uzivatela(){
 
-        session_start();
+   
         session_unset();
         session_destroy();
         header("Location: ../index.php");
@@ -117,16 +140,16 @@ class Uzivatel extends Database {
 
 public function overenie_Admina(){
 
-    session_start();
+   
     if (!isset($_SESSION['user_rola']) || !isset($_SESSION['user_id'])) {
       
         header("Location: ../login.php");
-        exit;
+        die();
     }
     if($_SESSION['user_rola'] == 1){
 
         header("Location: index.php");
-        exit;
+        die();
 
 
     } else if($_SESSION['user_rola'] == 0){
@@ -156,8 +179,28 @@ public function getadminRola(): string{
     }
 }
    
+public function zobrazenieStavu(){
 
 
+
+    if(isset($_SESSION['stav']) && $_SESSION['stav'] == "uspech"){
+
+
+       echo '<div class = "uspech">Registrácia bola úspešna môžte sa prihlásiť.</div>';
+     
+     
+     } else if(isset($_SESSION['stav']) && $_SESSION['stav'] == "neuspech"){
+     
+     
+       echo '<div class = "neuspech">Registrácia bola neúspešná.</div>';
+     
+     }
+     
+     unset($_SESSION['stav']); 
+
+
+
+ }
 
 
    

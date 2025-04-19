@@ -1,10 +1,6 @@
 <?php
-include(dirname(__FILE__) . "/../classes/uzivatel.php");
-include(dirname(__FILE__) . "/../classes/footer_linky.php");
-use uzivatel\Uzivatel;
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/footer_linky.php';
 use footer\Footer;
-$overenie_admina = new Uzivatel();
-$overenie_admina->overenie_Admina();
 
 
 

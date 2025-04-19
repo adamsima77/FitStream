@@ -1,4 +1,4 @@
-<?php include_once "classes/footer_linky.php"; ?>
+<?php include_once(__DIR__ . '/../classes/footer_linky.php'); ?>
 <?php use footer\Footer?>
 
 <?php 

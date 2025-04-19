@@ -1,6 +1,6 @@
 <div class = "vyziva_obal">
   <div class = "obal">
-<a href = "vytvorenie_produktu.php" class = "vytvorenie">Vytvoriť nový produkt</a>
+  <a href="<?php echo BASE_URL; ?>admin/vytvorenie/vytvorenie_produktu.php" class="vytvorenie">Vytvoriť nový produkt</a>
 <table>
   <tr>
     <th>ID</th>

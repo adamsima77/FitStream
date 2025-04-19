@@ -1,10 +1,7 @@
 <?php
-include(dirname(__FILE__) . "/../classes/uzivatel.php");
-include(dirname(__FILE__) . "/../classes/akordeon_class.php");
-use uzivatel\Uzivatel;
+
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/akordeon_class.php';
 use akordeon\Akordeon;
-$overenie_admina = new Uzivatel();
-$overenie_admina->overenie_Admina();
 $Akordeon = new Akordeon();
 
 
@@ -18,9 +15,10 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 ?>
 
-<?php include "parts/header.php"; ?>
-<?php include "parts/navbar.php"; ?>
-<?php include "parts/sidebar.php"; ?>
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/navbar.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/sidebar.php'; ?>
 
 
 <div class = "vytvorenie_otazky_a_odpovede">
@@ -69,4 +67,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 ?>
 
 
-<?php include "parts/footer.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/footer.php'; ?>

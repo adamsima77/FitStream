@@ -1,7 +1,7 @@
 <?php
 namespace database;
 use PDO;
-require_once dirname(__FILE__) . "/../config/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/db.php';
 
 class Database {
 

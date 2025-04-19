@@ -1,7 +1,7 @@
 <?php
 namespace navbar;
 use database\Database;
-require_once dirname(__FILE__) . "/database_con.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
 
 class Navbar extends Database {
 
@@ -50,7 +50,7 @@ class Navbar extends Database {
          $st->execute();
          session_start();
          $_SESSION['stav'] = "uspech";
-         header("Location: edit_navbar.php");
+         header("Location: /FitStream/admin/edit_navbar.php");
   
      } catch (Exception $e) {
          session_start();
@@ -99,7 +99,7 @@ class Navbar extends Database {
          $st->execute();
          session_start();
          $_SESSION['stav'] = "uspech";
-         header("Location: edit_navbar.php");
+         header("Location: /FitStream/admin/edit_navbar.php");
 
       }
       
@@ -126,7 +126,7 @@ class Navbar extends Database {
          $st->execute();
          session_start();
          $_SESSION['stav'] = "uspech";
-         header("Location: edit_navbar.php");
+         header("Location: /FitStream/admin/edit_navbar.php");
 
       }catch(Exception $e){
 
@@ -173,5 +173,22 @@ class Navbar extends Database {
 
 
    }
+
+
+   public function overenieUzivatela(){
+
+
+      if(isset($_SESSION['user_id']) && $_SESSION['user_rola'] == 1){
+  
+          echo '<a href = "config/logout.php"><i class="fa fa-sign-out" style = "font-size: 20px;" id = "log"></i></a>';
+        
+        } else{
+        
+        echo '<a href = "login.php"><i class="fa fa-user" style = "font-size: 20px;" id = "log"></i></a>';
+        
+        }
+  
+  
+  }
 }
 ?>

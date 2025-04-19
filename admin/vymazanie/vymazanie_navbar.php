@@ -1,6 +1,6 @@
 <?php
-include(dirname(__FILE__) . "/../classes/uzivatel.php");
-include(dirname(__FILE__) . "/../classes/navbar_links.php");
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/navbar_links.php';
 
 use uzivatel\Uzivatel;
 use navbar\Navbar;

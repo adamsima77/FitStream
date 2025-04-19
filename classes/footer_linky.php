@@ -1,7 +1,7 @@
 <?php
 namespace footer;
 use database\Database;
-require_once dirname(__FILE__) . "/database_con.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
 
 class Footer extends Database {
 
@@ -50,7 +50,7 @@ class Footer extends Database {
          $st->execute();
          session_start();
          $_SESSION['stav'] = "uspech";
-         header("Location: edit_footer.php");
+         header("Location: /FitStream/admin/edit_footer.php");
   
      } catch (Exception $e) {
       session_start();
@@ -105,7 +105,7 @@ class Footer extends Database {
          $st->execute();
          session_start();
          $_SESSION['stav'] = "uspech";
-         header("Location: edit_footer.php");
+         header("Location: /FitStream/admin/edit_footer.php");
 
       }
       
@@ -135,7 +135,7 @@ class Footer extends Database {
          $st->execute();
          session_start();
          $_SESSION['stav'] = "uspech";
-         header("Location: edit_footer.php");
+         header("Location: /FitStream/admin/edit_footer.php");
 
       }catch(Exception $e){
 

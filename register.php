@@ -1,6 +1,5 @@
 <?php require 'parts/header.php';?>
-<?php include_once "classes/uzivatel.php"; ?>
-<?php use uzivatel\Uzivatel?>
+
 <body>
 
 <form action="" method = "POST" class = "forma_registracia"  name = "">
@@ -47,7 +46,7 @@
       
        try{
 
-        $uzivatel = new Uzivatel();
+        
         $uzivatel->registracia_Uzivatela($meno,$priezvisko,$email,$heslo,$zopakovanie_hesla,$datum);
 
 

@@ -1,7 +1,7 @@
 <?php
 namespace slideshow;
 use database\Database;
-require_once "classes/database_con.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
 
 class slideshow extends Database {
 

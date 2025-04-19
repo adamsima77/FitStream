@@ -4,7 +4,7 @@
 <?php $footer->zobrazenieStavu()?>
 
 
-<a href = "vytvorenie_footer.php" class = "vytvorenie">Vytvoriť novú ikonu</a>
+<a href="<?php echo BASE_URL; ?>admin/vytvorenie/vytvorenie_footer.php" class="vytvorenie">Vytvoriť novú ikonu</a>
 <table>
   <tr>
     <th>ID</th>
@@ -23,7 +23,7 @@
     <td><?php echo $polozka_footer['farba_bg'];?></td>
     <td><?php echo $polozka_footer['farba_ikony'];?></td>
     <td><?php echo $polozka_footer['url'];?></td>
-    <td><a href="editovanie_footeru.php?id=<?php echo $id;?>" class = "edit">Editovať</a> <a href = "vymazanie_footer.php?id=<?php echo $id;?>" class = "delete">Vymazať</a></td>
+    <td><a href="<?php echo BASE_URL; ?>admin/editovanie/editovanie_footeru.php?id=<?php echo $id;?>" class = "edit">Editovať</a> <a href = "<?php echo BASE_URL; ?>admin/vymazanie/vymazanie_footer.php?id=<?php echo $id;?>" class = "delete">Vymazať</a></td>
 </tr>
 <?php endforeach;?>
 
