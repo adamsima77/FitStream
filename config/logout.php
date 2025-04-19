@@ -1,8 +1,6 @@
 <?php
-require_once dirname(__FILE__) . "/../classes/uzivatel.php";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php');
 use uzivatel\Uzivatel;
 $odhlasenie = new Uzivatel();
-$odhlasenie->odhlasenie_Uzivatela();
-
-
+$odhlasenie->odhlasenieUzivatela();
 ?>

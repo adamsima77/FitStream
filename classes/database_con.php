@@ -1,37 +1,51 @@
 <?php
+declare(strict_types=1);
+
 namespace database;
 use PDO;
+use PDOException;
+use Exception;
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/db.php';
 
-class Database {
+class Database
+{
+    private $connection;
 
-   private $connection;
+    public function __construct()
+    {
+        $this->connect();
+    }
 
-   public function __construct(){
-      $this->connect();
-   }
+    protected function connect(): void
+    {
+        $config = DATABASE;
 
-   protected function connect(){
-      $config = DATABASE;
-      $options = array(
-         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-      );
+        $options = [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ];
 
-      try {
-         $this->connection = new PDO('mysql:host=' . $config['HOST'] . ';dbname=' . $config['DBNAME'] . 
-         ';port=' . $config['PORT'], $config['USER_NAME'], $config['PASSWORD'], $options);
-      } catch (PDOException $e) {
-         die($e->getMessage()); 
-      }
-   }
+        try {
+            $dsn = 'mysql:host=' . $config['HOST'] .
+                   ';dbname=' . $config['DBNAME'] .
+                   ';port=' . $config['PORT'];
 
-   public function get_connection(){
-      return $this->connection;
-   }
+            $this->connection = new PDO(
+                $dsn,
+                $config['USER_NAME'],
+                $config['PASSWORD'],
+                $options
+            );
+        } catch (PDOException $e) {
+           
+            throw new Exception('Pripojenie zlyhalo: ' . $e->getMessage());
+        }
+    }
+
+    public function getConnection(): PDO
+    {
+        return $this->connection;
+    }
 }
-
-
-
-
 ?>

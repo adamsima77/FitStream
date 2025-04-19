@@ -1,7 +1,10 @@
 <?php include "parts/header.php";?>
 <?php include "parts/navbar.php"; ?>
 <?php require 'parts/sidebar.php';?>
+<?php include_once "classes/produkt.php"; ?>
+<?php use produkt\Produkt?>
 
+<?php $vypis = new Produkt();?>
 
 <div class = "zaobalenie_prislusenstvo">
 <div class = "zao_2_prislusenstvo">
@@ -23,14 +26,5 @@
 </div>
 
 <?php include_once "parts/box_prislusenstvo.php";?>
-
-
-
-
-
-
-
-
-
 
 <?php include "parts/footer.php";?>

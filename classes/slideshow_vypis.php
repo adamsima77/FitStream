@@ -1,31 +1,31 @@
 <?php
+declare(strict_types=1);
 namespace slideshow;
 use database\Database;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
 
-class slideshow extends Database {
+class Slideshow extends Database
+{
+    protected $conn;
 
-   protected $conn;
+    public function __construct()
+    {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
 
-   public function __construct(){
-      $this->connect();
-      $this->conn = $this->get_connection();
-   }
+    public function slideshow_vypis(): array
+    {
+        try {
+            $sql = "SELECT img_url FROM slideshow";
+            $st = $this->conn->prepare($sql);
+            $st->execute();
 
-   public function slideshow_vypis(){
-      try {
-         $sql = "SELECT img_url FROM slideshow";
-         $st = $this->conn->prepare($sql);
-         $st->execute();
-         $rs = $st->fetchAll();  
-
-         return $rs; 
-
-      } catch (Exception $e) {
-         die("Nastala chyba");
-      } finally {
-         $this->conn = null; 
-      }
-   }
+            return $st->fetchAll();
+        } catch (Exception $e) {
+            die("Nastala chyba: " . $e->getMessage());
+        } finally {
+            $this->conn = null;
+        }
+    }
 }
-?>

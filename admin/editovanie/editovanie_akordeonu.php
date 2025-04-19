@@ -9,7 +9,7 @@ $Akordeon = new Akordeon();
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Zlé ID");
 } else {
-    $akordeon_vypis = $Akordeon->vypis_jedneho_Zaznamu($_GET['id']);
+    $akordeon_vypis = $Akordeon->vypisJednehoZaznamu($_GET['id']);
 }
 
 

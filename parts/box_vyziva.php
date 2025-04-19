@@ -1,8 +1,4 @@
-<?php include_once "classes/produkt.php"; ?>
-<?php use produkt\Produkt?>
-
 <?php
-$vypis = new Produkt();
 $vypis_vyziva = $vypis->vypis_vyziva();
 ?>
 
@@ -10,13 +6,11 @@ $vypis_vyziva = $vypis->vypis_vyziva();
     <?php foreach($vypis_vyziva as $a): ?>
         <div class="box_vyziva">
             <div class="obrazok_vyziva">
-   
-            <a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><img src="<?php echo htmlspecialchars($a['img_hlavna']);?>" alt="<?php  $b = (!($a['img_alt'] == null)) ? htmlspecialchars($a['img_alt']) : ""; echo $b; ?>">
+                <a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><img src="<?php echo htmlspecialchars($a['img_hlavna']);?>" alt="<?php  $b = (!($a['img_alt'] == null)) ? htmlspecialchars($a['img_alt']) : ""; echo $b; ?>">
                 </a>
             </div>
-            <div class="nadpis_vyziva">
-                
-            <a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><h2><?php echo htmlspecialchars($a['nazov']); ?></h2>
+            <div class="nadpis_vyziva">   
+                <a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><h2><?php echo htmlspecialchars($a['nazov']); ?></h2>
                 </a>
                 <p><?php echo htmlspecialchars(substr($a['hlavny_popis'], 0, 175)); ?></p>
                 <p class="cena_vyziva"><?php echo htmlspecialchars($a['cena']); ?>€</p>
@@ -24,4 +18,5 @@ $vypis_vyziva = $vypis->vypis_vyziva();
         </div>
     <?php endforeach;?>
 </div>
-</div></div>
+</div>
+</div>

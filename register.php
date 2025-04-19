@@ -3,7 +3,7 @@
 <body>
 
 <form action="" method = "POST" class = "forma_registracia"  name = "">
-        <div class = "registracia">
+    <div class = "registracia">
         <h1>Registrácia</h1>
         <label for = "meno">Meno:</label>
         <input type="text" id = "meno" name = "meno" placeholder="Zadajte meno">
@@ -19,19 +19,16 @@
         <input type="date" name = "datum" id = "datum">
         </label>
         <label>
-        
-        <input type = "checkbox" id = "check_log" onclick="ukaz_hes()" class = "check_registracia">Zobraziť heslo
-    </label>
-       
-         <a href = "login.php">Ste zaregistrovaný ? Prihláste sa</a>
+            <input type = "checkbox" id = "check_log" onclick="ukaz_hes()" class = "check_registracia">Zobraziť heslo
+        </label>
+        <a href = "login.php">Ste zaregistrovaný ? Prihláste sa</a>
         <input type="submit" value="Zaregistrovať" class = "registracia_sub">
     </div>
+</form>
 
-    </form>
 
-
-    <?php
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $meno = $_POST['meno'];
     $priezvisko = $_POST['priezvisko'];
     $email = $_POST['email_registracia'];
@@ -41,21 +38,17 @@
 
     if (empty($meno) || empty($priezvisko) || empty($email) || empty($heslo) || empty($zopakovanie_hesla) || empty($datum)) {
         echo "Nevyplnené textové polia";
-    
     } else {
       
-       try{
+    try{
 
-        
-        $uzivatel->registracia_Uzivatela($meno,$priezvisko,$email,$heslo,$zopakovanie_hesla,$datum);
-
-
-       }catch(Exception $e){
-        
+        $uzivatel->registraciaUzivatela($meno,$priezvisko,$email,$heslo,$zopakovanie_hesla,$datum);
+    } catch(Exception $e) {
         die("Nastala chyba:" . $e -> getMessage());
-       }
-    }}
-    ?>
+      }
+    }
+}
+?>
 
 <script src="javascript/app.js" type="text/javascript"></script>
 </body>

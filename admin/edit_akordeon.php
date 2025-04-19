@@ -6,7 +6,7 @@ use akordeon\Akordeon;
 
 
 $akordeon = new Akordeon();
-$vypis_akordeon = $akordeon->vypis_Akordeon();
+$vypis_akordeon = $akordeon->vypisAkordeon();
 ?>
 <?php include "parts/header.php"; ?>
 <?php include "parts/navbar.php"; ?>

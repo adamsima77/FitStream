@@ -1,7 +1,14 @@
 <?php include 'parts/header.php';?>
 <?php include 'parts/navbar.php';?>
 <?php require 'parts/sidebar.php';?>
+<?php include_once "classes/produkt.php"; ?>
+<?php include_once "classes/slideshow_vypis.php"; ?>
+<?php use slideshow\slideshow?>
+<?php use produkt\Produkt?>
 
+<?php $slideshow = new slideshow();
+$vypis_na_hlavnej = new Produkt();
+?>
 <body>
 
 <?php include_once "parts/slideshow.php"?>
