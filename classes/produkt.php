@@ -128,8 +128,14 @@ class Produkt extends Database
         string $velkost,
         string $farba,
         string $img,
-        string $img_popis
+        string $img_popis,
+        int $kategoria
     ): void {
+
+        if ($this->conn === null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }
 
         try {
             $sql = "INSERT INTO produkty (
@@ -155,12 +161,196 @@ class Produkt extends Database
             $st->bindParam(10, $img);
             $st->bindParam(11, $img_popis);
             $st->bindParam(12, $klucovy_popis);
-
             $st->execute();
+
+
+            
+            $produktID= $this->conn->lastInsertId();
+            $sql_1 = "INSERT INTO kategorie_has_produkty VALUES(?,?);";
+            $statement = $this->conn->prepare($sql_1);
+            $statement->bindParam(1,$kategoria);
+            $statement->bindParam(2,$produktID);
+            $statement->execute();
+            $_SESSION['stav'] = "uspech";
+            header("Location: /FitStream/admin/edit_vyziva.php");
+
         } catch (Exception $e) {
+            $_SESSION['stav'] = "neuspech";
+            header("Location: /FitStream/admin/edit_vyziva.php");
+            die("Nastala chyba: " . $e->getMessage());
+        } finally {
+           
+        }
+    }
+
+    public function spracovanieFotky(): string
+    {
+        if (isset($_POST['submit'])) {
+            
+            $subor = $_FILES['foto'];
+            $nazov_suboru = $_FILES['foto']['name'];
+            $docasna_adresa = $_FILES['foto']['tmp_name'];
+            $velkost_suboru = $_FILES['foto']['size'];
+            $chyba_suboru = $_FILES['foto']['error'];
+            $typ_suboru = $_FILES['foto']['type'];
+
+            $nazov_kon = explode('.',$nazov_suboru);
+            $upravena_kon = strtolower(end($nazov_kon));
+
+            $nazov = basename($nazov_suboru);
+
+            $povolene_kon = ['jpeg','jpg','png','webp'];
+            if (in_array($upravena_kon,$povolene_kon)) {
+                if ($chyba_suboru === 0) {
+                    if ($velkost_suboru <= 3145728) {
+                        $relativna_cesta = 'img/produkty/' . $nazov;
+                        $absolutna_cesta = $_SERVER['DOCUMENT_ROOT'] . '/FitStream/' . $relativna_cesta;
+                        move_uploaded_file($docasna_adresa, $absolutna_cesta);
+                        return $relativna_cesta;           
+
+                    } else {
+                        
+                        die("Fotka je veľmi veľká povolená velkosť je 3MB.");
+
+
+                    }
+
+
+
+
+                } else {
+
+                    die("Nastala chyba pri nahrávaní súboru.");
+
+
+                }
+                
+            } else {
+
+                die("Nepovolená koncovka používajte len jpeg, jpg, png, webp.");
+
+
+            }
+
+
+        }
+
+
+
+    }
+
+
+    public function vypisProduktyAdmin() : array{
+        try {
+            $sql = "SELECT * FROM produkty ORDER BY datum_vytvorenia DESC";
+
+            $st = $this->conn->prepare($sql);
+            $st->execute();
+            return $st->fetchAll();
+            
+        } catch (Exception $e) {
+            die("Nastala chyba");
+        } finally {
+            $this->conn = null;
+        }
+    }    
+
+    public function vymazanieRiadku(int $id): void
+    {
+        try {
+
+            $sql_1 = "DELETE FROM kategorie_has_produkty WHERE produkty_idprodukty = ?";
+            $statement = $this->conn->prepare($sql_1);
+            $statement->bindParam(1, $id);
+            $statement->execute();
+
+            $sql = "DELETE FROM produkty WHERE idprodukty = ?";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, $id);
+            $st->execute();
+
+          
+            $_SESSION['stav'] = "uspech";
+            header("Location: /FitStream/admin/edit_vyziva.php");
+        } catch (Exception $e) {
+            
+            $_SESSION['stav'] = "neuspech";
             die("Nastala chyba: " . $e->getMessage());
         } finally {
             $this->conn = null;
         }
     }
+
+    public function vypisKategorie() : array
+    {
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }    
+
+        try {
+            $sql = "SELECT idkategorie,nazov FROM kategorie;";
+            $st = $this->conn->prepare($sql);
+            $st->execute();
+            
+            return $st->fetchAll();
+
+
+        } catch(Exception $e) {
+            die("Nastala chyba: " . $e->getMessage());
+        } finally {
+
+            $this->conn = null;
+        }
+
+
+
+    }
+
+    public function zobrazenieStavu(): void
+    {
+        
+
+        if (isset($_SESSION['stav']) && $_SESSION['stav'] === "uspech") {
+            echo '<div class="uspech">Akcia bola úspešna.</div>';
+        } elseif (isset($_SESSION['stav']) && $_SESSION['stav'] === "neuspech") {
+            echo '<div class="neuspech">Akcia bola neúspešná.</div>';
+        }
+
+        unset($_SESSION['stav']);
+    }
+
+
+    public function editaciaRiadku(): void
+    {
+        if ($this->conn === null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }
+
+        try {
+            $sql = "";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, );
+            $st->bindParam(2, );
+            $st->bindParam(3, );
+            $st->bindParam(4, );
+            $st->bindParam(5,);
+            $st->execute();
+
+           
+            $_SESSION['stav'] = "uspech";
+            header("Location: /FitStream/admin/edit_vyziva.php");
+        } catch (Exception $e) {
+          
+            $_SESSION['stav'] = "neuspech";
+            die("Nastala chyba: " . $e->getMessage());
+        } finally {
+            $this->conn = null;
+        }
+    }
+
+    
 }

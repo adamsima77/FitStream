@@ -96,7 +96,7 @@ class Footer extends Database
         }
     }
 
-    public function vymazanie_Riadku(int $id): void
+    public function vymazanieRiadku(int $id): void
     {
         try {
             $sql = "DELETE FROM footer_ikony WHERE idfooter = ?";

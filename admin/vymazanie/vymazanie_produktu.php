@@ -1,18 +1,18 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/footer_linky.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php';
 use uzivatel\Uzivatel;
-use footer\Footer;
+use produkt\Produkt;
 $overenie_admina = new Uzivatel();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/auth_admin.php');
-$footer = new Footer();
+$produkt = new Produkt();
 
 
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Zlé ID");
 } else {
-    $footer_vymazanie = $footer->vymazanieRiadku($_GET['id']);
+    $produkt_vymazanie = $produkt->vymazanieRiadku($_GET['id']);
 }
 
 

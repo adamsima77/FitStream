@@ -356,7 +356,6 @@ min-width: 75%;
 table {
   margin-top: 50px;
   width: 100%;
-  max-width: 1000px;
   border-collapse: separate;
   border-spacing: 0;
   background-color: #ffffff;
@@ -388,6 +387,14 @@ td {
   color: #333;
   text-align: center;
   
+}
+
+td img{
+
+width: 100px;
+height: 150px;
+background-size: contain;
+
 }
 
 tr:nth-child(even) td {
@@ -538,6 +545,15 @@ td .delete{
   font-size: 14px;
 }
 
+.vytvorenie_produktu #kategoria{
+
+  resize: vertical;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+
+}
 .vytvorenie_produktu_forma textarea {
   resize: vertical;
   min-height: 80px;

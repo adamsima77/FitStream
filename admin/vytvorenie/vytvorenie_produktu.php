@@ -2,7 +2,7 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php';
 use produkt\Produkt;
 $vypis_Produktov = new Produkt();
-
+$vypis_kategorii = $vypis_Produktov->vypisKategorie();
 ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
@@ -11,7 +11,7 @@ $vypis_Produktov = new Produkt();
 
 
 <div class = "vytvorenie_produktu">
-<form action="" method = "POST" class = "vytvorenie_produktu_forma">
+<form action="" method = "POST" class = "vytvorenie_produktu_forma" enctype="multipart/form-data">
 
 <label for="nadpis_produktu">*Názov:</label>
 <input type="text" id = "nadpis_produktu" name = "nadpis_produktu">
@@ -45,8 +45,14 @@ $vypis_Produktov = new Produkt();
 <label for="farba">Farba:</label>
 <input type="text" name = "farba" id = "farba">
 
-
-<input type="submit">
+<label for="kategoria">*Vyberte do ktorej kategórie ma produkt patriť:</label>
+  <select id="kategoria" name="kategoria">
+       <option value="" disabled selected>Vyberte kategóriu:</option>
+      <?php foreach($vypis_kategorii as $kategoria):?>
+          <option value="<?php echo $kategoria['idkategorie'];?>"><?php echo $kategoria['nazov'];?></option>
+      <?php endforeach;?>
+  </select>
+<input type="submit" name = "submit">
 </form>
 </div>
 
@@ -56,7 +62,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
     try{
-      
+
+        $img = $vypis_Produktov->spracovanieFotky();
         $nazov = $_POST['nadpis_produktu'];
         $znacka = $_POST['znacka_produktu'];
         $popis_produktu = $_POST['popis_produktu'];
@@ -65,8 +72,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $pocet_kusov = $_POST['pocet_kusov'];
         $velkost = $_POST['velkost'];
         $farba = $_POST['farba'];
-        $img = $_POST['foto'];
         $popis_img = $_POST['popis_foto'];
+        $kategoria = $_POST['kategoria'];
 
         $velkost = (empty($_POST['velkost'])) ? " " : $_POST['velkost'];
         $farba = (empty($_POST['farba'])) ? " " : $_POST['farba'];
@@ -80,7 +87,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         } else{
 
         $vypis_Produktov->vytvorenieProduktu($nazov, $znacka,  $popis_produktu,  $klucovy_popis,$cena, 
-        $pocet_kusov,  $velkost,  $farba, $img, $popis_img);
+        $pocet_kusov,  $velkost,  $farba, $img, $popis_img, $kategoria);
         }
 
     }catch(Exception $e){

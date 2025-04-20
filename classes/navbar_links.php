@@ -91,7 +91,7 @@ class Navbar extends Database
         }
     }
 
-    public function vymazanie_Riadku(int $id): void
+    public function vymazanieRiadku(int $id): void
     {
         try {
             $sql = "DELETE FROM navbar WHERE idnavbar = ?";

@@ -12,7 +12,7 @@ $navbar = new Navbar();
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Zlé ID");
 } else {
-    $navbar_vymazanie = $navbar->vymazanie_Riadku($_GET['id']);
+    $navbar_vymazanie = $navbar->vymazanieRiadku($_GET['id']);
 }
 
 

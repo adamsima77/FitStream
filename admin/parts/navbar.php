@@ -1,5 +1,5 @@
 <nav class = "menu">
-    <a href="edit_vyziva.php" class = "logo"><h1 class>FitStream</h1></a>
+    <a href="<?php echo BASE_URL;?>admin/edit_vyziva.php" class = "logo"><h1 class>FitStream</h1></a>
     <ul>
         <a href="<?php echo BASE_URL; ?>admin/edit_vyziva.php"><li>Editovanie produktov</li></a>
         <a href="<?php echo BASE_URL; ?>admin/edit_akordeon.php"><li>Editovanie akordeónu</li></a>
