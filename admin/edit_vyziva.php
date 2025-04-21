@@ -3,6 +3,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php';
 use produkt\Produkt;
 $vypis_Produktov = new Produkt();
 $vypis_vyzivy = $vypis_Produktov->vypisProduktyAdmin();
+
 ?>
 
 <?php include "parts/header.php"; ?>

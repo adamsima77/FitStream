@@ -1,4 +1,4 @@
-<?php include_once(__DIR__ . '/../classes/footer_linky.php'); ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/footer_linky.php');?>
 <?php use footer\Footer?>
 <?php 
 $footer = new Footer();

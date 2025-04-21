@@ -3,6 +3,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php';
 use produkt\Produkt;
 $vypis_Produktov = new Produkt();
 $vypis_kategorii = $vypis_Produktov->vypisKategorie();
+$vypis_pod_kategorii = $vypis_Produktov->vypisPodKategorie();
 ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
@@ -52,6 +53,13 @@ $vypis_kategorii = $vypis_Produktov->vypisKategorie();
           <option value="<?php echo $kategoria['idkategorie'];?>"><?php echo $kategoria['nazov'];?></option>
       <?php endforeach;?>
   </select>
+
+  <select id="podkategoria" name="podkategoria">
+       <option value="" disabled selected>Vyberte podkategóriu:</option>
+      <?php foreach($vypis_pod_kategorii as $pod_kategoria):?>
+          <option value="<?php echo $pod_kategoria['idkategorie'];?>"><?php echo $pod_kategoria['nazov'];?></option>
+      <?php endforeach;?>
+  </select>
 <input type="submit" name = "submit">
 </form>
 </div>
@@ -74,20 +82,21 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $farba = $_POST['farba'];
         $popis_img = $_POST['popis_foto'];
         $kategoria = $_POST['kategoria'];
+        $podkategorie = $_POST['podkategoria'];
 
         $velkost = (empty($_POST['velkost'])) ? " " : $_POST['velkost'];
         $farba = (empty($_POST['farba'])) ? " " : $_POST['farba'];
         $popis_img = (empty($_POST['popis_foto'])) ? " " : $_POST['popis_foto'];
 
         if(empty($nazov) ||empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena)
-        || empty($pocet_kusov) || empty($img)){
+        || empty($pocet_kusov) || empty($img) || empty($podkategorie)){
     
             die("Vyplňte polia označené hviezdičkou");
     
         } else{
 
         $vypis_Produktov->vytvorenieProduktu($nazov, $znacka,  $popis_produktu,  $klucovy_popis,$cena, 
-        $pocet_kusov,  $velkost,  $farba, $img, $popis_img, $kategoria);
+        $pocet_kusov,  $velkost,  $farba, $img, $popis_img, $kategoria,  $podkategorie);
         }
 
     }catch(Exception $e){

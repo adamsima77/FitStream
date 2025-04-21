@@ -13,7 +13,7 @@ $vypis_linkov = $nav->navbar_Links();
         </div>  
             <div class = "con">
                 <div class = "ds">
-                <a href = "login.php"><i class="fa fa-user" style = "font-size: 20px;" id = "log"></i></a>
+                <?php $nav->overenieUzivatela();?>
                 <a href = "kosik.php"><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
     </div>
     <ul>

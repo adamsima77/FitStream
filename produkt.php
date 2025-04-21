@@ -33,7 +33,7 @@
    
 <h2>Popis:</h2>
     <hr class = "produkt_hr">
-    <p class="produkt_popis"><?php echo nl2br(htmlspecialchars($produkt['popis'])); ?></p>
+    <p class="produkt_popis"><?php echo (htmlspecialchars($produkt['popis'])); ?></p>
     
   </div>
 </div>
