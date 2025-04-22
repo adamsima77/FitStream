@@ -190,9 +190,13 @@ class Produkt extends Database
            
         }
     }
+    
 
     public function spracovanieFotky(): string
     {
+
+      
+
         if (isset($_POST['submit'])) {
             
             $subor = $_FILES['foto'];
@@ -201,7 +205,10 @@ class Produkt extends Database
             $velkost_suboru = $_FILES['foto']['size'];
             $chyba_suboru = $_FILES['foto']['error'];
             $typ_suboru = $_FILES['foto']['type'];
-
+            
+            if ($chyba_suboru === UPLOAD_ERR_NO_FILE) {
+                return '';
+            }
             $nazov_kon = explode('.',$nazov_suboru);
             $upravena_kon = strtolower(end($nazov_kon));
 
@@ -246,7 +253,6 @@ class Produkt extends Database
 
 
     }
-
 
     public function vypisProduktyAdmin() : array{
         try {
@@ -390,7 +396,8 @@ class Produkt extends Database
     string $farba,
     string $img,
     string $img_popis,
-    int $kategoria): void
+    int $kategoria,
+    int $podkategoria): void
     {
         if ($this->conn === null) {
             $this->connect();
@@ -398,25 +405,19 @@ class Produkt extends Database
         }
 
         try {
-            $sql_1 = "UPDATE kategorie_has_produkty SET kategorie_idkategorie = ? WHERE produkty_idprodukty = ?;";
-            $st = $this->conn->prepare($sql_1);
-            $st->bindParam(1,$kategoria);
-            $st->bindParam(2,$id);
-            $st->execute();
-
-
-            $sql = "UPDATE produky SET 
+    
+            $sql = "UPDATE produkty SET 
             nazov = ?, 
             znacka = ?, 
-            popis_produktu = ?, 
+            popis = ?, 
             cena = ?, 
             pocet_kusov = ?, 
             velkost = ?, 
             farba = ?, 
-            datum_editu = ?, 
-            img = ?, 
-            img_popis = ?, 
-            klucovy_popis = ? 
+            datum_upravy = ?, 
+            img_hlavna = ?, 
+            img_alt = ?, 
+            hlavny_popis = ? 
             WHERE idprodukty = ?";
 
             $st = $this->conn->prepare($sql);
@@ -436,9 +437,30 @@ class Produkt extends Database
             $st->bindParam(12,$id);
             $st->execute();
 
+
+            $produktID= $id;
+            $sql_1 = "DELETE FROM kategorie_has_produkty WHERE produkty_idprodukty = ?;";
+            $statement = $this->conn->prepare($sql_1);
+            $statement->bindParam(1,$produktID);
+            $statement->execute();
+
+            $sql_3 = "INSERT INTO kategorie_has_produkty VALUES(?,?);";
+            $statement = $this->conn->prepare($sql_3);
+            $statement->bindParam(1,$kategoria);
+            $statement->bindParam(2,$produktID);
+            $statement->execute();
+
+            $sql_4 = "INSERT INTO kategorie_has_produkty VALUES(?,?);";
+            $statement = $this->conn->prepare($sql_4);
+            $statement->bindParam(1,$podkategoria);
+            $statement->bindParam(2,$produktID);
+            $statement->execute();
+
+            
+
           
             $_SESSION['stav'] = "uspech";
-            header("Location: /FitStream/admin/edit_navbar.php");
+            header("Location: /FitStream/admin/edit_vyziva.php");
         } catch (Exception $e) {
             
             $_SESSION['stav'] = "neuspech";
@@ -528,5 +550,89 @@ class Produkt extends Database
 
     }
 
+    public function getCategoryEdit($id): array|false{
+
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }    
+
+        try {
+            $sql = "SELECT kategorie.idkategorie, kategorie.nazov FROM kategorie 
+                    INNER JOIN kategorie_has_produkty ON kategorie.idkategorie = kategorie_has_produkty.kategorie_idkategorie
+                    WHERE kategorie.kategorie_idkategorie IS NULL
+                    AND kategorie_has_produkty.produkty_idprodukty = ?;";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1,$id);
+            $st->execute();
+            
+            return $st->fetch();
+
+
+        } catch(Exception $e) {
+            die("Nastala chyba: " . $e->getMessage());
+        } finally {
+
+            $this->conn = null;
+        }
+
+
+
+    }
+
+    public function getPodCategoryEdit($id): array{
+
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }    
+
+        try {
+            $sql = "SELECT kategorie.idkategorie, kategorie.nazov FROM kategorie 
+                    INNER JOIN kategorie_has_produkty ON kategorie.idkategorie = kategorie_has_produkty.kategorie_idkategorie
+                    WHERE kategorie.kategorie_idkategorie IS NOT NULL
+                    AND kategorie_has_produkty.produkty_idprodukty = ?;";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1,$id);
+            $st->execute();
+            
+            return $st->fetch();
+
+
+        } catch(Exception $e) {
+            die("Nastala chyba: " . $e->getMessage());
+        } finally {
+
+            $this->conn = null;
+        }
+
+
+
+    }
+
+    public function overenieFotoEdit(int $id): array|false
+    {
+        if ($this->conn === null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }
+    
+        try {
+            $sql = "SELECT img_hlavna FROM produkty WHERE idprodukty = ?";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, $id);
+            $st->execute();
+    
+            return $st->fetch();
+        } catch (Exception $e) {
+            die("Chyba pri načítaní obrázka produktu: " . $e->getMessage());
+        } finally {
+            $this->conn = null;
+        }
+    }
 
 }

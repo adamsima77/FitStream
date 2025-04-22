@@ -5,7 +5,48 @@ $vypis_Produktov = new Produkt();
 $vypis_kategorii = $vypis_Produktov->vypisKategorie();
 $vypis_pod_kategorii = $vypis_Produktov->vypisPodKategorie();
 ?>
+<?php
 
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+
+    try{
+
+        $img = $vypis_Produktov->spracovanieFotky();
+        $nazov = $_POST['nadpis_produktu'];
+        $znacka = $_POST['znacka_produktu'];
+        $popis_produktu = $_POST['popis_produktu'];
+        $klucovy_popis = $_POST['klucovy_popis'];
+        $cena = $_POST['cena'];
+        $pocet_kusov = $_POST['pocet_kusov'];
+        $velkost = $_POST['velkost'];
+        $farba = $_POST['farba'];
+        $popis_img = $_POST['popis_foto'];
+        $kategoria = $_POST['kategoria'];
+        $podkategorie = $_POST['podkategoria'];
+
+        $velkost = (empty($_POST['velkost'])) ? " " : $_POST['velkost'];
+        $farba = (empty($_POST['farba'])) ? " " : $_POST['farba'];
+        $popis_img = (empty($_POST['popis_foto'])) ? " " : $_POST['popis_foto'];
+
+        if(empty($nazov) ||empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena)
+        || empty($pocet_kusov) || empty($img) || empty($podkategorie)){
+    
+            die("Vyplňte polia označené hviezdičkou");
+    
+        } else{
+
+        $vypis_Produktov->vytvorenieProduktu($nazov, $znacka,  $popis_produktu,  $klucovy_popis,$cena, 
+        $pocet_kusov,  $velkost,  $farba, $img, $popis_img, $kategoria,  $podkategorie);
+        }
+
+    }catch(Exception $e){
+
+         die("Nastala chyba: " . $e -> getMessage());
+        }
+}
+
+?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/navbar.php'; ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/sidebar.php'; ?>
@@ -64,48 +105,7 @@ $vypis_pod_kategorii = $vypis_Produktov->vypisPodKategorie();
 </form>
 </div>
 
-<?php
 
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
-
-    try{
-
-        $img = $vypis_Produktov->spracovanieFotky();
-        $nazov = $_POST['nadpis_produktu'];
-        $znacka = $_POST['znacka_produktu'];
-        $popis_produktu = $_POST['popis_produktu'];
-        $klucovy_popis = $_POST['klucovy_popis'];
-        $cena = $_POST['cena'];
-        $pocet_kusov = $_POST['pocet_kusov'];
-        $velkost = $_POST['velkost'];
-        $farba = $_POST['farba'];
-        $popis_img = $_POST['popis_foto'];
-        $kategoria = $_POST['kategoria'];
-        $podkategorie = $_POST['podkategoria'];
-
-        $velkost = (empty($_POST['velkost'])) ? " " : $_POST['velkost'];
-        $farba = (empty($_POST['farba'])) ? " " : $_POST['farba'];
-        $popis_img = (empty($_POST['popis_foto'])) ? " " : $_POST['popis_foto'];
-
-        if(empty($nazov) ||empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena)
-        || empty($pocet_kusov) || empty($img) || empty($podkategorie)){
-    
-            die("Vyplňte polia označené hviezdičkou");
-    
-        } else{
-
-        $vypis_Produktov->vytvorenieProduktu($nazov, $znacka,  $popis_produktu,  $klucovy_popis,$cena, 
-        $pocet_kusov,  $velkost,  $farba, $img, $popis_img, $kategoria,  $podkategorie);
-        }
-
-    }catch(Exception $e){
-
-         die("Nastala chyba: " . $e -> getMessage());
-        }
-}
-
-?>
 
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/footer.php'; ?>

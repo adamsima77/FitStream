@@ -2,7 +2,7 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php';
 use produkt\Produkt;
 $produkt = new Produkt();
-$vypis_kategorii = $produkt->vypisKategorie();
+$vypis_pod_kategorii = $produkt->vypisPodKategorie();
 
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
@@ -12,6 +12,68 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 }
 
  $overenie_kategorie = $produkt->vypisKategorieHasProdukty($_GET['id']);
+ $vypis_kategorii = $produkt->vypisKategorie();
+ $kategoria_select = $produkt->getCategoryEdit($_GET['id']);
+ $podkategoria_select = $produkt->getPodCategoryEdit($_GET['id']);
+?>
+
+<?php
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+
+    try{
+      
+        $img = $produkt->spracovanieFotky();
+        $nazov = $_POST['nadpis_produktu'];
+        $znacka = $_POST['znacka_produktu'];
+        $popis_produktu = $_POST['popis_produktu'];
+        $klucovy_popis = $_POST['klucovy_popis'];
+        $cena =  $_POST['cena'];
+        $pocet_kusov = $_POST['pocet_kusov'];
+        $velkost = $_POST['velkost'];
+        $farba = $_POST['farba'];
+        $img_popis = $_POST['popis_foto'];
+        $kategoria = $_POST['kategoria'];
+        $podkategoria = $_POST['podkategoria'];
+        $overenie_img = $produkt->overenieFotoEdit($_GET['id']);
+        
+        if (empty($nazov) || empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena) || empty($pocet_kusov) ||
+            empty($velkost) || empty($farba) || empty($img_popis) || empty($kategoria)) {
+            
+            die("Vyplňte všetky polia označené hviezdičkou.");
+        } else {
+        
+        if(empty($img) || $img == ''){
+          if (!empty($overenie_img)){
+                
+                 $img = $overenie_img['img_hlavna'];
+
+          } 
+
+        }
+        $id = $_GET['id'];
+        $produkt->editaciaRiadku(
+        $id, 
+        $nazov,
+        $znacka,
+        $popis_produktu,
+        $klucovy_popis,
+        $cena,
+        $pocet_kusov,
+        $velkost,
+        $farba,
+        $img,
+        $img_popis,
+        $kategoria,
+        $podkategoria);
+        }
+
+    }catch(Exception $e){
+
+         die("Nastala chyba: " . $e -> getMessage());
+        }
+}
+
 ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
@@ -57,69 +119,30 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 <label for="kategoria">*Vyberte do ktorej kategórie ma produkt patriť:</label>
   <select id="kategoria" name="kategoria">
        <option value="" disabled selected>Vyberte kategóriu:</option>
+       <option value="<?php echo $kategoria_select['idkategorie'];?>" selected><?php echo $kategoria_select['nazov'];?></option>
       <?php foreach($vypis_kategorii as $kategoria):?>
-          
-          
+           
+          <?php if ($kategoria_select['idkategorie'] == $kategoria['idkategorie']):?>
+            <?php continue;?>
+             <?php endif;?>               
           <option value="<?php echo $kategoria['idkategorie'];?>"><?php echo $kategoria['nazov'];?></option>
+      <?php endforeach;?>
+  </select>
+
+
+  <select id="podkategoria" name="podkategoria">
+      <option value="" disabled selected>Vyberte podkategóriu:</option>
+      <option value="<?php echo $podkategoria_select['idkategorie'];?>" selected><?php echo $podkategoria_select['nazov'];?></option>
+      <?php foreach($vypis_pod_kategorii as $pod_kategoria):?>
+        <?php if ($podkategoria_select['idkategorie'] == $pod_kategoria['idkategorie']):?>
+            <?php continue;?>
+             <?php endif;?>    
+          <option value="<?php echo $pod_kategoria['idkategorie'];?>"><?php echo $pod_kategoria['nazov'];?></option>
       <?php endforeach;?>
   </select>
 <input type="submit" name = "submit">
 </form>
 </div>
-
-<?php
-
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
-
-    try{
-      
-        $img = $produkt->spracovanieFotky();
-        $nazov = $_POST['nadpis_produktu'];
-        $znacka = $_POST['znacka_produktu'];
-        $popis_produktu = $_POST['popis_produktu'];
-        $klucovy_popis = $_POST['klucovy_popis'];
-        $cena =  $_POST['cena'];
-        $pocet_kusov = $_POST['pocet_kusov'];
-        $velkost = $_POST['velkost'];
-        $farba = $_POST['farba'];
-        $img_popis = $_POST['popis_foto'];
-        $kategoria = $_POST['kategoria'];
-
-        if(empty($img)){
-
-            $img = $produkt_vypis['img_hlavna'];
-
-        }
-        if (empty($nazov) || empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena) || empty($pocet_kusov) ||
-            empty($velkost) || empty($farba) || empty($img_popis) || empty($kategoria)) {
-            
-            die("Vyplňte všetky polia označené hviezdičkou.");
-        } else {
-
-        $id = $_GET['id'];
-        $produkt->editaciaRiadku(
-        $id, 
-        $nazov,
-        $znacka,
-        $popis_produktu,
-        $klucovy_popis,
-        $cena,
-        $pocet_kusov,
-        $velkost,
-        $farba,
-        $img,
-        $img_popis,
-        $kategoria);
-        }
-
-    }catch(Exception $e){
-
-         die("Nastala chyba: " . $e -> getMessage());
-        }
-}
-
-?>
 
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/footer.php'; ?>

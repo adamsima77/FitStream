@@ -14,26 +14,6 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 ?>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/navbar.php'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/sidebar.php'; ?>
-
-
-<div class = "vytvorenie_otazky_a_odpovede">
-<form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
-
-<label for="nazov">*Ikona:</label>
-<input type="text" id="nazov" name="nazov" value="<?php echo htmlspecialchars($navbar_vypis['nazov']); ?>">
-
-
-<label for="url">*URL:</label>
-<input type="text" id="url" name="url" value="<?php echo htmlspecialchars($navbar_vypis['url']); ?>">
-
-
-<input type="submit">
-</form>
-</div>
-
 <?php
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -62,6 +42,26 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 
 ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/navbar.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/sidebar.php'; ?>
+
+
+<div class = "vytvorenie_otazky_a_odpovede">
+<form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
+
+<label for="nazov">*Ikona:</label>
+<input type="text" id="nazov" name="nazov" value="<?php echo htmlspecialchars($navbar_vypis['nazov']); ?>">
+
+
+<label for="url">*URL:</label>
+<input type="text" id="url" name="url" value="<?php echo htmlspecialchars($navbar_vypis['url']); ?>">
+
+
+<input type="submit">
+</form>
+</div>
+
 
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/footer.php'; ?>
