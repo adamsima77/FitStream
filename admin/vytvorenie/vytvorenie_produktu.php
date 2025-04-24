@@ -1,4 +1,5 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php';
 use produkt\Produkt;
 $vypis_Produktov = new Produkt();
@@ -17,7 +18,23 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $znacka = $_POST['znacka_produktu'];
         $popis_produktu = $_POST['popis_produktu'];
         $klucovy_popis = $_POST['klucovy_popis'];
-        $cena = $_POST['cena'];
+        $overenie = str_replace(",",".",trim($_POST['cena']));
+        if (is_numeric($overenie)) {
+
+            $cena = (float) $overenie;
+
+        } else {
+
+            die("Zle zadaný formát ceny");
+        }
+
+        if (is_numeric($_POST['pocet_kusov'])){
+
+            $pocet_kusov = (int) $_POST['pocet_kusov'];
+        } else {
+
+            die("Zadali ste zlý formát pri počte kusov !");
+        }
         $pocet_kusov = $_POST['pocet_kusov'];
         $velkost = $_POST['velkost'];
         $farba = $_POST['farba'];
@@ -91,14 +108,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   <select id="kategoria" name="kategoria">
        <option value="" disabled selected>Vyberte kategóriu:</option>
       <?php foreach($vypis_kategorii as $kategoria):?>
-          <option value="<?php echo $kategoria['idkategorie'];?>"><?php echo $kategoria['nazov'];?></option>
+          <option value="<?php echo $kategoria['idkategorie'];?>"><?php echo $kategoria['nazov_kategorie'];?></option>
       <?php endforeach;?>
   </select>
 
   <select id="podkategoria" name="podkategoria">
        <option value="" disabled selected>Vyberte podkategóriu:</option>
       <?php foreach($vypis_pod_kategorii as $pod_kategoria):?>
-          <option value="<?php echo $pod_kategoria['idkategorie'];?>"><?php echo $pod_kategoria['nazov'];?></option>
+          <option value="<?php echo $pod_kategoria['idkategorie'];?>"><?php echo $pod_kategoria['nazov_kategorie'];?></option>
       <?php endforeach;?>
   </select>
 <input type="submit" name = "submit">

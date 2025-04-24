@@ -10,10 +10,11 @@
                 <p><?php echo $overenie_admina->getadminRola()?></p>
              </div>
              <ul>
-                 <a href="edit_vyziva.php"><li>Editovanie produktov</li></a>
-                 <a href="edit_akordeon.php"><li>Editovanie akordeónu</li></a>
-                 <a href="edit_footer.php"><li>Editovanie footeru</li></a>
-                 <a href="<?php echo BASE_URL; ?>config/logout.php">"><li>Odhlásenie</li></a>
+             <a href="<?php echo BASE_URL; ?>admin/edit_vyziva.php"><li>Editovanie produktov</li></a>
+             <a href="<?php echo BASE_URL; ?>admin/edit_akordeon.php"><li>Editovanie akordeónu</li></a>
+             <a href="<?php echo BASE_URL; ?>admin/edit_footer.php"><li>Editovanie footeru</li></a>
+             <a href="<?php echo BASE_URL; ?>admin/edit_navbar.php"><li>Editovanie navbaru</li></a>
+             <a href="<?php echo BASE_URL; ?>config/logout.php"><li>Odhlásenie</li></a>
              </ul>
        
         </div>

@@ -4,7 +4,18 @@
 <?php include_once "classes/produkt.php"; ?>
 <?php use produkt\Produkt?>
 
-<?php $vypis = new Produkt();?>
+<?php $vypis = new Produkt();
+$vypis_podkategoria = $vypis->vypisPodKategoriePrislusenstvo();
+?>
+
+<?php
+$filter = [];
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $filter = $vypis->filtrovanie($_GET['id']);
+} else {
+    $filter = $vypis_vyziva = $vypis->vypisPrislusentvo();
+}
+?>
 
 <div class = "zaobalenie_prislusenstvo">
 <div class = "zao_2_prislusenstvo">
@@ -20,9 +31,13 @@
 
 <div class = "filtre_prislusenstvo">
 
-<a href = "">Najnovšie</a>
-<a href = "">Najlacnejšie</a>
-<a href = "">Najdrahšie</a>
+<?php foreach($vypis_podkategoria as $podkategoria):?>
+    <?php $id_pod =  $podkategoria['idkategorie'];?>
+    <a href = "?id=<?php echo $id_pod;?>"><?php echo $podkategoria['nazov_kategorie'];?></a>
+<?php endforeach;?>
+<?php if (isset($_GET['id'])):?>
+    <a href = "http://localhost/FitStream/prislusenstvo.php" style = "background-color: red; margin-left:auto;">Odstrániť vybratý filter</a>
+<?php endif;?>
 </div>
 
 <?php include_once "parts/box_prislusenstvo.php";?>

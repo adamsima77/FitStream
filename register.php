@@ -38,6 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($meno) || empty($priezvisko) || empty($email) || empty($heslo) || empty($zopakovanie_hesla) || empty($datum)) {
         echo "Nevyplnené textové polia";
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+        die("Zadali ste zlý formát emailu !");
+
     } else {
       
     try{

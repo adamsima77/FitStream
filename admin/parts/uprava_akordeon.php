@@ -15,7 +15,7 @@
                         <td><?php echo $id ?></td>
                         <td><?php echo substr($polozka_akordeonu['otazka'],0,180);?>...</td>
                         <td><?php echo substr($polozka_akordeonu['odpoved'],0,180);?>...</td>
-                        <td><a href="<?php echo BASE_URL; ?>admin/editovanie/editovanie_akordeonu.php?id=<?php echo $id;?>" class = "edit">Editovať</a> <a href = "<?php echo BASE_URL; ?>admin/vymazanie/vymazanie_akordeon.php?id=<?php echo $id;?>" class = "delete">Vymazať</a></td>
+                        <td><a href="<?php echo BASE_URL; ?>admin/editovanie/editovanie_akordeonu.php?id=<?php echo $id;?>" class = "edit">Editovať</a> <a href = "<?php echo BASE_URL; ?>admin/vymazanie/vymazanie_akordeon.php?id=<?php echo $id;?>" onclick = "return kontrolaVymazania()" class = "delete">Vymazať</a></td>
                     </tr>
                 <?php endforeach;?>
 

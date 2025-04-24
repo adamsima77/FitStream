@@ -7,7 +7,9 @@ $pocet = 0;
 
         <?php foreach($vypis_slideshow as $a):?>
             <div class="fotky">
-            <a href=""><img src="<?php echo htmlspecialchars($a['img_url']);?>"></a>
+            <a href="<?php echo $a['img_preklik']; ?>">
+            <img src="<?php echo $a['img_url']; ?>">
+            </a>
             </div>
             <?php $pocet += 1; ?>
         <?php endforeach?>

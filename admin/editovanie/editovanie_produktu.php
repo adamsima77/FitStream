@@ -1,4 +1,5 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php';
 use produkt\Produkt;
 $produkt = new Produkt();
@@ -119,25 +120,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <label for="kategoria">*Vyberte do ktorej kategórie ma produkt patriť:</label>
   <select id="kategoria" name="kategoria">
        <option value="" disabled selected>Vyberte kategóriu:</option>
-       <option value="<?php echo $kategoria_select['idkategorie'];?>" selected><?php echo $kategoria_select['nazov'];?></option>
+       <option value="<?php echo $kategoria_select['idkategorie'];?>" selected><?php echo $kategoria_select['nazov_kategorie'];?></option>
       <?php foreach($vypis_kategorii as $kategoria):?>
            
           <?php if ($kategoria_select['idkategorie'] == $kategoria['idkategorie']):?>
             <?php continue;?>
              <?php endif;?>               
-          <option value="<?php echo $kategoria['idkategorie'];?>"><?php echo $kategoria['nazov'];?></option>
+          <option value="<?php echo $kategoria['idkategorie'];?>"><?php echo $kategoria['nazov_kategorie'];?></option>
       <?php endforeach;?>
   </select>
 
 
   <select id="podkategoria" name="podkategoria">
       <option value="" disabled selected>Vyberte podkategóriu:</option>
-      <option value="<?php echo $podkategoria_select['idkategorie'];?>" selected><?php echo $podkategoria_select['nazov'];?></option>
+      <option value="<?php echo $podkategoria_select['idkategorie'];?>" selected><?php echo $podkategoria_select['nazov_kategorie'];?></option>
       <?php foreach($vypis_pod_kategorii as $pod_kategoria):?>
         <?php if ($podkategoria_select['idkategorie'] == $pod_kategoria['idkategorie']):?>
             <?php continue;?>
              <?php endif;?>    
-          <option value="<?php echo $pod_kategoria['idkategorie'];?>"><?php echo $pod_kategoria['nazov'];?></option>
+          <option value="<?php echo $pod_kategoria['idkategorie'];?>"><?php echo $pod_kategoria['nazov_kategorie'];?></option>
       <?php endforeach;?>
   </select>
 <input type="submit" name = "submit">

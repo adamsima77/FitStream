@@ -31,7 +31,7 @@ class Navbar extends Database
     public function vytvorenie_Zaznamu(string $nazov, string $url): void
     {
         try {
-            $sql = "INSERT INTO navbar (nazov, url) VALUES (?, ?)";
+            $sql = "INSERT INTO navbar(nazov,url) VALUES (?, ?)";
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $nazov);
             $st->bindParam(2, $url);

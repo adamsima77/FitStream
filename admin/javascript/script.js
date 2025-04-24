@@ -16,3 +16,10 @@ function toggleMenu() {
   
   }
   
+  //Kontrola či chce admin vymazať položku
+  function kontrolaVymazania(){
+
+
+    return confirm("Naozaj chcete vymazať položku ?");
+
+  }

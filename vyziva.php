@@ -3,7 +3,19 @@
 <?php require 'parts/sidebar.php';?>
 <?php include_once "classes/produkt.php"; ?>
 <?php use produkt\Produkt?>
-<?php $vypis = new Produkt();?>
+<?php $vypis = new Produkt();
+$vypis_podkategorii = $vypis->vypisPodKategorieVyziva();
+
+
+$filter = [];
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $filter = $vypis->filtrovanie($_GET['id']);
+} else {
+    $filter = $vypis_vyziva = $vypis->vypis_vyziva();
+}
+?>
+
+
 
 <div class = "zaobalenie">
 <div class = "zao_2">
@@ -16,11 +28,19 @@
 </div>
 
 
+
 <div class = "filtre">
 
-<a href = "">Najnovšie</a>
-<a href = "">Najlacnejšie</a>
-<a href = "">Najdrahšie</a>
+<?php foreach($vypis_podkategorii as $podkategoria):?>
+    <?php $id_pod =  $podkategoria['idkategorie'];?>
+    <a href = "?id=<?php echo $id_pod;?>" style = "background-color: <?php echo $b = (isset($_GET['id']) && $_GET['id'] == $id_pod) ? "#2F3C7E;" : 
+    "#2f52ff"; ?>;"><?php echo $podkategoria['nazov_kategorie'];?></a>
+<?php endforeach;?>
+
+<?php if (isset($_GET['id'])):?>
+    <a href = "http://localhost/FitStream/vyziva.php" style = "background-color: red; margin-left:auto;">Odstrániť vybratý filter</a>
+<?php endif;?>
+
 </div>
 
 

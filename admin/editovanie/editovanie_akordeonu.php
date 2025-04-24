@@ -1,5 +1,5 @@
 <?php
-
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/akordeon_class.php';
 use akordeon\Akordeon;
 $Akordeon = new Akordeon();
@@ -14,28 +14,6 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 
 ?>
-
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/navbar.php'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/sidebar.php'; ?>
-
-
-<div class = "vytvorenie_otazky_a_odpovede">
-<form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
-
-<label for="otazka_v">*Otázka:</label>
-<input type="text" id="otazka_v" name="otazka_v" value="<?php echo htmlspecialchars($akordeon_vypis['otazka']); ?>">
-
-<label for="odpoved_v">*Odpoveď:</label>
-<textarea name="odpoved_v" id="odpoved_v"><?php echo htmlspecialchars($akordeon_vypis['odpoved']); ?></textarea>
-
-
-
-
-<input type="submit">
-</form>
-</div>
 
 <?php
 
@@ -65,6 +43,28 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 
 ?>
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/navbar.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/sidebar.php'; ?>
+
+
+<div class = "vytvorenie_otazky_a_odpovede">
+<form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
+
+<label for="otazka_v">*Otázka:</label>
+<input type="text" id="otazka_v" name="otazka_v" value="<?php echo htmlspecialchars($akordeon_vypis['otazka']); ?>">
+
+<label for="odpoved_v">*Odpoveď:</label>
+<textarea name="odpoved_v" id="odpoved_v"><?php echo htmlspecialchars($akordeon_vypis['odpoved']); ?></textarea>
+
+
+
+
+<input type="submit">
+</form>
+</div>
+
 
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/footer.php'; ?>

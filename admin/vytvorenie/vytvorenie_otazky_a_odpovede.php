@@ -1,22 +1,9 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/akordeon_class.php';
 use akordeon\Akordeon;
 $Akordeon = new Akordeon();
 ?>
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/navbar.php'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/sidebar.php'; ?>
-
-<div class = "vytvorenie_otazky_a_odpovede">
-    <form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
-        <label for="otazka_v">*Otázka:</label>
-        <input type="text" id = "otazka_v" name = "otazka_v">
-        <label for="odpoved_v">*Odpoveď:</label>
-        <input type="text" id = "odpoved_v" name = "odpoved_v">
-        <input type="submit">
-    </form>
-</div>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -35,5 +22,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/navbar.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/sidebar.php'; ?>
+
+<div class = "vytvorenie_otazky_a_odpovede">
+    <form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
+        <label for="otazka_v">*Otázka:</label>
+        <input type="text" id = "otazka_v" name = "otazka_v">
+        <label for="odpoved_v">*Odpoveď:</label>
+        <input type="text" id = "odpoved_v" name = "odpoved_v">
+        <input type="submit">
+    </form>
+</div>
+
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/footer.php'; ?>

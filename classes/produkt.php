@@ -16,6 +16,13 @@ class Produkt extends Database
 
     public function vypis_vyziva(): array
     {
+
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }    
         try {
             $sql = "SELECT * FROM produkty p
                     INNER JOIN kategorie_has_produkty khp ON p.idprodukty = khp.produkty_idprodukty
@@ -55,9 +62,15 @@ class Produkt extends Database
 
     public function vypisOblecenie(): array
     {
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }    
         try {
             $sql = "SELECT p.idprodukty, p.nazov AS produkt_nazov, 
-                           k.nazov AS kategoria_nazov, p.popis, p.img_hlavna,
+                           k.nazov_kategorie AS kategoria_nazov, p.popis, p.img_hlavna,
                            p.cena, p.img_alt, hlavny_popis
                     FROM produkty p
                     INNER JOIN kategorie_has_produkty khp ON p.idprodukty = khp.produkty_idprodukty
@@ -78,9 +91,15 @@ class Produkt extends Database
 
     public function vypisPrislusentvo(): array
     {
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }    
         try {
             $sql = "SELECT p.idprodukty, p.nazov AS produkt_nazov, 
-                           k.nazov AS kategoria_nazov, p.popis, p.img_hlavna,
+                           k.nazov_kategorie AS kategoria_nazov, p.popis, p.img_hlavna,
                            p.cena, p.img_alt, hlavny_popis
                     FROM produkty p
                     INNER JOIN kategorie_has_produkty khp ON p.idprodukty = khp.produkty_idprodukty
@@ -181,6 +200,7 @@ class Produkt extends Database
 
             $_SESSION['stav'] = "uspech";
             header("Location: /FitStream/admin/edit_vyziva.php");
+            exit;
 
         } catch (Exception $e) {
             $_SESSION['stav'] = "neuspech";
@@ -212,13 +232,13 @@ class Produkt extends Database
             $nazov_kon = explode('.',$nazov_suboru);
             $upravena_kon = strtolower(end($nazov_kon));
 
-            $nazov = basename($nazov_suboru);
+            $nazov = uniqid('', true);
 
             $povolene_kon = ['jpeg','jpg','png','webp'];
             if (in_array($upravena_kon,$povolene_kon)) {
                 if ($chyba_suboru === 0) {
                     if ($velkost_suboru <= 3145728) {
-                        $relativna_cesta = 'img/produkty/' . $nazov;
+                        $relativna_cesta = 'img/produkty/' . $nazov . "." . $upravena_kon;
                         $absolutna_cesta = $_SERVER['DOCUMENT_ROOT'] . '/FitStream/' . $relativna_cesta;
                         move_uploaded_file($docasna_adresa, $absolutna_cesta);
                         return $relativna_cesta;           
@@ -305,7 +325,7 @@ class Produkt extends Database
         }    
 
         try {
-            $sql = "SELECT idkategorie,nazov FROM kategorie WHERE kategorie_idkategorie IS NULL;";
+            $sql = "SELECT idkategorie,nazov_kategorie FROM kategorie WHERE kategorie_idkategorie IS NULL;";
             $st = $this->conn->prepare($sql);
             $st->execute();
             
@@ -336,7 +356,7 @@ class Produkt extends Database
         
         $kategorie = []; 
         $podkategorie = []; 
-        $sql = "SELECT nazov FROM kategorie 
+        $sql = "SELECT nazov_kategorie FROM kategorie 
                INNER JOIN kategorie_has_produkty ON kategorie.idkategorie = kategorie_has_produkty.kategorie_idkategorie
                WHERE kategorie.kategorie_idkategorie IS NULL AND
                kategorie_has_produkty.produkty_idprodukty = ?;";
@@ -346,7 +366,7 @@ class Produkt extends Database
         $st->execute();
         $kategoria = $st->fetch();
 
-        $sql_1 = "SELECT nazov FROM kategorie 
+        $sql_1 = "SELECT nazov_kategorie FROM kategorie 
                INNER JOIN kategorie_has_produkty ON kategorie.idkategorie = kategorie_has_produkty.kategorie_idkategorie
                WHERE kategorie.kategorie_idkategorie IS NOT NULL AND
                kategorie_has_produkty.produkty_idprodukty = ?;";
@@ -532,7 +552,7 @@ class Produkt extends Database
         }    
 
         try {
-            $sql = "SELECT idkategorie,nazov FROM kategorie WHERE kategorie_idkategorie IS NOT NULL;";
+            $sql = "SELECT idkategorie,nazov_kategorie FROM kategorie WHERE kategorie_idkategorie IS NOT NULL;";
             $st = $this->conn->prepare($sql);
             $st->execute();
             
@@ -560,7 +580,7 @@ class Produkt extends Database
         }    
 
         try {
-            $sql = "SELECT kategorie.idkategorie, kategorie.nazov FROM kategorie 
+            $sql = "SELECT kategorie.idkategorie, kategorie.nazov_kategorie FROM kategorie 
                     INNER JOIN kategorie_has_produkty ON kategorie.idkategorie = kategorie_has_produkty.kategorie_idkategorie
                     WHERE kategorie.kategorie_idkategorie IS NULL
                     AND kategorie_has_produkty.produkty_idprodukty = ?;";
@@ -592,7 +612,7 @@ class Produkt extends Database
         }    
 
         try {
-            $sql = "SELECT kategorie.idkategorie, kategorie.nazov FROM kategorie 
+            $sql = "SELECT kategorie.idkategorie, kategorie.nazov_kategorie FROM kategorie 
                     INNER JOIN kategorie_has_produkty ON kategorie.idkategorie = kategorie_has_produkty.kategorie_idkategorie
                     WHERE kategorie.kategorie_idkategorie IS NOT NULL
                     AND kategorie_has_produkty.produkty_idprodukty = ?;";
@@ -634,5 +654,121 @@ class Produkt extends Database
             $this->conn = null;
         }
     }
+
+
+    public function vypisPodKategorieVyziva() : array
+    {
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }    
+
+        try {
+            $sql = "SELECT idkategorie,nazov_kategorie FROM kategorie WHERE kategorie_idkategorie = 3;";
+            $st = $this->conn->prepare($sql);
+            $st->execute();
+            
+            return $st->fetchAll();
+
+
+        } catch(Exception $e) {
+            die("Nastala chyba: " . $e->getMessage());
+        } finally {
+
+            $this->conn = null;
+        }
+
+
+
+    }
+
+    public function vypisPodKategorieOblecenie() : array
+    {
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }    
+
+        try {
+            $sql = "SELECT idkategorie,nazov_kategorie FROM kategorie WHERE kategorie_idkategorie = 1;";
+            $st = $this->conn->prepare($sql);
+            $st->execute();
+            
+            return $st->fetchAll();
+
+
+        } catch(Exception $e) {
+            die("Nastala chyba: " . $e->getMessage());
+        } finally {
+
+            $this->conn = null;
+        }
+
+
+
+    }
+
+    public function vypisPodKategoriePrislusenstvo() : array
+    {
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }    
+
+        try {
+            $sql = "SELECT idkategorie,nazov_kategorie FROM kategorie WHERE kategorie_idkategorie = 2;";
+            $st = $this->conn->prepare($sql);
+            $st->execute();
+            
+            return $st->fetchAll();
+
+
+        } catch(Exception $e) {
+            die("Nastala chyba: " . $e->getMessage());
+        } finally {
+
+            $this->conn = null;
+        }
+
+
+
+    }
+
+    public function filtrovanie($id){
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }
+
+        try{
+            $sql = "SELECT p.idprodukty, p.nazov, p.img_hlavna, p.img_alt, p.hlavny_popis, p.cena
+            FROM produkty AS p
+            INNER JOIN kategorie_has_produkty AS khp ON p.idprodukty = khp.produkty_idprodukty
+            INNER JOIN kategorie AS k ON khp.kategorie_idkategorie = k.idkategorie
+            WHERE k.idkategorie = ?;";
+                     
+            $statement = $this->conn->prepare($sql);
+            $statement->bindParam(1,$id);
+            $statement->execute();
+            return $statement->fetchAll();
+
+
+        } catch(Exception $e) {
+
+            die("Nastala chyba");
+        }
+         
+
+    }
+
+
 
 }

@@ -22,8 +22,13 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];
         $heslo = $_POST['heslo_1'];
+
     if (empty($email) || empty($heslo)) {
-        echo "Prázdne polia";
+        die("Prázdne polia");
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+        die("Zadali ste zlý formát emailu !");
+
     } else {
       
       try { 
