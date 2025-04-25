@@ -148,6 +148,10 @@ class Slideshow extends Database
 
     public function vymazanieRiadku(int $id): void
     {
+        if ($this->conn === null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }
         try {
             $sql = "DELETE FROM slideshow WHERE idslideshow = ?";
             $st = $this->conn->prepare($sql);
@@ -216,6 +220,10 @@ class Slideshow extends Database
 
     public function vypisjednehoZaznamu(int $id): array|false
     {
+        if ($this->conn === null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }
         try {
             $sql = "SELECT * FROM slideshow WHERE idslideshow = ?";
             $st = $this->conn->prepare($sql);

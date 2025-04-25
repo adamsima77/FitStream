@@ -2,6 +2,20 @@
     <div class = "obal">
         <?php $vypis_Produktov->zobrazenieStavu()?>
         <a href="<?php echo BASE_URL; ?>admin/vytvorenie/vytvorenie_produktu.php" class="vytvorenie">Vytvoriť nový produkt</a>
+        
+        <div class = "filtre">
+        <?php $vypis_kategorii = $vypis_Produktov->vypisKategorie();?>
+        <?php foreach($vypis_kategorii as $kategoria):?>
+          <?php $id_pod =  $kategoria['idkategorie'];?>
+         <a href = "?id=<?php echo $id_pod;?>" style = "background-color: <?php echo $b = (isset($_GET['id']) && $_GET['id'] == $id_pod) ? "#2F3C7E;" : 
+               "#2f52ff"; ?>;"><?php echo $kategoria['nazov_kategorie'];?></a>
+                <?php endforeach;?>
+
+        <?php if (isset($_GET['id'])):?>
+            <a href = "http://localhost/FitStream/admin/edit_vyziva.php" style = "background-color: red; margin-left:auto;">Odstrániť vybratý filter</a>
+        <?php endif;?>
+
+</div>
         <div class = "table_con">
             <table>
                 <tr>
@@ -20,8 +34,8 @@
                     <th>Akcie</th>
                  </tr>
              
-            
-                 <?php foreach($vypis_vyzivy as $produkt):?>
+                  
+                 <?php foreach($filter as $produkt):?>
                  
                      <tr>
                          <?php $id = $produkt['idprodukty'];?>

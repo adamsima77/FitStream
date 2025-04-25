@@ -14,6 +14,7 @@
              <a href="<?php echo BASE_URL; ?>admin/edit_akordeon.php"><li>Editovanie akordeónu</li></a>
              <a href="<?php echo BASE_URL; ?>admin/edit_footer.php"><li>Editovanie footeru</li></a>
              <a href="<?php echo BASE_URL; ?>admin/edit_navbar.php"><li>Editovanie navbaru</li></a>
+             <a href="<?php echo BASE_URL; ?>admin/edit_blog.php"><li>Blog</li></a>
              <a href="<?php echo BASE_URL; ?>config/logout.php"><li>Odhlásenie</li></a>
              </ul>
        

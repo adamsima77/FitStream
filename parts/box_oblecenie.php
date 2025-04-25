@@ -5,7 +5,7 @@
                 <a href = "produkt.php?id=<?php echo htmlspecialchars($vypis['idprodukty'])?>"><img src="<?php echo htmlspecialchars($vypis['img_hlavna']); ?>" alt="<?php  $b = (!($vypis['img_alt'] == null)) ? htmlspecialchars($vypis['img_alt']) : ""; echo $b;?>"></a>
             </div>
             <div class="nadpis_vyziva_oblecenie">
-                <a href = "produkt.php?id=<?php echo htmlspecialchars($vypis['idprodukty'])?>"><h2><?php echo htmlspecialchars($vypis['nazov']); ?></h2></a>
+                <a href = "produkt.php?id=<?php echo htmlspecialchars($vypis['idprodukty'])?>"><h2><?php echo htmlspecialchars($vypis['produkt_nazov']); ?></h2></a>
                 <p><?php echo htmlspecialchars(substr($vypis['hlavny_popis'], 0, 175)); ?>...</p>
                 <p class="cena_vyziva_oblecenie"><?php echo htmlspecialchars($vypis['cena']);?>€</p>
         </div>

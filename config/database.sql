@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Št 24.Apr 2025, 20:45
+-- Čas generovania: Pi 25.Apr 2025, 21:33
 -- Verzia serveru: 10.4.32-MariaDB
 -- Verzia PHP: 8.2.12
 
@@ -55,6 +55,44 @@ CREATE TABLE `akordeon` (
 
 INSERT INTO `akordeon` (`idakordeon`, `otazka`, `odpoved`, `datum_vytvorenia`, `datum_upravy`) VALUES
 (14, 'HP na dynamické zobrazenie obsahu na stránke?', 'asdasldlasldsaaaa', '2025-04-20 13:51:33', '2025-04-21 17:25:23');
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `blog`
+--
+
+CREATE TABLE `blog` (
+  `idblog` int(11) NOT NULL,
+  `nazov` varchar(255) NOT NULL,
+  `popis` text NOT NULL,
+  `img_blog` varchar(255) DEFAULT NULL,
+  `img_alt` varchar(255) DEFAULT NULL,
+  `id_kategorie` int(11) NOT NULL,
+  `id_uzivatel` int(11) NOT NULL,
+  `datum_vytvorenia` datetime DEFAULT current_timestamp(),
+  `datum_upravy` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `blog_kategorie`
+--
+
+CREATE TABLE `blog_kategorie` (
+  `id_kategorie` int(11) NOT NULL,
+  `nazov_kategorie_blog` varchar(255) NOT NULL,
+  `datum_vytvorenia` datetime DEFAULT current_timestamp(),
+  `datum_upravy` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Sťahujem dáta pre tabuľku `blog_kategorie`
+--
+
+INSERT INTO `blog_kategorie` (`id_kategorie`, `nazov_kategorie_blog`, `datum_vytvorenia`, `datum_upravy`) VALUES
+(1, 'Zdravá strava', '2025-04-25 21:33:16', '2025-04-25 21:33:16');
 
 -- --------------------------------------------------------
 
@@ -319,6 +357,20 @@ ALTER TABLE `akordeon`
   ADD PRIMARY KEY (`idakordeon`);
 
 --
+-- Indexy pre tabuľku `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`idblog`),
+  ADD KEY `id_kategorie` (`id_kategorie`),
+  ADD KEY `id_uzivatel` (`id_uzivatel`);
+
+--
+-- Indexy pre tabuľku `blog_kategorie`
+--
+ALTER TABLE `blog_kategorie`
+  ADD PRIMARY KEY (`id_kategorie`);
+
+--
 -- Indexy pre tabuľku `doprava`
 --
 ALTER TABLE `doprava`
@@ -409,6 +461,18 @@ ALTER TABLE `akordeon`
   MODIFY `idakordeon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT pre tabuľku `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `idblog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pre tabuľku `blog_kategorie`
+--
+ALTER TABLE `blog_kategorie`
+  MODIFY `id_kategorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pre tabuľku `doprava`
 --
 ALTER TABLE `doprava`
@@ -471,6 +535,13 @@ ALTER TABLE `uzivatelia`
 --
 -- Obmedzenie pre exportované tabuľky
 --
+
+--
+-- Obmedzenie pre tabuľku `blog`
+--
+ALTER TABLE `blog`
+  ADD CONSTRAINT `blog_ibfk_1` FOREIGN KEY (`id_kategorie`) REFERENCES `blog_kategorie` (`id_kategorie`),
+  ADD CONSTRAINT `blog_ibfk_2` FOREIGN KEY (`id_uzivatel`) REFERENCES `uzivatelia` (`iduzivatelia`);
 
 --
 -- Obmedzenie pre tabuľku `kategorie`

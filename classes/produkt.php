@@ -749,7 +749,7 @@ class Produkt extends Database
         }
 
         try{
-            $sql = "SELECT p.idprodukty, p.nazov, p.img_hlavna, p.img_alt, p.hlavny_popis, p.cena
+            $sql = "SELECT *
             FROM produkty AS p
             INNER JOIN kategorie_has_produkty AS khp ON p.idprodukty = khp.produkty_idprodukty
             INNER JOIN kategorie AS k ON khp.kategorie_idkategorie = k.idkategorie

@@ -12,8 +12,13 @@ $slideshow = new Slideshow();
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Zlé ID");
 } else {
-    $slideshow_vymazanie = $slideshow->vymazanieRiadku($_GET['id']);
+    $slideshow_img_cesta = $slideshow->vypisjednehoZaznamu($_GET['id']);
+    $cesta = $_SERVER['DOCUMENT_ROOT']. '/' . $slideshow_img_cesta['img_url']; 
+    unlink($cesta);
+    $slideshow->vymazanieRiadku($_GET['id']);
+    
 }
+
 
 
 

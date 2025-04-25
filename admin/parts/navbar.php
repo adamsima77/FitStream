@@ -2,6 +2,7 @@
     <a href="<?php echo BASE_URL;?>admin/edit_vyziva.php" class = "logo"><h1 class>FitStream</h1></a>
     <ul>
     <a href="<?php echo BASE_URL; ?>admin/edit_vyziva.php"><li>Produkty</li></a>
+    <a href="<?php echo BASE_URL; ?>admin/edit_blog.php"><li>Blog</li></a>
     <div class="dropdown">
   <button class="dropbtn">Časti stránky</button>
   <div class="dropdown-content">

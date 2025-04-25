@@ -772,3 +772,63 @@ footer {
   .dropdown:hover .dropbtn {
    opacity: 0.8;
   }
+
+
+  
+.filtre{
+
+
+  display: flex;
+  margin-top: 50px;
+  gap: 25px;
+  flex-wrap: wrap;
+ }
+ 
+ .filtre a {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-width: 15%;
+   max-width: 20%;
+   height: 45px;
+   color: white;
+   background-color: #2f52ff;
+   border-radius: 7px;
+   padding: 0 20px; 
+   font-size: 16px;
+   font-weight: 600;
+   border: 1px solid black;
+   text-decoration: none; 
+   cursor: pointer;
+   transition: all 0.3s ease;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+ }
+ 
+ .filtre a:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+ }
+ 
+ .filtre a:focus{
+ 
+   outline: none;
+ 
+ }
+ @media screen and (max-width: 600px){
+ 
+  .filtre{
+  
+  display: flex;
+   flex-direction: column;
+   min-width: 95%;
+   justify-content: center;
+   align-items: center;
+   }
+ 
+   .filtre a{
+ 
+ 
+    min-width: 80%;
+     
+   }}
+   
