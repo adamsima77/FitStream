@@ -38,7 +38,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <?php endforeach;?>
 
 <?php if (isset($_GET['id'])):?>
-    <a href = "http://localhost/FitStream/vyziva.php" style = "background-color: red; margin-left:auto;">Odstrániť vybratý filter</a>
+    <a href = "http://localhost/FitStream/vyziva.php" style = "background-color: red;">Odstrániť vybratý filter</a>
 <?php endif;?>
 
 </div>

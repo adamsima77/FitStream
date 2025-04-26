@@ -53,10 +53,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 </div>
 <hr class = "pod">
 <?php endforeach;?>
-
-
-
-
-
+</div>
 </div>
 <?php include "parts/footer.php"; ?>

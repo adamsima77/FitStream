@@ -1,13 +1,13 @@
 <div class="vyziva_skupina_prislusenstvo" id="vyziva_skupina_prislusenstvo">
-    <?php foreach($filter as $a): ?>
+    <?php foreach($filter as $polozka): ?>
         <div class="box_vyziva_prislusenstvo">
             <div class="obrazok_vyziva_prislusenstvo">
-                <a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><img src='<?php echo htmlspecialchars($a['img_hlavna']); ?>' alt="<?php echo !empty($a['img_alt']) ? htmlspecialchars($a['img_alt']) : ''; ?>"></a>
+                <a href = "produkt.php?id=<?php echo htmlspecialchars($polozka['idprodukty'])?>"><img src='<?php echo htmlspecialchars($polozka['img_hlavna']); ?>' alt="<?php echo !empty($a['img_alt']) ? htmlspecialchars($polozka['img_alt']) : ''; ?>"></a>
             </div>
             <div class="nadpis_vyziva_prislusenstvo">
-                <a href = "produkt.php?id=<?php echo $a['idprodukty']?>"><h2><?php echo $a['nazov']; ?></h2></a>
-                <p><?php echo htmlspecialchars(substr($a['hlavny_popis'], 0, 175)); ?>...</p>
-                <p class="cena_vyziva_prislusenstvo"><?php echo htmlspecialchars($a['cena']); ?>€</p>
+                <a href = "produkt.php?id=<?php echo $polozka['idprodukty']?>"><h2><?php echo substr($polozka['nazov'],0,34); ?>...</h2></a>
+                <p><?php echo htmlspecialchars(substr($polozka['hlavny_popis'], 0, 175)); ?>...</p>
+                <p class="cena_vyziva_prislusenstvo"><?php echo htmlspecialchars($polozka['cena']); ?>€</p>
             </div>
 
             </div>

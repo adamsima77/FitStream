@@ -37,7 +37,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     "#2f52ff";?>"><?php echo $podkategoria['nazov_kategorie'];?></a>
 <?php endforeach;?>
 <?php if (isset($_GET['id'])):?>
-    <a href = "http://localhost/FitStream/prislusenstvo.php" style = "background-color: red; margin-left:auto;">Odstrániť vybratý filter</a>
+    <a href = "http://localhost/FitStream/prislusenstvo.php" style = "background-color: red;">Odstrániť vybratý filter</a>
 <?php endif;?>
 </div>
 

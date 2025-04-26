@@ -6,7 +6,7 @@
                 </a>
             </div>
             <div class="nadpis_vyziva">   
-                <a href = "produkt.php?id=<?php echo htmlspecialchars($vypis['idprodukty'])?>"><h2><?php echo htmlspecialchars($vypis['nazov']); ?></h2>
+                <a href = "produkt.php?id=<?php echo htmlspecialchars($vypis['idprodukty'])?>"><h2><?php echo htmlspecialchars(substr($vypis['nazov'],0,34)); ?>...</h2>
                 </a>
                 <p><?php echo htmlspecialchars(substr($vypis['hlavny_popis'], 0, 175)); ?>...</p>
                 <p class="cena_vyziva"><?php echo htmlspecialchars($vypis['cena']); ?>€</p>

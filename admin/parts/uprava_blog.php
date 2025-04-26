@@ -2,6 +2,20 @@
     <div class = "obal">
         <?php $blog->zobrazenieStavu()?>
             <a href="<?php echo BASE_URL; ?>admin/vytvorenie/vytvorenie_blog.php" class="vytvorenie">Vytvoriť nový článok</a>
+            <div class = "filtre">
+        <?php $vypis_blog = $blog->vypisKategorii();?>
+        <?php foreach($vypis_blog as $kategoria):?>
+          <?php $id_pod =  $kategoria['id_kategorie'];?>
+         <a href = "?id=<?php echo $id_pod;?>" style = "background-color: <?php echo $b = (isset($_GET['id']) && $_GET['id'] == $id_pod) ? "#2F3C7E;" : 
+               "#2f52ff"; ?>;"><?php echo $kategoria['nazov_kategorie_blog'];?></a>
+                <?php endforeach;?>
+
+        <?php if (isset($_GET['id'])):?>
+            <a href = "http://localhost/FitStream/admin/edit_blog.php" style = "background-color: red; margin-left:auto;">Odstrániť vybratý filter</a>
+        <?php endif;?>
+
+</div>
+            
             <table>
                 <tr>
                     <th>ID</th>
@@ -13,7 +27,7 @@
                     <th>Kategória</th>
                     <th>Akcia</th>
                 </tr>
-                <?php foreach($vypis_blog as $polozka):?>
+                <?php foreach($filter as $polozka):?>
                    
                     <tr>
                         <?php $id = $polozka['idblog'];?>

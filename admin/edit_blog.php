@@ -3,8 +3,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Blog.php';
 use blog\Blog;
 $blog = new Blog();
-$vypis_blog = $blog->blogVypis();
 
+
+
+$filter = [];
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $filter = $blog->filtrovanie($_GET['id']);
+} else {
+    $filter = $blog->blogVypis();
+}
 ?>
 
 <?php include "parts/header.php"; ?>
