@@ -358,5 +358,68 @@ class Blog extends Database
         }
     }
 
+    public function vypisHlavna(): array
+    {
+        try {
+            $sql = "SELECT * FROM blog
+                    ORDER BY datum_upravy DESC
+                    LIMIT 4";
+
+            $st = $this->conn->prepare($sql);
+            $st->execute();
+
+            return $st->fetchAll();
+        } catch (Exception $e) {
+            die("Nastala chyba");
+        } finally {
+            $this->conn = null;
+        }
+    }
+
+
+    public function blogClanok(int $id): array|false
+    {
+        try {
+            $sql = "SELECT nazov, popis, img_blog FROM blog
+                    WHERE idblog = ?";
+
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, $id);
+            $st->execute();
+
+            return $st->fetch();
+        } catch (Exception $e) {
+            die("Chyba pri načítaní produktu");
+        } finally {
+            $this->conn = null;
+        }
+    }
+
+    public function filtrovanie($id){
+        if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }
+
+        try{
+            $sql = "SELECT * FROM blog
+            INNER JOIN blog_kategorie ON blog.id_kategorie = blog_kategorie.id_kategorie
+            WHERE blog_kategorie.id_kategorie = ?;";
+                     
+            $statement = $this->conn->prepare($sql);
+            $statement->bindParam(1,$id);
+            $statement->execute();
+            return $statement->fetchAll();
+
+
+        } catch(Exception $e) {
+
+            die("Nastala chyba");
+        }
+         
+
+    }
 
 }

@@ -12,7 +12,8 @@ $Akordeon = new Akordeon();
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Zlé ID");
 } else {
-    $akordeon_vymazanie = $Akordeon->vymazanieRiadku($_GET['id']);
+    
+     $Akordeon->vymazanieRiadku($_GET['id']);
 }
 
 

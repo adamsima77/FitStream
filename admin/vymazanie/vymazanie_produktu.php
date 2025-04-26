@@ -12,7 +12,7 @@ $produkt = new Produkt();
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Zlé ID");
 } else {
-    $produkt_vymazanie = $produkt->vymazanieRiadku($_GET['id']);
+   $produkt->vymazanieRiadku($_GET['id']);
 }
 
 

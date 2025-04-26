@@ -46,11 +46,9 @@ class Uzivatel extends Database
                 throw new Exception("Používateľ s týmto e-mailom už existuje.");
             }
 
-            $datum_sql = date('Y-m-d', strtotime($datum));
+            $overeny_datum = $this->overenieDatumu($datum);
 
-            if (!$datum_sql) {
-                throw new Exception("Neplatný formát dátumu.");
-            }
+            
 
          
             $sql = "INSERT INTO uzivatelia (meno, priezvisko, email, heslo, datum_narodenia, rola) 
@@ -60,7 +58,7 @@ class Uzivatel extends Database
             $statement->bindParam(2, $priezvisko);
             $statement->bindParam(3, $email);
             $statement->bindParam(4, $hashedPassword);
-            $statement->bindParam(5, $datum_sql);
+            $statement->bindParam(5, $overeny_datum);
             $statement->bindParam(6, $this->rola);
             $statement->execute();
 
@@ -161,6 +159,23 @@ class Uzivatel extends Database
             echo '<div class="neuspech">Registrácia bola neúspešná.</div>';
         }
         unset($_SESSION['stav']);
+    }
+
+    private function overenieDatumu(string $datum){
+
+        // Použitie prefixu \ pretože namespace užívateľ nemá objekt datetime
+        try {
+            $datumNarodenia = new \DateTime($datum);
+        } catch (Exception $e) {
+            die("Neplatný formát dátumu.");
+        }
+    
+        if ($datumNarodenia->diff(new \DateTime())->y < 18) {
+            die("Vek pod 18 rokov!");
+        }
+    
+        return $datum;
+
     }
 }
 ?>

@@ -547,7 +547,7 @@ td .delete{
   font-size: 14px;
 }
 
-.vytvorenie_produktu #kategoria, #podkategoria{
+.vytvorenie_produktu #kategoria, #podkategoria, #kategoria{
 
   resize: vertical;
   padding: 8px 10px;

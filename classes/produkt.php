@@ -69,7 +69,7 @@ class Produkt extends Database
             
         }    
         try {
-            $sql = "SELECT p.idprodukty, p.nazov AS produkt_nazov, 
+            $sql = "SELECT p.idprodukty, p.nazov, 
                            k.nazov_kategorie AS kategoria_nazov, p.popis, p.img_hlavna,
                            p.cena, p.img_alt, hlavny_popis
                     FROM produkty p
@@ -98,7 +98,7 @@ class Produkt extends Database
             
         }    
         try {
-            $sql = "SELECT p.idprodukty, p.nazov AS produkt_nazov, 
+            $sql = "SELECT p.idprodukty, p.nazov, 
                            k.nazov_kategorie AS kategoria_nazov, p.popis, p.img_hlavna,
                            p.cena, p.img_alt, hlavny_popis
                     FROM produkty p

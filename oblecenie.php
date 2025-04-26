@@ -13,7 +13,7 @@ $filter = [];
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $filter = $vypis->filtrovanie($_GET['id']);
 } else {
-    $filter = $vypis_vyziva = $vypis->vypisOblecenie();
+    $filter = $vypis->vypisOblecenie();
 }
 ?>
 <div class = "zaobalenie_oblecenie">
