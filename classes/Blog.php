@@ -24,7 +24,7 @@ class Blog extends Database
             
         }
         try {
-            $sql = "SELECT * FROM blog";
+            $sql = "SELECT * FROM blog ORDER BY datum_vytvorenia DESC";
             $st = $this->conn->prepare($sql);
             $st->execute();
             $rs = $st->fetchAll();
@@ -172,12 +172,13 @@ class Blog extends Database
             $st->execute();
          
            
-            $_SESSION['stav'] = "uspech";
+            $_SESSION['uspech'] = "Záznam bol úspešne vytvorený.";
             header("Location: /FitStream/admin/edit_blog.php");
+            exit;
         } catch (Exception $e) {
            
-            $_SESSION['stav'] = "neuspech";
-            die("Nastala chyba: " . $e->getMessage());
+            $_SESSION['neuspech'] = "Nastala chyba pri vytvorení záznamu.";
+            die();
         } finally {
             $this->conn = null;
         }
@@ -221,12 +222,13 @@ class Blog extends Database
             $st->execute();
 
             
-            $_SESSION['stav'] = "uspech";
+            $_SESSION['uspech'] = "Záznam bol úspešne vymazaný.";
             header("Location: /FitStream/admin/edit_blog.php");
+            exit;
         } catch (Exception $e) {
         
-            $_SESSION['stav'] = "neuspech";
-            die("Nastala chyba: " . $e->getMessage());
+            $_SESSION['neuspech'] = "Nastala chyba pri mazaní záznamu.";
+            die();
         } finally {
             $this->conn = null;
         }
@@ -241,13 +243,15 @@ class Blog extends Database
 
        
 
-        if (isset($_SESSION['stav']) && $_SESSION['stav'] === "uspech") {
-            echo '<div class="uspech">Akcia bola úspešná.</div>';
-        } elseif (isset($_SESSION['stav']) && $_SESSION['stav'] === "neuspech") {
-            echo '<div class="neuspech">Akcia bola neúspešná.</div>';
+        if (isset($_SESSION['uspech'])) {
+            echo '<div class="uspech">' . $_SESSION['uspech'] . '</div>';
+            unset($_SESSION['uspech']);
+        } elseif (isset($_SESSION['neuspech'])) {
+            echo '<div class="neuspech">' . $_SESSION['neuspech'] . '</div>';
+            unset($_SESSION['neuspech']);
         }
 
-        unset($_SESSION['stav']);
+     
     }
 
     public function vypisJednehoZaznamu(int $id): array|false
@@ -347,12 +351,13 @@ class Blog extends Database
             $st->execute();
 
            
-            $_SESSION['stav'] = "uspech";
+            $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
             header("Location: /FitStream/admin/edit_blog.php");
+            exit;
         } catch (Exception $e) {
           
-            $_SESSION['stav'] = "neuspech";
-            die("Nastala chyba: " . $e->getMessage());
+            $_SESSION['neuspech'] = "Nastala chyba pri editácii záznamu";
+            die;
         } finally {
             $this->conn = null;
         }
@@ -406,7 +411,7 @@ class Blog extends Database
         try{
             $sql = "SELECT * FROM blog
             INNER JOIN blog_kategorie ON blog.id_kategorie = blog_kategorie.id_kategorie
-            WHERE blog_kategorie.id_kategorie = ?;";
+            WHERE blog_kategorie.id_kategorie = ? ORDER BY blog.datum_vytvorenia DESC;";
                      
             $statement = $this->conn->prepare($sql);
             $statement->bindParam(1,$id);

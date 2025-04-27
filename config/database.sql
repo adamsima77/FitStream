@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Pi 25.Apr 2025, 21:33
+-- Čas generovania: Sun 27.Apr 2025, 15:41
 -- Verzia serveru: 10.4.32-MariaDB
 -- Verzia PHP: 8.2.12
 
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `adresa` (
   `idadresa` int(11) NOT NULL,
-  `mesto` varchar(120) NOT NULL,
-  `ulica` varchar(150) NOT NULL,
-  `psc` varchar(20) NOT NULL,
-  `typ` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `mesto` varchar(255) NOT NULL,
+  `ulica` varchar(100) DEFAULT NULL,
+  `psc` varchar(20) DEFAULT NULL,
+  `datum_vytvorenia` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -102,8 +102,10 @@ INSERT INTO `blog_kategorie` (`id_kategorie`, `nazov_kategorie_blog`, `datum_vyt
 
 CREATE TABLE `doprava` (
   `iddoprava` int(11) NOT NULL,
-  `sposob_dopravy` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `nazov` varchar(100) NOT NULL,
+  `datum_vytvorenia` timestamp NOT NULL DEFAULT current_timestamp(),
+  `datum_upravy` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -223,13 +225,26 @@ INSERT INTO `navbar` (`idnavbar`, `nazov`, `url`) VALUES
 
 CREATE TABLE `objednavky` (
   `idobjednavky` int(11) NOT NULL,
-  `uzivatelia_iduzivatelia` int(11) NOT NULL,
-  `doprava_iddoprava` int(11) NOT NULL,
-  `platba_idplatba` int(11) NOT NULL,
-  `datum_vytvorenia` timestamp NOT NULL DEFAULT current_timestamp(),
-  `stav_objednavky` varchar(50) NOT NULL,
-  `produkty_idprodukty` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `id_adresa` int(11) DEFAULT NULL,
+  `id_platba` int(11) DEFAULT NULL,
+  `id_doprava` int(11) DEFAULT NULL,
+  `id_zakaznici` int(11) DEFAULT NULL,
+  `cena` decimal(10,2) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `datum_objednavky` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `objednavky_produkty`
+--
+
+CREATE TABLE `objednavky_produkty` (
+  `id_objednavky` int(11) NOT NULL,
+  `id_produkt` int(11) NOT NULL,
+  `mnozstvo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -239,22 +254,10 @@ CREATE TABLE `objednavky` (
 
 CREATE TABLE `platba` (
   `idplatba` int(11) NOT NULL,
-  `sposob_platby` varchar(200) NOT NULL,
-  `datum_vytvorenia` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Štruktúra tabuľky pre tabuľku `polozky_objednavky`
---
-
-CREATE TABLE `polozky_objednavky` (
-  `idpolozky_objednavky` int(11) NOT NULL,
-  `objednavky_idobjednavky` int(11) NOT NULL,
-  `produkty_idprodukty` int(11) NOT NULL,
-  `pocet_ks` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `nazov` varchar(100) NOT NULL,
+  `datum_vytvorenia` timestamp NOT NULL DEFAULT current_timestamp(),
+  `datum_upravy` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -328,17 +331,34 @@ CREATE TABLE `uzivatelia` (
   `datum_narodenia` date NOT NULL,
   `rola` int(11) NOT NULL,
   `datum_vytvorenia` timestamp NOT NULL DEFAULT current_timestamp(),
-  `datum_upravy` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `datum_upravy` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `adresa_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Sťahujem dáta pre tabuľku `uzivatelia`
 --
 
-INSERT INTO `uzivatelia` (`iduzivatelia`, `email`, `heslo`, `meno`, `priezvisko`, `datum_narodenia`, `rola`, `datum_vytvorenia`, `datum_upravy`) VALUES
-(5, 'admin@outlook.sk', '$2y$10$mBWMr4yuRW0Kv7BoRQz0Nu0cpmZESxKgJ.2bNrIeAdrKjYO5KFzue', 'Adam', 'Nový', '2005-07-16', 0, '2025-04-16 17:36:47', '2025-04-24 17:41:59'),
-(6, 'a@a', '$2y$10$zWZVka6KUt9Amv93389.LuvVLGnSX9YhOcRNEq1bMsKOXg5uaXGJ.', 'Adam', 'Starý', '2002-06-05', 1, '2025-04-19 07:51:18', '2025-04-19 07:51:18'),
-(10, 'sadasdsadsaad@a', '$2y$10$oK9HaEGGnq2bsUohGJI0YuJ5h3sXwyoLrTxXCruqQBwZtSHVdPkYW', 'Patrik', 'Nový', '2025-04-27', 1, '2025-04-19 08:08:18', '2025-04-19 08:08:18');
+INSERT INTO `uzivatelia` (`iduzivatelia`, `email`, `heslo`, `meno`, `priezvisko`, `datum_narodenia`, `rola`, `datum_vytvorenia`, `datum_upravy`, `adresa_id`) VALUES
+(5, 'admin@outlook.sk', '$2y$10$mBWMr4yuRW0Kv7BoRQz0Nu0cpmZESxKgJ.2bNrIeAdrKjYO5KFzue', 'Adam', 'Nový', '2005-07-16', 0, '2025-04-16 17:36:47', '2025-04-24 17:41:59', NULL),
+(6, 'a@a', '$2y$10$zWZVka6KUt9Amv93389.LuvVLGnSX9YhOcRNEq1bMsKOXg5uaXGJ.', 'Adam', 'Starý', '2002-06-05', 1, '2025-04-19 07:51:18', '2025-04-19 07:51:18', NULL),
+(10, 'sadasdsadsaad@a', '$2y$10$oK9HaEGGnq2bsUohGJI0YuJ5h3sXwyoLrTxXCruqQBwZtSHVdPkYW', 'Patrik', 'Nový', '2025-04-27', 1, '2025-04-19 08:08:18', '2025-04-19 08:08:18', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `zakaznici`
+--
+
+CREATE TABLE `zakaznici` (
+  `id` int(11) NOT NULL,
+  `id_uzivatelia` int(11) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `meno` varchar(100) DEFAULT NULL,
+  `priezvisko` varchar(100) DEFAULT NULL,
+  `datum_vytvorenia` datetime DEFAULT current_timestamp(),
+  `datum_upravy` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Kľúče pre exportované tabuľky
@@ -408,23 +428,23 @@ ALTER TABLE `navbar`
 --
 ALTER TABLE `objednavky`
   ADD PRIMARY KEY (`idobjednavky`),
-  ADD KEY `fk_objednavky_uzivatelia1_idx` (`uzivatelia_iduzivatelia`),
-  ADD KEY `fk_objednavky_doprava1_idx` (`doprava_iddoprava`),
-  ADD KEY `fk_objednavky_platba1_idx` (`platba_idplatba`),
-  ADD KEY `fk_objednavky_produkty1_idx` (`produkty_idprodukty`);
+  ADD KEY `id_adresa` (`id_adresa`),
+  ADD KEY `id_platba` (`id_platba`),
+  ADD KEY `id_doprava` (`id_doprava`),
+  ADD KEY `id_zakaznici` (`id_zakaznici`);
+
+--
+-- Indexy pre tabuľku `objednavky_produkty`
+--
+ALTER TABLE `objednavky_produkty`
+  ADD PRIMARY KEY (`id_objednavky`,`id_produkt`),
+  ADD KEY `id_produkt` (`id_produkt`);
 
 --
 -- Indexy pre tabuľku `platba`
 --
 ALTER TABLE `platba`
   ADD PRIMARY KEY (`idplatba`);
-
---
--- Indexy pre tabuľku `polozky_objednavky`
---
-ALTER TABLE `polozky_objednavky`
-  ADD PRIMARY KEY (`idpolozky_objednavky`),
-  ADD KEY `fk_polozky_objednavky_objednavky1_idx` (`objednavky_idobjednavky`);
 
 --
 -- Indexy pre tabuľku `produkty`
@@ -442,7 +462,15 @@ ALTER TABLE `slideshow`
 -- Indexy pre tabuľku `uzivatelia`
 --
 ALTER TABLE `uzivatelia`
-  ADD PRIMARY KEY (`iduzivatelia`);
+  ADD PRIMARY KEY (`iduzivatelia`),
+  ADD KEY `fk_adresa` (`adresa_id`);
+
+--
+-- Indexy pre tabuľku `zakaznici`
+--
+ALTER TABLE `zakaznici`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_uzivatelia` (`id_uzivatelia`);
 
 --
 -- AUTO_INCREMENT pre exportované tabuľky
@@ -509,12 +537,6 @@ ALTER TABLE `platba`
   MODIFY `idplatba` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pre tabuľku `polozky_objednavky`
---
-ALTER TABLE `polozky_objednavky`
-  MODIFY `idpolozky_objednavky` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pre tabuľku `produkty`
 --
 ALTER TABLE `produkty`
@@ -531,6 +553,12 @@ ALTER TABLE `slideshow`
 --
 ALTER TABLE `uzivatelia`
   MODIFY `iduzivatelia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT pre tabuľku `zakaznici`
+--
+ALTER TABLE `zakaznici`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Obmedzenie pre exportované tabuľky
@@ -560,16 +588,29 @@ ALTER TABLE `kategorie_has_produkty`
 -- Obmedzenie pre tabuľku `objednavky`
 --
 ALTER TABLE `objednavky`
-  ADD CONSTRAINT `fk_objednavky_doprava1` FOREIGN KEY (`doprava_iddoprava`) REFERENCES `doprava` (`iddoprava`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_objednavky_platba1` FOREIGN KEY (`platba_idplatba`) REFERENCES `platba` (`idplatba`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_objednavky_produkty1` FOREIGN KEY (`produkty_idprodukty`) REFERENCES `produkty` (`idprodukty`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_objednavky_uzivatelia1` FOREIGN KEY (`uzivatelia_iduzivatelia`) REFERENCES `uzivatelia` (`iduzivatelia`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `objednavky_ibfk_1` FOREIGN KEY (`id_adresa`) REFERENCES `adresa` (`idadresa`),
+  ADD CONSTRAINT `objednavky_ibfk_2` FOREIGN KEY (`id_platba`) REFERENCES `platba` (`idplatba`),
+  ADD CONSTRAINT `objednavky_ibfk_3` FOREIGN KEY (`id_doprava`) REFERENCES `doprava` (`iddoprava`),
+  ADD CONSTRAINT `objednavky_ibfk_4` FOREIGN KEY (`id_zakaznici`) REFERENCES `zakaznici` (`id`);
 
 --
--- Obmedzenie pre tabuľku `polozky_objednavky`
+-- Obmedzenie pre tabuľku `objednavky_produkty`
 --
-ALTER TABLE `polozky_objednavky`
-  ADD CONSTRAINT `fk_polozky_objednavky_objednavky1` FOREIGN KEY (`objednavky_idobjednavky`) REFERENCES `objednavky` (`idobjednavky`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `objednavky_produkty`
+  ADD CONSTRAINT `objednavky_produkty_ibfk_1` FOREIGN KEY (`id_objednavky`) REFERENCES `objednavky` (`idobjednavky`),
+  ADD CONSTRAINT `objednavky_produkty_ibfk_2` FOREIGN KEY (`id_produkt`) REFERENCES `produkty` (`idprodukty`);
+
+--
+-- Obmedzenie pre tabuľku `uzivatelia`
+--
+ALTER TABLE `uzivatelia`
+  ADD CONSTRAINT `fk_adresa` FOREIGN KEY (`adresa_id`) REFERENCES `adresa` (`idadresa`);
+
+--
+-- Obmedzenie pre tabuľku `zakaznici`
+--
+ALTER TABLE `zakaznici`
+  ADD CONSTRAINT `zakaznici_ibfk_1` FOREIGN KEY (`id_uzivatelia`) REFERENCES `uzivatelia` (`iduzivatelia`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

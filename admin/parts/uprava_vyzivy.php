@@ -12,7 +12,7 @@
                 <?php endforeach;?>
 
         <?php if (isset($_GET['id'])):?>
-            <a href = "http://localhost/FitStream/admin/edit_vyziva.php" style = "background-color: red; margin-left:auto;">Odstrániť vybratý filter</a>
+            <a href = "http://localhost/FitStream/admin/edit_vyziva.php" style = "background-color: red;">Odstrániť vybratý filter</a>
         <?php endif;?>
 
 </div>

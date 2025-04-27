@@ -40,12 +40,13 @@ class Footer extends Database
             $st->execute();
 
            
-            $_SESSION['stav'] = "uspech";
+            $_SESSION['uspech'] = "Záznam bol úspešne vytvorený.";
             header("Location: /FitStream/admin/edit_footer.php");
+            exit;
         } catch (Exception $e) {
            
-            $_SESSION['stav'] = "neuspech";
-            die("Nastala chyba: " . $e->getMessage());
+            $_SESSION['neuspech'] = "Pri vytváraní záznamu nastala chyba.";
+            die;
         } finally {
             $this->conn = null;
         }
@@ -85,12 +86,13 @@ class Footer extends Database
             $st->execute();
 
            
-            $_SESSION['stav'] = "uspech";
+            $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
             header("Location: /FitStream/admin/edit_footer.php");
+            exit;
         } catch (Exception $e) {
           
-            $_SESSION['stav'] = "neuspech";
-            die("Nastala chyba: " . $e->getMessage());
+            $_SESSION['neuspech'] = "Pri úprave záznamu nastala chyba.";
+            die;
         } finally {
             $this->conn = null;
         }
@@ -105,12 +107,13 @@ class Footer extends Database
             $st->execute();
 
           
-            $_SESSION['stav'] = "uspech";
+            $_SESSION['uspech'] = "Záznam bol úspešne zmazaný.";
             header("Location: /FitStream/admin/edit_footer.php");
+            exit;
         } catch (Exception $e) {
             
-            $_SESSION['stav'] = "neuspech";
-            die("Nastala chyba: " . $e->getMessage());
+            $_SESSION['neuspech'] = "Pri mazaní záznamu nastala chyba.";
+            die;
         } finally {
             $this->conn = null;
         }
@@ -120,13 +123,15 @@ class Footer extends Database
     {
         
 
-        if (isset($_SESSION['stav']) && $_SESSION['stav'] === "uspech") {
-            echo '<div class="uspech">Akcia bola úspešna.</div>';
-        } elseif (isset($_SESSION['stav']) && $_SESSION['stav'] === "neuspech") {
-            echo '<div class="neuspech">Akcia bola neúspešná.</div>';
+        if (isset($_SESSION['uspech'])) {
+            echo '<div class="uspech">'. $_SESSION['uspech'] .'</div>';
+            unset($_SESSION['uspech']);
+        } elseif (isset($_SESSION['neuspech'])) {
+            echo '<div class="neuspech">'. $_SESSION['neuspech'] .'</div>';
+            unset($_SESSION['neuspech']);
         }
 
-        unset($_SESSION['stav']);
+        
     }
 
     

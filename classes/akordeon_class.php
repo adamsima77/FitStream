@@ -41,11 +41,12 @@ class Akordeon extends Database
             $st->bindParam(3, $datum_vytvorenia);
             $st->bindParam(4, $datum_upravy);
             $st->execute();
-            $_SESSION['stav'] = "uspech";
+            $_SESSION['uspech'] = "Záznam bol úspešne vytvorený.";
             header("Location: /FitStream/admin/edit_akordeon.php");
+            exit;
         } catch (Exception $e) {
-            $_SESSION['stav'] = "neuspech";
-            die("Nastala chyba: " . $e->getMessage());
+            $_SESSION['neuspech'] = "Nastala chyba pri vytváraní záznamu.";
+            die;
         } finally {
             $this->conn = null;
         }
@@ -67,11 +68,11 @@ class Akordeon extends Database
             $st->bindParam(3, $datum_editu);
             $st->bindParam(4, $id);
             $st->execute();
-            $_SESSION['stav'] = "uspech";
+            $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
             header("Location: /FitStream/admin/edit_akordeon.php");
         } catch (Exception $e) {
-            $_SESSION['stav'] = "neuspech";
-            die("Nastala chyba: " . $e->getMessage());
+            $_SESSION['neuspech'] = "Pri úprave záznamu nastala chyba.";
+            die;
         } finally {
             $this->conn = null;
         }
@@ -104,13 +105,13 @@ class Akordeon extends Database
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
-            $_SESSION['stav'] = "uspech";
+            $_SESSION['uspech'] = "Záznam bol úspešne vymazaný.";
             header("Location: /FitStream/admin/edit_akordeon.php");
-            die();
+            exit;
 
         } catch (Exception $e) {
-            $_SESSION['stav'] = "neuspech";
-            die("Nastala chyba: " . $e->getMessage());
+            $_SESSION['neuspech'] = "Pri mazaní záznamu nastala chyba.";
+            die;
 
         } finally {
             $this->conn = null;
@@ -119,12 +120,14 @@ class Akordeon extends Database
 
     public function zobrazenieStavu()
     {
-        if (isset($_SESSION['stav']) && $_SESSION['stav'] == "uspech") {
-            echo '<div class = "uspech">Akcia bola úspešna.</div>';
-        } elseif (isset($_SESSION['stav']) && $_SESSION['stav'] == "neuspech") {
-            echo '<div class = "neuspech">Akcia bola neúspešná.</div>';
+        if (isset($_SESSION['uspech'])) {
+            echo '<div class = "uspech">' . $_SESSION['uspech'] . '</div>';
+            unset($_SESSION['uspech']);
+        } elseif (isset($_SESSION['neuspech'])) {
+            echo '<div class = "neuspech">'. $_SESSION['neuspech'] .'</div>';
+            unset($_SESSION['neuspech']);
         }
 
-        unset($_SESSION['stav']);
+      
     }
 }

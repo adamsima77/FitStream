@@ -760,7 +760,7 @@ place-self: center;
 
 .skup{
 
-
+width: 90%;
 
 
 }
@@ -769,7 +769,7 @@ place-self: center;
 
 margin-top: 10px;
 margin-bottom: 10px;
-max-width: 100%;
+min-width: 90%;
 height: auto;
 
 }
@@ -917,7 +917,7 @@ align-items: center;
 
 margin-top: 10px;
 margin-bottom: 10px;
-max-width: 100%;
+max-width: 80%;
 height: auto;
 
 }
@@ -2440,6 +2440,22 @@ margin-bottom: 30px;
 }
 
 
+ @media screen and (max-width: 800px){
+
+  .produkt_nazov_cena_popis {
+
+
+    flex-direction: column;
+  }
+  .produkt_img {
+
+    place-self: center;
+    width: 100%;
+    padding: 0;
+  }
+
+
+ }
 
 /*Error + akceptovanie*/
 .uspech {

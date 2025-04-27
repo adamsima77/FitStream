@@ -32,7 +32,9 @@ class Uzivatel extends Database
 
         try {
             if ($heslo !== $opakovanie_hesla) {
-                throw new Exception("Heslá sa nezhodujú.");
+                $_SESSION['neuspech'] = "Heslá sa nezhodujú.";
+                header("Location: /FitStream/register.php");
+                die;
             }
 
             $hashedPassword = password_hash($heslo, PASSWORD_BCRYPT);
@@ -43,7 +45,9 @@ class Uzivatel extends Database
             $existingUser = $statement->fetch();
 
             if ($existingUser) {
-                throw new Exception("Používateľ s týmto e-mailom už existuje.");
+                $_SESSION['neuspech'] = "Používateľ s týmto e-mailom už existuje.";
+                header("Location: /FitStream/register.php");
+                die;
             }
 
             $overeny_datum = $this->overenieDatumu($datum);
@@ -62,13 +66,18 @@ class Uzivatel extends Database
             $statement->bindParam(6, $this->rola);
             $statement->execute();
 
-            $_SESSION['stav'] = "uspech";
+            $_SESSION['uspech'] = "Boli ste úspešne registrovaní môžete sa prihlásiť.";
             header("Location: login.php");
-            die();
+            exit;
         } catch (Exception $e) {
-            $_SESSION['stav'] = "neuspech";
+
+             
+            $_SESSION['neuspech'] = "Nastala chyba pri registrácii.";
             header("Location: register.php");
-            die("Chyba pri registrácii: " . $e->getMessage());
+            die;
+            
+           
+            
         } finally {
             $this->conn = null;
         }
@@ -90,11 +99,15 @@ class Uzivatel extends Database
             $user = $statement->fetch();
 
             if (!$user) {
-                throw new Exception("Užívateľ s týmto emailom neexistuje.");
+                $_SESSION['neuspech'] = "Užívateľ s týmto e-mailom neexistuje.";
+                header("Location: /FitStream/login.php");
+                die;
             }
 
             if (!password_verify($heslo, $user['heslo'])) {
-                throw new Exception("Zle zadané heslo.");
+                $_SESSION['neuspech'] = "Zle zadané heslo.";
+                header("Location: /FitStream/login.php");
+                die;
             }
 
           
@@ -113,7 +126,9 @@ class Uzivatel extends Database
                 exit;
             }
         } catch (Exception $e) {
-            die("Nastala chyba: " . $e->getMessage());
+            $_SESSION['neuspech'] = "Nastala chyba pri prihlasovaní.";
+            header("Location: /FitStream/login.php");
+            die;
         } finally {
             $this->conn = null;
         }
@@ -125,21 +140,24 @@ class Uzivatel extends Database
         session_destroy();
         $_SESSION['odhlasenie'] = "odhlaseny";
         header("Location: ../index.php");
-        exit();
+        exit;
     }
 
     public function overenieAdmina(): void
     {
         if (!isset($_SESSION['user_rola']) || !isset($_SESSION['user_id'])) {
             header("Location: ../login.php");
-            die();
+            die;
         }
 
         if ($_SESSION['user_rola'] === 1) {
             header("Location: index.php");
-            die();
+            die;
         }
     }
+
+ 
+
 
     public function getAdmin(): string
     {
@@ -153,29 +171,37 @@ class Uzivatel extends Database
 
     public function zobrazenieStavu(): void
     {
-        if (isset($_SESSION['stav']) && $_SESSION['stav'] === "uspech") {
-            echo '<div class="uspech">Registrácia bola úspešna môžte sa prihlásiť.</div>';
-        } elseif (isset($_SESSION['stav']) && $_SESSION['stav'] === "neuspech") {
-            echo '<div class="neuspech">Registrácia bola neúspešná.</div>';
+        if (isset($_SESSION['uspech'])) {
+            echo '<div class="uspech">'. $_SESSION['uspech'] .'</div>';
+            unset($_SESSION['uspech']);
+        } elseif (isset($_SESSION['neuspech'])) {
+            echo '<div class="neuspech">'. $_SESSION['neuspech'] .'</div>';
+            unset($_SESSION['neuspech']);
         }
-        unset($_SESSION['stav']);
+        
     }
 
-    private function overenieDatumu(string $datum){
+    private function overenieDatumu(string $datum): string{
 
         // Použitie prefixu \ pretože namespace užívateľ nemá objekt datetime
         try {
             $datumNarodenia = new \DateTime($datum);
         } catch (Exception $e) {
-            die("Neplatný formát dátumu.");
+            $_SESSION['neuspech'] = "Neplatný formát dátumu.";
+            header("Location: /FitStream/register.php");
+            die;
         }
     
         if ($datumNarodenia->diff(new \DateTime())->y < 18) {
-            die("Vek pod 18 rokov!");
+            $_SESSION['neuspech'] = "Vek pod 18 rokov !";
+            header("Location: /FitStream/register.php");
+            die;
         }
     
         return $datum;
 
     }
+
+
 }
 ?>

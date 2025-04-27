@@ -1,3 +1,37 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
+
+
+<?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = $_POST['email'];
+        $heslo = $_POST['heslo_1'];
+
+    if (empty($email) || empty($heslo)) {
+        
+        $_SESSION['neuspech'] = "Prázdne textové polia.";
+        header("Location: /FitStream/login.php");
+        die;
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        
+        $_SESSION['neuspech'] = "Zadali ste zlý formát emailu.";
+        header("Location: /FitStream/login.php");
+        die;
+
+    } else {
+      
+      try { 
+          $uzivatel->uzivatelPrihlasenie($email, $heslo);
+      } catch (Exception $e) {
+          
+         
+        $_SESSION['neuspech'] = "Nastala neočakávaná chyba.";
+        header("Location: /FitStream/login.php");
+        die;
+      }
+           }
+    }
+?>
+
 <?php require 'parts/header.php';?>
 <body>
 
@@ -18,27 +52,6 @@
 
 </form>
 
-<?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $email = $_POST['email'];
-        $heslo = $_POST['heslo_1'];
-
-    if (empty($email) || empty($heslo)) {
-        die("Prázdne polia");
-    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-        die("Zadali ste zlý formát emailu !");
-
-    } else {
-      
-      try { 
-          $uzivatel->uzivatelPrihlasenie($email, $heslo);
-      } catch (Exception $e) {
-          die("Nastala chyba: " . $e->getMessage());
-      }
-           }
-    }
-?>
 
 <script src="javascript/app.js" type="text/javascript"></script>
 </body>

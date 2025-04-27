@@ -513,6 +513,13 @@ td .delete{
   td, th {
     padding: 10px;
   }
+
+  .vytvorenie{
+
+    place-self: center;
+    width: 80%;
+    text-align: center;
+  }
 }
 
 
