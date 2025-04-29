@@ -1,4 +1,4 @@
-<?php include_once "classes/navbar_links.php"; ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/navbar_links.php');?>
 <?php use navbar\Navbar?>
 
 <?php 

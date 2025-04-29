@@ -139,7 +139,7 @@ class Navbar extends Database
         if (isset($_SESSION['user_id']) && $_SESSION['user_rola'] == 1) {
             echo '<a href="config/logout.php"><i class="fa fa-sign-out" style="font-size: 20px;" id="log"></i></a>';
         } else {
-            echo '<a href="login.php"><i class="fa fa-user" style="font-size: 20px;" id="log"></i></a>';
+            echo '<a href="' . BASE_URL . 'login.php"><i class="fa fa-user" style="font-size: 20px;" id="log"></i></a>';
         }
     }
 

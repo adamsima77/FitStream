@@ -24,6 +24,6 @@ $footer_vypis = $footer->footer_Vypis();
 
 </footer>
 
-<script src="javascript/app.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL . "javascript/app.js";?>" type="text/javascript"></script>
 </body>
 </html>

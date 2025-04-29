@@ -1,12 +1,16 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
-
-<?php include "parts/header.php"; ?>
-<?php include "parts/navbar.php"; ?>
-<?php require 'parts/sidebar.php'; ?>
 <?php include_once "classes/produkt.php"; ?>
-<body>
+<?php include_once "classes/Objednavky.php"; ?>
+<?php use produkt\Produkt;
+      use objednavky\Objednavky;?>
+<?php
+
+$objednavky = new Objednavky();
+
+?>
+
 <?php 
-    use produkt\Produkt;
+    
     $p = new Produkt();
 
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -15,6 +19,47 @@
         die("Zlé ID.");
     }
     ?>
+
+
+<?php
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+
+    try{
+      
+        $pocet_kusov = $_POST['pocet_produktov'];
+        $_POST['idpr'] = $_GET['id'];
+        $id = $_POST['idpr'];
+
+        if(empty($pocet_kusov)){
+    
+            die("Vyplňte polia označené hviezdičkou");
+    
+        } else{
+
+          $objednavky->pridanieDoKosika($id,$pocet_kusov);
+
+              
+        }
+
+    }catch(Exception $e){
+
+         die("Nastala chyba: " . $e -> getMessage());
+        }
+}
+
+?>
+
+
+
+<?php include "parts/header.php"; ?>
+<?php include "parts/navbar.php"; ?>
+<?php require 'parts/sidebar.php'; ?>
+
+<body>
+
+   
+
 <div class="produkt_zaobalenie">
   <div class="produkt_z">
   
@@ -27,7 +72,10 @@
          <h1 class="produkt_nazov"><?php echo htmlspecialchars($produkt['nazov']); ?></h1>
          <p class = "hlavny_popis"><?php echo $produkt['hlavny_popis'];?></p>
          <p class="produkt_cena"><?php echo htmlspecialchars($produkt['cena']); ?> €</p>
-         <a href="" class = "produkt_do_kosika"><i class="fa fa-shopping-cart"></i> Do košíka</a>
+    <form action="" method="POST">
+      <input type = "number" id = "pocet_produktov" name = "pocet_produktov" value = "1">
+      <input type="submit" class="produkt_do_kosika" value="Do košíka">
+    </form> 
          
 </div>
 

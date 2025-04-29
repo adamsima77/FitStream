@@ -338,7 +338,12 @@ footer {
   background-color: #2F3C7E;
   color: white;
   padding: 17px 15px;
-  margin-top: 100px;
+  margin-top: 120px;
+ 
+
+  
+
+  
 }
 
 .social_media_links {
@@ -386,7 +391,7 @@ footer {
 @media only screen and (max-width: 700px) {
     footer{
       
-    
+     
     
  
  
@@ -434,24 +439,30 @@ footer {
 
    /*Slideshow*/
    .slideshow {
-    width: 100%;
-    max-height: 550px;
+    width: 100%; 
+  
+    max-height: 800px; 
+    margin: 0; 
     position: relative;
-    margin: 150px auto 0;
     overflow: hidden;
-    background-color: #000; 
     display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 150px;
+  
   }
+
+  .fotky {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+}
   
   .slideshow img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
     transition: transform 0.3s ease;
-    background-color: #000;
+    
   }
   
 
@@ -800,6 +811,7 @@ text-align: center;
   gap: 20px; 
   text-decoration: none;
   color: black;
+
 }
 
 .box_pre_clanky {
@@ -815,6 +827,7 @@ text-align: center;
   transition: transform 0.3s ease;
   flex-grow: 1;
   box-sizing: border-box;
+  margin-bottom: 50px;
 
 }
 
@@ -1323,7 +1336,7 @@ justify-content: center;
 
   display: flex;
   flex-direction: column;
-  max-width: 85%;
+  max-width: 95%;
   place-self: center;
   justify-content: center;
 
@@ -1603,7 +1616,7 @@ justify-content: center;
   
     display: flex;
     flex-direction: column;
-    max-width: 85%;
+    max-width: 95%;
     place-self: center;
     justify-content: center;
   
@@ -2146,7 +2159,7 @@ flex-wrap: wrap;
   
     display: flex;
     flex-direction: column;
-    max-width: 85%;
+    max-width: 95%;
     place-self: center;
     justify-content: center;
   
@@ -2350,6 +2363,7 @@ margin-bottom: 30px;
 }
 
 
+
 .produkt_nazov_cena_popis {
   display: flex;
   flex-direction: row;
@@ -2416,6 +2430,30 @@ margin-bottom: 30px;
   display: inline-block;
   width: fit-content;
   margin-top: 20px;
+  height: 45px;
+  width: 65%;
+  
+
+}
+
+.produkt_col form input[type = "number"]{
+
+  width: 60%;
+  height: 25px;
+  border-radius: 8px;
+ 
+  padding: 12px;
+  border: 2px solid #ccc;
+  font-size: 14px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s;
+
+}
+
+.produkt_col form{
+
+  display: flex;
+  flex-direction: column;
 }
 
 .produkt_do_kosika:hover {
@@ -2478,4 +2516,435 @@ margin-bottom: 30px;
   border-radius: 5px;
   font-weight: bold;
  
+}
+
+
+/*Objednávky*/
+.vypis_kosik {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 1rem;
+  min-width: 100%; 
+  margin-top: 150px;
+ 
+
+}
+
+
+.vypis_kosik .kosik_preklik {
+
+   color: #007fff;
+   text-decoration: none;
+   
+   
+
+}
+
+.vypis_kosik .kosik_preklik:hover {
+
+  opacity: 0.7;
+  transition: 0.3s all ease;
+
+}
+
+.kosik_polozka {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+  min-width: 100%;
+  place-self: center;
+ 
+ 
+}
+
+.kosik_polozka:hover {
+  transform: translateY(-3px);
+}
+
+.kosik_polozka img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.polozka_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.polozka_info h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #333;
+}
+
+.polozka_info p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+ 
+}
+
+
+
+
+/*Presun*/
+.presun {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  width: 100%;
+
+
+}
+
+.presun .presun_kosik {
+  background-color: #007fff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-size: 18px;
+  justify-content: center;
+  text-decoration: none;
+  align-items: center;
+  height: 50px;
+  display: flex;  
+  transition: transform 0.2s ease;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  
+} 
+
+.presun .presun_kosik:hover{
+
+  transform: translateY(-3px);
+
+
+}
+.kosik_zaobalenie{
+
+  
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  place-self: center;
+  justify-content: center;
+
+} 
+
+.kosik_zao{
+
+
+  
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+  place-self: center;
+  justify-content: center;
+
+}
+
+
+.vysledna_cena_1{
+
+  display: flex;
+  flex-direction: column;
+  background-color: #007fff;
+  color: #ffffff; 
+  padding: 30px;
+  border-radius: 8px;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  font-weight: 520;
+
+}
+.vysledna_cena{
+
+ 
+   
+   display: flex;
+   justify-content: flex-end;
+   align-items: flex-end;
+   flex-direction: column;
+   padding: 20px;
+   border-radius: 8px;
+  
+
+}
+
+.prazdny_kosik{
+
+
+display: flex;
+
+place-self: center;
+margin-top: 200px;
+border-radius: 7px;
+padding: 30px;
+font-weight: 500;
+justify-content: center;
+align-items: center;
+
+}
+
+
+/*meno_adresa*/
+.osobne_udaje_kosik {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  place-self: center;
+  margin-top: 200px;
+}
+
+.osobne_udaje_kosik h1 {
+  font-size: 1.8em;
+  color: #007fff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.osobne_udaje_kosik label {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.osobne_udaje_kosik .email_kos, input[type="text"], select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.osobne_udaje_kosik input[type="text"]:focus,.email_kos:focus, select:focus,input[type="text"]:focus {
+  border-color: #007fff;
+  outline: none;
+}
+
+.osobne_udaje_kosik input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+.osobne_udaje_kosik select,input[type="text"] {
+  cursor: pointer;
+}
+
+.osobne_udaje_kosik button {
+  background-color: #007fff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.1em;
+}
+
+.osobne_udaje_kosik button:hover {
+  background-color: #005cbf;
+}
+
+.osobne_udaje_kosik input[type = 'submit']{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  color: white;
+  background-color: #2f52ff;
+  border-radius: 7px;
+  padding: 0 20px; 
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid black;
+  text-decoration: none; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+
+}
+
+.osobne_udaje_kosik input[type = 'submit']:hover{
+
+       opacity: 0.8;
+
+}
+
+.pocet_poloziek {
+  background-color: red; 
+  color: white; 
+  padding: 5px 10px;
+  border-radius: 50%; 
+  font-size: 16px;
+
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/*Výpis údajov*/
+.vypis_udajov {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  border: 1px solid black;
+  margin-top: 150px;
+}
+
+.vypis_udajov h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.vypis_udajov h2 {
+  font-size: 20px;
+  margin-top: 25px;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 5px;
+  color: #34495e;
+}
+
+.vypis_udajov p {
+  margin: 8px 0;
+  padding: 4px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+@media (max-width: 600px) {
+  .vypis_udajov {
+      padding: 20px;
+  }
+
+  .vypis_udajov h1 {
+      font-size: 24px;
+  }
+
+  .vypis_udajov h2 {
+      font-size: 18px;
+  }
+
+  .vypis_udajov p {
+      font-size: 15px;
+  }
+}
+
+.vypis_submit{
+
+  background-color: #007fff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: inline-block;
+  width: fit-content;
+  margin-top: 20px;
+  height: 45px;
+  width: 65%;
+  transition: 0.3s;
+
+
+
+
+
+}
+
+.vypis_forma{
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.vypis_submit:hover{
+
+  opacity: 0.7;
+}
+
+/*Úspešná objednávka*/
+
+.uspesna_objednavka{
+
+display: flex;
+height: 100vh;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+gap: 25px;
+
+}
+
+.uspesna_objednavka h1{
+
+  text-align: center;
+}
+
+.uspesna_objednavka a{
+
+  background-color: #007fff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: inline-block;
+  width: fit-content;
+  margin-top: 20px;
+  height: 45px;
+  min-width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
 }

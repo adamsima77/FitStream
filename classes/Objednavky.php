@@ -4,17 +4,345 @@ namespace objednavky;
 use database\Database;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
 
-class objednavky extends Database{
+class Objednavky extends Database{
 
-
-
+    protected $conn;
+    private $pole = [];
+    private $vysledna_cena = 0;
+    public function __construct()
+    {
+        $this->connect();
+        $this->conn = $this->getConnection();
+        $this->inicializaciaKosika();
+        
+    }
     
 
+   private function inicializaciaKosika(): void
+   {
+
+
+    if (isset($_COOKIE['kosik'])) {
+        $this->pole = json_decode($_COOKIE['kosik'], true);
+    } else {
+        $this->pole = [];
+    }
+
+
+   } 
+   private function aktualizaciaKosika(): void
+   {
+       $data = json_encode($this->pole);
+   
+       if ($data === false) {
+           throw new \Exception('Chyba pri serializácii košíka.');
+       }
+   
+       setcookie('kosik', $data, time() + (86400 * 30), "/");
+   }
+
+   public function pridanieDoKosika(int $id, int $pocet_kusov): void{
+
+    
+      $pole = isset($_COOKIE['kosik']) ? json_decode($_COOKIE['kosik'], true) : [];
+
+
+      $najdene = false;
+      foreach ($pole as &$polozka) {
+          if ($polozka['id'] === $id) {
+              $polozka['pocet_kusov'] += $pocet_kusov;
+              $najdene = true;
+              break;
+          }
+      }
+
+       if (!$najdene) {
+          $this->pole[] = ['id' => $id, 'pocet_kusov' => $pocet_kusov];
+       }
+
+       $this->aktualizaciaKosika();
+
+       header("Location: produkt.php?id=" . $id);
+
+   }
+
+   public function velkostKosika(): int{
+      
+      
+      return count($this->pole);
+
+   }
+    
+   public function vypisPoloziek(): array{
+    
+    if ($this->conn === null) {
+
+        $this->connect();
+        $this->conn = $this->getConnection();
+        
+    }    
+    $kosik = [];
+    try{
+        
+     foreach($this->pole as $polozka){
+        $sql = "SELECT * FROM produkty WHERE idprodukty = ?;";
+        $statement = $this->conn->prepare($sql);
+        $statement->bindParam(1,$polozka['id']);
+        $statement->execute();
+        $produkt = $statement->fetch();
+
+        if ($produkt) {
+            $produkt['pocet_kusov'] = $polozka['pocet_kusov'];
+            $produkt['cena_produktu'] = $produkt['cena'] * $produkt['pocet_kusov'];
+            $kosik[] = $produkt;
+        }
+     }
+        return $kosik;
+        
+    }catch(Exception $e){
+
+        die;
+
+    }
+    
+   }
+
+   public function vymazanieProduktu(int $id): void
+   {
+    
+    if ($this->conn === null) {
+
+        $this->connect();
+        $this->conn = $this->getConnection();
+        
+    }    
+        
+        foreach($this->pole as $polozka => $hodnota){
+
+              if($hodnota['id'] === $id){
+
+                  unset($this->pole[$polozka]);
+                  break;
+              }
+
+        }
+
+        $this->pole = array_values($this->pole);
+         $this->aktualizaciaKosika();
+
+
+   }
+   
+   
+  public function spracovanieUdajov(): void{
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        if(!empty($_POST['email']) && !empty($_POST['meno']) && !empty($_POST['priezvisko']) && 
+          !empty($_POST['telefonne_cislo']) && !empty($_POST['mesto']) && !empty($_POST['ulica'])
+          && !empty($_POST['psc']) && !empty($_POST['platba']) && !empty($_POST['doprava'])){
+      
+              $_SESSION['kosik_email'] = $_POST['email'];
+              $_SESSION['kosik_meno'] = $_POST['meno'];
+              $_SESSION['kosik_priezvisko'] = $_POST['priezvisko'];
+              $_SESSION['kosik_telefonne_cislo'] = $_POST['telefonne_cislo'];
+              $_SESSION['kosik_mesto'] = $_POST['mesto'];
+              $_SESSION['kosik_ulica'] = $_POST['ulica'];
+              $_SESSION['kosik_psc'] = $_POST['psc'];
+              $_SESSION['kosik_platba'] = $_POST['platba'];
+              $_SESSION['kosik_doprava'] = $_POST['doprava'];
+              header("Location: /FitStream/kosik/vypis_udajov.php");
+              exit;
+      
+          } else{
+      
+              die("Prázdne polia.");
+        
+      }
+      
+      }
+
+
+  }
+
+  public function vypisDoprava(): array{
+
+    if ($this->conn === null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
+
+    try {
+        $sql = "SELECT * FROM doprava";
+        $st = $this->conn->prepare($sql);
+        $st->execute();
+        return $st->fetchAll();
+    } catch (Exception $e) {
+        die("Nastala chyba");
+    } finally {
+        $this->conn = null;
+    }
+
+  }
+
+  public function vypisPlatba(): array{
+
+    if ($this->conn === null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
+
+    try {
+        $sql = "SELECT * FROM platba";
+        $st = $this->conn->prepare($sql);
+        $st->execute();
+        return $st->fetchAll();
+    } catch (Exception $e) {
+        die("Nastala chyba");
+    } finally {
+        $this->conn = null;
+    }
+
+  }
+
+  public function getPlatba(int $id){
+
+    if ($this->conn === null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
+
+    try {
+        $sql = "SELECT nazov FROM platba WHERE idplatba = ?";
+        $st = $this->conn->prepare($sql);
+        $st->bindParam(1,$id);
+        $st->execute();
+        return $st->fetch();
+    } catch (Exception $e) {
+        die("Nastala chyba");
+    } finally {
+        $this->conn = null;
+    }
+
+
+  }
+
+  public function getDoprava(int $id){
+
+    if ($this->conn === null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
+
+    try {
+        $sql = "SELECT nazov FROM doprava WHERE iddoprava = ?";
+        $st = $this->conn->prepare($sql);
+        $st->bindParam(1,$id);
+        $st->execute();
+        return $st->fetch();
+    } catch (Exception $e) {
+        die("Nastala chyba");
+    } finally {
+        $this->conn = null;
+    }
+
+
+  }
+
+  public function ukladanieDoDatabazy(string $email,string $meno, string $priezvisko,
+  string $telefonne_cislo, string $mesto, string $ulica, string $psc, int $platba,int $doprava): void{
+
+    if ($this->conn === null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
+
+    try {
+        
+        
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    
+        $sql = "INSERT INTO adresa(mesto,ulica,psc) VALUES(?,?,?);";
+        $statement = $this->conn->prepare($sql);
+        $statement->bindParam(1,$mesto);
+        $statement->bindParam(2,$ulica);
+        $statement->bindParam(3,$psc);
+        $statement->execute();
+
+        $id_adresa = $this->conn->lastInsertId();
+
+        $sql = "INSERT INTO zakaznici(email,meno,priezvisko,telefonne_cislo) VALUES(?,?,?,?);";
+        $statement = $this->conn->prepare($sql);
+        $statement->bindParam(1,$email);
+        $statement->bindParam(2,$meno);
+        $statement->bindParam(3,$priezvisko);
+        $statement->bindParam(4,$telefonne_cislo);
+        $statement->execute();
+
+        $id_zakaznik = $this->conn->lastInsertId();
+        
+        $cena = 0;
+        $polozky = $this->vypisPoloziek();
+        foreach($polozky as $polozka){
+
+                  $cena += $polozka['cena'];
+
+
+        }
+
+        $status = "V príprave";
+        $sql = "INSERT INTO objednavky(id_adresa, id_platba, id_doprava, id_zakaznici, cena, status) 
+        VALUES(?,?,?,?,?,?);";
+        $statement = $this->conn->prepare($sql);
+        $statement->bindParam(1,$id_adresa);
+        $statement->bindParam(2,$platba);
+        $statement->bindParam(3,$doprava);
+        $statement->bindParam(4,$id_zakaznik);
+        $statement->bindParam(5,$cena);
+        $statement->bindParam(6,$status);
+        $statement->execute();
+
+        $id_objednavky = $this->conn->lastInsertId();
+
+        
+      
+
+          
+
+
+    $id_produktu = 0;
+    $pocet_ks = 0;
+    foreach($polozky as $polozka){
+        $id_produktu = (int) $polozka['idprodukty'];
+        $pocet_ks = $polozka['pocet_kusov'];
+        $sql = "INSERT INTO objednavky_produkty(id_objednavky,id_produkt,mnozstvo) 
+        VALUES(?,?,?);";
+        $statement = $this->conn->prepare($sql);
+        $statement->bindParam(1,$id_objednavky);
+        $statement->bindParam(2,$id_produktu);
+        $statement->bindParam(3,$pocet_ks);
+        $statement->execute();
+
+    }
+       
+
+       setcookie('kosik', '', time() - 3600, '/');
+       header("Location: uspesna_objednavka.php"); 
+       exit;
+
+    }
 
 
 
+    } catch (Exception $e) {
+        die("Nastala chyba");
+    } finally {
+        $this->conn = null;
+    }
 
 
+
+  }
 
 
 
