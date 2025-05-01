@@ -1,7 +1,29 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/footer_linky.php');?>
+<?php use footer\Footer?>
+<?php 
+$footer = new Footer();
+$footer_vypis = $footer->footer_Vypis();
+?>
 
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/parts/footer.php'; ?>
+<footer>
+    <div class = "bottom_footer">
+        <div class = "footer_rights"><p class = ""> &copy; <span id="year"></span>FitStream. <?php echo(date("Y")); ?> All rights reserved.</p></div>
+            <div class = "social_media_links">
 
+                <?php foreach($footer_vypis as $a): ?>
+                    <a href="<?php echo htmlspecialchars($a['url']); ?>">
+                    <button class="social"
+                    style="background-color: <?php echo htmlspecialchars($a['farba_bg']); ?>;
+                    color: <?php echo htmlspecialchars($a['farba_ikony']); ?>;">
+                   <i class="<?php echo htmlspecialchars($a['ikona']); ?>" style="font-size: 20px;"></i>
+                   </button>
+                   </a>
+                <?php endforeach; ?>
+         </div>
+            </div>
 
-<script src = "javascript/script.js"></script>
+</footer>
+
+<script src="<?php echo BASE_URL . "admin/javascript/script.js";?>" type="text/javascript"></script>
 </body>
 </html>

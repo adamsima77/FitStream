@@ -15,6 +15,7 @@
 <div class="dropdown">
   <button class="dropbtn">Objednávky</button>
   <div class="dropdown-content">
+  <a href="<?php echo BASE_URL; ?>admin/edit_doprava.php"><li>Doprava</li></a>
    
   </div>
 </div>

@@ -29,7 +29,7 @@ class Akordeon extends Database
         }
     }
 
-    public function vytvorenieRiadku($otazka, $odpoved)
+    public function vytvorenieRiadku(string $otazka, string $odpoved)
     {
         try {
             $sql = "INSERT INTO akordeon(otazka,odpoved,datum_vytvorenia,datum_upravy) VALUES (?, ?, ?, ?)";
@@ -52,7 +52,7 @@ class Akordeon extends Database
         }
     }
 
-    public function editaciaRiadku($id, $otazka, $odpoved)
+    public function editaciaRiadku(int $id, string $otazka, string $odpoved)
     {
         if ($this->conn == null) {
             $this->connect();
@@ -78,7 +78,7 @@ class Akordeon extends Database
         }
     }
 
-    public function vypisJednehoZaznamu($id)
+    public function vypisJednehoZaznamu(int $id)
     {
         try {
             $sql = "SELECT otazka,odpoved FROM akordeon WHERE idakordeon = ?";
@@ -93,7 +93,7 @@ class Akordeon extends Database
         }
     }
 
-    public function vymazanieRiadku($id)
+    public function vymazanieRiadku(int $id)
     {
         if ($this->conn == null) {
             $this->connect();

@@ -15,11 +15,13 @@ $vypis_linkov = $nav->navbar_Links();
                 <div class = "ds">
                 <?php $nav->overenieUzivatela();?>
                 <a href = "kosik.php"><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
-    </div>
+                <?php $objednavky->zobrazeniePoctu()?>
+                </div> 
     <ul>
         <?php foreach($vypis_linkov as $a):?>
             <a href="<?php echo $a['url'] ;?>"><li><?php echo htmlspecialchars($a['nazov']);?></li></a>
             <?php endforeach?>
+            <?php $nav->navratDoAdmina();?>
     </ul>
             </div>
      </div>

@@ -10,6 +10,7 @@
 <?php 
 $nav = new Navbar();
 $vypis_linkov = $nav->navbar_Links();
+
 ?>
 <nav class = "menu">
     <a href="<?php echo BASE_URL . "index.php";?>" class = "logo"><h1 class>FitStream</h1></a>
@@ -17,6 +18,7 @@ $vypis_linkov = $nav->navbar_Links();
         <?php foreach($vypis_linkov as $a):?>
             <a href="<?php echo $a['url'] ;?>"><li><?php echo htmlspecialchars($a['nazov']);?></li></a>
         <?php endforeach?>
+        <?php $nav->navratDoAdmina();?>
           
     </ul>
     <div class = "pr">
@@ -25,7 +27,8 @@ $vypis_linkov = $nav->navbar_Links();
         $nav->overenieUzivatela();
         ?>
         <a href = "<?php echo BASE_URL . "kosik.php";?>"><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
-        <div class = "pocet_poloziek"><?php echo $pocet_poloziek = $objednavky->velkostKosika();?></div> 
+       
+        <?php $objednavky->zobrazeniePoctu()?>
        </div>
         <div class="hamburger" id="hamburger">
 

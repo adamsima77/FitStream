@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Út 29.Apr 2025, 18:49
+-- Čas generovania: Št 01.Máj 2025, 18:39
 -- Verzia serveru: 10.4.32-MariaDB
 -- Verzia PHP: 8.2.12
 
@@ -45,7 +45,11 @@ INSERT INTO `adresa` (`idadresa`, `mesto`, `ulica`, `psc`, `datum_vytvorenia`) V
 (3, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:13:14'),
 (4, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:15:34'),
 (5, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:16:19'),
-(6, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:42:09');
+(6, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:42:09'),
+(7, 'Vráble', 'Hlavná', '987654', '2025-04-30 06:52:53'),
+(8, 'Vráble', 'Hlavná', '987654', '2025-04-30 08:38:38'),
+(9, 'Vráble', 'Hlavná', '987654', '2025-04-30 10:33:06'),
+(10, 'Vráble', 'Hlavná', '987654', '2025-04-30 19:05:02');
 
 -- --------------------------------------------------------
 
@@ -66,7 +70,9 @@ CREATE TABLE `akordeon` (
 --
 
 INSERT INTO `akordeon` (`idakordeon`, `otazka`, `odpoved`, `datum_vytvorenia`, `datum_upravy`) VALUES
-(14, 'HP na dynamické zobrazenie obsahu na stránke?', 'asdasldlasldsaaaa', '2025-04-20 13:51:33', '2025-04-21 17:25:23');
+(15, ' Ako dlho trvá doručenie objednávky?', 'Všetky objednávky odosielame do 24 hodín počas pracovných dní. Doručenie trvá zvyčajne 1–3 pracovné dni v rámci Slovenska a 2–5 dní.', '2025-05-01 16:15:34', '0000-00-00 00:00:00'),
+(16, 'Je možné tovar vrátiť alebo vymeniť?', 'Áno, nepoužitý tovar môžete vrátiť alebo vymeniť do 14 dní od doručenia. Stačí vyplniť formulár na našej stránke a zaslať nám ho spolu s tovarom späť.', '2025-05-01 16:15:50', '0000-00-00 00:00:00'),
+(17, 'Môžem si objednať aj bez registrácie?', 'Áno, nákup je možný aj bez vytvárania účtu. Stačí pri pokladni vyplniť doručovacie údaje a vybrať spôsob platby.', '2025-05-01 16:16:34', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -123,7 +129,7 @@ CREATE TABLE `doprava` (
   `iddoprava` int(11) NOT NULL,
   `nazov` varchar(100) NOT NULL,
   `datum_vytvorenia` timestamp NOT NULL DEFAULT current_timestamp(),
-  `datum_upravy` timestamp NULL DEFAULT NULL
+  `datum_upravy` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -131,7 +137,7 @@ CREATE TABLE `doprava` (
 --
 
 INSERT INTO `doprava` (`iddoprava`, `nazov`, `datum_vytvorenia`, `datum_upravy`) VALUES
-(1, 'Kuriér', '2025-04-29 14:56:47', NULL);
+(1, 'Kuriér', '2025-04-29 14:56:47', '2025-05-01 16:13:04');
 
 -- --------------------------------------------------------
 
@@ -152,8 +158,10 @@ CREATE TABLE `footer_ikony` (
 --
 
 INSERT INTO `footer_ikony` (`idfooter`, `ikona`, `farba_bg`, `farba_ikony`, `url`) VALUES
-(3, 'fa fa-youtubeaa', '#ff0000', '#ffffff', 'https://www.youtube.com'),
-(5, 'fa fa-linkedin', '#42ffe9', '#ffffff', 'https://www.linkedin.com');
+(5, 'fa fa-linkedin', '#42ffe9', '#ffffff', 'https://www.linkedin.com'),
+(15, 'fa fa-youtube', '#ff0000', '#ffffff', 'https://www.youtube.com'),
+(16, 'fa fa-instagram', '#fb00ff', '#ffffff', 'https://www.instagram.com/'),
+(17, 'fa fa-facebook', '#006eff', '#ffffff', 'https://www.facebook.com/?locale=sk_SK');
 
 -- --------------------------------------------------------
 
@@ -268,7 +276,11 @@ INSERT INTO `objednavky` (`idobjednavky`, `id_adresa`, `id_platba`, `id_doprava`
 (1, 3, 1, 1, 3, 26.99, 'V príprave', '2025-04-29 16:13:14'),
 (2, 4, 1, 1, 4, 106.48, 'V príprave', '2025-04-29 16:15:34'),
 (3, 5, 1, 1, 5, 59.90, 'V príprave', '2025-04-29 16:16:19'),
-(4, 6, 1, 1, 6, 94.85, 'V príprave', '2025-04-29 16:42:09');
+(4, 6, 1, 1, 6, 94.85, 'V príprave', '2025-04-29 16:42:09'),
+(5, 7, 1, 1, 7, 72.94, 'V príprave', '2025-04-30 06:52:53'),
+(6, 8, 1, 1, 8, 26.99, 'V príprave', '2025-04-30 08:38:38'),
+(7, 9, 1, 1, 9, 23.90, 'V príprave', '2025-04-30 10:33:06'),
+(8, 10, 1, 1, 10, 27.53, 'V príprave', '2025-04-30 19:05:02');
 
 -- --------------------------------------------------------
 
@@ -294,7 +306,12 @@ INSERT INTO `objednavky_produkty` (`id_objednavky`, `id_produkt`, `mnozstvo`) VA
 (3, 31, 5),
 (4, 31, 1),
 (4, 38, 1),
-(4, 39, 1);
+(4, 39, 1),
+(5, 32, 3),
+(5, 40, 1),
+(6, 32, 5),
+(7, 34, 1),
+(8, 33, 2);
 
 -- --------------------------------------------------------
 
@@ -370,7 +387,9 @@ CREATE TABLE `slideshow` (
 --
 
 INSERT INTO `slideshow` (`idslideshow`, `img_url`, `img_preklik`) VALUES
-(3, 'img/slideshow/6810ff128bccc3.17845243.webp', 'http://localhost/FitStream/vyziva.php');
+(3, 'img/slideshow/6810ff128bccc3.17845243.webp', 'http://localhost/FitStream/vyziva.php'),
+(4, 'img/slideshow/6811fdc6baccf4.97241390.jpg', 'http://localhost/FitStream/oblecenie.php'),
+(5, 'img/slideshow/6811fe80761532.28553325.jpg', 'http://localhost/FitStream/prislusenstvo.php');
 
 -- --------------------------------------------------------
 
@@ -428,7 +447,11 @@ INSERT INTO `zakaznici` (`id`, `id_uzivatelia`, `email`, `meno`, `priezvisko`, `
 (3, NULL, 'adam.sima@student.ukf.sk', 'Adam', 'Šima', '2025-04-29 18:13:14', '2025-04-29 18:13:14', '0904329235'),
 (4, NULL, 'admin@admin.com', 'Patrik', 'Starý', '2025-04-29 18:15:34', '2025-04-29 18:15:34', '0904329235'),
 (5, NULL, 'adam.sima@student.ukf.sk', 'Adam', 'Šima', '2025-04-29 18:16:19', '2025-04-29 18:16:19', '0904329235'),
-(6, NULL, 'admin@admin.com', 'Adam', 'Starý', '2025-04-29 18:42:09', '2025-04-29 18:42:09', '0904329235');
+(6, NULL, 'admin@admin.com', 'Adam', 'Starý', '2025-04-29 18:42:09', '2025-04-29 18:42:09', '0904329235'),
+(7, NULL, 'adam.sima@student.ukf.sk', 'Adam', 'Adam', '2025-04-30 08:52:53', '2025-04-30 08:52:53', '0904329235'),
+(8, NULL, 'adam.sima@student.ukf.sk', 'Adam', 'Starý', '2025-04-30 10:38:38', '2025-04-30 10:38:38', '0904329235'),
+(9, NULL, 'admin@outlook.sk', 'Adam', 'Starý', '2025-04-30 12:33:06', '2025-04-30 12:33:06', '0903293213'),
+(10, NULL, 'adam.sima@student.ukf.sk', 'Adam', 'Nový', '2025-04-30 21:05:02', '2025-04-30 21:05:02', '0903293213');
 
 --
 -- Kľúče pre exportované tabuľky
@@ -550,13 +573,13 @@ ALTER TABLE `zakaznici`
 -- AUTO_INCREMENT pre tabuľku `adresa`
 --
 ALTER TABLE `adresa`
-  MODIFY `idadresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idadresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pre tabuľku `akordeon`
 --
 ALTER TABLE `akordeon`
-  MODIFY `idakordeon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idakordeon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pre tabuľku `blog`
@@ -574,13 +597,13 @@ ALTER TABLE `blog_kategorie`
 -- AUTO_INCREMENT pre tabuľku `doprava`
 --
 ALTER TABLE `doprava`
-  MODIFY `iddoprava` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `iddoprava` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pre tabuľku `footer_ikony`
 --
 ALTER TABLE `footer_ikony`
-  MODIFY `idfooter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idfooter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT pre tabuľku `kategorie`
@@ -598,7 +621,7 @@ ALTER TABLE `navbar`
 -- AUTO_INCREMENT pre tabuľku `objednavky`
 --
 ALTER TABLE `objednavky`
-  MODIFY `idobjednavky` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idobjednavky` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pre tabuľku `platba`
@@ -610,13 +633,13 @@ ALTER TABLE `platba`
 -- AUTO_INCREMENT pre tabuľku `produkty`
 --
 ALTER TABLE `produkty`
-  MODIFY `idprodukty` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `idprodukty` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT pre tabuľku `slideshow`
 --
 ALTER TABLE `slideshow`
-  MODIFY `idslideshow` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idslideshow` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pre tabuľku `uzivatelia`
@@ -628,7 +651,7 @@ ALTER TABLE `uzivatelia`
 -- AUTO_INCREMENT pre tabuľku `zakaznici`
 --
 ALTER TABLE `zakaznici`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Obmedzenie pre exportované tabuľky

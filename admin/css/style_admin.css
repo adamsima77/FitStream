@@ -21,6 +21,8 @@ h1,h2,h3,h4,h5,h6,a{
     
     }
 
+    
+
     .uspech {
       background-color: #00ff00;
       color: #ffffff;
@@ -664,6 +666,9 @@ footer {
   flex-wrap: wrap;
 }
 
+.social_media_links a{
+  text-decoration: none;
+}
 .social {
   width: 40px;
   height: 40px;
@@ -674,6 +679,7 @@ footer {
   transition: transform 0.3s ease, opacity 0.3s ease;
   border: none;
   cursor: pointer;
+
 }
 
 .social:hover {

@@ -96,6 +96,7 @@ nav{
 
   display: flex;
   gap: 25px;
+  position: relative;
 
 
 }
@@ -266,6 +267,7 @@ transition: 0.5s ease;
     display: flex;
     gap: 15px;
     align-items: center;
+    position: relative;
   
   
 
@@ -372,6 +374,7 @@ footer {
   transition: transform 0.3s ease, opacity 0.3s ease;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .social:hover {
@@ -441,7 +444,7 @@ footer {
    .slideshow {
     width: 100%; 
   
-    max-height: 800px; 
+    max-height: 1000px; 
     margin: 0; 
     position: relative;
     overflow: hidden;
@@ -1850,8 +1853,9 @@ flex-wrap: wrap;
   justify-content: center;
   padding: 40px 20px;
   margin-top: 150px;
-  width: 80%;
+  width: 95%;
   place-self: center;
+ 
 }
 
 
@@ -1862,6 +1866,7 @@ flex-wrap: wrap;
   width: 100%;
   padding: 30px;
   transition: box-shadow 0.3s ease;
+  place-self: center;
 }
 
 .clanok_z:hover {
@@ -2800,10 +2805,13 @@ align-items: center;
 .pocet_poloziek {
   background-color: red; 
   color: white; 
+  border: 1px solid white;
   padding: 5px 10px;
   border-radius: 50%; 
   font-size: 16px;
-
+position: absolute;
+left: 50px;
+top: 5px;
   display: flex; 
   justify-content: center;
   align-items: center;

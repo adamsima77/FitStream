@@ -44,11 +44,11 @@ class Objednavky extends Database{
    public function pridanieDoKosika(int $id, int $pocet_kusov): void{
 
     
-      $pole = isset($_COOKIE['kosik']) ? json_decode($_COOKIE['kosik'], true) : [];
+    $this->inicializaciaKosika();
 
 
       $najdene = false;
-      foreach ($pole as &$polozka) {
+      foreach ($this->pole as &$polozka) {
           if ($polozka['id'] === $id) {
               $polozka['pocet_kusov'] += $pocet_kusov;
               $najdene = true;
@@ -63,7 +63,7 @@ class Objednavky extends Database{
        $this->aktualizaciaKosika();
 
        header("Location: produkt.php?id=" . $id);
-
+       exit;
    }
 
    public function velkostKosika(): int{
@@ -154,6 +154,9 @@ class Objednavky extends Database{
               header("Location: /FitStream/kosik/vypis_udajov.php");
               exit;
       
+          } else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                    die("Zlý formát emailu");
+
           } else{
       
               die("Prázdne polia.");
@@ -344,6 +347,16 @@ class Objednavky extends Database{
 
   }
 
+  public function zobrazeniePoctu(): void{
+    
+    $pocet_poloziek = $this->velkostKosika();
+    if($pocet_poloziek != 0){
+          
+        echo '<div class = "pocet_poloziek">' . $pocet_poloziek .'</div>';
+
+    }
+
+  }
 
 
 }
