@@ -50,7 +50,7 @@ $objednavky = new Objednavky();
 
 ?>
 
-
+<?php $pocet_kusov_na_sklade = $objednavky->getAktualnyPocetKusov($_GET['id']);?>
 
 <?php include "parts/header.php"; ?>
 <?php include "parts/navbar.php"; ?>
@@ -71,11 +71,17 @@ $objednavky = new Objednavky();
        
          <h1 class="produkt_nazov"><?php echo htmlspecialchars($produkt['nazov']); ?></h1>
          <p class = "hlavny_popis"><?php echo $produkt['hlavny_popis'];?></p>
+         <p class = "pocet_na_sklade"><?php echo ($pocet_kusov_na_sklade <= 0 ? "Nie je na sklade" :"Na sklade: " . $pocet_kusov_na_sklade . " kusov");?></p>
          <p class="produkt_cena"><?php echo htmlspecialchars($produkt['cena']); ?> €</p>
-    <form action="" method="POST">
+    
+       <?php if($pocet_kusov_na_sklade > 0):?>
+      <form action="" method="POST">
       <input type = "number" id = "pocet_produktov" name = "pocet_produktov" value = "1">
-      <input type="submit" class="produkt_do_kosika" value="Do košíka">
+      <input type="submit" class="produkt_do_kosika" value="Do košíka"  <?php echo ($pocet_kusov_na_sklade <= 0 ? "disabled" : "");?>>
     </form> 
+    <?php else:?>
+      <p class = "nedostupny_produkt">Produkt nie je na sklade.</p>
+      <?php endif; ?>
          
 </div>
 

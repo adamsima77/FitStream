@@ -2367,7 +2367,28 @@ margin-bottom: 30px;
   margin-right: auto;
 }
 
+.pocet_na_sklade{
 
+  font-size: 20px;
+  font-weight: bold;
+  color: #007fff;
+  margin: 20px 0;
+  display: inline-block;
+  border-radius: 6px;
+
+
+
+}
+
+.nedostupny_produkt{
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  margin: 20px 0;
+  display: inline-block;
+  border-radius: 6px;
+
+}
 
 .produkt_nazov_cena_popis {
   display: flex;

@@ -43,7 +43,12 @@ class Objednavky extends Database{
 
    public function pridanieDoKosika(int $id, int $pocet_kusov): void{
 
-    
+    if($pocet_kusov > $this->getAktualnyPocetKusov($id)){
+
+         die("Väčší počet produktov ako na sklade.");
+
+    }
+
     $this->inicializaciaKosika();
 
 
@@ -72,6 +77,8 @@ class Objednavky extends Database{
       return count($this->pole);
 
    }
+
+ 
     
    public function vypisPoloziek(): array{
     
@@ -327,6 +334,24 @@ class Objednavky extends Database{
         $statement->execute();
 
     }
+
+
+    $update_kusov = $this->pole;
+    foreach($update_kusov as $polozka) {
+
+        $id = (int) $polozka['id'];
+        $pocet_ks = $polozka['pocet_kusov'];
+        $aktualny_pocet_kusov = $this->getAktualnyPocetKusov($id) - $pocet_ks;
+
+        $sql = "UPDATE produkty set pocet_kusov = ? WHERE idprodukty = ?;";
+        $statement = $this->conn->prepare($sql);
+        $statement->bindParam(1,$aktualny_pocet_kusov);
+        $statement->bindParam(2,$id);
+        $statement->execute();
+
+
+
+    }
        
 
        setcookie('kosik', '', time() - 3600, '/');
@@ -339,16 +364,38 @@ class Objednavky extends Database{
 
     } catch (Exception $e) {
         die("Nastala chyba");
-    } finally {
-        $this->conn = null;
-    }
-
+    } 
 
 
   }
 
+  public function getAktualnyPocetKusov(int $id): int
+  {
+    if ($this->conn === null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
+
+    try {
+        $sql = "SELECT pocet_kusov FROM produkty WHERE idprodukty = ?";
+        $st = $this->conn->prepare($sql);
+        $st->bindParam(1,$id);
+        $st->execute();
+        $kusy = $st->fetch();
+        return $kusy['pocet_kusov'];
+
+    } catch (Exception $e) {
+        die("Nastala chyba");
+    } 
+
+  }
+
   public function zobrazeniePoctu(): void{
-    
+     
+    if ($this->conn === null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
     $pocet_poloziek = $this->velkostKosika();
     if($pocet_poloziek != 0){
           
@@ -357,6 +404,5 @@ class Objednavky extends Database{
     }
 
   }
-
 
 }

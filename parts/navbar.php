@@ -33,6 +33,7 @@ $vypis_linkov = $nav->navbar_Links();
         <div class="hamburger" id="hamburger">
 
         <i class="fa fa-bars"></i>
+        
 
     </div>
   </div>
