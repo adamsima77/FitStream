@@ -1,0 +1,94 @@
+
+/*Výpis údajov*/
+.vypis_udajov {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    border: 1px solid black;
+    margin-top: 150px;
+  }
+  
+  .vypis_udajov h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .vypis_udajov h2 {
+    font-size: 20px;
+    margin-top: 25px;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 5px;
+    color: #34495e;
+  }
+  
+  .vypis_udajov p {
+    margin: 8px 0;
+    padding: 4px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  
+  @media (max-width: 600px) {
+    .vypis_udajov {
+        padding: 20px;
+    }
+  
+    .vypis_udajov h1 {
+        font-size: 24px;
+    }
+  
+    .vypis_udajov h2 {
+        font-size: 18px;
+    }
+  
+    .vypis_udajov p {
+        font-size: 15px;
+    }
+  }
+  
+  .vypis_submit{
+  
+    background-color: #007fff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+    margin-top: 20px;
+    height: 45px;
+    width: 65%;
+    transition: 0.3s;
+  
+  
+  
+  
+  
+  }
+  
+  .vypis_forma{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  }
+  .vypis_submit:hover{
+  
+    opacity: 0.7;
+  }

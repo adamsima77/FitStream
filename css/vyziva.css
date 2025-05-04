@@ -1,0 +1,272 @@
+
+/*Vyziva*/
+
+.vyziva{
+
+    margin-top: 150px;
+    
+    
+    
+    
+    }
+    
+    .p_vyziva {
+      display: flex;
+      text-align: justify;
+      margin-top: 45px;
+    }
+    
+    .z{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 95%;
+    
+    }
+    
+    .box_vyziva {
+      display: flex;
+      flex-direction: column;
+      width: 250px;
+      min-height: 600px;
+      border-radius: 15px;
+      border: 1px solid #e1e1e1;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      transition: transform 0.3s ease;
+      box-sizing: border-box;
+     
+    }
+    
+    .box_vyziva h2 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    
+    .obrazok_vyziva img {
+      width: 100%;
+      min-height: 300px;
+      max-height: 350px; 
+      display: block;
+      margin: 0 auto;
+      object-fit: cover;
+      margin-top: 20px;
+      border-radius: 10px;
+      transition: transform 0.4s ease, filter 0.3s ease-in-out;
+    }
+    
+    .obrazok_vyziva img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+    
+    .box_vyziva .cena_vyziva {
+      color: #e74c3c; 
+      margin-top: 30px;
+      font-size: 22px; 
+      font-weight: bold;
+    }
+    
+    .nadpis_vyziva {
+      margin-top: 15px;
+      text-align: left;
+      font-size: 17px; 
+      color: #333;
+    }
+    
+    .nadpis_vyziva a {
+      text-decoration: none;
+    }
+    
+    .nadpis_vyziva a:hover {
+      opacity: 0.8;
+      transition: 0.3s all ease-in-out;
+    }
+    
+    .popis_vyziva {
+      padding: 20px;
+      width: 100%;
+      height: auto;
+      word-wrap: break-word;
+      box-sizing: border-box;
+      color: #555;
+      line-height: 1.6; 
+      font-size: 16px;
+      text-align: justify;
+    }
+    
+    .skupina_vyziva {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .vyziva_skupina {
+      display: flex;
+      gap: 30px;
+      width: 100%;
+      margin-top: 50px;
+      flex-wrap: wrap;
+    }
+    
+    @media screen and (max-width: 408px) {
+    
+    .filtre{
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+    }
+    
+    
+    .p_vyziva{
+    
+    place-self: center;
+    
+    }
+    
+    .box_vyziva{
+    
+    min-width: 250px;
+    
+    
+    }
+    
+    .vyziva{
+    
+    text-align: center;
+    
+    
+    }
+    
+    }
+    
+    
+    @media screen and (max-width: 976px) {
+    
+    .zaobalenie{
+    
+    align-items: center;
+    justify-content:center;
+    
+    
+    }
+    
+    
+    
+    }
+    
+    @media screen and (max-width: 873px) {
+    
+    
+    .vyziva_skupina{
+    
+    
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    
+    }
+    
+    .box_vyziva{
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-width: 100px;
+    height: auto;
+    
+    }
+    
+    
+    
+    
+    }
+    
+    .filtre{
+    
+    
+     display: flex;
+     margin-top: 50px;
+     gap: 25px;
+     flex-wrap: wrap;
+    }
+    
+    .filtre a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 15%;
+      max-width: 20%;
+      height: 45px;
+      color: white;
+      background-color: #2f52ff;
+      border-radius: 7px;
+      padding: 0 20px; 
+      font-size: 16px;
+      font-weight: 600;
+      border: 1px solid black;
+      text-decoration: none; 
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+    
+    .filtre a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .filtre a:focus{
+    
+      outline: none;
+    
+    }
+    @media screen and (max-width: 600px){
+    
+     .filtre{
+     
+     display: flex;
+      flex-direction: column;
+      min-width: 95%;
+      justify-content: center;
+      align-items: center;
+      
+      }
+    
+      .filtre a{
+    
+    
+       min-width: 80%;
+      
+        
+      }}
+      
+    
+    .zaobalenie{
+    
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    place-self: center;
+    justify-content: center;
+    }
+    
+    .zao_2{
+    
+    
+      display: flex;
+      flex-direction: column;
+      max-width: 95%;
+      place-self: center;
+      justify-content: center;
+    
+    }

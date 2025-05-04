@@ -1,0 +1,87 @@
+
+/*Článok blog*/
+
+
+.blog_clanok{
+
+    background-color: #F3F4F6; 
+  
+  }
+  .pod_clanok{
+  
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 0;
+    height: 2px;
+    background: linear-gradient(to right, #2F3C7E, #4F5D9A); 
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+  }
+  
+  
+  
+  .clanok_zaobalenie {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    margin-top: 150px;
+    width: 95%;
+    place-self: center;
+   
+  }
+  
+  
+  .clanok_z {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    padding: 30px;
+    transition: box-shadow 0.3s ease;
+    place-self: center;
+  }
+  
+  .clanok_z:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .clanok_nadpis {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+  }
+  
+  
+  .clanok_img {
+    width: 100%;
+    max-height: 550px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    object-fit: contain;
+  }
+  
+  
+  .clanok_popis {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: justify;
+  }
+  
+  
+  @media (max-width: 600px) {
+    .clanok_z {
+      padding: 20px;
+    }
+  
+    .clanok_nadpis {
+      font-size: 1.5rem;
+    }
+  
+    .clanok_popis {
+      font-size: 1rem;
+    }
+  }

@@ -1,0 +1,93 @@
+
+/*meno_adresa*/
+.osobne_udaje_kosik {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    place-self: center;
+    margin-top: 200px;
+  }
+  
+  .osobne_udaje_kosik h1 {
+    font-size: 1.8em;
+    color: #007fff;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .osobne_udaje_kosik label {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .osobne_udaje_kosik .email_kos, input[type="text"], select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  
+  .osobne_udaje_kosik input[type="text"]:focus,.email_kos:focus, select:focus,input[type="text"]:focus {
+    border-color: #007fff;
+    outline: none;
+  }
+  
+  .osobne_udaje_kosik input[type="text"]::placeholder {
+    color: #aaa;
+  }
+  
+  .osobne_udaje_kosik select,input[type="text"] {
+    cursor: pointer;
+  }
+  
+  .osobne_udaje_kosik button {
+    background-color: #007fff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+  }
+  
+  .osobne_udaje_kosik button:hover {
+    background-color: #005cbf;
+  }
+  
+  .osobne_udaje_kosik input[type = 'submit']{
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    color: white;
+    background-color: #2f52ff;
+    border-radius: 7px;
+    padding: 0 20px; 
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid black;
+    text-decoration: none; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  
+  
+  }
+  
+  .osobne_udaje_kosik input[type = 'submit']:hover{
+  
+         opacity: 0.8;
+  
+  }
+  

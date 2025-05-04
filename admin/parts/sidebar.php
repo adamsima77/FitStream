@@ -16,6 +16,9 @@
              <a href="<?php echo BASE_URL; ?>admin/edit_navbar.php"><li>Navbar</li></a>
              <a href="<?php echo BASE_URL; ?>admin/edit_blog.php"><li>Blog</li></a>
              <a href="<?php echo BASE_URL; ?>admin/edit_doprava.php"><li>Doprava</li></a>
+             <a href="<?php echo BASE_URL; ?>admin/edit_platba.php"><li>Platba</li></a>
+             <a href="<?php echo BASE_URL; ?>admin/edit_kategoria_blog.php"><li>Kategórie blog</li></a>
+             <a href="<?php echo BASE_URL; ?>admin/edit_kategoria_produkt.php"><li>Kategórie produktov</li></a>
              <a href="<?php echo BASE_URL; ?>config/logout.php"><li>Odhlásenie</li></a>
              </ul>
        

@@ -1,0 +1,172 @@
+
+/*Produkt.php*/
+.produkt_zaobalenie {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    justify-content: center;
+  }
+  
+  .produkt_z {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .pocet_na_sklade{
+  
+    font-size: 20px;
+    font-weight: bold;
+    color: #007fff;
+    margin: 20px 0;
+    display: inline-block;
+    border-radius: 6px;
+  
+  
+  
+  }
+  
+  .nedostupny_produkt{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    margin: 20px 0;
+    display: inline-block;
+    border-radius: 6px;
+  
+  }
+  
+  .produkt_nazov_cena_popis {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    gap: 40px; 
+    flex-wrap: wrap; 
+  }
+  
+  .produkt_img {
+    width: 45%;
+    min-height: 350px;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 15px;
+    transition: transform 0.4s ease, filter 0.3s ease-in-out;
+    margin: 0;
+  }
+  
+  .produkt_col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .produkt_nazov {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .produkt_popis {
+    margin-top: 15px;
+    width: 100%;
+    color: #555;
+    line-height: 1.6;
+    font-size: 16px;
+    text-align: justify;
+  }
+  
+  .produkt_cena {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007fff;
+    margin: 20px 0;
+    display: inline-block;
+    border-radius: 6px;
+  }
+  
+  .produkt_do_kosika {
+    background-color: #007fff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+    margin-top: 20px;
+    height: 45px;
+    width: 65%;
+    
+  
+  }
+  
+  .produkt_col form input[type = "number"]{
+  
+    width: 60%;
+    height: 25px;
+    border-radius: 8px;
+   
+    padding: 12px;
+    border: 2px solid #ccc;
+    font-size: 14px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+  
+  }
+  
+  .produkt_col form{
+  
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .produkt_do_kosika:hover {
+    background-color: #2F3C7E;
+    transform: translateY(-2px);
+  }
+  
+  .produkt_do_kosika:active {
+    transform: translateY(0);
+    background-color: #2F3C7E;
+  }
+  
+  .hlavny_popis{
+  
+    margin-top: 15px;
+    width: 100%;
+    color: #555;
+    line-height: 1.6;
+    font-size: 16px;
+    text-align: justify;
+  
+  }
+  
+  
+   @media screen and (max-width: 800px){
+  
+    .produkt_nazov_cena_popis {
+  
+  
+      flex-direction: column;
+    }
+    .produkt_img {
+  
+      place-self: center;
+      width: 100%;
+      padding: 0;
+    }
+  
+  
+   }
+  

@@ -1,0 +1,74 @@
+
+/*Kontakt*/
+
+.kontakt_nadpis{
+
+    margin-top: 150px;
+    margin-bottom: 30px;
+    
+    
+    }
+    
+    /*Kontakt banner*/
+    .banner {
+     
+      background-color: #2F3C7E;
+      color: white;
+      padding: 30px;
+      font-family: Arial, sans-serif;
+      border-radius: 10px;
+      text-align: left;
+      margin: 0 auto;
+    }
+    
+    .banner h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+    
+    .banner p {
+      margin: 15px 0;
+    }
+    
+    .banner strong {
+      font-weight: bold;
+    }
+    
+    .kontakt_popis{
+    
+      display: flex;
+      flex-direction: column; 
+      text-align: justify;
+      margin-top: 25px;
+      line-height: 1.6;
+      color: #333; 
+      
+     
+    
+    
+    }
+    
+    
+    
+    
+    .zarovnanie_kontakt{
+    
+      display: flex;
+      flex-direction: column;
+      min-width: 100%;
+      place-self: center;
+      justify-content: center;
+      height: auto;  
+    }
+      
+      .za_kontakt{
+      
+      
+        display: flex;
+        flex-direction: column;
+        max-width: 85%;
+        height: auto;
+        place-self: center;
+        justify-content: center;
+      
+      }

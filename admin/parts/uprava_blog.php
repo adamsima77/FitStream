@@ -31,6 +31,8 @@
                     <th>Popis fotky</th>
                     <th>Autor</th>
                     <th>Kategória</th>
+                    <th>Dátum vytvorenia</th>
+                    <th>Dátum úpravy</th>
                     <th>Akcia</th>
                 </tr>
                 <?php foreach($filter as $polozka): ?>
@@ -45,7 +47,9 @@
                         <td><img src="<?php echo BASE_URL . $polozka['img_blog']; ?>"></td>
                         <td><?php echo $polozka['img_alt']; ?></td>
                         <td><?php echo $vypis_uzivatel['meno'] . ' ' . $vypis_uzivatel['priezvisko']; ?></td>
-                        <td><?php echo $vypis_kategoria['nazov_kategorie_blog']; ?></td>
+                        <td><?php echo (is_string($vypis_kategoria)) ? $vypis_kategoria : $vypis_kategoria['nazov_kategorie_blog']; ?></td>
+                        <td><?php echo $polozka['datum_vytvorenia']; ?></td>
+                        <td><?php echo $polozka['datum_upravy']; ?></td>
                         <td>
                             <a href="<?php echo BASE_URL; ?>admin/editovanie/editovanie_blog.php?id=<?php echo $id; ?>" class="edit">Editovať</a>
                             <a href="<?php echo BASE_URL; ?>admin/vymazanie/vymazanie_blog.php?id=<?php echo $id; ?>" class="delete" onclick="return kontrolaVymazania()">Vymazať</a>

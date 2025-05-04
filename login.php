@@ -53,6 +53,6 @@
 </form>
 
 
-<script src="javascript/app.js" type="text/javascript"></script>
+<script src="javascript/prihlasenie.js" type="text/javascript"></script>
 </body>
 </html>

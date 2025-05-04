@@ -1,0 +1,61 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    
+    }
+    
+    
+    main{
+    
+    height: 100vh;
+    
+    }
+    
+    body{
+    
+    height: 100vh;
+    
+    }
+    
+    /*Fonty*/
+    h1,h2,h3,h4,h5,h6,a{
+    
+    font-family:'Montserrat';
+    
+    
+    }
+    
+    
+    
+    p{
+    
+    
+      font-family: 'Roboto';
+    
+    }
+    
+
+    
+/*Error + akceptovanie*/
+.uspech {
+  background-color: #00ff00;
+  color: #ffffff;
+  border: 1px solid #000000;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 5px;
+  font-weight: bold;
+
+}
+
+.neuspech {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 5px;
+  font-weight: bold;
+ 
+}

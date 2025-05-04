@@ -32,14 +32,10 @@ class Akordeon extends Database
     public function vytvorenieRiadku(string $otazka, string $odpoved)
     {
         try {
-            $sql = "INSERT INTO akordeon(otazka,odpoved,datum_vytvorenia,datum_upravy) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO akordeon(otazka,odpoved) VALUES (?, ?)";
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $otazka);
             $st->bindParam(2, $odpoved);
-            $datum_vytvorenia = date("Y-m-d H:i:s");
-            $datum_upravy = " ";
-            $st->bindParam(3, $datum_vytvorenia);
-            $st->bindParam(4, $datum_upravy);
             $st->execute();
             $_SESSION['uspech'] = "Záznam bol úspešne vytvorený.";
             header("Location: /FitStream/admin/edit_akordeon.php");
@@ -60,13 +56,11 @@ class Akordeon extends Database
         }
 
         try {
-            $sql = "UPDATE akordeon SET otazka = ?, odpoved = ?, datum_upravy = ? WHERE idakordeon = ?";
-            $datum_editu = date('Y-m-d H:i:s');
+            $sql = "UPDATE akordeon SET otazka = ?, odpoved = ? WHERE idakordeon = ?";
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $otazka);
             $st->bindParam(2, $odpoved);
-            $st->bindParam(3, $datum_editu);
-            $st->bindParam(4, $id);
+            $st->bindParam(3, $id);
             $st->execute();
             $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
             header("Location: /FitStream/admin/edit_akordeon.php");

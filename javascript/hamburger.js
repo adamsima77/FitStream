@@ -7,7 +7,13 @@ function toggleMenu() {
   //Event listener pre klik na ikonu hamburger menu
   const hamburgerIcon = document.getElementById('hamburger');
   hamburgerIcon.addEventListener('click', toggleMenu);
-
+  
+  //Zatvorenie Sidebaru
+  function closeSidebar(){
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.remove("visible")
+  
+  }
 
   function zatvorit_sidebar(){
   
@@ -16,20 +22,3 @@ function toggleMenu() {
   
   }
   
-  //Kontrola či chce admin vymazať položku
-  function kontrolaVymazania(){
-
-
-    return confirm("Naozaj chcete vymazať položku ?");
-
-  }
-
-
-
-  function kontrolaVymazaniaKategorie(pocet) {
-    if (pocet > 0) {
-        return confirm("Táto kategória obsahuje " + pocet + " článkov. Ste si istý, že chcete vymazať?");
-    } else {
-        return confirm("Ste si istý, že chcete vymazať túto prázdnu kategóriu?");
-    }
-}

@@ -138,9 +138,11 @@ class Navbar extends Database
     {
         if (isset($_SESSION['user_id']) && $_SESSION['user_rola'] == 1) {
             echo '<a href="config/logout.php"><i class="fa fa-sign-out" style="font-size: 20px;" id="log"></i></a>';
+            echo '<a href="' . BASE_URL . 'nastavenia/nastavenia.php?id=' . $_SESSION['user_id'] . '"><i class="fa fa-gear"></i></a>';
         } else if (isset($_SESSION['user_id']) && $_SESSION['user_rola'] == 0) {
 
             echo '<a href="config/logout.php"><i class="fa fa-sign-out" style="font-size: 20px;" id="log"></i></a>';
+            echo '<a href=""><i class="fa fa-gear"></i></a>';
             
         } else {
             echo '<a href="' . BASE_URL . 'login.php"><i class="fa fa-user" style="font-size: 20px;" id="log"></i></a>';

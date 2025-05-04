@@ -105,7 +105,10 @@ nav{
 .pr{
 
   display: flex;
-  gap: 25px;
+ text-align: center;
+ gap: 5px;
+ font-weight: 400;
+  flex-direction: column;
 
 
 }
@@ -191,6 +194,7 @@ height: 45px;
   
   margin-top: 30px;
   color: white;
+
   
 
 

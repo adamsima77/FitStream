@@ -160,15 +160,11 @@ class Produkt extends Database
         try {
             $sql = "INSERT INTO produkty (
                         nazov, znacka, popis, cena, pocet_kusov,
-                        velkost, farba, datum_vytvorenia, datum_upravy,
+                        velkost, farba,
                         img_hlavna, img_alt, hlavny_popis
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             $st = $this->conn->prepare($sql);
-
-            $datum_vytvorenia = date("Y-m-d H:i:s");
-            $datum_upravy = " ";
-
             $st->bindParam(1, $nazov);
             $st->bindParam(2, $znacka);
             $st->bindParam(3, $popis_produktu);
@@ -176,11 +172,9 @@ class Produkt extends Database
             $st->bindParam(5, $pocet_kusov);
             $st->bindParam(6, $velkost);
             $st->bindParam(7, $farba);
-            $st->bindParam(8, $datum_vytvorenia);
-            $st->bindParam(9, $datum_upravy);
-            $st->bindParam(10, $img);
-            $st->bindParam(11, $img_popis);
-            $st->bindParam(12, $klucovy_popis);
+            $st->bindParam(8, $img);
+            $st->bindParam(9, $img_popis);
+            $st->bindParam(10, $klucovy_popis);
             $st->execute();
 
              

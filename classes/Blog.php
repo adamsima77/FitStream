@@ -61,7 +61,7 @@ class Blog extends Database
         }
     }
 
-    public function vypisKategorie(int $id)
+    public function vypisKategorie(int $id):array|string
     {
 
         if ($this->conn === null) {
@@ -78,7 +78,14 @@ class Blog extends Database
             $st->bindParam(1,$id);
             $st->execute();
             $rs = $st->fetch();
+
+            if(empty($rs)){
+
+                return 'Žiadna kategória';
+
+            } else{
             return $rs;
+            }
         } catch (Exception $e) {
             die("Nastala chyba");
         } finally {

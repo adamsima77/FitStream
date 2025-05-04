@@ -24,6 +24,7 @@ $footer_vypis = $footer->footer_Vypis();
 
 </footer>
 
-<script src="<?php echo BASE_URL . "javascript/app.js";?>" type="text/javascript"></script>
+<?php $nazov = basename($_SERVER['SCRIPT_NAME']);?>
+    <?php $utilities->rozdelenieJavascriptu($nazov);?>
 </body>
 </html>

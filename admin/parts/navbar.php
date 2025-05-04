@@ -20,6 +20,14 @@
    
   </div>
 </div>
+<div class="dropdown">
+  <button class="dropbtn">Kategórie</button>
+  <div class="dropdown-content">
+  <a href="<?php echo BASE_URL; ?>admin/edit_kategoria_blog.php"><li>Kategórie blog</li></a>
+  <a href="<?php echo BASE_URL; ?>admin/edit_kategoria_produkt.php"><li>Kategórie produktov</li></a>
+   
+  </div>
+</div>
         
        
         <a href="<?php echo BASE_URL; ?>config/logout.php"><li>Odhlásenie</li></a>

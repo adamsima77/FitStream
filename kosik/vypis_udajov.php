@@ -16,7 +16,7 @@ $doprava = $objednavky->getDoprava($_SESSION['kosik_doprava']);
 $objednavky->ukladanieDoDatabazy($_SESSION['kosik_email'], $_SESSION['kosik_meno'],
  $_SESSION['kosik_priezvisko'], $_SESSION['kosik_telefonne_cislo'], 
  $_SESSION['kosik_mesto'], $_SESSION['kosik_ulica'], 
-$_SESSION['kosik_psc'], $_SESSION['kosik_platba'], $_SESSION['kosik_doprava']);
+$_SESSION['kosik_psc'], $_SESSION['kosik_platba'], $_SESSION['kosik_doprava'],$_SESSION['user_id']);
 ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/parts/header.php'; ?>

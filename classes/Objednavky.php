@@ -260,7 +260,7 @@ class Objednavky extends Database{
   }
 
   public function ukladanieDoDatabazy(string $email,string $meno, string $priezvisko,
-  string $telefonne_cislo, string $mesto, string $ulica, string $psc, int $platba,int $doprava): void{
+  string $telefonne_cislo, string $mesto, string $ulica, string $psc, int $platba,int $doprava, ?int $id_uzivatela): void{
 
     if ($this->conn === null) {
         $this->connect();
@@ -281,12 +281,13 @@ class Objednavky extends Database{
 
         $id_adresa = $this->conn->lastInsertId();
 
-        $sql = "INSERT INTO zakaznici(email,meno,priezvisko,telefonne_cislo) VALUES(?,?,?,?);";
+        $sql = "INSERT INTO zakaznici(email,meno,priezvisko,telefonne_cislo,id_uzivatelia) VALUES(?,?,?,?,?);";
         $statement = $this->conn->prepare($sql);
         $statement->bindParam(1,$email);
         $statement->bindParam(2,$meno);
         $statement->bindParam(3,$priezvisko);
         $statement->bindParam(4,$telefonne_cislo);
+        $statement->bindParam(5,$id_uzivatela);
         $statement->execute();
 
         $id_zakaznik = $this->conn->lastInsertId();
@@ -404,5 +405,24 @@ class Objednavky extends Database{
     }
 
   }
+  public function historiaNakupov(int $id): array {
+    if ($this->conn === null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
+
+    try {
+        $sql = "SELECT * FROM objednavky
+                INNER JOIN zakaznici ON objednavky.id_zakaznici = zakaznici.id WHERE zakaznici.id_uzivatelia = ?";
+        $st = $this->conn->prepare($sql);
+        $st->bindParam(1, $id);
+        $st->execute();
+        return $st->fetchAll();
+
+    } catch (Exception $e) {
+        die("Nastala chyba pri načítaní histórie");
+    }
+}
+
 
 }

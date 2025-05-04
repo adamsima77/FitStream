@@ -203,5 +203,17 @@ class Uzivatel extends Database
     }
 
 
+    public function overenieNastavenia(int $id_uzivatela, int $id_url): void{
+
+           if($id_uzivatela != $id_url){
+
+             header("Location: /FitStream/nastavenia/nastavenia.php?id=$id_uzivatela");
+             exit;
+
+
+           } 
+
+    }
+
 }
 ?>

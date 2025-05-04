@@ -63,6 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-<script src="javascript/app.js" type="text/javascript"></script>
+<script src="javascript/registracia.js" type="text/javascript"></script>
 </body>
 </html>

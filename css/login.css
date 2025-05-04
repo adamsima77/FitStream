@@ -1,0 +1,121 @@
+/*Login*/
+.forma_prihlasenie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F3F4F6;  
+    margin: 0;
+  }
+  
+  .prihlasenie {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #ffffff; 
+    width: 550px;
+    padding: 30px;
+    color: #333333;  
+    border-radius: 8px;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid #2F3C7E; 
+  }
+  
+  .prihlasenie > label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;  
+    color: #333333;  
+    margin-bottom: 5px;
+  }
+  
+  .prihlasenie .l_em, .l_hes{
+  
+    font-size: 17px;
+  
+  }
+  
+  #email, #heslo_1 {
+    width: 95%;
+    height: 45px;
+    border-radius: 8px;
+    place-self: center;
+    padding: 12px;
+    border: 2px solid #ccc;
+    font-size: 14px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+  }
+  
+  
+  #email:focus, #heslo_1:focus {
+    border-color: #2F3C7E;
+    outline: none;
+  }
+  
+  
+  .prihlasenie h1 {
+    color: #2F3C7E;  
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  
+  .prihlasenie_sub {
+    background-color: #2F3C7E;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .prihlasenie_sub:hover {
+    background-color: #1A2851;  
+    opacity: 0.9;
+  }
+  
+  
+  .prihlasenie a {
+    color: #2F3C7E;
+    text-align: left;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .prihlasenie a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+  
+  
+  .check_login {
+    margin-top: 3px;
+    align-self: flex-start;
+  }
+  
+  
+  @media screen and (min-width: 2560px) {
+  
+     .forma_registracia{
+  
+  
+      height: 100vh;
+  
+     }
+  
+  
+  }
+  
+  @media screen and (max-width: 735px) {
+    .prihlasenie {
+      width: 75%;  
+    }
+  }

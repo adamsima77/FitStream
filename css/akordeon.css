@@ -1,0 +1,78 @@
+
+/*Akordeón*/
+.akordeon {
+    background-color: white; 
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 10px;
+  }
+  
+  .akordeon:hover {
+    background-color: #1A2852; 
+    color: white;
+    transition: 0.5s ease-in-out;
+  }
+  
+  .active {
+    background-color: #1A2852;
+    color: white; 
+  }
+  
+  .popis_akordeon {
+    padding: 18px;
+    background-color: #f4f4f4; 
+    display: none;
+    min-width: 97%;
+    text-align: justify;
+    border-radius: 8px;
+    line-height: 1.5;
+    color: #333; 
+    margin-bottom: 25px;
+  }
+  
+  .acc {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .acc h2 {
+    margin-bottom: 25px;
+    
+  }
+  
+  
+  @media screen and (max-width: 735px) {
+    .akordeon {
+      min-width: 95%;
+    }
+  
+    .popis_akordeon {
+      place-self: center;
+      min-width: 95%;
+    }
+  
+    .kontakt_nadpis{
+  
+    text-align: center;
+  
+  
+    }
+  
+    .acc h2{
+  
+    text-align: center;
+  
+    }
+  }

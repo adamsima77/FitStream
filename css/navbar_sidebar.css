@@ -1,0 +1,309 @@
+/*Navbar*/
+nav{
+
+    display: flex;
+    background-color: #2F3C7E;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    padding: 17px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    border-bottom: 1px solid black;
+    font-size: 15px;
+    z-index: 1000;
+    height:70px;
+    
+  
+    }
+  
+       
+    nav ul{
+    
+    display: flex;
+    flex-direction: row;
+    padding: 10px 55px;
+    list-style: none;
+   
+   
+    }
+    
+    nav ul li{
+    
+    margin: 0 10px
+    
+    }
+    
+    nav a{
+    
+      
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 17px;
+    }
+  
+    nav a:hover{
+    
+    opacity: 0.8;
+    transition: 0.3s all ease-in-out;
+    
+    }    
+  
+  .pr{
+  
+    display: flex;
+    gap: 25px;
+    position: relative;
+  
+  
+  }
+  
+  
+  
+  .hamburger{
+  
+  position: absolute;
+  right: 120px;
+  font-size: 25px;
+  display: none;
+  
+  }
+  
+  
+  
+  @media only screen and (max-width: 976px) {
+    
+  
+    nav .pr{
+  
+    display: none;
+    
+  
+    }
+  
+  
+    nav .logo{
+  
+      position: absolute;
+      left: 20px; 
+      
+      }
+    nav{
+  
+  padding: 30px 50px;
+  height: 45px;
+    }
+    nav ul {
+      display: none;
+     
+     }
+  
+     nav #log{
+  
+     display: none;
+  
+     }
+     nav img{
+  
+        position: absolute;  
+        left: 20px;            
+        top: 50%;           
+        transform: translateY(-50%); 
+        max-width: 100px;   
+  
+     }
+  
+     .hamburger{
+  
+    display: flex;
+    cursor: pointer;
+  
+     }
+     .hamburger:hover{
+  
+    opacity: 0.7;
+    transition: 0.5s ease-in-out;
+  
+     }
+  
+   
+  
+   }
+  
+  
+  /*Sidebar*/
+  
+  
+  .sidebar .ds{
+  
+    
+    margin-top: 30px;
+    color: white;
+    
+  
+  
+  }
+  
+  
+  
+  
+  .sidebar {
+      position: fixed;
+      top: 0;
+      z-index: 2000;
+      background-color: #2F3C7E;
+      width: 55%;
+      padding: 20px 25px;
+      border: 1.5px solid white;
+      flex-direction: column;
+      box-sizing: border-box;
+      transform: translateX(-100%); 
+      opacity: 0; 
+      height: 100vh;
+    
+    }
+    
+    
+    .sidebar.visible {
+      transform: translateX(0); 
+      opacity: 1; 
+      transition: transform 0.7s ease, opacity 0.7s ease;
+    }
+    
+   
+    .sidebar ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 0;
+      margin-top: 55px;
+    }
+    
+    .sidebar ul a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .sidebar img {
+      max-height: 100px;
+      max-width: 100%;
+      object-fit: contain;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      display: flex;
+      place-self: center;
+    }
+  
+    .sidebar #logo{
+  
+  
+     color: white;
+     text-decoration: none;
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 15px; 
+  
+    }
+  
+  
+   .sidebar a:hover{
+  
+  opacity: 0.7;
+  transition: 0.5s ease;
+  
+   }
+  
+  .sidebar .ds{
+  
+  
+    
+  
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      position: relative;
+    
+    
+  
+  
+  }
+  
+  .logo_a_zatvorenie{
+  
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  
+  
+  
+  }
+  
+  #zatvorit_sidebar{
+  
+   display: flex;
+   font-size: 30px;
+   color: white;
+   justify-content: flex-end;
+   align-items: flex-end;
+   position: relative;
+   margin-left: auto;
+   cursor: pointer;
+  
+  }
+  
+  #zatvorit_sidebar:hover{
+  
+  opacity: 0.7;
+  transition: 0.7s ease-in-out;
+  
+  }
+  
+  .sidebar .ds #shopping_cart, #log, #hladat{
+  
+  
+   cursor: pointer;
+   color: white;
+  }
+  .sidebar .ds #shopping_cart:hover, #log:hover, #hladat:hover{
+  
+  
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.7s ease-in-out;
+   
+   }
+   
+  @media screen and (max-width: 750px){
+  
+  .sidebar{
+  
+  min-width: 75%;
+  
+  
+  }
+  
+  
+  }
+
+  .pocet_poloziek {
+    background-color: red; 
+    color: white; 
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 50%; 
+    font-size: 16px;
+  position: absolute;
+  left: 50px;
+  top: 5px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+  }
