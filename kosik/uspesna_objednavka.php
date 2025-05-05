@@ -4,7 +4,7 @@
 
 
 <?php $objednavky = new Objednavky();?>
-<?php ?>
+
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/parts/header.php'; ?>
 

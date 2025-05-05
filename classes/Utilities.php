@@ -53,7 +53,7 @@ class Utilities{
             'kontakt' => ['hamburger.js', 'akordeon.js'],
             'blog' => ['hamburger.js'],
             'blog_clanok' => ['hamburger.js'],
-            'nastavenia' => ['hamburger.js'],
+            'nastavenia' => ['hamburger.js','overenieVymazanie.js'],
             'uspesna_objednavka' => ['hamburger.js'],
             'vypis_udajov' => ['hamburger.js'],
             'meno_adresa' => ['hamburger.js']

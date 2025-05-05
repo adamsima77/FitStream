@@ -45,9 +45,7 @@
     color: #aaa;
   }
   
-  .osobne_udaje_kosik select,input[type="text"] {
-    cursor: pointer;
-  }
+ 
   
   .osobne_udaje_kosik button {
     background-color: #007fff;

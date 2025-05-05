@@ -215,5 +215,99 @@ class Uzivatel extends Database
 
     }
 
+    public function vymazatUcet(int $id): void
+{
+
+  if ($this->conn === null) {
+
+      $this->connect();
+      $this->conn = $this->getConnection();
+      
+  }
+
+  try{
+      $sql = "DELETE FROM uzivatelia WHERE iduzivatelia = ?;";
+               
+      $statement = $this->conn->prepare($sql);
+      $statement->bindParam(1,$id);
+      $statement->execute();
+
+      session_unset();
+      session_destroy();
+      header("Location: /FitStream/index.php");
+      exit;
+
+
+  } catch(Exception $e) {
+
+      die;
+  }
+
 }
+ 
+
+  public function editaciaUzivatela(string $email,string $meno,string $priezvisko, int $id): void
+  {
+
+    if ($this->conn === null) {
+
+        $this->connect();
+        $this->conn = $this->getConnection();
+        
+    }
+  
+    try{
+        $sql = "UPDATE uzivatelia SET email = ?, meno = ?, priezvisko = ? WHERE iduzivatelia = ?;";
+                 
+        $statement = $this->conn->prepare($sql);
+        $statement->bindParam(1,$email);
+        $statement->bindParam(2,$meno);
+        $statement->bindParam(3,$priezvisko);
+        $statement->bindParam(4,$id);
+        $statement->execute();
+        header("Location: /FitStream/nastavenia/nastavenia.php?id=" . $_SESSION['user_id']);
+  
+        exit;
+  
+  
+    } catch(Exception $e) {
+  
+        die;
+    }
+
+
+  }
+
+  public function vypisUzivatela(int $id):array
+  {
+    if ($this->conn === null) {
+
+        $this->connect();
+        $this->conn = $this->getConnection();
+        
+    }
+  
+    try{
+        $sql = "SELECT email,meno,priezvisko FROM uzivatelia WHERE iduzivatelia = ?";
+                 
+        $statement = $this->conn->prepare($sql);
+        $statement->bindParam(1,$id);
+        $statement->execute();
+        return $statement->fetch();
+        exit;
+  
+  
+    } catch(Exception $e) {
+  
+        die;
+    }
+
+
+  }
+
+}
+
+
+
+
 ?>

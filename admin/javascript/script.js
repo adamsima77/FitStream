@@ -33,3 +33,12 @@ function toggleMenu() {
         return confirm("Ste si istý, že chcete vymazať túto prázdnu kategóriu?");
     }
 }
+
+
+function kontrolaVymazaniaProduktu(pocet) {
+  if (pocet > 0) {
+      return confirm("Táto kategória obsahuje " + pocet + " produktov. Ste si istý, že chcete vymazať?");
+  } else {
+      return confirm("Ste si istý, že chcete vymazať túto prázdnu kategóriu?");
+  }
+}

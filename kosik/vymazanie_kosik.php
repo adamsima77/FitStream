@@ -3,6 +3,7 @@
 <?php
 
 $objednavky = new Objednavky();
+$objednavky->overeniePodstranokKosika();
 $vymazanie = $objednavky->vymazanieProduktu($_GET['id']);
 header("Location: /FitStream/Kosik.php");
 exit;

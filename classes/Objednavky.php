@@ -296,7 +296,7 @@ class Objednavky extends Database{
         $polozky = $this->vypisPoloziek();
         foreach($polozky as $polozka){
 
-                  $cena += $polozka['cena'];
+                  $cena += $polozka['cena']  * $polozka['pocet_kusov'];
 
 
         }
@@ -421,6 +421,126 @@ class Objednavky extends Database{
 
     } catch (Exception $e) {
         die("Nastala chyba pri načítaní histórie");
+    }
+}
+
+public function historiaProdukty($id): array|bool{
+    
+    if ($this->conn === null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
+
+    try {
+        $sql = "SELECT id_produkt FROM objednavky_produkty WHERE id_objednavky = ?";
+        $st = $this->conn->prepare($sql);
+        $st->bindParam(1, $id);
+        $st->execute();
+        $id_pr = $st->fetchAll();
+
+        $array = [];
+        foreach ($id_pr as $id_p){
+
+            $id = $id_p['id_produkt'];
+            $sql = "SELECT * FROM produkty WHERE idprodukty = ?";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1,$id);
+            $st->execute();
+            $produkty = $st->fetch();
+
+
+            if ($produkty) {
+                $array[] = $produkty;
+            }
+
+        }
+
+        return $array;
+
+    
+
+    } catch (Exception $e) {
+        die("Nastala chyba pri načítaní histórie");
+    }
+
+
+
+
+}
+
+public function cenaProduktov(int $id_produktu, int $id_objednavky): float{
+
+    if ($this->conn === null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
+
+    try {
+        $sql = "SELECT mnozstvo FROM objednavky_produkty WHERE id_produkt = ? AND id_objednavky = ?;";
+        $st = $this->conn->prepare($sql);
+        $st->bindParam(1,$id_produktu);
+        $st->bindParam(2,$id_objednavky);
+        $st->execute();
+        $poc = $st->fetch();
+
+        $pocet = $poc['mnozstvo'];
+        
+        $sql = "SELECT cena FROM produkty WHERE idprodukty = ?;";
+        $st = $this->conn->prepare($sql);
+        $st->bindParam(1,$id_produktu);
+        $st->execute();
+        $cena_pole = $st->fetch();
+
+        $cena = $cena_pole['cena'];
+
+        return $cena * $pocet;
+
+
+    } catch (Exception $e) {
+        die("Nastala chyba");
+    } finally {
+        $this->conn = null;
+    }
+
+
+    
+}
+
+
+
+public function getCena(int $id): float{
+
+    if ($this->conn === null) {
+
+        $this->connect();
+        $this->conn = $this->getConnection();
+        
+    }
+
+
+    try{
+        $sql = "SELECT cena FROM produkty WHERE idprodukty = ?";
+        $statement = $this->conn->prepare($sql);
+        $statement->bindParam(1,$id);
+        $statement->execute();
+        $vysledna_cena = $statement->fetch();
+        return (float) $vysledna_cena['cena'];
+
+    } catch(Exception $e) {
+
+        die("Nastala chyba");
+    }
+     
+
+
+}
+
+public function overeniePodstranokKosika(): void{
+
+    if(!isset($_COOKIE['kosik'])){
+
+          header("Location: /FitStream/index.php");
+
     }
 }
 

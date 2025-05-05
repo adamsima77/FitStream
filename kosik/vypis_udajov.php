@@ -4,7 +4,7 @@
 
 
 <?php $objednavky = new Objednavky();?>
-
+<?php $objednavky->overeniePodstranokKosika();?>
 <?php 
 
 $platba = $objednavky->getPlatba($_SESSION['kosik_platba']);

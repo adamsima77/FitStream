@@ -1,3 +1,8 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/navbar_links.php');?>
+<?php use navbar\Navbar?>
+
+<?php $nav = new Navbar();?>
+
 <nav class = "menu">
     <a href="<?php echo BASE_URL;?>admin/edit_vyziva.php" class = "logo"><h1 class>FitStream</h1></a>
     <ul>
@@ -24,19 +29,26 @@
   <button class="dropbtn">Kategórie</button>
   <div class="dropdown-content">
   <a href="<?php echo BASE_URL; ?>admin/edit_kategoria_blog.php"><li>Kategórie blog</li></a>
-  <a href="<?php echo BASE_URL; ?>admin/edit_kategoria_produkt.php"><li>Kategórie produktov</li></a>
+  <a href="<?php echo BASE_URL; ?>admin/edit_kategoria_produkty.php"><li>Kategórie produktov</li></a>
    
   </div>
 </div>
         
-       
-        <a href="<?php echo BASE_URL; ?>config/logout.php"><li>Odhlásenie</li></a>
+<a href="<?php echo BASE_URL; ?>config/logout.php"><li>Odhlásenie</li></a>
+       <div class = "pr">
+        <?php $nav->overenieUzivatela();?>
+</div>
     </ul>
+
+
+ 
     <div class = "pr">
+      
         <p><?php echo $overenie_admina->getAdmin();?></p>
         <p><?php echo $overenie_admina->getadminRola()?></p>
 
     </div>
+
     <div class="hamburger" id="hamburger">
         <i class="fa fa-bars"></i>
     </div>

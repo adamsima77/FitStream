@@ -9,6 +9,9 @@
                 <p><?php echo $overenie_admina->getAdmin();?></p>
                 <p><?php echo $overenie_admina->getadminRola()?></p>
              </div>
+             <div class = "pr">
+        <?php $nav->overenieUzivatela();?>
+</div>
              <ul>
              <a href="<?php echo BASE_URL; ?>admin/edit_vyziva.php"><li>Produkty</li></a>
              <a href="<?php echo BASE_URL; ?>admin/edit_akordeon.php"><li>Akordeón</li></a>

@@ -185,6 +185,37 @@ height: 45px;
 
  }
 
+ .pr{
+  
+  display: flex;
+  gap: 25px;
+  position: relative;
+  flex-direction: row;
+ color: white;
+  align-items: center;
+ 
+
+
+}
+
+.pr i{
+
+  color: white;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 750px){
+
+
+  .pr i{
+
+    margin-top: 20px;
+  }
+}
+
+
+
+
 
 /*Sidebar*/
 
@@ -216,6 +247,7 @@ height: 45px;
     transform: translateX(-100%); 
     opacity: 0; 
     height: 100vh;
+    overflow-y: auto;
   
   }
   
