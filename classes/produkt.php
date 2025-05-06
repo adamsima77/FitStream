@@ -285,6 +285,13 @@ class Produkt extends Database
 
     public function vymazanieRiadku(int $id): void
     {
+
+         if ($this->conn === null) {
+
+            $this->connect();
+            $this->conn = $this->getConnection();
+            
+        }    
         try {
 
             $sql_1 = "DELETE FROM kategorie_has_produkty WHERE produkty_idprodukty = ?";

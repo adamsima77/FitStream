@@ -14,7 +14,7 @@ $pocet = 0;
             <?php $pocet += 1; ?>
         <?php endforeach?>
         <div class = "prepnutie_fotiek">
-        <?php for($i = 0; $i < $pocet; $i++): ?>
+        <?php for($i = 1; $i <= $pocet; $i++): ?>
             <span class="prepnutie" onclick="aktualnySnimok(<?php echo $i; ?>)"></span>
         <?php endfor; ?>
         </div>

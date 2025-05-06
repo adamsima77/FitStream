@@ -13,8 +13,12 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Zlé ID");
 } else {
     $slideshow_img_cesta = $slideshow->vypisjednehoZaznamu($_GET['id']);
-    $cesta = $_SERVER['DOCUMENT_ROOT']. '/' . $slideshow_img_cesta['img_url']; 
-    unlink($cesta);
+    $cesta = $_SERVER['DOCUMENT_ROOT']. '/FitStream/' . $slideshow_img_cesta['img_url']; 
+
+    if (!unlink($cesta)) {
+        die("Súbor neexistuje");
+    }
+    
     $slideshow->vymazanieRiadku($_GET['id']);
     
 }

@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="file" id = "fotka" name = "fotka">
         <label for="popis_fotky">Popis fotky:</label>
         <input type="text" id = "popis_fotky" name = "popis_fotky">
+        <label for="kategoria">*Kategória:</label>
         <select id="kategoria" name="kategoria">
          <option value="" disabled selected>Vyberte podkategóriu:</option>
          <?php foreach($vypis_kategorii as $kategoria):?>

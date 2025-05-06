@@ -63,7 +63,7 @@
     
     .obrazok_vyziva_oblecenie img:hover {
       transform: scale(1.1);
-      filter: brightness(1.2);
+   
     }
     
     .box_vyziva_oblecenie .cena_vyziva_oblecenie {

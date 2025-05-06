@@ -72,13 +72,8 @@
     width: fit-content;
     margin-top: 20px;
     height: 45px;
-    width: 65%;
+    min-width: 65%;
     transition: 0.3s;
-  
-  
-  
-  
-  
   }
   
   .vypis_forma{

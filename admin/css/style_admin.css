@@ -231,9 +231,6 @@ height: 45px;
 
 }
 
-
-
-
 .sidebar {
     position: fixed;
     top: 0;
@@ -481,7 +478,7 @@ td .edit{
   display: inline-block;
   width: fit-content;
  
-
+display: flex;
 
 }
 .vytvorenie:hover {
@@ -561,21 +558,28 @@ td .delete{
 }
 
 
+
 .vytvorenie_produktu {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px; 
   background-color: #fff;
   padding: 30px 40px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  place-self: center;
+  min-width: 45%;
+  max-width: 45%;
   margin-top: 150px;
-
+  justify-content: center;
+  align-items: center;
+  place-self: center;
 }
 
 .vytvorenie_produktu_forma {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  min-width: 85%;
   
 }
 
@@ -592,7 +596,7 @@ td .delete{
   font-size: 14px;
 }
 
-.vytvorenie_produktu #kategoria, #podkategoria, #kategoria{
+.vytvorenie_produktu #kategoria, #podkategoria, #kategoria, #nazov_nadkategorie{
 
   resize: vertical;
   padding: 8px 10px;
@@ -623,22 +627,42 @@ td .delete{
 
 
 
-
 .vytvorenie_otazky_a_odpovede {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px; 
   background-color: #fff;
   padding: 30px 40px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  place-self: center;
+  min-width: 45%;
+  max-width: 45%;
   margin-top: 150px;
+  justify-content: center;
+  align-items: center;
+  place-self: center;
 
 }
 
+
+
+
+@media screen and (max-width: 800px){
+
+  .vytvorenie_otazky_a_odpovede{
+    
+    min-width: 75%;
+    max-width: 75%;
+    
+  }
+
+
+}
 .vytvorenie_otazky_a_odpovede_forma {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  min-width: 95%;
   
 }
 

@@ -35,15 +35,15 @@
 </div>
         
 <a href="<?php echo BASE_URL; ?>config/logout.php"><li>Odhlásenie</li></a>
-       <div class = "pr">
-        <?php $nav->overenieUzivatela();?>
-</div>
+ 
     </ul>
 
 
  
     <div class = "pr">
-      
+    
+        <?php $nav->overenieUzivatela();?>
+
         <p><?php echo $overenie_admina->getAdmin();?></p>
         <p><?php echo $overenie_admina->getadminRola()?></p>
 

@@ -222,6 +222,12 @@ class Blog extends Database
 
     public function vymazanieRiadku(int $id): void
     {
+
+        if ($this->conn === null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }
+        
         try {
             $sql = "DELETE FROM blog WHERE idblog = ?";
             $st = $this->conn->prepare($sql);

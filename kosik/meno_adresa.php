@@ -21,21 +21,21 @@ $platba = $objednavky->vypisPlatba();
 
 <h1>Osobné údaje:</h1>
 <label for="email">*E-mail:</label>
-<input type="email" name = "email" class = "email_kos">
+<input type="email" name = "email" class = "email_kos" id = "email">
 <label for="meno">*Meno:</label>
-<input type="text" name = "meno">
+<input type="text" name = "meno" id = "meno">
 <label for="priezvisko">*Priezvisko:</label>
-<input type="text" name = "priezvisko">
+<input type="text" name = "priezvisko" id = "priezvisko">
 <label for="telefonne_cislo">*Telefónne číslo:</label>
-<input type="text" name = "telefonne_cislo">
+<input type="text" name = "telefonne_cislo" id = "telefonne_cislo">
 
 <h1>Adresa:</h1>
 <label for="mesto">*Mesto:</label>
-<input type="text" name = "mesto">
+<input type="text" name = "mesto" id = "mesto">
 <label for="ulica">*Ulica:</label>
-<input type="text" name = "ulica">
+<input type="text" name = "ulica" id = "ulica">
 <label for="psc">*PSČ:</label>
-<input type="text" name = "psc">
+<input type="text" name = "psc" id = "psc">
 
 <h1>Typ platby a doprava:</h1>
 <label for="platba">*Typ platby:</label>

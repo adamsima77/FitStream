@@ -1,33 +1,33 @@
 
-let indexSnímky = 1;  
-zobrazSnímky(indexSnímky); 
+let indexSnimky = 1;  
+zobrazSnimky(indexSnimky); 
 
 
 setInterval(function() {
-  plusSnímky(1); 
+  plusSnimky(1); 
 }, 5000); 
 
 
-function plusSnímky(n) {
-  zobrazSnímky(indexSnímky += n);  
+function plusSnimky(n) {
+  zobrazSnimky(indexSnimky += n);  
 }
 
 
-function aktuálnySnímok(n) {
-  zobrazSnímky(indexSnímky = n); 
+function aktualnySnimok(n) {
+  zobrazSnimky(indexSnimky = n); 
 }
 
-function zobrazSnímky(n) {
+function zobrazSnimky(n) {
   let i;
-  let snímky = document.getElementsByClassName("fotky");  
+  let snimky = document.getElementsByClassName("fotky");  
   let bodky = document.getElementsByClassName("prepnutie");  
 
   
-  if (n > snímky.length) {indexSnímky = 1} 
-  if (n < 1) {indexSnímky = snímky.length}  
+  if (n > snimky.length) {indexSnimky = 1} 
+  if (n < 1) {indexSnimky = snimky.length}  
 
-  for (i = 0; i < snímky.length; i++) {
-    snímky[i].style.display = "none";  
+  for (i = 0; i < snimky.length; i++) {
+    snimky[i].style.display = "none";  
   }
 
 
@@ -36,8 +36,8 @@ function zobrazSnímky(n) {
   }
 
   
-  snímky[indexSnímky-1].style.display = "block";  
+  snimky[indexSnimky-1].style.display = "block";  
 
 
-  bodky[indexSnímky-1].className += " active";  
+  bodky[indexSnimky-1].className += " active";  
 }

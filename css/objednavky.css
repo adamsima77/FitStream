@@ -171,7 +171,7 @@
 
 
 display: flex;
-
+text-align: center;
 place-self: center;
 margin-top: 200px;
 border-radius: 7px;

@@ -265,6 +265,12 @@ class Uzivatel extends Database
         $statement->bindParam(3,$priezvisko);
         $statement->bindParam(4,$id);
         $statement->execute();
+
+        $_SESSION['user_meno'] = $meno;
+        $_SESSION['user_priezvisko'] = $priezvisko;
+        $_SESSION['user_email'] = $email;
+      
+
         header("Location: /FitStream/nastavenia/nastavenia.php?id=" . $_SESSION['user_id']);
   
         exit;
