@@ -74,6 +74,7 @@ $objednavky = new Objednavky();
          <p class = "pocet_na_sklade"><?php echo ($pocet_kusov_na_sklade <= 0 ? "Nie je na sklade" :"Na sklade: " . $pocet_kusov_na_sklade . " kusov");?></p>
          <p class="produkt_cena"><?php echo htmlspecialchars($produkt['cena']); ?> €</p>
     
+          <?php $objednavky->zobrazenieStavu();?>
        <?php if($pocet_kusov_na_sklade > 0):?>
       <form action="" method="POST">
       <input type = "number" id = "pocet_produktov" name = "pocet_produktov" value = "1">
@@ -89,8 +90,9 @@ $objednavky = new Objednavky();
    
 <h2>Popis:</h2>
     <hr class = "produkt_hr">
-    <p class="produkt_popis"><?php echo (htmlspecialchars($produkt['popis'])); ?></p>
-    
+    <div class = "produkt_popis">
+    <p><?php echo $produkt['popis']; ?></p>
+    </div>
   </div>
 </div>
 

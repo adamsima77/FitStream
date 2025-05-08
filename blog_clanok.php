@@ -1,11 +1,5 @@
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
-
-
-<?php include "parts/header.php"; ?>
-<?php include "parts/navbar.php"; ?>
-<?php require 'parts/sidebar.php'; ?>
-<?php include_once "classes/Blog.php"; ?>
-<body class = "blog_clanok">
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php';?>
+<?php require_once "classes/Blog.php"; ?>
 <?php 
     use blog\Blog;
     $blog = new Blog();
@@ -16,6 +10,13 @@
         die("Zlé ID.");
     }
     ?>
+    
+<?php include "parts/header.php"; ?>
+<?php include "parts/navbar.php"; ?>
+<?php require 'parts/sidebar.php'; ?>
+
+<body class = "blog_clanok">
+
 <div class="clanok_zaobalenie">
   <div class="clanok_z">
 

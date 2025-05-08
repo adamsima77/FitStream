@@ -39,6 +39,7 @@
 
 <div class="nastavenia_zarovnanie">
 
+     <?php $objednavky->zobrazenieStavu();?>
      <h1>Úprava osobných údajov</h1>
      <form action="" method = "POST" class = "nastavenie_uprava_udajov">
      <label class = "email">E-mail:</label>

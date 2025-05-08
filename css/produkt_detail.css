@@ -78,6 +78,9 @@
     line-height: 1.6;
     font-size: 16px;
     text-align: justify;
+    overflow-wrap: break-word; 
+  word-wrap: break-word;     
+  word-break: break-word; 
   }
   
   .produkt_cena {

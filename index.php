@@ -15,7 +15,10 @@ $vypis_na_hlavnej = new Produkt();
 $blog = new Blog();
 $vypis_blog = $blog->vypisHlavna();
 ?>
+<?php 
+$vypis = $vypis_na_hlavnej->vypisHlavna();
 
+?>
 
 <?php include 'parts/header.php';?>
 <?php include 'parts/navbar.php';?>

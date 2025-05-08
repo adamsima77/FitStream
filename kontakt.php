@@ -1,11 +1,12 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
+<?php require_once "classes/akordeon_class.php"; ?>
+<?php use akordeon\Akordeon?>
+<?php $akordeon = new Akordeon();?>
+<?php $vypis_a = $akordeon->vypisAkordeon();?>
 
 <?php include "parts/header.php";?>
 <?php include "parts/navbar.php";?>
 <?php require 'parts/sidebar.php';?>
-<?php include_once "classes/akordeon_class.php"; ?>
-<?php use akordeon\Akordeon?>
-<?php $akordeon = new Akordeon();?>
 
 <div class = "zarovnanie_kontakt">
     <div class = "za_kontakt">
@@ -25,9 +26,7 @@
         Nedeľa: Zatvorené</p>
     </div>
 
-<?php 
-$vypis_a = $akordeon->vypisAkordeon()
-?>
+
 <?php include "parts/akordeon.php"?>
 
     </div>

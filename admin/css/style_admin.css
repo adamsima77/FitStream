@@ -557,12 +557,32 @@ td .delete{
   }
 }
 
+.ck.ck-editor {
+  width: 100%;
+}
 
+.ck-editor__editable_inline {
+  min-height: 200px;
+  max-width: 100%;
+  overflow-y: auto;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.ck-editor__editable_inline:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 3px #007bff;
+}
 
 .vytvorenie_produktu {
   display: flex;
-  flex-direction: column; 
-  gap: 20px; 
+  flex-direction: column;
+  gap: 20px;
   background-color: #fff;
   padding: 30px 40px;
   border-radius: 10px;
@@ -579,8 +599,7 @@ td .delete{
   display: flex;
   flex-direction: column;
   gap: 15px;
-  min-width: 85%;
-  
+  width: 100%;
 }
 
 .vytvorenie_produktu_forma label {
@@ -594,20 +613,13 @@ td .delete{
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
+  width: 100%;
 }
 
-.vytvorenie_produktu #kategoria, #podkategoria, #kategoria, #nazov_nadkategorie{
-
-  resize: vertical;
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-
-}
 .vytvorenie_produktu_forma textarea {
   resize: vertical;
   min-height: 80px;
+  max-height: 400px;
 }
 
 .vytvorenie_produktu_forma input[type="submit"] {
@@ -622,9 +634,30 @@ td .delete{
   background-color: #0056b3;
 }
 
+.vytvorenie_produktu #kategoria,
+#podkategoria,
+#nazov_nadkategorie, #nadkategoria {
+  resize: vertical;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
 
+@media screen and (max-width: 800px) {
+  .vytvorenie_produktu {
+    min-width: 75%;
+    max-width: 75%;
+  }
 
+  .vytvorenie_produktu_forma {
+    padding: 15px 20px;
+  }
 
+  .ck-editor__editable_inline {
+    min-height: 150px;
+  }
+}
 
 
 .vytvorenie_otazky_a_odpovede {

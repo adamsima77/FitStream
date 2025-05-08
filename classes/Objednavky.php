@@ -66,7 +66,7 @@ class Objednavky extends Database{
        }
 
        $this->aktualizaciaKosika();
-
+       $_SESSION['uspech'] = "Produkt bol úspešne pridaný do košíka.";
        header("Location: produkt.php?id=" . $id);
        exit;
    }
@@ -140,41 +140,81 @@ class Objednavky extends Database{
 
    }
    
-   
-  public function spracovanieUdajov(): void{
+   public function spracovanieUdajov(): void {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (!empty($_POST['email']) && !empty($_POST['meno']) && !empty($_POST['priezvisko']) &&
+            !empty($_POST['telefonne_cislo']) && !empty($_POST['mesto']) && !empty($_POST['ulica'])
+            && !empty($_POST['psc']) && !empty($_POST['platba']) && !empty($_POST['doprava'])) {
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if (!(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))) {
+                die("Zlý formát emailu");
+            }
 
-        if(!empty($_POST['email']) && !empty($_POST['meno']) && !empty($_POST['priezvisko']) && 
-          !empty($_POST['telefonne_cislo']) && !empty($_POST['mesto']) && !empty($_POST['ulica'])
-          && !empty($_POST['psc']) && !empty($_POST['platba']) && !empty($_POST['doprava'])){
-      
-              $_SESSION['kosik_email'] = $_POST['email'];
-              $_SESSION['kosik_meno'] = $_POST['meno'];
-              $_SESSION['kosik_priezvisko'] = $_POST['priezvisko'];
-              $_SESSION['kosik_telefonne_cislo'] = $_POST['telefonne_cislo'];
-              $_SESSION['kosik_mesto'] = $_POST['mesto'];
-              $_SESSION['kosik_ulica'] = $_POST['ulica'];
-              $_SESSION['kosik_psc'] = $_POST['psc'];
-              $_SESSION['kosik_platba'] = $_POST['platba'];
-              $_SESSION['kosik_doprava'] = $_POST['doprava'];
-              header("Location: /FitStream/kosik/vypis_udajov.php");
-              exit;
-      
-          } else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-                    die("Zlý formát emailu");
+            if (!empty($_POST['psc']) && is_numeric($_POST['psc'])) {
+                if (strlen($_POST['psc']) != 5) {
+                    die("PSČ musí byť 5 miestne a číselné");
+                }
+            } else {
+                die("PSČ musí byť číselné a 5 miestne");
+            }
 
-          } else{
-      
-              die("Prázdne polia.");
-        
-      }
-      
-      }
+            if (!empty($_POST['telefonne_cislo']) && is_numeric($_POST['telefonne_cislo'])) {
+                if (strlen($_POST['telefonne_cislo']) < 10) {
+                    die("Číslo je krátke");
+                }
+            } else {
+                die("Číslo nie je platné");
+            }
+
+            $_SESSION['kosik_email'] = $_POST['email'];
+            $_SESSION['kosik_meno'] = $_POST['meno'];
+            $_SESSION['kosik_priezvisko'] = $_POST['priezvisko'];
+            $_SESSION['kosik_telefonne_cislo'] = $_POST['telefonne_cislo'];
+            $_SESSION['kosik_mesto'] = $_POST['mesto'];
+            $_SESSION['kosik_ulica'] = $_POST['ulica'];
+            $_SESSION['kosik_psc'] = $_POST['psc'];
+            $_SESSION['kosik_platba'] = $_POST['platba'];
+            $_SESSION['kosik_doprava'] = $_POST['doprava'];
 
 
-  }
+            $firma = $_POST['firma'] ?? '';
+            $ico = $_POST['ico'] ?? '';
+            $dic = $_POST['dic'] ?? '';
+            
+            if (empty($firma) && empty($ico) && empty($dic)) {
+                $_SESSION['kosik_firma'] = NULL;
+                $_SESSION['kosik_ico'] = NULL;
+                $_SESSION['kosik_dico'] = NULL;
+            } else {
+                if (empty($firma) || empty($ico) || empty($dic)) {
+                    die("Všetky firemné údaje musia byť vyplnené");
+                }
+            
+                if (strlen($firma) < 2 || strlen($firma) > 100) {
+                    die("Názov firmy je príliš dlhý alebo krátky");
+                }
+            
+                if (!is_numeric($ico) || strlen($ico) != 8) {
+                    die("IČO musí mať presne 8 číslic");
+                }
 
+                if (strlen($dic) != 12) {
+                    die("DIČ musí byť v tvare: SKXXXXXXXXXX");
+                }
+            
+                $_SESSION['kosik_firma'] = $firma;
+                $_SESSION['kosik_ico'] = $ico;
+                $_SESSION['kosik_dico'] = $dic;
+            }            
+
+            header("Location: /FitStream/kosik/vypis_udajov.php");
+            exit;
+
+        } else {
+            die("Prázdne polia.");
+        }
+    }
+}
   public function vypisDoprava(): array{
 
     if ($this->conn === null) {
@@ -260,23 +300,29 @@ class Objednavky extends Database{
   }
 
   public function ukladanieDoDatabazy(string $email,string $meno, string $priezvisko,
-  string $telefonne_cislo, string $mesto, string $ulica, string $psc, int $platba,int $doprava, ?int $id_uzivatela): void{
+  string $telefonne_cislo, string $mesto, string $ulica, string $psc, int $platba,int $doprava, ?int $id_uzivatela,
+  ?string $firma, ?int $ico, ?string $dico): void{
 
     if ($this->conn === null) {
         $this->connect();
         $this->conn = $this->getConnection();
     }
 
+
     try {
         
         
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    
-        $sql = "INSERT INTO adresa(mesto,ulica,psc) VALUES(?,?,?);";
+
+        $sql = "INSERT INTO adresa(mesto,ulica,psc,nazov_firmy,ico,dico) VALUES(?,?,?,?,?,?);";
         $statement = $this->conn->prepare($sql);
         $statement->bindParam(1,$mesto);
         $statement->bindParam(2,$ulica);
         $statement->bindParam(3,$psc);
+        $statement->bindParam(4,$firma);
+        $statement->bindParam(5,$ico);
+        $statement->bindParam(6,$dico);
+
         $statement->execute();
 
         $id_adresa = $this->conn->lastInsertId();
@@ -354,8 +400,15 @@ class Objednavky extends Database{
 
     }
        
-
        setcookie('kosik', '', time() - 3600, '/');
+       unset($_SESSION['kosik_email'], $_SESSION['kosik_meno'], $_SESSION['kosik_priezvisko'], 
+       $_SESSION['kosik_telefonne_cislo'], $_SESSION['kosik_mesto'], 
+       $_SESSION['kosik_ulica'], $_SESSION['kosik_psc'], $_SESSION['kosik_platba'], $_SESSION['kosik_doprava'],
+       $_SESSION['kosik_firma'], $_SESSION['kosik_ico'], $_SESSION['kosik_dico']);
+
+
+
+     
        header("Location: uspesna_objednavka.php"); 
        exit;
 
@@ -535,13 +588,43 @@ public function getCena(int $id): float{
 
 }
 
-public function overeniePodstranokKosika(): void{
+public function overeniePodstranokKosika(): void
+{
 
-    if(!isset($_COOKIE['kosik'])){
+    if($_COOKIE['kosik'] == '[]' || empty($_COOKIE['kosik']) || $_COOKIE['kosik'] == ''){
 
-          header("Location: /FitStream/index.php");
+          header("Location: /FitStream/kosik.php");
+          exit;
 
     }
+}
+
+public function overenieSumarizacie(): void
+{
+
+    
+if (!isset($_SESSION['kosik_email'], $_SESSION['kosik_meno'], $_SESSION['kosik_priezvisko']
+ , $_SESSION['kosik_telefonne_cislo'], $_SESSION['kosik_mesto'], $_SESSION['kosik_ulica'], 
+   $_SESSION['kosik_psc'], $_SESSION['kosik_platba'], $_SESSION['kosik_doprava'])) {
+    
+    header("Location: meno_adresa.php"); 
+    exit;
+}
+
+
+}
+
+public function zobrazenieStavu(): void
+{
+    if (isset($_SESSION['uspech'])) {
+        echo '<div class = "uspech">' . $_SESSION['uspech'] . '</div>';
+        unset($_SESSION['uspech']);
+    } elseif (isset($_SESSION['neuspech'])) {
+        echo '<div class = "neuspech">'. $_SESSION['neuspech'] .'</div>';
+        unset($_SESSION['neuspech']);
+    }
+
+  
 }
 
 

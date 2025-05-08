@@ -135,21 +135,28 @@ public function vytvorenieZaznamu(string $nazov, int $id)
     }
 
 
-    public function editaciaRiadku(int $id, string $nazov)
+    public function editaciaRiadku(int $id, string $nazov, int $id_nadkategorie): void
     {
     if ($this->conn == null) {
         $this->connect();
         $this->conn = $this->getConnection();
     }
 
+    if($id_nadkategorie == -1){
+
+        $id_nadkategorie = NULL;
+
+
+    }
     try {
-        $sql = "UPDATE kategorie SET nazov_kategorie_blog = ? WHERE id_kategorie = ?";
+        $sql = "UPDATE kategorie SET nazov_kategorie = ?, kategorie_idkategorie = ? WHERE idkategorie = ?";
         $st = $this->conn->prepare($sql);
         $st->bindParam(1, $nazov);
-        $st->bindParam(2, $id);
+        $st->bindParam(2,$id_nadkategorie);
+        $st->bindParam(3, $id);
         $st->execute();
         $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
-        header("Location: /FitStream/admin/edit_kategoria_blog.php");
+        header("Location: /FitStream/admin/edit_kategoria_produkty.php");
         exit;
     } catch (Exception $e) {
         $_SESSION['neuspech'] = "Pri úprave záznamu nastala chyba.";
@@ -174,6 +181,51 @@ public function vytvorenieZaznamu(string $nazov, int $id)
         $st->execute();
         $pole = $st->fetch();
         return (int) $pole['pocet'];
+    } catch (Exception $e) {
+        $_SESSION['neuspech'] = "Nastala chyba";
+        return false;
+    } finally {
+        $this->conn = null;
+    }
+
+
+   }
+
+   public function vypisNadKategorie(int $id): array|string
+   {
+
+    if ($this->conn == null) {
+        $this->connect();
+        $this->conn = $this->getConnection();
+    }
+
+    try {
+        $sql = "SELECT kategorie_idkategorie FROM kategorie WHERE idkategorie = ?";
+        $st = $this->conn->prepare($sql);
+        $st->bindParam(1, $id);
+        $st->execute();
+        $pole = $st->fetch();
+        
+        if($pole['kategorie_idkategorie'] == NULL)
+        {
+
+                 return "Žiadna kategória";
+
+        } else{
+
+            $nadkategoria_id = $pole['kategorie_idkategorie'];
+            $sql = "SELECT * FROM kategorie WHERE idkategorie = ?";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, $nadkategoria_id);
+            $st->execute();
+            return $st->fetch();
+            
+               
+
+        }
+
+
+
     } catch (Exception $e) {
         $_SESSION['neuspech'] = "Nastala chyba";
         return false;

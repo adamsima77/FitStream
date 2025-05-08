@@ -56,7 +56,7 @@ class Utilities{
             'nastavenia' => ['hamburger.js','overenieVymazanie.js'],
             'uspesna_objednavka' => ['hamburger.js'],
             'vypis_udajov' => ['hamburger.js'],
-            'meno_adresa' => ['hamburger.js']
+            'meno_adresa' => ['hamburger.js','zobrazenie_firemnych_poli.js']
     
             ];
 

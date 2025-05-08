@@ -1,38 +1,6 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
 
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $meno = $_POST['meno'];
-    $priezvisko = $_POST['priezvisko'];
-    $email = $_POST['email_registracia'];
-    $heslo = $_POST['heslo'];
-    $zopakovanie_hesla = $_POST['zopakovanie_hesla'];
-    $datum = $_POST['datum'];
-
-    if (empty($meno) || empty($priezvisko) || empty($email) || empty($heslo) || empty($zopakovanie_hesla) || empty($datum)) {
-        $_SESSION['neuspech'] = "Prázdne textové polia.";
-        header("Location: /FitStream/register.php");
-        die;
-    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        
-        $_SESSION['neuspech'] = "Zadali ste zlý formát emailu.";
-        header("Location: /FitStream/register.php");
-        die;
-
-    } else {
-      
-    try{
-
-        $uzivatel->registraciaUzivatela($meno,$priezvisko,$email,$heslo,$zopakovanie_hesla,$datum);
-    } catch(Exception $e) {
-
-        $_SESSION['neuspech'] = "Nastala neočakávaná chyba.";
-        header("Location: /FitStream/register.php");
-        die;
-      }
-    }
-}
-?>
+<?php $uzivatel->overenieRegistracie();?>
 <?php require 'parts/header.php';?>
 
 <body>

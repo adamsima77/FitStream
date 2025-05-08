@@ -1,9 +1,5 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
-
-<?php include "parts/header.php";?>
-<?php include "parts/navbar.php"; ?>
-<?php require 'parts/sidebar.php';?>
-<?php include_once "classes/produkt.php"; ?>
+<?php require_once "classes/produkt.php"; ?>
 <?php use produkt\Produkt?>
 <?php $vypis = new Produkt();
 $vypis_podkategorii = $vypis->vypisPodKategorieVyziva();
@@ -16,6 +12,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $filter = $vypis->vypis_vyziva();
 }
 ?>
+
+
+<?php include "parts/header.php";?>
+<?php include "parts/navbar.php"; ?>
+<?php require 'parts/sidebar.php';?>
+
 
 
 

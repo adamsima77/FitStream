@@ -50,6 +50,26 @@ class Uzivatel extends Database
                 die;
             }
 
+            if((strlen($meno) < 2 || strlen($meno) > 50)){
+                $_SESSION['neuspech'] = "Príliš krátke alebo príliš dlhé meno.";
+                header("Location: /FitStream/register.php");
+                die;
+
+
+            } else if((strlen($priezvisko) < 2 || strlen($priezvisko) > 60)){
+
+                $_SESSION['neuspech'] = "Príliš krátke alebo príliš dlhé priezvisko";
+                header("Location: /FitStream/register.php");
+                die;
+
+            } else if(strlen($heslo) < 8){
+
+                $_SESSION['neuspech'] = "Heslo musí obsahovať aspoň 8 znakov.";
+                header("Location: /FitStream/register.php");
+                die;
+
+            }
+
             $overeny_datum = $this->overenieDatumu($datum);
 
             
@@ -270,7 +290,7 @@ class Uzivatel extends Database
         $_SESSION['user_priezvisko'] = $priezvisko;
         $_SESSION['user_email'] = $email;
       
-
+        $_SESSION['uspech'] = "Editácia vašich údajov bola úspešná";
         header("Location: /FitStream/nastavenia/nastavenia.php?id=" . $_SESSION['user_id']);
   
         exit;
@@ -310,6 +330,79 @@ class Uzivatel extends Database
 
 
   }
+
+
+public function overenieRegistracie(): void
+{
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $meno = $_POST['meno'];
+        $priezvisko = $_POST['priezvisko'];
+        $email = $_POST['email_registracia'];
+        $heslo = $_POST['heslo'];
+        $zopakovanie_hesla = $_POST['zopakovanie_hesla'];
+        $datum = $_POST['datum'];
+    
+        if (empty($meno) || empty($priezvisko) || empty($email) || empty($heslo) || empty($zopakovanie_hesla) || empty($datum)) {
+            $_SESSION['neuspech'] = "Prázdne textové polia.";
+            header("Location: /FitStream/register.php");
+            die;
+        } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            
+            $_SESSION['neuspech'] = "Zadali ste zlý formát emailu.";
+            header("Location: /FitStream/register.php");
+            die;
+    
+        } else {
+          
+        try{
+    
+            $this->registraciaUzivatela($meno,$priezvisko,$email,$heslo,$zopakovanie_hesla,$datum);
+        } catch(Exception $e) {
+    
+            $_SESSION['neuspech'] = "Nastala neočakávaná chyba.";
+            header("Location: /FitStream/register.php");
+            die;
+          }
+        }
+    }
+
+    
+}
+
+public function overeniePrihlasenia(): void
+{
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = $_POST['email'];
+        $heslo = $_POST['heslo_1'];
+
+    if (empty($email) || empty($heslo)) {
+        
+        $_SESSION['neuspech'] = "Prázdne textové polia.";
+        header("Location: /FitStream/login.php");
+        die;
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        
+        $_SESSION['neuspech'] = "Zadali ste zlý formát emailu.";
+        header("Location: /FitStream/login.php");
+        die;
+
+    } else {
+      
+      try { 
+          $this->uzivatelPrihlasenie($email, $heslo);
+      } catch (Exception $e) {
+          
+         
+        $_SESSION['neuspech'] = "Nastala neočakávaná chyba.";
+        header("Location: /FitStream/login.php");
+        die;
+      }
+           }
+    }
+
+}
 
 }
 
