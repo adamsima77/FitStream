@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Sun 04.Máj 2025, 18:05
+-- Čas generovania: So 10.Máj 2025, 18:38
 -- Verzia serveru: 10.4.32-MariaDB
 -- Verzia PHP: 8.2.12
 
@@ -32,35 +32,39 @@ CREATE TABLE `adresa` (
   `mesto` varchar(255) NOT NULL,
   `ulica` varchar(100) DEFAULT NULL,
   `psc` varchar(20) DEFAULT NULL,
-  `datum_vytvorenia` timestamp NOT NULL DEFAULT current_timestamp()
+  `datum_vytvorenia` timestamp NOT NULL DEFAULT current_timestamp(),
+  `nazov_firmy` varchar(150) DEFAULT NULL,
+  `ico` int(11) DEFAULT NULL,
+  `dic` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Sťahujem dáta pre tabuľku `adresa`
 --
 
-INSERT INTO `adresa` (`idadresa`, `mesto`, `ulica`, `psc`, `datum_vytvorenia`) VALUES
-(1, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:07:04'),
-(2, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:09:18'),
-(3, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:13:14'),
-(4, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:15:34'),
-(5, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:16:19'),
-(6, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:42:09'),
-(7, 'Vráble', 'Hlavná', '987654', '2025-04-30 06:52:53'),
-(8, 'Vráble', 'Hlavná', '987654', '2025-04-30 08:38:38'),
-(9, 'Vráble', 'Hlavná', '987654', '2025-04-30 10:33:06'),
-(10, 'Vráble', 'Hlavná', '987654', '2025-04-30 19:05:02'),
-(11, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:28:40'),
-(12, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:47:49'),
-(13, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:48:27'),
-(14, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:49:08'),
-(15, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:50:07'),
-(16, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:51:14'),
-(17, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:56:24'),
-(18, 'Vráble', 'Hlavná', '987654', '2025-05-02 17:05:10'),
-(19, 'Vráble', 'Hlavná', '987654', '2025-05-03 13:53:02'),
-(20, 'Vráble', 'Hlavná', '987654', '2025-05-03 13:53:58'),
-(21, 'Vráble', 'Hlavná', '987654', '2025-05-03 14:37:05');
+INSERT INTO `adresa` (`idadresa`, `mesto`, `ulica`, `psc`, `datum_vytvorenia`, `nazov_firmy`, `ico`, `dic`) VALUES
+(1, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:07:04', NULL, NULL, NULL),
+(2, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:09:18', NULL, NULL, NULL),
+(3, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:13:14', NULL, NULL, NULL),
+(4, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:15:34', NULL, NULL, NULL),
+(5, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:16:19', NULL, NULL, NULL),
+(6, 'Vráble', 'Hlavná', '987654', '2025-04-29 16:42:09', NULL, NULL, NULL),
+(7, 'Vráble', 'Hlavná', '987654', '2025-04-30 06:52:53', NULL, NULL, NULL),
+(8, 'Vráble', 'Hlavná', '987654', '2025-04-30 08:38:38', NULL, NULL, NULL),
+(9, 'Vráble', 'Hlavná', '987654', '2025-04-30 10:33:06', NULL, NULL, NULL),
+(10, 'Vráble', 'Hlavná', '987654', '2025-04-30 19:05:02', NULL, NULL, NULL),
+(11, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:28:40', NULL, NULL, NULL),
+(12, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:47:49', NULL, NULL, NULL),
+(13, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:48:27', NULL, NULL, NULL),
+(14, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:49:08', NULL, NULL, NULL),
+(15, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:50:07', NULL, NULL, NULL),
+(16, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:51:14', NULL, NULL, NULL),
+(17, 'Vráble', 'Hlavná', '987654', '2025-05-02 15:56:24', NULL, NULL, NULL),
+(18, 'Vráble', 'Hlavná', '987654', '2025-05-02 17:05:10', NULL, NULL, NULL),
+(19, 'Vráble', 'Hlavná', '987654', '2025-05-03 13:53:02', NULL, NULL, NULL),
+(20, 'Vráble', 'Hlavná', '987654', '2025-05-03 13:53:58', NULL, NULL, NULL),
+(21, 'Vráble', 'Hlavná', '987654', '2025-05-03 14:37:05', NULL, NULL, NULL),
+(22, 'Vráble', 'Hlavná', '95182', '2025-05-10 16:37:55', 'sdasdas', 12345678, 'SK1023456789');
 
 -- --------------------------------------------------------
 
@@ -302,7 +306,8 @@ INSERT INTO `objednavky` (`idobjednavky`, `id_adresa`, `id_platba`, `id_doprava`
 (16, 18, 1, 1, 18, 26.99, 'V príprave', '2025-05-02 17:05:10'),
 (17, 19, 1, 1, 19, 27.53, 'V príprave', '2025-05-03 13:53:02'),
 (18, 20, 1, 1, 20, 23.90, 'V príprave', '2025-05-03 13:53:58'),
-(19, 21, 1, 1, 21, 110.85, 'V príprave', '2025-05-03 14:37:05');
+(19, 21, 1, 1, 21, 110.85, 'V príprave', '2025-05-03 14:37:05'),
+(20, 22, 1, 1, 22, 27.53, 'V príprave', '2025-05-10 16:37:55');
 
 -- --------------------------------------------------------
 
@@ -345,7 +350,8 @@ INSERT INTO `objednavky_produkty` (`id_objednavky`, `id_produkt`, `mnozstvo`) VA
 (17, 33, 1),
 (18, 34, 1),
 (19, 36, 1),
-(19, 40, 1);
+(19, 40, 1),
+(20, 33, 1);
 
 -- --------------------------------------------------------
 
@@ -397,7 +403,7 @@ CREATE TABLE `produkty` (
 INSERT INTO `produkty` (`idprodukty`, `nazov`, `znacka`, `popis`, `cena`, `pocet_kusov`, `velkost`, `farba`, `datum_vytvorenia`, `datum_upravy`, `img_hlavna`, `img_alt`, `hlavny_popis`) VALUES
 (31, 'Prom-in CFM Pure Performance - Mlieko s medom a škoricou', 'Prom-in CFM Pure Performance', 'Prom-in CFM Pure Whey Performácia\r\nVysokopercentný proteínový nápoj vyrobený metódou CFM ( c ross f  low microfiltration  – mikrofiltrácia skríženým tokom cez keramické filtre), ktorá zachováva maximum bio-aktívnych frakcií pôvodnej suroviny. CFM PURE PERFORMANCE  predstavuje prémiový proteínový suplement výhradne z najkvalitnejšieho srvátkového proteínového koncentrátu prémiovej kvality z mlieka získaného od kráv, ktoré sú po väčšiu časť roka kŕmené trávou.   Navyše vďaka najpokročilejšej technológii spracovania garantujeme zachovanie pôvodného pomeru bioaktívnych frakcií, vďaka čomu sa použitie produktu neobmedzuje len na šport, ale vďaka nepopierateľným zdravotným výhodám je vhodný na zaradenie do potravinového koša detí i dospelých. CFM PURE PERFORMANCE  neobsahuje žiadne umelé farbivá, aspartám, acesulfam, plnidlá ani nežiaduce tuky pre zjemnenie chuti. aminokyseliny BCAA. Nie nadarmo je srvátkový proteín považovaný za zlatý štandard v kvalitne bielkovín.', 59.90, 0, ' ', ' ', '2025-04-22 09:54:35', '2025-05-02 17:56:24', 'img/produkty/6810ffc9a4df19.73752177.webp', ' ', 'Vďaka šetrnému spracovaniu sa jedná o absolútnu špičku medzi vysokopercentnými proteínovými suplementami na trhu.'),
 (32, 'GymSupps XWhey Protein - Citrónový cheesecake 1000g', 'GymSupps XWhey Protein', 'GymSupps XWhey Protein\r\nGymSupps XWhey Protein je dokonalým spojencom každého športovca, ktorý vie, že rast svalov a efektívna regenerácia začínajú pri kvalitných bielkovinách. Pripravte sa posunúť svoj tréning na ďalšiu úroveň! Kedy začať uvažovať o užívaní proteínu?\r\nZačnite uvažovať o užívaní proteínu najmä v obdobiach zvýšenej fyzickej námahy a pri snahe o budovanie svalovej hmoty. Ak zisťujete, že váš denný príjem bielkovín je nedostatočný, môže byť tento doplnok ideálnym riešením. Navyše, bielkoviny podporujú chudnutie – zvyšujú pocit sýtosti, pomáhajú spaľovať tuky a zároveň chránia svalovú hmotu pri redukčnej diéte. Odporúčané dávkovanie GymSupps XWhey Protein:\r\nRozmiešajte jednu odmerku (30 gramov) v 200–300 ml vody a skonzumujte. Užívajte 1–3× denne na doplnenie bielkovín.', 26.99, 17, ' ', ' ', '2025-04-22 09:57:44', '2025-05-02 19:05:10', 'img/produkty/6810ffbb404109.09647336.webp', ' ', 'X-Whey Protein od GymSupps je viaczložkový srvátkový proteín s izolátom značky Volactive®.'),
-(33, 'Scitec 100% Whey Protein Professional - Biela čokoláda', 'Scitec', 'Whey Protein Professional od spoločnosti Scitec Nutrition má hodnotenie dlhodobo najlepšie chutného proteínu na našom trhu, navyše vďaka svojmu zloženiu patrí tiež k špičke. Obsahuje vysoký podiel kvalitných srvátkových bielkovín získaných ultra-mikrofiltračným procesom. Navyše obsahuje tráviace enzýmy papaín (extrahovaný z papáje) a bromelaín (z ananásovníka). Proteínová zložka Whey Protein Professional obsahuje cca 23% aminokyselín BCAA (5 g v každej dávke) a 18% L-\r\nglutamínu (4 g v dávke). Suplement je skvelou voľbou ako pre všetkých športovcov usilujúcich o nárast svalovej hmoty, tak aj ako veľmi kvalitná náhrada jedla do redukčných diét.\r\n\r\n100% Whey Protein Professional je srvátkový proteín s veľmi vysokou využiteľnosťou ľudským organizmom. Obsah esenciálnych aminokyselín a taktiež obsah anabolicky pôsobiacich aminokyselín s viazaným reťazcom je veľmi vysoký (až 47,5%). V záujme zabránenia katabolickým procesom je obohatený tiež množstvom glutamínu. 100% Whey Protein Professional obsahuje približne 10% imunoglobulínových mikrofrakcií, naopak neobsahuje žiadny aspartam. Veľmi dôležitou súčasťou je\r\nkomplex tráviacich enzýmov Aminogen (bromelaín extrahovaný z ananásovníku chocholatého - 1200 GDU / g a papaín extrahovaný z papáje - 1,5 FIP U / mg).\r\n\r\nProteín je určený všetkým užívateľom, ktorí sa usilujú o nárast svalovej hmoty a sily. Veľmi často je ale používaný aj v redukčných diétach ako náhrada jedla, popr. ako prímes k iným potravinám (do tvarohu)\r\n\r\nV bodoch:\r\n\r\nzmes srvátkového koncentrátu a srvátkového izolátu\r\nprispieva k zvyšovaniu a udržiavanie svalovej hmoty\r\ns obsahom všetkých 9 esenciálnych aminokyselín\r\nso zmesou tráviacich enzýmov\r\nOdporúčané dávkovanie:\r\n\r\nrozmixujte 3/4 odmerky (30 g) 100% Whey Protein Professional v 250 ml vody alebo mlieka\r\nužívajte najlepšie po tréningu (ale aj napr. ráno po prebudení či v priebehu dňa medzi jedlami)', 27.53, 9, ' ', ' ', '2025-04-22 09:59:51', '2025-05-04 18:00:06', 'img/produkty/6810ffaf5b5697.08181715.webp', ' ', '100% Whey Protein Professional je syrovátkový produkt s obsahom 77% bielkovín s nízkym obsahom tukov a laktózy.\r\n\r\n'),
+(33, 'Scitec 100% Whey Protein Professional - Biela čokoláda', 'Scitec', 'Whey Protein Professional od spoločnosti Scitec Nutrition má hodnotenie dlhodobo najlepšie chutného proteínu na našom trhu, navyše vďaka svojmu zloženiu patrí tiež k špičke. Obsahuje vysoký podiel kvalitných srvátkových bielkovín získaných ultra-mikrofiltračným procesom. Navyše obsahuje tráviace enzýmy papaín (extrahovaný z papáje) a bromelaín (z ananásovníka). Proteínová zložka Whey Protein Professional obsahuje cca 23% aminokyselín BCAA (5 g v každej dávke) a 18% L-\r\nglutamínu (4 g v dávke). Suplement je skvelou voľbou ako pre všetkých športovcov usilujúcich o nárast svalovej hmoty, tak aj ako veľmi kvalitná náhrada jedla do redukčných diét.\r\n\r\n100% Whey Protein Professional je srvátkový proteín s veľmi vysokou využiteľnosťou ľudským organizmom. Obsah esenciálnych aminokyselín a taktiež obsah anabolicky pôsobiacich aminokyselín s viazaným reťazcom je veľmi vysoký (až 47,5%). V záujme zabránenia katabolickým procesom je obohatený tiež množstvom glutamínu. 100% Whey Protein Professional obsahuje približne 10% imunoglobulínových mikrofrakcií, naopak neobsahuje žiadny aspartam. Veľmi dôležitou súčasťou je\r\nkomplex tráviacich enzýmov Aminogen (bromelaín extrahovaný z ananásovníku chocholatého - 1200 GDU / g a papaín extrahovaný z papáje - 1,5 FIP U / mg).\r\n\r\nProteín je určený všetkým užívateľom, ktorí sa usilujú o nárast svalovej hmoty a sily. Veľmi často je ale používaný aj v redukčných diétach ako náhrada jedla, popr. ako prímes k iným potravinám (do tvarohu)\r\n\r\nV bodoch:\r\n\r\nzmes srvátkového koncentrátu a srvátkového izolátu\r\nprispieva k zvyšovaniu a udržiavanie svalovej hmoty\r\ns obsahom všetkých 9 esenciálnych aminokyselín\r\nso zmesou tráviacich enzýmov\r\nOdporúčané dávkovanie:\r\n\r\nrozmixujte 3/4 odmerky (30 g) 100% Whey Protein Professional v 250 ml vody alebo mlieka\r\nužívajte najlepšie po tréningu (ale aj napr. ráno po prebudení či v priebehu dňa medzi jedlami)', 27.53, 8, ' ', ' ', '2025-04-22 09:59:51', '2025-05-10 18:37:55', 'img/produkty/6810ffaf5b5697.08181715.webp', ' ', '100% Whey Protein Professional je syrovátkový produkt s obsahom 77% bielkovín s nízkym obsahom tukov a laktózy.\r\n\r\n'),
 (34, 'Performance Protein, natívny srvátkový proteín, slaný karamel', 'Performance Protein', 'Upgradovali sme už tak dobrý Performance proteín zmenou bežného kolagénu na Grass-fed kolagén a celkovo vyladili chuť a rozpustnosť k dokonalosti. Úplne prelomová kombinácia vysoko kvalitného   natívneho srvátkového proteínu s Grass-fed hydrolyzovaným kolagénom typu I a III, kolostrom. Namiesto kokosového oleja sme použili kokosové mlieko, ktoré sa ľahšie rozpúšťa, a vďaka ktorému má proteín krémovejšiu konzistenciu. Úplne   prelomová kombinácia vysoko kvalitného natívneho srvátkového proteínu s Grass-fed hydrolyzovaným kolagénom typu I a III, kolostrom a kokosovým olejom. Svojím zložením a čistotou je úplným unikátom. Môžete si byť istí, že kombinácia látok v jednom produkte v takej kvalite neexistuje. Nie je určený iba na jednoduché doplnenie kvalitného zdroja bielkovín.   Performance Protein je komplexným riešením pre regeneráciu, črevo a imunitu. Aj napriek tomu, že je   dochutený iba prírodným sladidlom stévií, vyniká skvelou chuťou i vôňou. Navyše neobsahuje žiadne balastné látky, ani lepok.', 23.90, 14, ' ', ' ', '2025-04-22 10:04:44', '2025-05-03 15:53:58', 'img/produkty/6810ffa45e3db9.16214368.webp', ' ', 'Performance Protein – Prémiová sila pre tvoje telo.\r\nPrelomová kombinácia natívneho srvátkového proteínu, Grass-fed kolagénu typu I a III, kolostra a kokosového mlieka. Bez lepku, bez balastu, so stéviou a skvelou chuťou. Podpora regenerácie, imunity a zdravého čreva v jednom čisto prírodnom produkte.\r\n\r\n'),
 (35, 'ADIDAS ORIGINALS Tričko \'Adicolor Classics\' vo farbe Biela', 'ADIDAS ORIGINALS ', 'Produkt obsahuje: 100% organické materiály\r\nVyrobené z:Bavlna (ekologicky pestovaná)\r\nDôkaz:Vyhlásenie dodávateľa o prevedení nezávislej kontroly\r\nTento produkt obsahuje organické materiály, ktorých pestovanie sa zameriava na zachovanie zdravia pôdy a ekosystémov prostredníctvom ekologického poľnohospodárstva tým, že sa vyhýba genetickej modifikácii, a obmedzuje sa používanie vody a chemických hnojív.', 33.00, 20, 'XL', 'Biela', '2025-04-24 19:55:22', '2025-04-29 18:34:33', 'img/produkty/6810ff99d5a3a0.57127201.webp', ' ', 'Veľkosť & strih\r\nDĺžka rukávu: Štvrtinový rukáv\r\nDĺžka: Normálna dĺžka\r\nStrih: Štandardný fit\r\nPotlač loga\r\nDžersej\r\nOkrúhly výstrih\r\nZošívaný lem\r\nŠvy tón v tóne\r\nMäkký omak'),
 (36, 'Nike Sportswear Mikina \'CLUB\' vo farbe Čierna', 'Nike', 'Objav pohodlie, ktoré si zamiluješ, a štýl, ktorý vynikne – s touto mikinou od značky Nike. Vyrobená z kvalitného a príjemného materiálu, ktorý ti poskytne teplo počas chladnejších dní, a zároveň umožní pokožke dýchať.\r\n\r\nModerný strih a minimalistický dizajn s ikonickým logom Nike robia z tejto mikiny ideálny kúsok do každodenného šatníka. Či už ju skombinuješ s džínsami, teplákmi alebo legínami, vždy budeš pôsobiť uvoľnene a štýlovo.\r\n\r\n✔️ Materiál: 80 % bavlna, 20 % polyester\r\n✔️ Strih: Regular Fit\r\n✔️ Kapucňa: Áno, so šnúrkami\r\n✔️ Vrecká: Kengurie vrecko vpredu\r\n✔️ Logo: Výrazné logo Nike na hrudi\r\n\r\nIdeálna na voľný čas, tréning aj každodenné nosenie. Buď v pohybe so štýlom – buď Nike.', 64.90, 11, 'L', 'Čierna', '2025-04-24 19:59:44', '2025-05-03 16:37:05', 'img/produkty/6810ff8ced5b43.91104363.webp', ' ', 'Štýlová a pohodlná mikina Nike pre každý deň – ideálna voľba do mesta aj na tréning.'),
@@ -497,7 +503,8 @@ INSERT INTO `zakaznici` (`id`, `id_uzivatelia`, `email`, `meno`, `priezvisko`, `
 (18, NULL, 'adam.sima@student.ukf.sk', 'Adam', 'Adam', '2025-05-02 19:05:10', '2025-05-02 19:05:10', '0903293213'),
 (19, NULL, 'admin@admin.com', 'Adam', 'g', '2025-05-03 15:53:02', '2025-05-03 15:53:02', '0903293213'),
 (20, 16, 'adam.sima@student.ukf.sk', 'Adam', 'Šima', '2025-05-03 15:53:58', '2025-05-03 15:53:58', '0903293213'),
-(21, 16, 'adam.sima@student.ukf.sk', 'Adam', 'Adam', '2025-05-03 16:37:05', '2025-05-03 16:37:05', '0903293213');
+(21, 16, 'adam.sima@student.ukf.sk', 'Adam', 'Adam', '2025-05-03 16:37:05', '2025-05-03 16:37:05', '0903293213'),
+(22, NULL, 'adam.sima@student.ukf.sk', 'Adam', 'Nový', '2025-05-10 18:37:55', '2025-05-10 18:37:55', '0903293213');
 
 --
 -- Kľúče pre exportované tabuľky
@@ -619,7 +626,7 @@ ALTER TABLE `zakaznici`
 -- AUTO_INCREMENT pre tabuľku `adresa`
 --
 ALTER TABLE `adresa`
-  MODIFY `idadresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idadresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pre tabuľku `akordeon`
@@ -667,7 +674,7 @@ ALTER TABLE `navbar`
 -- AUTO_INCREMENT pre tabuľku `objednavky`
 --
 ALTER TABLE `objednavky`
-  MODIFY `idobjednavky` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idobjednavky` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT pre tabuľku `platba`
@@ -697,7 +704,7 @@ ALTER TABLE `uzivatelia`
 -- AUTO_INCREMENT pre tabuľku `zakaznici`
 --
 ALTER TABLE `zakaznici`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Obmedzenie pre exportované tabuľky

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace objednavky;
 use database\Database;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class Objednavky extends Database{
 
@@ -140,30 +140,40 @@ class Objednavky extends Database{
 
    }
    
-   public function spracovanieUdajov(): void {
+  public function spracovanieUdajov(): void {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($_POST['email']) && !empty($_POST['meno']) && !empty($_POST['priezvisko']) &&
             !empty($_POST['telefonne_cislo']) && !empty($_POST['mesto']) && !empty($_POST['ulica'])
             && !empty($_POST['psc']) && !empty($_POST['platba']) && !empty($_POST['doprava'])) {
 
             if (!(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))) {
-                die("Zlý formát emailu");
+                $_SESSION['neuspech'] = "Zlý formát emailu";
+                header("Location: /FitStream/kosik/meno_adresa.php");
+                exit;
             }
 
             if (!empty($_POST['psc']) && is_numeric($_POST['psc'])) {
                 if (strlen($_POST['psc']) != 5) {
-                    die("PSČ musí byť 5 miestne a číselné");
+                    $_SESSION['neuspech'] = "PSČ musí byť 5 miestne a číselné";
+                    header("Location: /FitStream/kosik/meno_adresa.php");
+                    exit;
                 }
             } else {
-                die("PSČ musí byť číselné a 5 miestne");
+                $_SESSION['neuspech'] = "PSČ musí byť 5 miestne a číselné";
+                header("Location: /FitStream/kosik/meno_adresa.php");
+                exit;
             }
 
             if (!empty($_POST['telefonne_cislo']) && is_numeric($_POST['telefonne_cislo'])) {
                 if (strlen($_POST['telefonne_cislo']) < 10) {
-                    die("Číslo je krátke");
+                    $_SESSION['neuspech'] = "Číslo je krátke";
+                    header("Location: /FitStream/kosik/meno_adresa.php");
+                    exit;
                 }
             } else {
-                die("Číslo nie je platné");
+                $_SESSION['neuspech'] = "Číslo nie je platné";
+                header("Location: /FitStream/kosik/meno_adresa.php");
+                exit;
             }
 
             $_SESSION['kosik_email'] = $_POST['email'];
@@ -176,42 +186,50 @@ class Objednavky extends Database{
             $_SESSION['kosik_platba'] = $_POST['platba'];
             $_SESSION['kosik_doprava'] = $_POST['doprava'];
 
-
             $firma = $_POST['firma'] ?? '';
             $ico = $_POST['ico'] ?? '';
             $dic = $_POST['dic'] ?? '';
-            
+
             if (empty($firma) && empty($ico) && empty($dic)) {
                 $_SESSION['kosik_firma'] = NULL;
                 $_SESSION['kosik_ico'] = NULL;
                 $_SESSION['kosik_dico'] = NULL;
             } else {
                 if (empty($firma) || empty($ico) || empty($dic)) {
-                    die("Všetky firemné údaje musia byť vyplnené");
+                    $_SESSION['neuspech'] = "Všetky firemné údaje musia byť vyplnené";
+                    header("Location: /FitStream/kosik/meno_adresa.php");
+                    exit;
                 }
-            
+
                 if (strlen($firma) < 2 || strlen($firma) > 100) {
-                    die("Názov firmy je príliš dlhý alebo krátky");
+                    $_SESSION['neuspech'] = "Názov firmy je príliš dlhý alebo krátky";
+                    header("Location: /FitStream/kosik/meno_adresa.php");
+                    exit;
                 }
-            
+
                 if (!is_numeric($ico) || strlen($ico) != 8) {
-                    die("IČO musí mať presne 8 číslic");
+                    $_SESSION['neuspech'] = "IČO musí mať presne 8 číslic";
+                    header("Location: /FitStream/kosik/meno_adresa.php");
+                    exit;
                 }
 
                 if (strlen($dic) != 12) {
-                    die("DIČ musí byť v tvare: SKXXXXXXXXXX");
+                    $_SESSION['neuspech'] = "DIČ musí byť v tvare: SKXXXXXXXXXX";
+                    header("Location: /FitStream/kosik/meno_adresa.php");
+                    exit;
                 }
-            
+
                 $_SESSION['kosik_firma'] = $firma;
                 $_SESSION['kosik_ico'] = $ico;
                 $_SESSION['kosik_dico'] = $dic;
-            }            
+            }
 
             header("Location: /FitStream/kosik/vypis_udajov.php");
             exit;
-
         } else {
-            die("Prázdne polia.");
+            $_SESSION['neuspech'] = "Prázdne polia.";
+            header("Location: /FitStream/kosik/meno_adresa.php");
+            exit;
         }
     }
 }
@@ -314,7 +332,7 @@ class Objednavky extends Database{
         
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-        $sql = "INSERT INTO adresa(mesto,ulica,psc,nazov_firmy,ico,dico) VALUES(?,?,?,?,?,?);";
+        $sql = "INSERT INTO adresa(mesto,ulica,psc,nazov_firmy,ico,dic) VALUES(?,?,?,?,?,?);";
         $statement = $this->conn->prepare($sql);
         $statement->bindParam(1,$mesto);
         $statement->bindParam(2,$ulica);
@@ -436,8 +454,13 @@ class Objednavky extends Database{
         $st->bindParam(1,$id);
         $st->execute();
         $kusy = $st->fetch();
-        return $kusy['pocet_kusov'];
 
+        if($kusy){
+        return $kusy['pocet_kusov'];
+        } else if(!$kusy){
+
+            return 0;
+        }
     } catch (Exception $e) {
         die("Nastala chyba");
     } 

@@ -1,5 +1,7 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
 
+
+
 <?php $uzivatel->overenieNastavenia($_SESSION['user_id'],$_GET['id']);?>
 
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Objednavky.php');?>
@@ -20,8 +22,10 @@
      $priezvisko = $_POST['priezvisko'];
 
      if(empty($email) || empty($meno) || empty($priezvisko)){
-
-        die("Prázdne polia.");
+                    $_SESSION['neuspech'] = "Prázdne polia.";
+                    header("Location: /FitStream/nastavenia/nastavenia.php" . "?id=" . $_SESSION['user_id']);
+                    exit;
+        
      } else{
 
        

@@ -22,7 +22,8 @@ class Utilities{
         'nastavenia' => ['nastavenia.css', 'navbar_sidebar.css', 'footer.css','vseobecne_styly.css'],
         'uspesna_objednavka' => ['uspesna_objednavka.css','vseobecne_styly.css'],
         'vypis_udajov' => ['navbar_sidebar.css', 'footer.css','vypis_udajov.css','vseobecne_styly.css'],
-        'meno_adresa' => ['navbar_sidebar.css', 'footer.css','meno_adresa.css','vseobecne_styly.css']
+        'meno_adresa' => ['navbar_sidebar.css', 'footer.css','meno_adresa.css','vseobecne_styly.css'],
+        'error' => ['navbar_sidebar.css', 'footer.css','vseobecne_styly.css']
 
         ];
 

@@ -57,5 +57,17 @@
   margin: 15px 0;
   border-radius: 5px;
   font-weight: bold;
- 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 75%;
+  height: 35px;
+}
+
+
+.stred {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 250px; 
 }

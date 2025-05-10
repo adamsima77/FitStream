@@ -52,17 +52,19 @@ $objednavky = new Objednavky();
 
 <?php $pocet_kusov_na_sklade = $objednavky->getAktualnyPocetKusov($_GET['id']);?>
 
+
+
 <?php include "parts/header.php"; ?>
 <?php include "parts/navbar.php"; ?>
 <?php require 'parts/sidebar.php'; ?>
 
 <body>
 
-   
+  
 
 <div class="produkt_zaobalenie">
   <div class="produkt_z">
-  
+     <?php $objednavky->zobrazenieStavu();?>
 <div class = "produkt_nazov_cena_popis">
     <img src="<?php echo htmlspecialchars($produkt['img_hlavna']); ?>" 
          class="produkt_img" 
@@ -74,7 +76,6 @@ $objednavky = new Objednavky();
          <p class = "pocet_na_sklade"><?php echo ($pocet_kusov_na_sklade <= 0 ? "Nie je na sklade" :"Na sklade: " . $pocet_kusov_na_sklade . " kusov");?></p>
          <p class="produkt_cena"><?php echo htmlspecialchars($produkt['cena']); ?> €</p>
     
-          <?php $objednavky->zobrazenieStavu();?>
        <?php if($pocet_kusov_na_sklade > 0):?>
       <form action="" method="POST">
       <input type = "number" id = "pocet_produktov" name = "pocet_produktov" value = "1">

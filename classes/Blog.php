@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace blog;
 use database\Database;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class Blog extends Database
 {
@@ -278,7 +278,18 @@ class Blog extends Database
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
-            return $st->fetch();
+            $zaznam =  $st->fetch();
+
+             if(empty($zaznam)){
+
+                $_SESSION['neuspech'] = "Tento článok neexistuje";
+                header("Location: /FitStream/config/error.php");
+                exit;
+                
+            } else{
+
+                return $zaznam;
+            }
         } catch (Exception $e) {
             die("Chyba pri načítaní produktu");
         } finally {
@@ -405,7 +416,18 @@ class Blog extends Database
             $st->bindParam(1, $id);
             $st->execute();
 
-            return $st->fetch();
+            $clanok = $st->fetch();
+
+             if(empty($clanok)){
+
+                $_SESSION['neuspech'] = "Tento článok neexistuje";
+                header("Location: /FitStream/config/error.php");
+                exit;
+                
+            } else{
+
+                return $clanok;
+            }
         } catch (Exception $e) {
             die("Chyba pri načítaní produktu");
         } finally {

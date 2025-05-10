@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace kategoriablog;
 use database\Database;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class KategoriaBlog extends Database
 {
@@ -115,7 +115,18 @@ public function vytvorenieZaznamu(string $nazov)
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
-            return $st->fetch();
+            $zaznam = $st->fetch();
+
+              if(empty($zaznam)){
+
+                $_SESSION['neuspech'] = "Tento záznam neexistuje";
+                header("Location: /FitStream/config/error.php");
+                exit;
+                
+            } else{
+
+                return $zaznam;
+            }
         } catch (Exception $e) {
             die("Chyba pri načítaní produktu");
         } finally {

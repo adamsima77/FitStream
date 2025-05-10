@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace produkt;
 use database\Database;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class Produkt extends Database
 {
@@ -14,7 +14,7 @@ class Produkt extends Database
         $this->conn = $this->getConnection();
     }
 
-    public function vypis_vyziva(): array
+    public function vypis_vyziva(): array|bool
     {
 
         if ($this->conn === null) {
@@ -32,8 +32,17 @@ class Produkt extends Database
 
             $st = $this->conn->prepare($sql);
             $st->execute();
+            $produkt =  $st->fetchAll();
+            if(empty($produkt)){
+            
+            $_SESSION['neuspech'] = "Žiadne produkty";
+            return false;
+            exit;
+            
+            } else{
 
-            return $st->fetchAll();
+                return $produkt;
+            }
         } catch (Exception $e) {
             die("Nastala chyba");
         } finally {
@@ -118,7 +127,7 @@ class Produkt extends Database
         }
     }
 
-    public function produktDetail(int $id): array|false
+    public function produktDetail(int $id): array
     {
         try {
             $sql = "SELECT nazov, popis, img_hlavna, cena, img_alt, hlavny_popis
@@ -128,8 +137,18 @@ class Produkt extends Database
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
+            $produkt = $st->fetch();
 
-            return $st->fetch();
+            if(empty($produkt)){
+
+                $_SESSION['neuspech'] = "Tento produkt neexistuje";
+                header("Location: /FitStream/config/error.php");
+                exit;
+                
+            } else{
+
+                return $produkt;
+            }
         } catch (Exception $e) {
             die("Chyba pri načítaní produktu");
         } finally {
@@ -593,9 +612,19 @@ class Produkt extends Database
             $st->bindParam(1,$id);
             $st->execute();
             
-            return $st->fetch();
+            $kat = $st->fetch();
 
 
+             if(empty($kat)){
+
+                $_SESSION['neuspech'] = "Tento článok neexistuje";
+                header("Location: /FitStream/config/error.php");
+                exit;
+                
+            } else{
+
+                return $kat;
+            }
         } catch(Exception $e) {
             die("Nastala chyba: " . $e->getMessage());
         } finally {

@@ -17,7 +17,10 @@ $platba = $objednavky->vypisPlatba();
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/parts/navbar.php'; ?>
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/parts/sidebar.php');?>
 
+
+
 <form action="" method = "POST" class = "osobne_udaje_kosik">
+<?php $objednavky->zobrazenieStavu();?>
 <h1>Osobné údaje</h1>
 <label for="email">*E-mail:</label>
 <input type="email" name="email" class="email_kos" id="email" 

@@ -1,6 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/footer_linky.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Footer.php';
 use footer\Footer;
 $footer = new Footer();
 

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace uzivatel;
 use database\Database;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/database_con.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class Uzivatel extends Database
 {
@@ -223,8 +223,13 @@ class Uzivatel extends Database
     }
 
 
-    public function overenieNastavenia(int $id_uzivatela, int $id_url): void{
+    public function overenieNastavenia(int $id_uzivatela, ?int $id_url): void{
 
+        if($id_url == NULL){
+             header("Location: /FitStream/nastavenia/nastavenia.php?id=$id_uzivatela");
+             exit;
+
+        }
            if($id_uzivatela != $id_url){
 
              header("Location: /FitStream/nastavenia/nastavenia.php?id=$id_uzivatela");

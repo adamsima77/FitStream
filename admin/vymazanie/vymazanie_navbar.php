@@ -1,6 +1,6 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/navbar_links.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Navbar.php';
 use uzivatel\Uzivatel;
 use navbar\Navbar;
 $overenie_admina = new Uzivatel();
