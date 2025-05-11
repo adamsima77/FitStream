@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
-namespace produkt;
-use database\Database;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
+namespace FitStream\Produkt;
+use FitStream\Database\Database;
 
 class Produkt extends Database
 {

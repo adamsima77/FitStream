@@ -1,13 +1,8 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
 
-
+<?php use FitStream\Objednavky\Objednavky;?>
 
 <?php $uzivatel->overenieNastavenia($_SESSION['user_id'],$_GET['id']);?>
-
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Objednavky.php');?>
-
-<?php use objednavky\Objednavky?>
-
 
 <?php $objednavky = new Objednavky();
       $id_uzivatela = $_SESSION['user_id'];?>

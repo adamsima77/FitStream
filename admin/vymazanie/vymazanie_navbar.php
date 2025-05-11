@@ -1,8 +1,6 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Navbar.php';
-use uzivatel\Uzivatel;
-use navbar\Navbar;
+use FitStream\Uzivatel\uzivatel;
+use FitStream\Navbar\Navbar;
 $overenie_admina = new Uzivatel();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/auth_admin.php');
 $navbar = new Navbar();

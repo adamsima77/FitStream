@@ -1,5 +1,4 @@
 <?php
-
 define("BASE_URL", "http://localhost/FitStream/");
 
 define('DATABASE', [  

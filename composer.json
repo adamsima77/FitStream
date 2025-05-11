@@ -1,0 +1,22 @@
+{
+    "name": "myproject/fitstream",
+    "autoload": {
+        "psr-4": {
+               "FitStream\\Akordeon\\": "classes/",
+               "FitStream\\Database\\": "classes/",
+               "FitStream\\Blog\\": "classes/",
+               "FitStream\\Doprava\\": "classes/",
+               "FitStream\\Footer\\": "classes/",
+               "FitStream\\KategoriaBlog\\": "classes/",
+               "FitStream\\KategoriaProdukty\\": "classes/",
+               "FitStream\\Navbar\\": "classes/",
+               "FitStream\\Objednavky\\": "classes/",
+               "FitStream\\Platba\\": "classes/",
+               "FitStream\\Produkt\\": "classes/",
+               "FitStream\\Slideshow\\": "classes/",
+               "FitStream\\Utilities\\": "classes/",
+               "FitStream\\Uzivatel\\": "classes/"
+        }
+    },
+    "require": {}
+}

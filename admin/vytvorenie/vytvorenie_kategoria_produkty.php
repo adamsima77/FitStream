@@ -1,7 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/KategoriaProdukty.php';
-use kategoriaprodukty\KategoriaProdukty;
+use FitStream\KategoriaProdukty\KategoriaProdukty;
 $kategoria = new KategoriaProdukty();
 $vypis_kategorie = $kategoria->kategoriaProduktyVypis();
 ?>

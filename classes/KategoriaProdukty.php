@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
-namespace kategoriaprodukty;
-use database\Database;
+namespace FitStream\KategoriaProdukty;
+use FitStream\Database\Database;
 use Exception;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class KategoriaProdukty extends Database
 {

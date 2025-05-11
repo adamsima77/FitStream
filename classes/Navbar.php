@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
-namespace navbar;
-use database\Database;
+namespace FitStream\Navbar;
+use FitStream\Database\Database;
 use Exception;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class Navbar extends Database
 {

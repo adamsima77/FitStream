@@ -1,8 +1,6 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
-<?php include_once "classes/Produkt.php"; ?>
-<?php include_once "classes/Objednavky.php"; ?>
-<?php use produkt\Produkt;
-      use objednavky\Objednavky;?>
+<?php use FitStream\Produkt\Produkt;
+      use FitStream\Objednavky\Objednavky;?>
 <?php
 
 $objednavky = new Objednavky();

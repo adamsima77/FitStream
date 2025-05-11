@@ -1,6 +1,5 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
-<?php require_once "classes/Produkt.php"; ?>
-<?php use produkt\Produkt?>
+<?php use FitStream\Produkt\Produkt;?>
 <?php $vypis = new Produkt();
 
 $vypis_podkategorie = $vypis->vypisPodKategorieOblecenie();

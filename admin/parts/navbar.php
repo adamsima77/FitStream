@@ -1,5 +1,4 @@
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Navbar.php');?>
-<?php use navbar\Navbar?>
+<?php use FitStream\Navbar\Navbar;?>
 
 <?php $nav = new Navbar();?>
 

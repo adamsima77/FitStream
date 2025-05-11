@@ -1,8 +1,6 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/KategoriaProdukty.php';
-use uzivatel\Uzivatel;
-use kategoriaprodukty\KategoriaProdukty;
+use FitStream\Uzivatel\Uzivatel;
+use FitStream\KategoriaProdukty\KategoriaProdukty;
 $overenie_admina = new Uzivatel();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/auth_admin.php');
 $kategoriablog = new KategoriaProdukty();

@@ -1,7 +1,6 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
 
-<?php include_once "classes/Blog.php"; ?>
-<?php use blog\Blog?>
+<?php use FitStream\Blog\Blog;?>
 
 <?php 
 $blog = new Blog();

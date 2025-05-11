@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
-namespace uzivatel;
-use database\Database;
+namespace FitStream\Uzivatel;
+use FitStream\Database\Database;
 use Exception;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
+
 
 class Uzivatel extends Database
 {

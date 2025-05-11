@@ -1,5 +1,4 @@
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Footer.php');?>
-<?php use footer\Footer?>
+<?php use FitStream\Footer\Footer;?>
 <?php 
 $footer = new Footer();
 $footer_vypis = $footer->footerVypis();

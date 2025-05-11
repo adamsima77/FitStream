@@ -1,7 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/KategoriaBlog.php';
-use kategoriablog\KategoriaBlog;
+use FitStream\KategoriaBlog\KategoriaBlog;
 $kategoria_blog = new KategoriaBlog();
 
 

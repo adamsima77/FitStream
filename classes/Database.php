@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace database;
+namespace FitStream\Database;
 use PDO;
 use PDOException;
 use Exception;

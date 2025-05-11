@@ -1,11 +1,7 @@
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Navbar.php');?>
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Objednavky.php');?>
-<?php use objednavky\Objednavky?>
-<?php use navbar\Navbar?>
+<?php use FitStream\Objednavky\Objednavky;?>
+<?php use FitStream\Navbar\Navbar;?>
 
-<?php $objednavky = new Objednavky();
-     
-     ?>
+<?php $objednavky = new Objednavky();?>
 
 <?php 
 $nav = new Navbar();

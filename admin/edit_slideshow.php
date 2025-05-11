@@ -1,7 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Slideshow.php';
-use slideshow\Slideshow;
+use FitStream\Slideshow\Slideshow;
 $slideshow = new Slideshow();
 $vypis_slideshow = $slideshow->slideshowVypis();
 ?>

@@ -1,7 +1,6 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php';?>
-<?php require_once "classes/Blog.php"; ?>
 <?php 
-    use blog\Blog;
+    use FitStream\Blog\Blog;
     $blog = new Blog();
 
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {

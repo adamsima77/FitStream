@@ -1,6 +1,8 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Akordeon.php');?>
-<?php use akordeon\Akordeon?>
+<?php use FitStream\Akordeon\Akordeon;?>
+
+
+
 <?php $akordeon = new Akordeon();?>
 <?php $vypis_a = $akordeon->vypisAkordeon();?>
 

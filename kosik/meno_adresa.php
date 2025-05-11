@@ -1,6 +1,5 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Objednavky.php');?>
-<?php use objednavky\Objednavky?>
+<?php use FitStream\Objednavky\Objednavky;?>
 
 
 <?php $objednavky = new Objednavky();?>

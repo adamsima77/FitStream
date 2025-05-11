@@ -1,8 +1,6 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Footer.php';
-use uzivatel\Uzivatel;
-use footer\Footer;
+use FitStream\Uzivatel\Uzivatel;
+use FitStream\Footer\Footer;
 $overenie_admina = new Uzivatel();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/auth_admin.php');
 $footer = new Footer();

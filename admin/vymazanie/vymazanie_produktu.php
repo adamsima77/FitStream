@@ -1,8 +1,6 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Produkt.php';
-use uzivatel\Uzivatel;
-use produkt\Produkt;
+use FitStream\Uzivatel\Uzivatel;
+use FitStream\Produkt\Produkt;
 $overenie_admina = new Uzivatel();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/auth_admin.php');
 $produkt = new Produkt();

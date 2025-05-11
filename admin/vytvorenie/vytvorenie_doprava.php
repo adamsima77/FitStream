@@ -1,7 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Doprava.php';
-use doprava\Doprava;
+use FitStream\Doprava\Doprava;
 
 $doprava = new Doprava();
 ?>
