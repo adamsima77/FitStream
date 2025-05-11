@@ -3,7 +3,7 @@
 
 <?php 
 $nav = new Navbar();
-$vypis_linkov = $nav->navbar_Links();
+$vypis_linkov = $nav->navbarLinks();
 ?>
 <div class = "sidebar" id = "sidebar">
     <div class = "sidebar_zarovnanie">

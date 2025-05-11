@@ -9,7 +9,7 @@ $navbar = new Navbar();
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Zlé ID");
 } else {
-    $navbar_vypis = $navbar->vypis_jedneho_Zaznamu($_GET['id']);
+    $navbar_vypis = $navbar->vypisJednehoZaznamu($_GET['id']);
 }
 
 

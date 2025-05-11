@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Footer.php';
 use footer\Footer;
 $footer = new Footer();
-$vypis_footer = $footer->footer_Vypis();
+$vypis_footer = $footer->footerVypis();
 ?>
 
 <?php include "parts/header.php"; ?>

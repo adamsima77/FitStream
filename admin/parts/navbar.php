@@ -45,7 +45,7 @@
         <?php $nav->overenieUzivatela();?>
 
         <p><?php echo $overenie_admina->getAdmin();?></p>
-        <p><?php echo $overenie_admina->getadminRola()?></p>
+        <p><?php echo $overenie_admina->getAdminRola()?></p>
 
     </div>
 

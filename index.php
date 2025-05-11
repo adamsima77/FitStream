@@ -1,6 +1,6 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
-<?php include_once "classes/produkt.php"; ?>
-<?php include_once "classes/slideshow_vypis.php"; ?>
+<?php include_once "classes/Produkt.php"; ?>
+<?php include_once "classes/Slideshow.php"; ?>
 <?php include_once "classes/Blog.php"; ?>
 <?php use slideshow\slideshow?>
 <?php use produkt\Produkt?>

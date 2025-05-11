@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace footer;
 use database\Database;
+use Exception;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class Footer extends Database
@@ -14,7 +15,7 @@ class Footer extends Database
         $this->conn = $this->getConnection();
     }
 
-    public function footer_Vypis(): array
+    public function footerVypis(): array
     {
         try {
             $sql = "SELECT * FROM footer_ikony";
@@ -28,7 +29,7 @@ class Footer extends Database
         }
     }
 
-    public function vytvorenie_Zaznamu(string $ikona, string $farba_bg, string $farba_ikony, string $url): void
+    public function vytvorenieZaznamu(string $ikona, string $farba_bg, string $farba_ikony, string $url): void
     {
         try {
             $sql = "INSERT INTO footer_ikony (ikona, farba_bg, farba_ikony, url) VALUES (?, ?, ?, ?)";
@@ -38,13 +39,10 @@ class Footer extends Database
             $st->bindParam(3, $farba_ikony);
             $st->bindParam(4, $url);
             $st->execute();
-
-           
             $_SESSION['uspech'] = "Záznam bol úspešne vytvorený.";
             header("Location: /FitStream/admin/edit_footer.php");
             exit;
         } catch (Exception $e) {
-           
             $_SESSION['neuspech'] = "Pri vytváraní záznamu nastala chyba.";
             die;
         } finally {
@@ -52,7 +50,7 @@ class Footer extends Database
         }
     }
 
-    public function vypis_jedneho_Zaznamu(int $id): array|false
+    public function vypisJednehoZaznamu(int $id): array|false
     {
         try {
             $sql = "SELECT * FROM footer_ikony WHERE idfooter = ?";
@@ -60,15 +58,11 @@ class Footer extends Database
             $st->bindParam(1, $id);
             $st->execute();
             $zaznam =  $st->fetch();
-
-             if(empty($zaznam)){
-
+            if(empty($zaznam)){
                 $_SESSION['neuspech'] = "Tento záznam neexistuje";
                 header("Location: /FitStream/config/error.php");
                 exit;
-                
             } else{
-
                 return $zaznam;
             }
         } catch (Exception $e) {
@@ -95,13 +89,10 @@ class Footer extends Database
             $st->bindParam(4, $url);
             $st->bindParam(5, $id);
             $st->execute();
-
-           
             $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
             header("Location: /FitStream/admin/edit_footer.php");
             exit;
         } catch (Exception $e) {
-          
             $_SESSION['neuspech'] = "Pri úprave záznamu nastala chyba.";
             die;
         } finally {
@@ -116,8 +107,6 @@ class Footer extends Database
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
-
-          
             $_SESSION['uspech'] = "Záznam bol úspešne zmazaný.";
             header("Location: /FitStream/admin/edit_footer.php");
             exit;
@@ -132,18 +121,13 @@ class Footer extends Database
 
     public function zobrazenieStavu(): void
     {
-        
-
         if (isset($_SESSION['uspech'])) {
             echo '<div class="uspech">'. $_SESSION['uspech'] .'</div>';
             unset($_SESSION['uspech']);
         } elseif (isset($_SESSION['neuspech'])) {
             echo '<div class="neuspech">'. $_SESSION['neuspech'] .'</div>';
             unset($_SESSION['neuspech']);
-        }
-
-        
-    }
-
-    
+        }   
+    }   
 }
+?>

@@ -9,7 +9,7 @@
 
 <?php 
 $nav = new Navbar();
-$vypis_linkov = $nav->navbar_Links();
+$vypis_linkov = $nav->navbarLinks();
 
 ?>
 <nav class = "menu">

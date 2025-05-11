@@ -1,6 +1,6 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/uzivatel.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/slideshow_vypis.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Slideshow.php';
 use uzivatel\Uzivatel;
 use slideshow\Slideshow;
 $overenie_admina = new Uzivatel();

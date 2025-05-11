@@ -1,6 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
-include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Produkt.php';
 use produkt\Produkt;
 $produkt = new Produkt();
 $vypis_pod_kategorii = $produkt->vypisPodKategorie();

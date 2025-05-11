@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($nazov) || empty($url)) {
             die("Vyplňte polia označené hviezdičkou");
         } else {
-            $navbar->vytvorenie_Zaznamu($nazov, $url);
+            $navbar->vytvorenieZaznamu($nazov, $url);
         }
 
     }catch(Exception $e){

@@ -7,7 +7,7 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Objednavky.php');?>
 
 <?php use objednavky\Objednavky?>
-<?php use produkt\Produkt?>
+
 
 <?php $objednavky = new Objednavky();
       $id_uzivatela = $_SESSION['user_id'];?>

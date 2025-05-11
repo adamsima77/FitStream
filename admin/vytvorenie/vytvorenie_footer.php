@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($ikona) || empty($farba_bg) || empty($farba_ikony) || empty($url)) {
             die("Vyplňte polia označené hviezdičkou");
         } else {
-            $footer->vytvorenie_Zaznamu($ikona, $farba_bg, $farba_ikony, $url);
+            $footer->vytvorenieZaznamu($ikona, $farba_bg, $farba_ikony, $url);
         }
 
     }catch(Exception $e){

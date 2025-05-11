@@ -1,5 +1,5 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
-<?php require_once "classes/produkt.php"; ?>
+<?php require_once "classes/Produkt.php"; ?>
 <?php use produkt\Produkt?>
 <?php $vypis = new Produkt();
 

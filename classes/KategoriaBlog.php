@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace kategoriablog;
 use database\Database;
+use Exception;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class KategoriaBlog extends Database
@@ -15,50 +16,36 @@ class KategoriaBlog extends Database
     }
 
     public function kategoriaBlogVypis(): array{
-    
         if ($this->conn === null) {
-    
             $this->connect();
             $this->conn = $this->getConnection();
-            
         }    
        
         try{
-            
-        
             $sql = "SELECT * FROM blog_kategorie;";
             $statement = $this->conn->prepare($sql);
             $statement->execute();
             $rs = $statement->fetchAll();
-    
             return $rs;
-            
         }catch(Exception $e){
-    
             die;
-    
         } finally{
-
             $this->conn = null;
         }
-
     }
 
-    
-public function zobrazenieStavu()
-{
-    if (isset($_SESSION['uspech'])) {
-        echo '<div class = "uspech">' . $_SESSION['uspech'] . '</div>';
-        unset($_SESSION['uspech']);
-    } elseif (isset($_SESSION['neuspech'])) {
-        echo '<div class = "neuspech">'. $_SESSION['neuspech'] .'</div>';
-        unset($_SESSION['neuspech']);
+    public function zobrazenieStavu(): void
+    {
+        if (isset($_SESSION['uspech'])) {
+            echo '<div class = "uspech">' . $_SESSION['uspech'] . '</div>';
+            unset($_SESSION['uspech']);
+        } elseif (isset($_SESSION['neuspech'])) {
+            echo '<div class = "neuspech">'. $_SESSION['neuspech'] .'</div>';
+            unset($_SESSION['neuspech']);
+        } 
     }
 
-  
-}
-
-public function vytvorenieZaznamu(string $nazov)
+    public function vytvorenieZaznamu(string $nazov)
     {
         try {
             $sql = "INSERT INTO blog_kategorie(nazov_kategorie_blog) VALUES (?)";
@@ -76,27 +63,21 @@ public function vytvorenieZaznamu(string $nazov)
         }
     }
 
-
     public function vymazanieZaznamu(int $id): void
     {
         try {
-
             $sql = "UPDATE blog SET id_kategorie = NULL WHERE id_kategorie = ?";
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
-            
             $sql = "DELETE FROM blog_kategorie WHERE id_kategorie = ?";
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
-
-          
             $_SESSION['uspech'] = "Záznam bol úspešne zmazaný.";
             header("Location: /FitStream/admin/edit_kategoria_blog.php");
             exit;
         } catch (Exception $e) {
-            
             $_SESSION['neuspech'] = "Pri mazaní záznamu nastala chyba.";
             die;
         } finally {
@@ -116,15 +97,11 @@ public function vytvorenieZaznamu(string $nazov)
             $st->bindParam(1, $id);
             $st->execute();
             $zaznam = $st->fetch();
-
-              if(empty($zaznam)){
-
+            if(empty($zaznam)){
                 $_SESSION['neuspech'] = "Tento záznam neexistuje";
                 header("Location: /FitStream/config/error.php");
                 exit;
-                
             } else{
-
                 return $zaznam;
             }
         } catch (Exception $e) {
@@ -134,54 +111,50 @@ public function vytvorenieZaznamu(string $nazov)
         }
     }
 
+    public function editaciaRiadku(int $id, string $nazov): void
+    {
+        if ($this->conn == null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }
 
-    public function editaciaRiadku(int $id, string $nazov)
-{
-    if ($this->conn == null) {
-        $this->connect();
-        $this->conn = $this->getConnection();
+        try {
+            $sql = "UPDATE blog_kategorie SET nazov_kategorie_blog = ? WHERE id_kategorie = ?";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, $nazov);
+            $st->bindParam(2, $id);
+            $st->execute();
+            $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
+            header("Location: /FitStream/admin/edit_kategoria_blog.php");
+            exit;
+        } catch (Exception $e) {
+            $_SESSION['neuspech'] = "Pri úprave záznamu nastala chyba.";
+            die;
+        } finally {
+            $this->conn = null;
+        }
     }
 
-    try {
-        $sql = "UPDATE blog_kategorie SET nazov_kategorie_blog = ? WHERE id_kategorie = ?";
-        $st = $this->conn->prepare($sql);
-        $st->bindParam(1, $nazov);
-        $st->bindParam(2, $id);
-        $st->execute();
-        $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
-        header("Location: /FitStream/admin/edit_kategoria_blog.php");
-        exit;
-    } catch (Exception $e) {
-        $_SESSION['neuspech'] = "Pri úprave záznamu nastala chyba.";
-        die;
-    } finally {
-        $this->conn = null;
+   public function pocetProduktov(int $id): int|bool
+   {
+       if ($this->conn == null) {
+           $this->connect();
+           $this->conn = $this->getConnection();
+       }
+
+       try {
+           $sql = "SELECT COUNT(*) as pocet FROM blog WHERE id_kategorie = ?";
+           $st = $this->conn->prepare($sql);
+           $st->bindParam(1, $id);
+           $st->execute();
+           $pole = $st->fetch();
+           return (int) $pole['pocet'];
+       } catch (Exception $e) {
+           $_SESSION['neuspech'] = "Nastala chyba";
+           return false;
+       } finally {
+           $this->conn = null;
+       }
     }
 }
-
-
-   public function pocetProduktov(int $id): int|bool{
-
-    if ($this->conn == null) {
-        $this->connect();
-        $this->conn = $this->getConnection();
-    }
-
-    try {
-        $sql = "SELECT COUNT(*) as pocet FROM blog WHERE id_kategorie = ?";
-        $st = $this->conn->prepare($sql);
-        $st->bindParam(1, $id);
-        $st->execute();
-        $pole = $st->fetch();
-        return (int) $pole['pocet'];
-    } catch (Exception $e) {
-        $_SESSION['neuspech'] = "Nastala chyba";
-        return false;
-    } finally {
-        $this->conn = null;
-    }
-
-
-   }
-
-}
+?>

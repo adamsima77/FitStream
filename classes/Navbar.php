@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace navbar;
 use database\Database;
+use Exception;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class Navbar extends Database
@@ -14,7 +15,7 @@ class Navbar extends Database
         $this->conn = $this->getConnection();
     }
 
-    public function navbar_Links(): array
+    public function navbarLinks(): array
     {
         try {
             $sql = "SELECT * FROM navbar";
@@ -28,7 +29,7 @@ class Navbar extends Database
         }
     }
 
-    public function vytvorenie_Zaznamu(string $nazov, string $url): void
+    public function vytvorenieZaznamu(string $nazov, string $url): void
     {
         try {
             $sql = "INSERT INTO navbar(nazov,url) VALUES (?, ?)";
@@ -36,13 +37,10 @@ class Navbar extends Database
             $st->bindParam(1, $nazov);
             $st->bindParam(2, $url);
             $st->execute();
-
-           
             $_SESSION['uspech'] = "Záznam bol úspešne vytvorený.";
             header("Location: /FitStream/admin/edit_navbar.php");
             exit;
         } catch (Exception $e) {
-           
             $_SESSION['neuspech'] = "Pri vytváraní záznamu nastala chyba";
             die;
         } finally {
@@ -50,7 +48,7 @@ class Navbar extends Database
         }
     }
 
-    public function vypis_jedneho_Zaznamu(int $id): array|false
+    public function vypisJednehoZaznamu(int $id): array|bool
     {
         try {
             $sql = "SELECT * FROM navbar WHERE idnavbar = ?";
@@ -58,15 +56,11 @@ class Navbar extends Database
             $st->bindParam(1, $id);
             $st->execute();
             $zaznam = $st->fetch();
-
-              if(empty($zaznam)){
-
+            if(empty($zaznam)){
                 $_SESSION['neuspech'] = "Tento záznam neexistuje";
                 header("Location: /FitStream/config/error.php");
                 exit;
-                
             } else{
-
                 return $zaznam;
             }
         } catch (Exception $e) {
@@ -90,13 +84,10 @@ class Navbar extends Database
             $st->bindParam(2, $url);
             $st->bindParam(3, $id);
             $st->execute();
-
-          
             $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
             header("Location: /FitStream/admin/edit_navbar.php");
             exit;
         } catch (Exception $e) {
-            
             $_SESSION['neuspech'] = "Nastala chyba pri úprave záznamu.";
             die;
         } finally {
@@ -111,13 +102,10 @@ class Navbar extends Database
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
-
-            
             $_SESSION['uspech'] = "Záznam bol úspešne zmazaný.";
             header("Location: /FitStream/admin/edit_navbar.php");
             exit;
         } catch (Exception $e) {
-        
             $_SESSION['neuspech'] = "Pri mazaní záznamu nastala chyba.";
             die;
         } finally {
@@ -131,9 +119,6 @@ class Navbar extends Database
             $this->connect();
             $this->conn = $this->getConnection();
         }
-
-       
-
         if (isset($_SESSION['uspech'])) {
             echo '<div class="uspech">'. $_SESSION['uspech'] .'</div>';
             unset($_SESSION['uspech']);
@@ -141,20 +126,16 @@ class Navbar extends Database
             echo '<div class="neuspech">'. $_SESSION['neuspech'] .'</div>';
             unset($_SESSION['neuspech']);
         }
-
-       
     }
 
     public function overenieUzivatela(): void
     {
         if (isset($_SESSION['user_id']) && $_SESSION['user_rola'] == 1) {
-            echo '<a href="config/logout.php"><i class="fa fa-sign-out" style="font-size: 20px;" id="log"></i></a>';
+            echo '<a href="' . BASE_URL . 'config/logout.php"style="font-size: 20px;" ><i class="fa fa-sign-out"></i></a>';
+
             echo '<a href="' . BASE_URL . 'nastavenia/nastavenia.php?id=' . $_SESSION['user_id'] . '"><i class="fa fa-gear"></i></a>';
         } else if (isset($_SESSION['user_id']) && $_SESSION['user_rola'] == 0) {
-
-           
             echo '<a href="' . BASE_URL . 'nastavenia/nastavenia.php?id=' . $_SESSION['user_id'] . '"><i class="fa fa-gear"></i></a>';
-            
         } else {
             echo '<a href="' . BASE_URL . 'login.php"><i class="fa fa-user" style="font-size: 20px;" id="log"></i></a>';
         }
@@ -167,3 +148,4 @@ class Navbar extends Database
         }
     }
 }
+?>

@@ -2,7 +2,7 @@
 <?php use footer\Footer?>
 <?php 
 $footer = new Footer();
-$footer_vypis = $footer->footer_Vypis();
+$footer_vypis = $footer->footerVypis();
 ?>
 
 <footer>

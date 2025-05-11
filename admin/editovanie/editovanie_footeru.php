@@ -9,7 +9,7 @@ $footer = new Footer();
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Zlé ID");
 } else {
-    $footer_vypis = $footer->vypis_jedneho_Zaznamu($_GET['id']);
+    $footer_vypis = $footer->vypisJednehoZaznamu($_GET['id']);
 }
 
 

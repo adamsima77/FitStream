@@ -1,11 +1,9 @@
 <?php
 declare(strict_types=1);
-
 namespace database;
 use PDO;
 use PDOException;
 use Exception;
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/db.php';
 
 class Database
@@ -20,7 +18,6 @@ class Database
     protected function connect(): void
     {
         $config = DATABASE;
-
         $options = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -38,7 +35,6 @@ class Database
                 $options
             );
         } catch (PDOException $e) {
-           
             throw new Exception('Pripojenie zlyhalo: ' . $e->getMessage());
         }
     }

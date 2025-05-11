@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace platba;
 use database\Database;
+use Exception;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
 
 class Platba extends Database
@@ -14,142 +15,123 @@ class Platba extends Database
         $this->conn = $this->getConnection();
     }
 
-
-    public function platbaVypis(): array{
-    
+    public function platbaVypis(): array
+    {
         if ($this->conn === null) {
-    
             $this->connect();
-            $this->conn = $this->getConnection();
-            
+            $this->conn = $this->getConnection();  
         }    
        
         try{
-            
-        
             $sql = "SELECT * FROM platba;";
             $statement = $this->conn->prepare($sql);
             $statement->execute();
             $rs = $statement->fetchAll();
-    
             return $rs;
-            
         }catch(Exception $e){
-    
             die;
-    
         } finally{
-
             $this->conn = null;
         }
-        
-}
 
-public function zobrazenieStavu()
-{
-    if (isset($_SESSION['uspech'])) {
-        echo '<div class = "uspech">' . $_SESSION['uspech'] . '</div>';
-        unset($_SESSION['uspech']);
-    } elseif (isset($_SESSION['neuspech'])) {
-        echo '<div class = "neuspech">'. $_SESSION['neuspech'] .'</div>';
-        unset($_SESSION['neuspech']);
     }
 
-  
-}
-
-public function vytvorenieZaznamu(string $nazov)
-{
-    try {
-        $sql = "INSERT INTO platba(nazov) VALUES (?)";
-        $st = $this->conn->prepare($sql);
-        $st->bindParam(1, $nazov);
-        $st->execute();
-        $_SESSION['uspech'] = "Záznam bol úspešne vytvorený.";
-        header("Location: /FitStream/admin/edit_platba.php");
-        exit;
-    } catch (Exception $e) {
-        $_SESSION['neuspech'] = "Nastala chyba pri vytváraní záznamu.";
-        die;
-    } finally {
-        $this->conn = null;
-    }
-}
-
-public function vymazanieZaznamu(int $id)
-{
-    if ($this->conn == null) {
-        $this->connect();
-        $this->conn = $this->getConnection();
+    public function zobrazenieStavu(): void
+    {
+        if (isset($_SESSION['uspech'])) {
+            echo '<div class = "uspech">' . $_SESSION['uspech'] . '</div>';
+            unset($_SESSION['uspech']);
+        } elseif (isset($_SESSION['neuspech'])) {
+            echo '<div class = "neuspech">'. $_SESSION['neuspech'] .'</div>';
+            unset($_SESSION['neuspech']);
+        }
     }
 
-    try {
-        $sql = "DELETE FROM platba WHERE idplatba = ?";
-        $st = $this->conn->prepare($sql);
-        $st->bindParam(1, $id);
-        $st->execute();
-        $_SESSION['uspech'] = "Záznam bol úspešne vymazaný.";
-        header("Location: /FitStream/admin/edit_platba.php");
-        exit;
-
-    } catch (Exception $e) {
-        $_SESSION['neuspech'] = "Pri mazaní záznamu nastala chyba.";
-        die;
-
-    } finally {
-        $this->conn = null;
+    public function vytvorenieZaznamu(string $nazov): void
+    {
+        try {
+            $sql = "INSERT INTO platba(nazov) VALUES (?)";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, $nazov);
+            $st->execute();
+            $_SESSION['uspech'] = "Záznam bol úspešne vytvorený.";
+            header("Location: /FitStream/admin/edit_platba.php");
+            exit;
+        } catch (Exception $e) {
+            $_SESSION['neuspech'] = "Nastala chyba pri vytváraní záznamu.";
+            die;
+        } finally {
+            $this->conn = null;
+        }
     }
-}
 
+    public function vymazanieZaznamu(int $id): void
+    {
+        if ($this->conn == null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }
 
-public function vypisJednehoZaznamu(int $id)
-{
-    try {
-        $sql = "SELECT nazov FROM platba WHERE idplatba = ?";
-        $st = $this->conn->prepare($sql);
-        $st->bindParam(1, $id);
-        $st->execute();
-        $zaznam =  $st->fetch();
+        try {
+            $sql = "DELETE FROM platba WHERE idplatba = ?";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, $id);
+            $st->execute();
+            $_SESSION['uspech'] = "Záznam bol úspešne vymazaný.";
+            header("Location: /FitStream/admin/edit_platba.php");
+            exit;
+        } catch (Exception $e) {
+            $_SESSION['neuspech'] = "Pri mazaní záznamu nastala chyba.";
+            die;
+        } finally {
+            $this->conn = null;
+        }
+    }
 
-          if(empty($zaznam)){
-
+    public function vypisJednehoZaznamu(int $id): array
+    {
+        try {
+            $sql = "SELECT nazov FROM platba WHERE idplatba = ?";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, $id);
+            $st->execute();
+            $zaznam =  $st->fetch();
+            if(empty($zaznam)){
                 $_SESSION['neuspech'] = "Tento záznam neexistuje";
                 header("Location: /FitStream/config/error.php");
                 exit;
-                
             } else{
-
                 return $zaznam;
             }
-    } catch (Exception $e) {
-        die("Chyba pri načítaní produktu");
-    } finally {
-        $this->conn = null;
-    }
-}
-
-public function editaciaRiadku(int $id, string $nazov)
-{
-    if ($this->conn == null) {
-        $this->connect();
-        $this->conn = $this->getConnection();
+        } catch (Exception $e) {
+            die("Chyba pri načítaní produktu");
+        } finally {
+            $this->conn = null;
+        }
     }
 
-    try {
-        $sql = "UPDATE platba SET nazov = ? WHERE idplatba = ?";
-        $st = $this->conn->prepare($sql);
-        $st->bindParam(1, $nazov);
-        $st->bindParam(2, $id);
-        $st->execute();
-        $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
-        header("Location: /FitStream/admin/edit_platba.php");
-        exit;
-    } catch (Exception $e) {
-        $_SESSION['neuspech'] = "Pri úprave záznamu nastala chyba.";
-        die;
-    } finally {
-        $this->conn = null;
+    public function editaciaRiadku(int $id, string $nazov): void
+    {
+        if ($this->conn == null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }
+
+        try {
+            $sql = "UPDATE platba SET nazov = ? WHERE idplatba = ?";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, $nazov);
+            $st->bindParam(2, $id);
+            $st->execute();
+            $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
+            header("Location: /FitStream/admin/edit_platba.php");
+            exit;
+        } catch (Exception $e) {
+            $_SESSION['neuspech'] = "Pri úprave záznamu nastala chyba.";
+            die;
+        } finally {
+            $this->conn = null;
+        }
     }
 }
-
-}
+?>

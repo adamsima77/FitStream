@@ -2,7 +2,8 @@
 declare(strict_types=1);
 namespace akordeon;
 use database\Database;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php';
+use Exception;
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Database.php');
 
 class Akordeon extends Database
 {
@@ -14,7 +15,7 @@ class Akordeon extends Database
         $this->conn = $this->getConnection();
     }
 
-    public function vypisAkordeon()
+    public function vypisAkordeon(): array
     {
         try {
             $sql = "SELECT * FROM akordeon";
@@ -29,10 +30,10 @@ class Akordeon extends Database
         }
     }
 
-    public function vytvorenieRiadku(string $otazka, string $odpoved)
+    public function vytvorenieRiadku(string $otazka, string $odpoved): void
     {
         try {
-            $sql = "INSERT INTO akordeon(otazka,odpoved) VALUES (?, ?)";
+            $sql = "INSERT INTO akordeon (otazka,odpoved) VALUES (?, ?)";
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $otazka);
             $st->bindParam(2, $odpoved);
@@ -48,7 +49,7 @@ class Akordeon extends Database
         }
     }
 
-    public function editaciaRiadku(int $id, string $otazka, string $odpoved)
+    public function editaciaRiadku(int $id, string $otazka, string $odpoved): void
     {
         if ($this->conn == null) {
             $this->connect();
@@ -72,10 +73,10 @@ class Akordeon extends Database
         }
     }
 
-    public function vypisJednehoZaznamu(int $id)
+    public function vypisJednehoZaznamu(int $id): array
     {
         try {
-            $sql = "SELECT otazka,odpoved FROM akordeon WHERE idakordeon = ?";
+            $sql = "SELECT otazka, odpoved FROM akordeon WHERE idakordeon = ?";
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
@@ -98,7 +99,7 @@ class Akordeon extends Database
         }
     }
 
-    public function vymazanieRiadku(int $id)
+    public function vymazanieRiadku(int $id): void
     {
         if ($this->conn == null) {
             $this->connect();
@@ -123,16 +124,15 @@ class Akordeon extends Database
         }
     }
 
-    public function zobrazenieStavu()
+    public function zobrazenieStavu(): void
     {
         if (isset($_SESSION['uspech'])) {
-            echo '<div class = "uspech">' . $_SESSION['uspech'] . '</div>';
+            echo '<div class="uspech">' . $_SESSION['uspech'] . '</div>';
             unset($_SESSION['uspech']);
         } elseif (isset($_SESSION['neuspech'])) {
-            echo '<div class = "neuspech">'. $_SESSION['neuspech'] .'</div>';
+            echo '<div class="neuspech">'. $_SESSION['neuspech'] .'</div>';
             unset($_SESSION['neuspech']);
         }
-
-      
     }
 }
+?>

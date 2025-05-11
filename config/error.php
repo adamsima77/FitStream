@@ -1,6 +1,6 @@
 <?php 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/produkt.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Produkt.php');
 use produkt\Produkt;
 $sprava = new Produkt();
 
