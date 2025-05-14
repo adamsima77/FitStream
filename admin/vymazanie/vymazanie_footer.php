@@ -1,8 +1,8 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/inicializacia_admin.php');
 use FitStream\Uzivatel\Uzivatel;
 use FitStream\Footer\Footer;
 $overenie_admina = new Uzivatel();
-require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/auth_admin.php');
 $footer = new Footer();
 
 

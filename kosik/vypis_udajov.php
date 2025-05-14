@@ -14,11 +14,14 @@ $doprava = $objednavky->getDoprava($_SESSION['kosik_doprava']);
 <?php if(!isset($_SESSION['user_id'])) {$_SESSION['user_id'] = null;}?>
 
 <?php 
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
 $objednavky->ukladanieDoDatabazy($_SESSION['kosik_email'], $_SESSION['kosik_meno'],
  $_SESSION['kosik_priezvisko'], $_SESSION['kosik_telefonne_cislo'], 
  $_SESSION['kosik_mesto'], $_SESSION['kosik_ulica'], 
 $_SESSION['kosik_psc'], $_SESSION['kosik_platba'], $_SESSION['kosik_doprava'],$_SESSION['user_id'],
 $_SESSION['kosik_firma'], $_SESSION['kosik_ico'], $_SESSION['kosik_dico']);
+}
 ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/parts/header.php'; ?>

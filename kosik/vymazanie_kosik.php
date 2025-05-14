@@ -1,3 +1,4 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/uzivatel_session.php');?>
 <?php use FitStream\Objednavky\Objednavky;?>
 <?php
 

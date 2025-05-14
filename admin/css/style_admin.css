@@ -634,7 +634,7 @@ td .delete{
   background-color: #0056b3;
 }
 
-.vytvorenie_produktu #kategoria,
+.vytvorenie_produktu
 #podkategoria,
 #nazov_nadkategorie, #nadkategoria {
   resize: vertical;
@@ -642,6 +642,17 @@ td .delete{
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
+}
+
+
+
+#kategoria{
+  resize: vertical;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+
 }
 
 @media screen and (max-width: 800px) {
