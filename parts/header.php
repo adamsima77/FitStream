@@ -1,7 +1,4 @@
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/classes/Utilities.php');?>
-<?php use utilities\Utilities?>
-
-
+<?php use FitStream\Utilities\Utilities;?>
 <?php $utilities = new Utilities();?>
 
 <!DOCTYPE html>
