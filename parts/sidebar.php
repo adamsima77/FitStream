@@ -18,7 +18,7 @@ $vypis_linkov = $nav->navbarLinks();
                 </div> 
     <ul>
         <?php foreach($vypis_linkov as $a):?>
-            <a href="<?php echo BASE_URL . $a['url'] ;?>"><li><?php echo htmlspecialchars($a['nazov']);?></li></a>
+            <a href="<?php echo BASE_URL . $a['url'] ;?>"><li><?php echo $a['nazov'];?></li></a>
             <?php endforeach?>
             <?php $nav->navratDoAdmina();?>
     </ul>

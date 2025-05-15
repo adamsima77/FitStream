@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="typ_platby">*Názov:</label>
         <input type="text" id = "typ_platby" name = "typ_platby">
      
-        <input type="submit">
+        <input type="submit" value = "Uverejniť">
     </form>
 </div>
 

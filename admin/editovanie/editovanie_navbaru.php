@@ -51,14 +51,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
 
 <label for="nazov">*Ikona:</label>
-<input type="text" id="nazov" name="nazov" value="<?php echo htmlspecialchars($navbar_vypis['nazov']); ?>">
+<input type="text" id="nazov" name="nazov" value="<?php echo $navbar_vypis['nazov']; ?>">
 
 
 <label for="url">*URL:</label>
-<input type="text" id="url" name="url" value="<?php echo htmlspecialchars($navbar_vypis['url']); ?>">
+<input type="text" id="url" name="url" value="<?php echo $navbar_vypis['url']; ?>">
 
 
-<input type="submit">
+<input type="submit" value = "Potvrdiť úpravy">
 </form>
 </div>
 

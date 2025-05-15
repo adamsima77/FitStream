@@ -10,11 +10,11 @@ $footer_vypis = $footer->footerVypis();
             <div class = "social_media_links">
 
                 <?php foreach($footer_vypis as $a): ?>
-                    <a href="<?php echo htmlspecialchars($a['url']); ?>"  class="social"
+                    <a href="<?php echo $a['url']; ?>"  class="social"
                   
-                    style="background-color: <?php echo htmlspecialchars($a['farba_bg']); ?>;
-                    color: <?php echo htmlspecialchars($a['farba_ikony']); ?>">
-                   <i class="<?php echo htmlspecialchars($a['ikona']); ?>" style="font-size: 20px;"></i>
+                    style="background-color: <?php echo $a['farba_bg']; ?>;
+                    color: <?php echo $a['farba_ikony']; ?>">
+                   <i class="<?php echo $a['ikona']; ?>" style="font-size: 20px;"></i>
                 
                    </a>
                 <?php endforeach; ?>

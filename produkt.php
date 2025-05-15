@@ -64,15 +64,15 @@ $objednavky = new Objednavky();
   <div class="produkt_z">
      <?php $objednavky->zobrazenieStavu();?>
 <div class = "produkt_nazov_cena_popis">
-    <img src="<?php echo htmlspecialchars($produkt['img_hlavna']); ?>" 
+    <img src="<?php echo $produkt['img_hlavna']; ?>" 
          class="produkt_img" 
-         alt="<?php echo htmlspecialchars($produkt['img_alt']); ?>">
+         alt="<?php echo $produkt['img_alt']; ?>">
         <div class = "produkt_col">
        
-         <h1 class="produkt_nazov"><?php echo htmlspecialchars($produkt['nazov']); ?></h1>
+         <h1 class="produkt_nazov"><?php echo $produkt['nazov']; ?></h1>
          <p class = "hlavny_popis"><?php echo $produkt['hlavny_popis'];?></p>
          <p class = "pocet_na_sklade"><?php echo ($pocet_kusov_na_sklade <= 0 ? "Nie je na sklade" :"Na sklade: " . $pocet_kusov_na_sklade . " kusov");?></p>
-         <p class="produkt_cena"><?php echo htmlspecialchars($produkt['cena']); ?> €</p>
+         <p class="produkt_cena"><?php echo $produkt['cena']; ?> €</p>
     
        <?php if($pocet_kusov_na_sklade > 0):?>
       <form action="" method="POST">

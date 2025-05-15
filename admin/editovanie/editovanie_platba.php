@@ -52,9 +52,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
 
 <label for="nazov_platby">*Názov:</label>
-<input type="text" id="nazov_platby" name="nazov_platby" value="<?php echo htmlspecialchars($platba_vypis['nazov']); ?>">
+<input type="text" id="nazov_platby" name="nazov_platby" value="<?php echo $platba_vypis['nazov']; ?>">
 
-<input type="submit">
+<input type="submit" value = "Potvrdiť úpravy">
 </form>
 </div>
 

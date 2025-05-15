@@ -56,7 +56,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
 
 <label for="nazov_kategorie_pr">*Názov:</label>
-<input type="text" id="nazov_kategorie_pr" name="nazov_kategorie_pr" value="<?php echo htmlspecialchars($kategoria_vypis['nazov_kategorie']); ?>">
+<input type="text" id="nazov_kategorie_pr" name="nazov_kategorie_pr" value="<?php echo $kategoria_vypis['nazov_kategorie']; ?>">
 
 <select name="nadkategoria" id="nadkategoria">
 
@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 </select>
 
-<input type="submit">
+<input type="submit" value = "Potvrdiť úpravy">
 </form>
 </div>
 

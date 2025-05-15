@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id = "nazov" name = "nazov">
         <label for="url">*URL:</label>
         <input type="text" id = "url" name = "url">
-        <input type="submit">
+        <input type="submit" value = "Uverejniť">
     </form>
 </div>
 

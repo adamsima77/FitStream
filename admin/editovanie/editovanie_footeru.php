@@ -55,18 +55,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
 
 <label for="ikona">*Ikona:</label>
-<input type="text" id="ikona" name="ikona" value="<?php echo htmlspecialchars($footer_vypis['ikona']); ?>">
+<input type="text" id="ikona" name="ikona" value="<?php echo $footer_vypis['ikona']; ?>">
 
 <label for="farba_bg">*Farba pozadia:</label>
-<input type="color" id="farba_bg" name="farba_bg" value="<?php echo htmlspecialchars($footer_vypis['farba_bg']); ?>">
+<input type="color" id="farba_bg" name="farba_bg" value="<?php echo $footer_vypis['farba_bg']; ?>">
 <label for="farba_ikony">*Farba ikony:</label>
-<input type="color" id="farba_ikony" name="farba_ikony" value="<?php echo htmlspecialchars($footer_vypis['farba_ikony']); ?>">
+<input type="color" id="farba_ikony" name="farba_ikony" value="<?php echo $footer_vypis['farba_ikony']; ?>">
 
 <label for="url">*URL:</label>
-<input type="text" id="url" name="url" value="<?php echo htmlspecialchars($footer_vypis['url']); ?>">
+<input type="text" id="url" name="url" value="<?php echo $footer_vypis['url']; ?>">
 
 
-<input type="submit">
+<input type="submit" value = "Potvrdiť úpravy">
 </form>
 </div>
 

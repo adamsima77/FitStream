@@ -17,7 +17,7 @@ class Akordeon extends Database
     public function vypisAkordeon(): array
     {
         try {
-            $sql = "SELECT * FROM akordeon";
+            $sql = "SELECT * FROM akordeon ORDER BY datum_upravy DESC";
             $st = $this->conn->prepare($sql);
             $st->execute();
             $rs = $st->fetchAll();

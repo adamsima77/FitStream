@@ -52,15 +52,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
 
 <label for="otazka_v">*Otázka:</label>
-<input type="text" id="otazka_v" name="otazka_v" value="<?php echo htmlspecialchars($akordeon_vypis['otazka']); ?>">
+<input type="text" id="otazka_v" name="otazka_v" value="<?php echo $akordeon_vypis['otazka']; ?>">
 
 <label for="odpoved_v">*Odpoveď:</label>
-<textarea name="odpoved_v" id="odpoved_v"><?php echo htmlspecialchars($akordeon_vypis['odpoved']); ?></textarea>
+<textarea name="odpoved_v" id="odpoved_v"><?php echo $akordeon_vypis['odpoved']; ?></textarea>
 
 
 
 
-<input type="submit">
+<input type="submit" value = "Potvrdiť úpravy">
 </form>
 </div>
 

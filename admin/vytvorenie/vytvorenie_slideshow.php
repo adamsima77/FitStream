@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="file" id = "img" name = "img">
         <label for="Preklik">*Preklik fotky:</label>
         <input type="text" id = "Preklik" name = "Preklik">
-        <input type="submit" name = "submit" id = "submit">
+        <input type="submit" name = "submit" id = "submit" value = "Uverejniť">
     </form>
 </div>
 

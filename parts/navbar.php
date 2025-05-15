@@ -12,7 +12,7 @@ $vypis_linkov = $nav->navbarLinks();
     <a href="<?php echo BASE_URL . "index.php";?>" class = "logo"><h1 class>FitStream</h1></a>
     <ul>
         <?php foreach($vypis_linkov as $a):?>
-            <a href="<?php echo BASE_URL . $a['url'] ;?>"><li><?php echo htmlspecialchars($a['nazov']);?></li></a>
+            <a href="<?php echo BASE_URL . $a['url'] ;?>"><li><?php echo $a['nazov'];?></li></a>
         <?php endforeach?>
         <?php $nav->navratDoAdmina();?>
           

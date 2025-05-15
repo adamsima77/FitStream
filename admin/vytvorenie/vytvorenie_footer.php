@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="color" id = "farba_ikony" name = "farba_ikony">
         <label for="url">*URL:</label>
         <input type="text" id = "url" name = "url">
-        <input type="submit">
+        <input type="submit" value = "Uverejniť">
     </form>
 </div>
 

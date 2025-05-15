@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endforeach;?>
 
         </select>
-        <input type="submit">
+        <input type="submit" value = "Uverejniť">
     </form>
 </div>
 

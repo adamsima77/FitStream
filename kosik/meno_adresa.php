@@ -23,19 +23,19 @@ $platba = $objednavky->vypisPlatba();
 <h1>Osobné údaje</h1>
 <label for="email">*E-mail:</label>
 <input type="email" name="email" class="email_kos" id="email" 
-       value="<?php echo isset($_SESSION['kosik_email']) ? htmlspecialchars($_SESSION['kosik_email']) : ''; ?>">
+       value="<?php echo isset($_SESSION['kosik_email']) ? $_SESSION['kosik_email'] : ''; ?>">
 
 <label for="meno">*Meno:</label>
 <input type="text" name="meno" id="meno" 
-       value="<?php echo isset($_SESSION['kosik_meno']) ? htmlspecialchars($_SESSION['kosik_meno']) : ''; ?>">
+       value="<?php echo isset($_SESSION['kosik_meno']) ? $_SESSION['kosik_meno'] : ''; ?>">
 
 <label for="priezvisko">*Priezvisko:</label>
 <input type="text" name="priezvisko" id="priezvisko" 
-       value="<?php echo isset($_SESSION['kosik_priezvisko']) ? htmlspecialchars($_SESSION['kosik_priezvisko']) : ''; ?>">
+       value="<?php echo isset($_SESSION['kosik_priezvisko']) ? $_SESSION['kosik_priezvisko'] : ''; ?>">
 
 <label for="telefonne_cislo">*Telefónne číslo:</label>
 <input type="text" name="telefonne_cislo" id="telefonne_cislo" 
-       value="<?php echo isset($_SESSION['kosik_telefonne_cislo']) ? htmlspecialchars($_SESSION['kosik_telefonne_cislo']) : ''; ?>">
+       value="<?php echo isset($_SESSION['kosik_telefonne_cislo']) ? $_SESSION['kosik_telefonne_cislo'] : ''; ?>">
 
 <label for="check"  class="checkbox">
 <input type="checkbox" id = "check" name = "check">
@@ -57,15 +57,15 @@ $platba = $objednavky->vypisPlatba();
 <h1>Adresa:</h1>
 <label for="mesto">*Mesto:</label>
 <input type="text" name="mesto" id="mesto" 
-       value="<?php echo isset($_SESSION['kosik_mesto']) ? htmlspecialchars($_SESSION['kosik_mesto']) : ''; ?>">
+       value="<?php echo isset($_SESSION['kosik_mesto']) ? $_SESSION['kosik_mesto'] : ''; ?>">
 
 <label for="ulica">*Ulica:</label>
 <input type="text" name="ulica" id="ulica" 
-       value="<?php echo isset($_SESSION['kosik_ulica']) ? htmlspecialchars($_SESSION['kosik_ulica']) : ''; ?>">
+       value="<?php echo isset($_SESSION['kosik_ulica']) ? $_SESSION['kosik_ulica'] : ''; ?>">
 
 <label for="psc">*PSČ:</label>
 <input type="text" name="psc" id="psc" 
-       value="<?php echo isset($_SESSION['kosik_psc']) ? htmlspecialchars($_SESSION['kosik_psc']) : ''; ?>">
+       value="<?php echo isset($_SESSION['kosik_psc']) ? $_SESSION['kosik_psc'] : ''; ?>">
 <h1>Typ platby a doprava:</h1>
 <label for="platba">*Typ platby:</label>
 <select name="platba" id="platba">

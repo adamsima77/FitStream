@@ -6,13 +6,13 @@
                     <div class = "kontainer_hlavny_box">
                     <div class = "obrazok">
 
-                        <a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><img src="<?php echo htmlspecialchars($a['img_hlavna']); ?>" alt="<?php echo htmlspecialchars($a['img_alt'] ?? ''); ?>"></a>
+                        <a href = "produkt.php?id=<?php echo $a['idprodukty']?>"><img src="<?php echo $a['img_hlavna']; ?>" alt="<?php echo $a['img_alt'] ?? ''; ?>"></a>
                     </div>
                     <div class = "nadpis">
      
-                        <a href = "produkt.php?id=<?php echo htmlspecialchars($a['idprodukty'])?>"><h2><?php echo htmlspecialchars(substr($a['nazov'],0,55));?></h2></a>
-                        <p class = "box_popis"><?php echo htmlspecialchars(substr($a['hlavny_popis'],0,85))?>...</p>
-                        <p class = "cena"><?php echo htmlspecialchars($a['cena']);?>€</p>
+                        <a href = "produkt.php?id=<?php echo $a['idprodukty']?>"><h2><?php echo substr($a['nazov'],0,55);?></h2></a>
+                        <p class = "box_popis"><?php echo substr($a['hlavny_popis'],0,85)?>...</p>
+                        <p class = "cena"><?php echo $a['cena'];?>€</p>
                     </div>
             </div>
 

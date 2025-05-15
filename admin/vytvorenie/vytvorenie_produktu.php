@@ -117,7 +117,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           <option value="<?php echo $pod_kategoria['idkategorie'];?>"><?php echo $pod_kategoria['nazov_kategorie'];?></option>
       <?php endforeach;?>
   </select>
-<input type="submit" name = "submit">
+<input type="submit" name = "submit" value = "Uverejniť">
 </form>
 </div>
 

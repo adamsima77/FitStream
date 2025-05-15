@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           <option value="<?php echo $kategoria['id_kategorie'];?>"><?php echo $kategoria['nazov_kategorie_blog'];?></option>
       <?php endforeach;?>
   </select>
-        <input type="submit" name = "submit">
+        <input type="submit" name = "submit" value = "Potvrdiť úpravy">
     </form>
 </div>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/FitStream/admin/parts/footer.php'; ?>

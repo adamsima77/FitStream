@@ -65,10 +65,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
 <label for="preklik">*Preklik:</label>
-<input type="text" id="preklik" name="preklik" value="<?php echo htmlspecialchars($slideshow_vypis['img_preklik']); ?>">
+<input type="text" id="preklik" name="preklik" value="<?php echo $slideshow_vypis['img_preklik']; ?>">
 
 
-<input type="submit" name = "submit">
+<input type="submit" name = "submit" value = "Potvrdiť úpravy">
 </form>
 </div>
 

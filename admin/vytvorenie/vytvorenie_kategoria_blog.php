@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma">
         <label for="nazov">*Názov:</label>
         <input type="text" id = "nazov_blogu" name = "nazov_blogu">
-        <input type="submit">
+        <input type="submit" value = "Uverejniť">
     </form>
 </div>
 
