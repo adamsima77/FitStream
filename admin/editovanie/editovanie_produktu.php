@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $img = $produkt->spracovanieFotky();
         $nazov = $_POST['nadpis_produktu'];
         $znacka = $_POST['znacka_produktu'];
-        $popis_produktu = $_POST['popis_produktu'];
+        $popis_produktu = $_POST['popis_mce'];
         $klucovy_popis = $_POST['klucovy_popis'];
         $cena =  $_POST['cena'];
         $pocet_kusov = $_POST['pocet_kusov'];
@@ -51,22 +51,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           } 
 
         }
+
+        if($_POST['pocet_kusov'] >= 0){ 
+
         $id = $_GET['id'];
-        $produkt->editaciaRiadku(
-        $id, 
-        $nazov,
-        $znacka,
-        $popis_produktu,
-        $klucovy_popis,
-        $cena,
-        $pocet_kusov,
-        $velkost,
-        $farba,
-        $img,
-        $img_popis,
-        $kategoria,
-        $podkategoria);
+        $produkt->editaciaRiadku($id, $nazov, $znacka, $popis_produktu, $klucovy_popis, $cena, $pocet_kusov,
+                                 $velkost, $farba, $img, $img_popis, $kategoria, $podkategoria);
+        } else{
+
+            die("Počet kusov musí byť rovné alebo väčšie ako nula");
         }
+    }
 
     }catch(Exception $e){
 
@@ -96,8 +91,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <label for="popis_foto">Popis fotky:</label>
 <input type="text" id = "popis_foto" name = "popis_foto" value = "<?php echo $produkt_vypis['img_alt'];?>">
 
-<label for="popis_produktu">*Popis produktu:</label>
-<textarea name="popis_produktu" id="popis_produktu"><?php echo $produkt_vypis['popis'];?></textarea>
+<label for="popis_mce">*Popis produktu:</label>
+<textarea name="popis_mce" id="popis_mce" class = "popis_mce"><?php echo $produkt_vypis['popis'];?></textarea>
 
 <label for="klucovy_popis">*Kľúčový popis:</label>
 <textarea name="klucovy_popis" id="klucovy_popis"><?php echo $produkt_vypis['hlavny_popis'];?></textarea>

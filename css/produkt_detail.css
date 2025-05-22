@@ -82,6 +82,12 @@
   word-wrap: break-word;     
   word-break: break-word; 
   }
+
+  .produkt_popis ul{
+
+margin-left: 30px;
+
+  }
   
   .produkt_cena {
     font-size: 20px;
@@ -172,4 +178,15 @@
   
   
    }
-  
+table {
+      border: 1px solid #000;
+      width: 100%;
+      border-collapse: collapse;
+ 
+    }
+   
+    td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid black;
+    }

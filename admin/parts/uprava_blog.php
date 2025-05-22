@@ -26,7 +26,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Názov</th>
-                    <th>Popis</th>
                     <th>Fotka</th>
                     <th>Popis fotky</th>
                     <th>Autor</th>
@@ -43,7 +42,6 @@
 
                         <td><?php echo $id; ?></td>
                         <td><?php echo $polozka['nazov']; ?></td>
-                        <td><?php echo substr($polozka['popis'], 0, 180); ?>...</td>
                         <td><img src="<?php echo BASE_URL . $polozka['img_blog']; ?>"></td>
                         <td><?php echo $polozka['img_alt']; ?></td>
                         <td><?php echo $vypis_uzivatel['meno'] . ' ' . $vypis_uzivatel['priezvisko']; ?></td>

@@ -16,7 +16,7 @@
 
 <div class = "popis_clanky">
  
-<p><?php echo substr($polozka['popis'],0,250);?>...</p>
+<p><?php echo substr(strip_tags($polozka['popis']),0,400);?>...</p>
 </div>
 
 </div>

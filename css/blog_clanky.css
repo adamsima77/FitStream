@@ -41,6 +41,12 @@
     padding: 30px;
     transition: box-shadow 0.3s ease;
     place-self: center;
+    
+  }
+
+  .clanok_z p{
+
+    text-align: justify;
   }
   
   .clanok_z:hover {
@@ -90,4 +96,13 @@
 
       min-width: 95%;
     }
+  }
+
+
+
+   .clanok_z ul{
+
+margin-left: 30px;
+
+
   }

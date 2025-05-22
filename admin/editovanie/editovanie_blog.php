@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
       
         $fotka = $blog->spracovanieFotky();
         $nazov = $_POST['nazov'];
-        $popis = $_POST['popis'];
+        $popis = $_POST['popis_mce'];
         $popis_fotky = $_POST['popis_fotky'];
         $_POST['id_uzivatela'] = $_SESSION['user_id'];
         $uzivatel = $_POST['id_uzivatela'];
@@ -64,8 +64,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <form action="" method = "POST" class = "vytvorenie_otazky_a_odpovede_forma" enctype="multipart/form-data">
         <label for="nazov">*Názov:</label>
         <input type="text" id = "nazov" name = "nazov" value = "<?php echo $blog_vypis['nazov']?>">
-        <label for="popis">*Popis:</label>
-        <textarea name="popis" id="popis"><?php echo $blog_vypis['popis']?></textarea>
+        <label for="popis_mce">*Popis:</label>
+        <textarea name="popis_mce" id="popis_mce" class = "popis_mce"><?php echo $blog_vypis['popis']?></textarea>
         <label for="fotka">*Fotka:</label>
         <input type="file" id = "fotka" name = "fotka">
         <label for="popis_fotky">Popis fotky:</label>

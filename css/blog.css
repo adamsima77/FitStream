@@ -41,10 +41,10 @@
     
     .box_blog img{
     
-      
       width: 100%;
       max-height: 350px;
       display: block;
+     
       margin-top: 20px;
       border-radius: 10px;
       transition: transform 0.4s ease, filter 0.3s ease-in-out;
@@ -52,7 +52,19 @@
     
     
     }
+
+  .img_zao{
+
+     display: flex;
+    max-width: 500px;
+   min-width: 500px;
+
+  }
+
     
+
+
+
     .box_blog img:hover{
     
       transform: scale(1.02); 
@@ -70,7 +82,7 @@
     gap: 25px;
     width: 50%;
     word-wrap: break-word;
-    text-align: justify;
+    line-height: 1.5;
     padding: 10px 15px;
     
     }
@@ -147,7 +159,13 @@
     
     
     
-    @media screen and (max-width: 730px){
+    @media screen and (max-width: 971px){
+
+      .img_zao{
+
+        max-width: 100%;
+        min-width: 100%;
+      }
     
       .box_blog{
     
@@ -165,10 +183,15 @@
     
         width: 100%;
         place-self: center;
-        font-size: 16px;
+        font-size: 14px;
         padding: 0;
         margin: 0;
     
+      }
+
+      .box_blog .nadpis_a_popis h1{
+
+       place-self: center;
       }
     
       .pod{

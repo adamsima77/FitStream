@@ -45,7 +45,7 @@
                          <td><?php echo $produkt['znacka'];?></td>
                          <td><img src="<?php echo BASE_URL . $produkt['img_hlavna']?>"></td>
                          <td><?php echo $produkt['img_alt'];?></td>
-                         <td><?php echo substr($produkt['hlavny_popis'],0,180);?>...</td>
+                         <td><?php echo substr($produkt['hlavny_popis'],0,100);?>...</td>
                          <td><?php echo $produkt['pocet_kusov'];?></td>
                          <td><?php echo $produkt['cena'];?></td>
                          <td><?php echo $vypis_kategorii['kategorie']['nazov_kategorie'];?></td>

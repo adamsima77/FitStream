@@ -43,12 +43,15 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 <?php foreach($filter as $polozka):?>
 <div class = "box_blog">
-<a href="blog_clanok.php?id=<?php echo $polozka['idblog'];?>">
+
+<div class = "img_zao">
+<a href="blog_clanok.php?id=<?php echo $polozka['idblog'];?>" class = "img_zao">
 <img src="<?php echo $polozka['img_blog'];?>" alt="">
 </a>
+</div>
 <div class = "nadpis_a_popis">
 <h1><a href="blog_clanok.php?id=<?php echo $polozka['idblog'];?>"><?php echo $polozka['nazov'];?></a></h1>
-<p><?php echo substr($polozka['popis'],0,250);?>...</p>
+<p><?php echo (substr(strip_tags($polozka['popis']),0,400));?>...</p>
 
 </div>
 </div>

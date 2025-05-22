@@ -15,8 +15,10 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     $blog_cesta = $blog->vypisJednehoZaznamu($_GET['id']);
     $absolutna_cesta = $_SERVER['DOCUMENT_ROOT']. '/FitStream/' . $blog_cesta['img_blog']; 
 
-    if (!unlink($absolutna_cesta)) {
-        die("Súbor neexistuje");
+    if(file_exists($absolutna_cesta)){
+        if (!unlink($absolutna_cesta)) {
+            die("Súbor neexistuje");
+        }
     }
     $blog->vymazanieRiadku($_GET['id']);
 }

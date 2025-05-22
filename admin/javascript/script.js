@@ -42,3 +42,13 @@ function kontrolaVymazaniaProduktu(pocet) {
       return confirm("Ste si istý, že chcete vymazať túto prázdnu kategóriu?");
   }
 }
+
+
+//TinyMCE editor
+
+   tinymce.init({
+      selector: '.popis_mce',
+      menubar: true, 
+      plugins: 'lists link table code',
+      toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | outdent indent | link | code | table',
+    });

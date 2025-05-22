@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $img = $vypis_Produktov->spracovanieFotky();
         $nazov = $_POST['nadpis_produktu'];
         $znacka = $_POST['znacka_produktu'];
-        $popis_produktu = $_POST['popis_produktu'];
+        $popis_produktu = $_POST['popis_mce'];
         $klucovy_popis = $_POST['klucovy_popis'];
         $overenie = str_replace(",",".",trim($_POST['cena']));
         if (is_numeric($overenie)) {
@@ -28,8 +28,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
         if (is_numeric($_POST['pocet_kusov'])){
-
+           if($_POST['pocet_kusov'] >= 0){
             $pocet_kusov = (int) $_POST['pocet_kusov'];
+           }
         } else {
 
             die("Zadali ste zlý formát pri počte kusov !");
@@ -83,8 +84,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <label for="popis_foto">Popis fotky:</label>
 <input type="text" id = "popis_foto" name = "popis_foto">
 
-<label for="popis_produktu">*Popis produktu:</label>
-<textarea name="popis_produktu" id="popis_produktu"></textarea>
+<label for="popis_mce">*Popis produktu:</label>
+<textarea name="popis_mce" id="popis_mce" class = "popis_mce"></textarea>
 
 <label for="klucovy_popis">*Kľúčový popis:</label>
 <textarea name="klucovy_popis" id="klucovy_popis"></textarea>
