@@ -58,7 +58,8 @@
     
     .obrazok img {
       width: 100%;
-      max-height: 350px;
+      max-height: 300px;
+      min-height: 300px;
       display: block;
       margin: 0 auto;
       object-fit: cover;
@@ -207,7 +208,7 @@
     
     .obrazok_v_clankoch img {
       width: 100%;
-      max-height: 350px;
+      max-height: 450px;
       display: block;
       margin-top: 20px;
       margin: 0 auto;

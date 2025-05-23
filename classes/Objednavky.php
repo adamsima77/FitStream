@@ -46,7 +46,7 @@ class Objednavky extends Database
         $najdene = false;
         foreach ($this->pole as &$polozka) {
             if ($polozka['id'] === $id) {
-                $polozka['pocet_kusov'] += $pocet_kusov;
+                $polozka['pocet_kusov'] = $pocet_kusov;
                 $najdene = true;
                 break;
             }
@@ -425,6 +425,23 @@ class Objednavky extends Database
             return $st->fetchAll();
         } catch (Exception $e) {
             die("Nastala chyba pri načítaní histórie");
+        }
+    }
+
+    public function getAdresa(int $id): array
+    {
+        if ($this->conn === null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }
+         try {
+            $sql = "SELECT * FROM adresa WHERE idadresa = ? ";
+            $st = $this->conn->prepare($sql);
+            $st->bindParam(1, $id);
+            $st->execute();
+            return $st->fetchAll();
+        } catch (Exception $e) {
+            die("Nastala chyba");
         }
     }
 

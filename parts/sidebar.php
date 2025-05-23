@@ -13,7 +13,7 @@ $vypis_linkov = $nav->navbarLinks();
             <div class = "con">
                 <div class = "ds">
                 <?php $nav->overenieUzivatela();?>
-                <a href = "kosik.php"><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
+                <a href = "<?php echo BASE_URL . "kosik.php"?>"><i class="fa fa-shopping-cart" id = "shopping_cart" style = "font-size: 20px;"></i></a>
                 <?php $objednavky->zobrazeniePoctu()?>
                 </div> 
     <ul>

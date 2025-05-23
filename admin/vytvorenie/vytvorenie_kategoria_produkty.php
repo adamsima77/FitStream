@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <label for="nazov">*Nadkategória:</label>
         <select name="nazov_nadkategorie" id="nazov_nadkategorie">
-
+            <option value="-1">Žiadna kategória</option>
           <?php foreach($vypis_kategorie as $kategoria):?>
 
                  <option value = "<?php echo $kategoria['idkategorie'];?>"><?php echo $kategoria['nazov_kategorie'];?></option>

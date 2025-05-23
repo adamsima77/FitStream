@@ -36,14 +36,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             die("Zadali ste zlý formát pri počte kusov !");
         }
         $pocet_kusov = $_POST['pocet_kusov'];
-        $velkost = $_POST['velkost'];
-        $farba = $_POST['farba'];
         $popis_img = $_POST['popis_foto'];
         $kategoria = $_POST['kategoria'];
         $podkategorie = $_POST['podkategoria'];
 
-        $velkost = (empty($_POST['velkost'])) ? " " : $_POST['velkost'];
-        $farba = (empty($_POST['farba'])) ? " " : $_POST['farba'];
         $popis_img = (empty($_POST['popis_foto'])) ? " " : $_POST['popis_foto'];
 
         if(empty($nazov) ||empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena)
@@ -54,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         } else{
 
         $vypis_Produktov->vytvorenieProduktu($nazov, $znacka,  $popis_produktu,  $klucovy_popis,$cena, 
-        $pocet_kusov,  $velkost,  $farba, $img, $popis_img, $kategoria,  $podkategorie);
+        $pocet_kusov, $img, $popis_img, $kategoria,  $podkategorie);
         }
 
     }catch(Exception $e){
@@ -96,13 +92,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 <label for="pocet_kusov">*Počet kusov:</label>
 <input type="number" id = "pocet_kusov" name = "pocet_kusov">
-
-<label for="velkost">Veľkosť:</label>
-<input type="text" id = "velkost" name = "velkost">
-
-
-<label for="farba">Farba:</label>
-<input type="text" name = "farba" id = "farba">
 
 <label for="kategoria">*Vyberte do ktorej kategórie ma produkt patriť:</label>
   <select id="kategoria" name="kategoria">

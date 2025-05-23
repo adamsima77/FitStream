@@ -22,7 +22,7 @@ class KategoriaProdukty extends Database
         }    
        
         try{
-            $sql = "SELECT * FROM kategorie;";
+            $sql = "SELECT * FROM kategorie ORDER BY datum_upravy DESC;";
             $statement = $this->conn->prepare($sql);
             $statement->execute();
             $rs = $statement->fetchAll();
@@ -50,6 +50,11 @@ class KategoriaProdukty extends Database
         if ($this->conn == null) {
             $this->connect();
             $this->conn = $this->getConnection();
+        }
+
+        
+        if ($id == -1) {
+            $id = NULL;
         }
 
         try {

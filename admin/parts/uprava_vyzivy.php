@@ -48,8 +48,8 @@
                          <td><?php echo substr($produkt['hlavny_popis'],0,100);?>...</td>
                          <td><?php echo $produkt['pocet_kusov'];?></td>
                          <td><?php echo $produkt['cena'];?></td>
-                         <td><?php echo $vypis_kategorii['kategorie']['nazov_kategorie'];?></td>
-                         <td><?php echo $vypis_kategorii['podkategorie']['nazov_kategorie']?></td>
+                         <td><?php echo ($vypis_kategorii['kategorie'] == "Žiadna kategória") ? $vypis_kategorii['kategorie'] : $vypis_kategorii['kategorie']['nazov_kategorie'];?></td>
+                         <td><?php echo  ($vypis_kategorii['podkategorie'] == "Žiadna kategória") ? $vypis_kategorii['podkategorie'] : $vypis_kategorii['podkategorie']['nazov_kategorie'];?></td>
                          <td><?php echo $produkt['datum_vytvorenia'];?></td>
                          <td><?php echo $produkt['datum_upravy'];?></td>
                          <td><a href = "<?php echo BASE_URL; ?>admin/editovanie/editovanie_produktu.php?id=<?php echo $id;?>" class = "edit">Editovať</a> <a href = "<?php echo BASE_URL; ?>admin/vymazanie/vymazanie_produktu.php?id=<?php echo $id;?>" class = "delete" onclick = "return kontrolaVymazania()">Vymazať</a></td>

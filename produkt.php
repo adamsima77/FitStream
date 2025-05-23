@@ -10,8 +10,9 @@ $objednavky = new Objednavky();
 <?php 
     
     $p = new Produkt();
-
+    
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        $p->overenieIdProduktu($_GET['id']);
         $produkt = $p->produktDetail($_GET['id']);
     } else {
         die("Zlé ID.");

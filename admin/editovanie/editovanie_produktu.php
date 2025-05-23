@@ -30,15 +30,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $klucovy_popis = $_POST['klucovy_popis'];
         $cena =  $_POST['cena'];
         $pocet_kusov = $_POST['pocet_kusov'];
-        $velkost = $_POST['velkost'];
-        $farba = $_POST['farba'];
         $img_popis = $_POST['popis_foto'];
         $kategoria = $_POST['kategoria'];
         $podkategoria = $_POST['podkategoria'];
         $overenie_img = $produkt->overenieFotoEdit($_GET['id']);
         
         if (empty($nazov) || empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena) || empty($pocet_kusov) ||
-            empty($velkost) || empty($farba) || empty($img_popis) || empty($kategoria)) {
+            empty($img_popis) || empty($kategoria)) {
             
             die("Vyplňte všetky polia označené hviezdičkou.");
         } else {
@@ -56,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         $id = $_GET['id'];
         $produkt->editaciaRiadku($id, $nazov, $znacka, $popis_produktu, $klucovy_popis, $cena, $pocet_kusov,
-                                 $velkost, $farba, $img, $img_popis, $kategoria, $podkategoria);
+                                 $img, $img_popis, $kategoria, $podkategoria);
         } else{
 
             die("Počet kusov musí byť rovné alebo väčšie ako nula");
@@ -103,13 +101,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 <label for="pocet_kusov">*Počet kusov:</label>
 <input type="number" id = "pocet_kusov" name = "pocet_kusov" value = "<?php echo $produkt_vypis['pocet_kusov'];?>">
-
-<label for="velkost">Veľkosť:</label>
-<input type="text" id = "velkost" name = "velkost" value = "<?php echo $produkt_vypis['velkost'];?>">
-
-
-<label for="farba">Farba:</label>
-<input type="text" name = "farba" id = "farba" value = "<?php echo $produkt_vypis['farba'];?>">
 
 <label for="kategoria">*Vyberte do ktorej kategórie ma produkt patriť:</label>
   <select id="kategoria" name="kategoria">

@@ -24,7 +24,7 @@ class Doprava extends Database
         }    
        
         try{
-            $sql = "SELECT * FROM doprava;";
+            $sql = "SELECT * FROM doprava ORDER BY datum_upravy DESC;";
             $statement = $this->conn->prepare($sql);
             $statement->execute();
             $rs = $statement->fetchAll();

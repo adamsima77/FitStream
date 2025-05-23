@@ -9,6 +9,7 @@
 
 <?php $nakupy = $objednavky->historiaNakupov($_SESSION['user_id']);?>
 
+
 <?php if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
@@ -62,6 +63,8 @@
           <h2>História nákupov je prázdna.</h2>
           <?php else:?>
         <?php foreach($nakupy as $produkt): ?>
+            
+            <?php $adresa = $objednavky->getAdresa($produkt['id_adresa']);?>
             <div class="nastavenia_polozka">
                 <div class="nastavenia_info">
                     <?php $idobjednavky = $produkt['idobjednavky'];?>
@@ -69,6 +72,19 @@
                     <p>Cena objednávky: <?php echo $produkt['cena']; ?>€</p>
                     <p>Stav objednávky: <?php echo $produkt['status']; ?></p>
                     <p>Dátum a čas objednávky: <?php echo $produkt['datum_objednavky']; ?></p>
+                    <br>
+                    <h2>Adresa dodania:</h2>
+                    <p>Mesto: <?php echo $adresa[0]['mesto'];?></p>
+                    <p>Ulica:  <?php echo $adresa[0]['ulica'];?></p>
+                    <p>PSČ: <?php echo $adresa[0]['psc'];?></p>
+
+                    <?php if (!empty($adresa[0]['nazov_firmy']) && !empty($adresa[0]['ico']) && !empty($adresa[0]['dic'])): ?>
+                       <br>
+                       <h2>Firemné údaje:</h2>
+                       <p>Názov firmy: <?php echo $adresa[0]['nazov_firmy'];?></p>
+                       <p>IČO: <?php echo $adresa[0]['ico'];?></p>
+                       <p>DIČ: <?php echo $adresa[0]['dic'];?></p>
+                    <?php endif;?>
                 </div>
                 <?php $produkty = $objednavky->historiaProdukty($idobjednavky);?>
         

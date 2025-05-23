@@ -21,7 +21,7 @@ class KategoriaBlog extends Database
         }    
        
         try{
-            $sql = "SELECT * FROM blog_kategorie;";
+            $sql = "SELECT * FROM blog_kategorie ORDER BY datum_upravy DESC;";
             $statement = $this->conn->prepare($sql);
             $statement->execute();
             $rs = $statement->fetchAll();

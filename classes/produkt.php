@@ -50,7 +50,7 @@ class Produkt extends Database
                     FROM produkty
                     WHERE vymazane = 0
                     ORDER BY datum_upravy DESC
-                    LIMIT 4";
+                    LIMIT 5";
             $st = $this->conn->prepare($sql);
             $st->execute();
             return $st->fetchAll();
@@ -115,8 +115,13 @@ class Produkt extends Database
 
     public function produktDetail(int $id): array
     {
+         if ($this->conn === null) {
+            $this->connect();
+            $this->conn = $this->getConnection();   
+         }   
+
         try {
-            $sql = "SELECT nazov, popis, img_hlavna, cena, img_alt, hlavny_popis
+            $sql = "SELECT nazov, popis, img_hlavna, cena, img_alt, hlavny_popis, vymazane
                     FROM produkty
                     WHERE idprodukty = ?";
             $st = $this->conn->prepare($sql);
@@ -138,7 +143,7 @@ class Produkt extends Database
     }
 
     public function vytvorenieProduktu(string $nazov, string $znacka, string $popis_produktu, string $klucovy_popis,
-                                       float $cena, int $pocet_kusov, string $velkost, string $farba, string $img, 
+                                       float $cena, int $pocet_kusov, string $img, 
                                        string $img_popis, int $kategoria, int $podkategoria): void 
     {
 
@@ -150,9 +155,8 @@ class Produkt extends Database
         try {
             $sql = "INSERT INTO produkty (
                     nazov, znacka, popis, cena, pocet_kusov,
-                    velkost, farba,
                     img_hlavna, img_alt, hlavny_popis
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $nazov);
@@ -160,11 +164,9 @@ class Produkt extends Database
             $st->bindParam(3, $popis_produktu);
             $st->bindParam(4, $cena);
             $st->bindParam(5, $pocet_kusov);
-            $st->bindParam(6, $velkost);
-            $st->bindParam(7, $farba);
-            $st->bindParam(8, $img);
-            $st->bindParam(9, $img_popis);
-            $st->bindParam(10, $klucovy_popis);
+            $st->bindParam(6, $img);
+            $st->bindParam(7, $img_popis);
+            $st->bindParam(8, $klucovy_popis);
             $st->execute();
 
             $produktID= $this->conn->lastInsertId();
@@ -318,7 +320,15 @@ class Produkt extends Database
             $st->bindParam(1,$id);
             $st->execute();
             $podkategoria = $st->fetch();
-            return ['kategorie' => $kategoria, 'podkategorie' => $podkategoria,];
+
+            if(!empty($kategoria) && empty($podkategoria)) {
+                return ['kategorie' => $kategoria, 'podkategorie' => "Žiadna kategória",];    
+            } else if (empty($kategoria) && !empty($podkategoria)) {
+                 return ['kategorie' => "Žiadna kategória", 'podkategorie' => $podkategoria,];  
+            } else {
+                return ['kategorie' => $kategoria, 'podkategorie' => $podkategoria,];
+            }
+
         } catch(Exception $e){
             die("Nastala chyba: " . $e->getMessage());
         } finally {
@@ -339,7 +349,7 @@ class Produkt extends Database
 
 
     public function editaciaRiadku(int $id, string $nazov, string $znacka, string $popis_produktu, string $klucovy_popis,
-                                   float $cena, int $pocet_kusov, string $velkost, string $farba, string $img,
+                                   float $cena, int $pocet_kusov, string $img,
                                    string $img_popis, int $kategoria, int $podkategoria): void
     {
         if ($this->conn === null) {
@@ -349,22 +359,18 @@ class Produkt extends Database
 
         try {
     
-            $sql = "UPDATE produkty SET nazov = ?, znacka = ?, popis = ?, cena = ?, pocet_kusov = ?, velkost = ?, 
-                    farba = ?, datum_upravy = ?, img_hlavna = ?, img_alt = ?, hlavny_popis = ? WHERE idprodukty = ?";
+            $sql = "UPDATE produkty SET nazov = ?, znacka = ?, popis = ?, cena = ?, pocet_kusov = ?, 
+                   img_hlavna = ?, img_alt = ?, hlavny_popis = ? WHERE idprodukty = ?";
             $st = $this->conn->prepare($sql);
-            $datum_editu = date('Y-m-d H:i:s');
             $st->bindParam(1, $nazov);
             $st->bindParam(2, $znacka);
             $st->bindParam(3, $popis_produktu);
             $st->bindParam(4, $cena);
             $st->bindParam(5, $pocet_kusov);
-            $st->bindParam(6, $velkost);
-            $st->bindParam(7, $farba);
-            $st->bindParam(8, $datum_editu);
-            $st->bindParam(9, $img);
-            $st->bindParam(10, $img_popis);
-            $st->bindParam(11, $klucovy_popis);
-            $st->bindParam(12,$id);
+            $st->bindParam(6, $img);
+            $st->bindParam(7, $img_popis);
+            $st->bindParam(8, $klucovy_popis);
+            $st->bindParam(9,$id);
             $st->execute();
 
             $produktID= $id;
@@ -607,6 +613,16 @@ class Produkt extends Database
             return $statement->fetchAll();
         } catch(Exception $e) {
             die("Nastala chyba");
+        }
+    }
+
+    public function overenieIdProduktu(int $id): void
+    {
+        $overenie = $this->produktDetail($id);
+        if ($overenie['vymazane'] == 1) {
+            $_SESSION['neuspech'] = "Tento produkt neexistuje.";
+            header("Location: /FitStream/config/error.php");
+            exit;
         }
     }
 }

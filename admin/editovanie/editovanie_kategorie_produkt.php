@@ -12,7 +12,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 }
 
 
-
+ $id = $_GET['id'];
 ?>
 
 <?php
@@ -31,8 +31,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             die("Vyplňte polia označené hviezdičkou");
     
         } else{
-
-        $id = $_GET['id'];
         $kategoriaprodukty->editaciaRiadku($id,$nazov,$id_nadkategorie);
         }
 
@@ -71,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
   <?php foreach($vypis_kategorii as $kategoria):?>
 
-     <?php if($kategoria['idkategorie'] != $id_nadkategorie):?>
+     <?php if($kategoria['idkategorie'] != $id):?>
       <option value="<?php echo $kategoria['idkategorie'];?>"><?php echo $kategoria['nazov_kategorie'];?></option>
       <?php endif;?>
 

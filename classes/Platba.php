@@ -22,7 +22,7 @@ class Platba extends Database
         }    
        
         try{
-            $sql = "SELECT * FROM platba;";
+            $sql = "SELECT * FROM platba ORDER BY datum_upravy DESC;";
             $statement = $this->conn->prepare($sql);
             $statement->execute();
             $rs = $statement->fetchAll();
