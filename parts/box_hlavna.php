@@ -1,3 +1,4 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/kontrola_parts.php');?>
 <div class = "za_1">         
     <h1><a href = "vyziva.php" class = "produkty">Produkty</a></h1>
         <div class = "skup" id = "skupi">

@@ -14,21 +14,6 @@ class Slideshow extends Database
         $this->conn = $this->getConnection();
     }
 
-    public function slideshow_vypis(): array
-    {
-        try {
-            $sql = "SELECT * FROM slideshow";
-            $st = $this->conn->prepare($sql);
-            $st->execute();
-
-            return $st->fetchAll();
-        } catch (Exception $e) {
-            die("Nastala chyba: " . $e->getMessage());
-        } finally {
-            $this->conn = null;
-        }
-    }
-
     public function slideshowVypis(): array
     {
         try {
@@ -184,7 +169,7 @@ class Slideshow extends Database
         }
     }
 
-    public function vypisjednehoZaznamu(int $id): array|false
+    public function vypisJednehoZaznamu(int $id): array|false
     {
         if ($this->conn === null) {
             $this->connect();

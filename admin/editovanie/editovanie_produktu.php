@@ -31,12 +31,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $cena =  $_POST['cena'];
         $pocet_kusov = $_POST['pocet_kusov'];
         $img_popis = $_POST['popis_foto'];
-        $kategoria = $_POST['kategoria'];
-        $podkategoria = $_POST['podkategoria'];
+        $kategoria = (!isset($_POST['kategoria'])) ? null : $_POST['kategoria'];
+        $podkategoria = (!isset($_POST['podkategoria'])) ? null : $_POST['podkategoria'];
         $overenie_img = $produkt->overenieFotoEdit($_GET['id']);
         
-        if (empty($nazov) || empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena) || empty($pocet_kusov) ||
-            empty($img_popis) || empty($kategoria)) {
+        if (empty($nazov) || empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena) ||
+            empty($img_popis) || empty($kategoria) || $podkategoria === null || $kategoria === null) {
             
             die("Vyplňte všetky polia označené hviezdičkou.");
         } else {
@@ -104,9 +104,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 <label for="kategoria">*Vyberte do ktorej kategórie ma produkt patriť:</label>
   <select id="kategoria" name="kategoria">
-       <option value="" disabled selected>Vyberte kategóriu:</option>
+       <?php if (!is_array($kategoria_select)):?>
+       <option value="" disabled selected>Žiadna kategória:</option>
+       <?php else:?>
        <option value="<?php echo $kategoria_select['idkategorie'];?>" selected><?php echo $kategoria_select['nazov_kategorie'];?></option>
-      <?php foreach($vypis_kategorii as $kategoria):?>
+       <?php endif;?>
+       <?php foreach($vypis_kategorii as $kategoria):?>
            
           <?php if ($kategoria_select['idkategorie'] == $kategoria['idkategorie']):?>
             <?php continue;?>
@@ -117,15 +120,23 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
   <select id="podkategoria" name="podkategoria">
-      <option value="" disabled selected>Vyberte podkategóriu:</option>
-      <option value="<?php echo $podkategoria_select['idkategorie'];?>" selected><?php echo $podkategoria_select['nazov_kategorie'];?></option>
-      <?php foreach($vypis_pod_kategorii as $pod_kategoria):?>
-        <?php if ($podkategoria_select['idkategorie'] == $pod_kategoria['idkategorie']):?>
-            <?php continue;?>
-             <?php endif;?>    
-          <option value="<?php echo $pod_kategoria['idkategorie'];?>"><?php echo $pod_kategoria['nazov_kategorie'];?></option>
-      <?php endforeach;?>
-  </select>
+    <?php if ($podkategoria_select === null): ?>
+        <option value="" disabled selected>Žiadna kategória</option>
+    <?php else: ?>
+        <option value="<?php echo $podkategoria_select['idkategorie']; ?>" selected>
+            <?php echo $podkategoria_select['nazov_kategorie']; ?>
+        </option>
+    <?php endif; ?>
+
+    <?php foreach($vypis_pod_kategorii as $pod_kategoria): ?>
+        <?php if ($podkategoria_select !== null && $podkategoria_select['idkategorie'] == $pod_kategoria['idkategorie']): ?>
+            <?php continue; ?>
+        <?php endif; ?>
+        <option value="<?php echo $pod_kategoria['idkategorie']; ?>">
+            <?php echo $pod_kategoria['nazov_kategorie']; ?>
+        </option>
+    <?php endforeach; ?>
+</select>
 <input type="submit" name = "submit" value = "Potvrdiť úpravy">
 </form>
 </div>

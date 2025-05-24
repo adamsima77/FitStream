@@ -153,6 +153,7 @@ class Produkt extends Database
         }
 
         try {
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO produkty (
                     nazov, znacka, popis, cena, pocet_kusov,
                     img_hlavna, img_alt, hlavny_popis
@@ -181,12 +182,14 @@ class Produkt extends Database
             $statement->bindParam(1,$podkategoria);
             $statement->bindParam(2,$produktID);
             $statement->execute();
-
+            
+            $this->conn->commit();
             $_SESSION['uspech'] = "Záznam bol úspešne vytvorený";
             header("Location: /FitStream/admin/edit_vyziva.php");
             exit;
 
         } catch (Exception $e) {
+            $this->conn->rollBack();
             $_SESSION['neuspech'] = "Pri vytváraní záznamu nastala chyba.";
             header("Location: /FitStream/admin/edit_vyziva.php");
             die;
@@ -231,7 +234,7 @@ class Produkt extends Database
 
     public function vypisProduktyAdmin() : array{
         try {
-            $sql = "SELECT * FROM produkty WHERE vymazane = 0 ORDER BY datum_vytvorenia DESC";
+            $sql = "SELECT * FROM produkty WHERE vymazane = 0 ORDER BY datum_upravy DESC";
             $st = $this->conn->prepare($sql);
             $st->execute();
             return $st->fetchAll();   
@@ -250,6 +253,7 @@ class Produkt extends Database
         }  
 
         try {
+            $this->conn->beginTransaction();
             $sql_1 = "DELETE FROM kategorie_has_produkty WHERE produkty_idprodukty = ?";
             $statement = $this->conn->prepare($sql_1);
             $statement->bindParam(1, $id);
@@ -261,10 +265,12 @@ class Produkt extends Database
             $st->bindParam(2, $id);
             $st->execute();
           
+            $this->conn->commit();
             $_SESSION['uspech'] = "Záznam bol úspešne vymazaný.";
             header("Location: /FitStream/admin/edit_vyziva.php");
             exit;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             $_SESSION['neuspech'] = "Nastala chyba pri mazaní záznamu.";
             die();
         } finally {
@@ -321,12 +327,14 @@ class Produkt extends Database
             $st->execute();
             $podkategoria = $st->fetch();
 
-            if(!empty($kategoria) && empty($podkategoria)) {
-                return ['kategorie' => $kategoria, 'podkategorie' => "Žiadna kategória",];    
-            } else if (empty($kategoria) && !empty($podkategoria)) {
-                 return ['kategorie' => "Žiadna kategória", 'podkategorie' => $podkategoria,];  
+            if ($kategoria && !$podkategoria) {
+                return ['kategorie' => $kategoria, 'podkategorie' => "Žiadna kategória"];
+            } else if (!$kategoria && $podkategoria) {
+                return ['kategorie' => "Žiadna kategória", 'podkategorie' => $podkategoria];
+            } else if (!$kategoria && !$podkategoria) {
+                return ['kategorie' => "Žiadna kategória", 'podkategorie' => "Žiadna kategória"];
             } else {
-                return ['kategorie' => $kategoria, 'podkategorie' => $podkategoria,];
+                return ['kategorie' => $kategoria, 'podkategorie' => $podkategoria];
             }
 
         } catch(Exception $e){
@@ -358,19 +366,21 @@ class Produkt extends Database
         }
 
         try {
-    
-            $sql = "UPDATE produkty SET nazov = ?, znacka = ?, popis = ?, cena = ?, pocet_kusov = ?, 
+            $this->conn->beginTransaction();
+            $sql = "UPDATE produkty SET nazov = ?, znacka = ?, popis = ?, cena = ?, pocet_kusov = ?, datum_upravy = ?, 
                    img_hlavna = ?, img_alt = ?, hlavny_popis = ? WHERE idprodukty = ?";
             $st = $this->conn->prepare($sql);
+            $datum_upravy = date('Y-m-d H:i:s');
             $st->bindParam(1, $nazov);
             $st->bindParam(2, $znacka);
             $st->bindParam(3, $popis_produktu);
             $st->bindParam(4, $cena);
             $st->bindParam(5, $pocet_kusov);
-            $st->bindParam(6, $img);
-            $st->bindParam(7, $img_popis);
-            $st->bindParam(8, $klucovy_popis);
-            $st->bindParam(9,$id);
+            $st->bindParam(6, $datum_upravy);
+            $st->bindParam(7, $img);
+            $st->bindParam(8, $img_popis);
+            $st->bindParam(9, $klucovy_popis);
+            $st->bindParam(10,$id);
             $st->execute();
 
             $produktID= $id;
@@ -391,10 +401,12 @@ class Produkt extends Database
             $statement->bindParam(2,$produktID);
             $statement->execute();
 
+            $this->conn->commit();
             $_SESSION['uspech'] = "Záznam bol úspešne upravený.";
             header("Location: /FitStream/admin/edit_vyziva.php");
             exit;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             $_SESSION['neuspech'] = "Nastala chyba pri úprave záznamu.";
             die;
         } finally {
@@ -479,13 +491,9 @@ class Produkt extends Database
             $st->bindParam(1,$id);
             $st->execute();
             $kat = $st->fetch();
-            if(empty($kat)){
-                $_SESSION['neuspech'] = "Tento článok neexistuje";
-                header("Location: /FitStream/config/error.php");
-                exit;
-            } else{
+           
                 return $kat;
-            }
+          
         } catch(Exception $e) {
             die("Nastala chyba: " . $e->getMessage());
         } finally {
@@ -494,7 +502,7 @@ class Produkt extends Database
         }
     }
 
-    public function getPodCategoryEdit($id): array
+    public function getPodCategoryEdit($id): array|null
     {
         if ($this->conn === null) {
             $this->connect();
@@ -509,7 +517,7 @@ class Produkt extends Database
             $st = $this->conn->prepare($sql);
             $st->bindParam(1,$id);
             $st->execute();
-            return $st->fetch();
+            return $st->fetch() ?: null;
         } catch(Exception $e) {
             die("Nastala chyba: " . $e->getMessage());
         } finally {

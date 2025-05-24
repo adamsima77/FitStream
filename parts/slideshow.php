@@ -1,5 +1,6 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/kontrola_parts.php');?>
 <?php
-$vypis_slideshow = $slideshow->slideshow_vypis();
+$vypis_slideshow = $slideshow->slideshowVypis();
 $pocet = 0;
 ?>
 <div class = "carousel-container">

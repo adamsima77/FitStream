@@ -2,6 +2,8 @@
 
 <?php use FitStream\Objednavky\Objednavky;?>
 
+
+<?php $uzivatel->pociatocneOverenie();?>
 <?php $uzivatel->overenieNastavenia($_SESSION['user_id'],$_GET['id']);?>
 
 <?php $objednavky = new Objednavky();

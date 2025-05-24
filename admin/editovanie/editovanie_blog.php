@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $popis_fotky = $_POST['popis_fotky'];
         $_POST['id_uzivatela'] = $_SESSION['user_id'];
         $uzivatel = $_POST['id_uzivatela'];
-        $kategoria = $_POST['kategoria'];
+        $kategoria = (isset($_POST['kategoria'])) ? $_POST['kategoria'] : NULL;
         $overenie_img = $blog->overenieFotoEdit($_GET['id']);
         if(empty($fotka) || $fotka == ''){
             if (!empty($overenie_img)){
@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   
             } }
 
-        if (empty($nazov) || empty($popis) || empty($kategoria)){
+        if (empty($nazov) || empty($popis) || empty($kategoria) || $kategoria === null){
     
             die("Vyplňte polia označené hviezdičkou");
     
@@ -70,10 +70,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <input type="file" id = "fotka" name = "fotka">
         <label for="popis_fotky">Popis fotky:</label>
         <input type="text" id = "popis_fotky" name = "popis_fotky" value = "<?php echo $blog_vypis['img_alt']?>">
+        <label for="kategorie">*Vyberte kategóriu:</label>
         <select id="kategoria" name="kategoria">
-        <option value="" disabled selected>Vyberte kategóriu:</option>
+        <?php if (!is_array($kategoria_select)):?>
+        <option value="" disabled selected>Žiadna kategória:</option>
+        <?php else:?>
        <option value="<?php echo $kategoria_select['id_kategorie'];?>" selected><?php echo $kategoria_select['nazov_kategorie_blog'];?></option>
-      <?php foreach($vypis_kategorii as $kategoria):?>
+       <?php endif;?>
+       <?php foreach($vypis_kategorii as $kategoria):?>
            
           <?php if ($kategoria_select['id_kategorie'] == $kategoria['id_kategorie']):?>
             <?php continue;?>

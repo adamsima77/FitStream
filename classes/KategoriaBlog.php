@@ -64,7 +64,13 @@ class KategoriaBlog extends Database
 
     public function vymazanieZaznamu(int $id): void
     {
+        if ($this->conn === null) {
+            $this->connect();
+            $this->conn = $this->getConnection();
+        }    
+
         try {
+            $this->conn->beginTransaction();
             $sql = "UPDATE blog SET id_kategorie = NULL WHERE id_kategorie = ?";
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
@@ -73,10 +79,12 @@ class KategoriaBlog extends Database
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
+            $this->conn->commit();
             $_SESSION['uspech'] = "Záznam bol úspešne zmazaný.";
             header("Location: /FitStream/admin/edit_kategoria_blog.php");
             exit;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             $_SESSION['neuspech'] = "Pri mazaní záznamu nastala chyba.";
             die;
         } finally {

@@ -82,19 +82,32 @@ class KategoriaProdukty extends Database
         }
 
         try {
+            $this->conn->beginTransaction();
+            
+            $sql = "UPDATE kategorie SET kategorie_idkategorie = ? WHERE kategorie_idkategorie = ?";
+            $st = $this->conn->prepare($sql);
+            $hodnota = NULL;
+            $st->bindParam(1, $hodnota);
+            $st->bindParam(2, $id);
+            $st->execute();
+
             $sql = "DELETE FROM kategorie_has_produkty WHERE kategorie_idkategorie = ?";
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
+
             $sql = "DELETE FROM kategorie WHERE idkategorie = ?";
             $st = $this->conn->prepare($sql);
             $st->bindParam(1, $id);
             $st->execute();
+            $this->conn->commit();
             $_SESSION['uspech'] = "Záznam bol úspešne zmazaný.";
             header("Location: /FitStream/admin/edit_kategoria_produkty.php");
             exit;
         } catch (Exception $e) {
-            $_SESSION['neuspech'] = "Pri mazaní záznamu nastala chyba.";
+            $this->conn->rollBack();
+            $_SESSION['neuspech'] = "Pri mazaní záznamu nastala chyba." . $e->getMessage();
+            header("Location: /FitStream/admin/edit_kategoria_produkty.php");
             die;
         } finally {
             $this->conn = null;

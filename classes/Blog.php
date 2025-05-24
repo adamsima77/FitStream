@@ -37,10 +37,8 @@ class Blog extends Database
     public function vypisAutora(int $id): array
     {
         if ($this->conn === null) {
-
             $this->connect();
-            $this->conn = $this->getConnection();
-            
+            $this->conn = $this->getConnection();        
         }
 
         try {
@@ -62,10 +60,8 @@ class Blog extends Database
     public function vypisKategorie(int $id):array|string
     {
         if ($this->conn === null) {
-
             $this->connect();
-            $this->conn = $this->getConnection();
-            
+            $this->conn = $this->getConnection();    
         }
 
         try {

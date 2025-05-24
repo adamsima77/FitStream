@@ -1,3 +1,4 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/kontrola_parts.php');?>
 <?php use FitStream\Utilities\Utilities;?>
 <?php $utilities = new Utilities();?>
 

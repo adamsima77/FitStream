@@ -1,3 +1,4 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/kontrola_parts.php');?>
 <div class = "vyziva_obal">
     <div class = "obal">
         <?php $vypis_Produktov->zobrazenieStavu()?>

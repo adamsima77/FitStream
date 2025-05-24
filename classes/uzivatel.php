@@ -4,7 +4,6 @@ namespace FitStream\Uzivatel;
 use FitStream\Database\Database;
 use Exception;
 
-
 class Uzivatel extends Database
 {
     protected $conn;
@@ -12,7 +11,7 @@ class Uzivatel extends Database
 
     public function __construct()
     {
-        session_start();
+        if(session_status() === PHP_SESSION_NONE) session_start();
         $this->connect();
         $this->conn = $this->getConnection();
         $this->rola = 1;
@@ -27,7 +26,7 @@ class Uzivatel extends Database
         }
 
         try {
-
+            $this->conn->beginTransaction();
             if ($heslo !== $opakovanie_hesla) {
                 $_SESSION['neuspech'] = "Heslá sa nezhodujú.";
                 header("Location: /FitStream/register.php");
@@ -72,10 +71,12 @@ class Uzivatel extends Database
             $statement->bindParam(5, $overeny_datum);
             $statement->bindParam(6, $this->rola);
             $statement->execute();
+            $this->conn->commit();
             $_SESSION['uspech'] = "Boli ste úspešne registrovaní môžete sa prihlásiť.";
             header("Location: login.php");
             exit;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             $_SESSION['neuspech'] = "Nastala chyba pri registrácii.";
             header("Location: register.php");
             die;
@@ -143,7 +144,7 @@ class Uzivatel extends Database
     public function overenieAdmina(): void
     {
         if (!isset($_SESSION['user_rola']) || !isset($_SESSION['user_id'])) {
-            header("Location: ../login.php");
+            header("Location: /FitStream/login.php");
             die;
         }
 
@@ -177,7 +178,6 @@ class Uzivatel extends Database
 
     private function overenieDatumu(string $datum): string
     {
-        // Použitie prefixu \ pretože namespace užívateľ nemá objekt datetime
         try {
             $datumNarodenia = new \DateTime($datum);
         } catch (Exception $e) {
@@ -197,22 +197,15 @@ class Uzivatel extends Database
     public function overenieNastavenia(?int $id_uzivatela, ?int $id_url): void
     {
 
-        if($id_url == NULL){
+        if($id_url === NULL) {
              header("Location: /FitStream/nastavenia/nastavenia.php?id=$id_uzivatela");
              exit;
         }
            
-        else if($id_uzivatela == NULL){
-             header("Location: /FitStream/index.php");
-             exit;
-
-        }
-
-           else if($id_uzivatela != $id_url){
-
+        else if($id_uzivatela != $id_url) {
              header("Location: /FitStream/nastavenia/nastavenia.php?id=$id_uzivatela");
              exit;
-           } 
+        } 
     }
 
     public function vymazatUcet(int $id): void
@@ -338,5 +331,13 @@ class Uzivatel extends Database
         }
     }
 
+    public function pociatocneOverenie(): void
+    {
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: /FitStream/index.php");
+            exit;
+        }
+
+    }
 }
 ?>

@@ -1,3 +1,4 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/kontrola_parts.php');?>
 <div class="vyziva_skupina_oblecenie" id="vyziva_skupina_oblecenie">
     <?php foreach($filter as $vypis): ?>
         <div class="box_vyziva_oblecenie">

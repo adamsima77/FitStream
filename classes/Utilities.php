@@ -58,5 +58,14 @@ class Utilities
             }
         }
     }
+
+    public function kontrolaParts(): void
+    {
+        if (!defined("KONTROLA_PARTS")) {
+            header("Location: /Fitstream/index.php"); 
+            exit;
+        }
+
+    }
 }
 ?>

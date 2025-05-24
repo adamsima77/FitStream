@@ -297,6 +297,7 @@ class Objednavky extends Database
         
         try {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $this->conn->beginTransaction();
                 $sql = "INSERT INTO adresa(mesto,ulica,psc,nazov_firmy,ico,dic) VALUES(?,?,?,?,?,?);";
                 $statement = $this->conn->prepare($sql);
                 $statement->bindParam(1,$mesto);
@@ -358,7 +359,8 @@ class Objednavky extends Database
                     $statement->bindParam(2,$id);
                     $statement->execute();
                 }
-       
+
+                $this->conn->commit();
                 setcookie('kosik', '', time() - 3600, '/');
                 unset($_SESSION['kosik_email'], $_SESSION['kosik_meno'], $_SESSION['kosik_priezvisko'], 
                 $_SESSION['kosik_telefonne_cislo'], $_SESSION['kosik_mesto'], 
@@ -369,7 +371,8 @@ class Objednavky extends Database
         }
 
         } catch (Exception $e) {
-        die("Nastala chyba");
+            $this->conn->rollBack();
+            die("Nastala chyba");
         } 
 
     }

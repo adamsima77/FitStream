@@ -8,7 +8,7 @@ $slideshow = new Slideshow();
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Zlé ID");
 } else {
-    $slideshow_vypis = $slideshow->vypisjednehoZaznamu($_GET['id']);
+    $slideshow_vypis = $slideshow->vypisJednehoZaznamu($_GET['id']);
 }
 
 

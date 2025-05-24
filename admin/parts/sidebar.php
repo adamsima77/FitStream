@@ -1,3 +1,4 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/FitStream/config/kontrola_parts.php');?>
 <div class = "sidebar" id = "sidebar">
     <div class = "sidebar_zarovnanie">
         <div class = "logo_a_zatvorenie">

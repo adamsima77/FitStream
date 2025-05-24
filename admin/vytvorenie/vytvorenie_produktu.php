@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $popis_img = (empty($_POST['popis_foto'])) ? " " : $_POST['popis_foto'];
 
         if(empty($nazov) ||empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena)
-        || empty($pocet_kusov) || empty($img) || empty($podkategorie)){
+        || empty($img) || empty($podkategorie)){
     
             die("Vyplňte polia označené hviezdičkou");
     
