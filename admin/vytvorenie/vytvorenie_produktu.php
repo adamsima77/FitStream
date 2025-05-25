@@ -37,13 +37,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
         $pocet_kusov = $_POST['pocet_kusov'];
         $popis_img = $_POST['popis_foto'];
-        $kategoria = $_POST['kategoria'];
-        $podkategorie = $_POST['podkategoria'];
+        $kategoria = $_POST['kategoria'] ?? null;
+        $podkategorie = $_POST['podkategoria'] ?? null;
 
         $popis_img = (empty($_POST['popis_foto'])) ? " " : $_POST['popis_foto'];
 
         if(empty($nazov) ||empty($znacka) || empty($popis_produktu) || empty($klucovy_popis) || empty($cena)
-        || empty($img) || empty($podkategorie)){
+        || empty($img) || $podkategorie === null || $kategoria === null){
     
             die("Vyplňte polia označené hviezdičkou");
     

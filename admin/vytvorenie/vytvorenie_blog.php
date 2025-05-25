@@ -16,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $popis_fotky = $_POST['popis_fotky'];
         $_POST['id_uzivatela'] = $_SESSION['user_id'];
         $uzivatel = $_POST['id_uzivatela'];
-        $kategoria = $_POST['kategoria'];
+        $kategoria = $_POST['kategoria'] ?? null;
 
-        if (empty($nazov) || empty($popis) || empty($fotka) || empty($kategoria)) {
+        if (empty($nazov) || empty($popis) || empty($fotka) || $kategoria === null) {
             die("Vyplňte polia označené hviezdičkou");
         } else {
             $blog->vytvorenieZaznamu($nazov, $popis, $fotka, $popis_fotky, $uzivatel, $kategoria );
