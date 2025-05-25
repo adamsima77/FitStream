@@ -30,7 +30,7 @@ $objednavky = new Objednavky();
         $_POST['idpr'] = $_GET['id'];
         $id = $_POST['idpr'];
 
-        if(empty($pocet_kusov)){
+        if(empty($pocet_kusov) || $pocet_kusov <= 0){
     
             die("Vyplňte polia označené hviezdičkou");
     
