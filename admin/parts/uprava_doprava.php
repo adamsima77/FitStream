@@ -2,7 +2,7 @@
 <div class="vyziva_obal">
     <div class="obal">
         <?php $doprava->zobrazenieStavu(); ?>
-        <a href="<?php echo BASE_URL; ?>admin/vytvorenie/vytvorenie_doprava.php" class="vytvorenie">Vytvoriť novú otázku a odpoveď</a>
+        <a href="<?php echo BASE_URL; ?>admin/vytvorenie/vytvorenie_doprava.php" class="vytvorenie">Vytvoriť nový spôsob dopravy</a>
 
         <div class="table_con">
             <table>

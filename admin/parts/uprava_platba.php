@@ -2,7 +2,7 @@
 <div class="vyziva_obal">
     <div class="obal">
         <?php $platba->zobrazenieStavu(); ?>
-        <a href="<?php echo BASE_URL; ?>admin/vytvorenie/vytvorenie_platba.php" class="vytvorenie">Vytvoriť novú otázku a odpoveď</a>
+        <a href="<?php echo BASE_URL; ?>admin/vytvorenie/vytvorenie_platba.php" class="vytvorenie">Vytvoriť nový spôsob platby</a>
 
         <div class="table_con">
             <table>
